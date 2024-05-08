@@ -1,6 +1,6 @@
-import { baseAxios } from "../utils/instance";
+import { baseAxios } from "utils/instance";
 
-export const login = async()=>{
-    const res = await baseAxios.post("/api/login");
-    return res
-}
+export const login = async () => {
+  const res = await baseAxios.post("/api/login");
+  return res;
+};

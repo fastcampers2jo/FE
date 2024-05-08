@@ -1,8 +1,7 @@
 {
   "compilerOptions": {
-    "baseUrl": ".",
+    "baseUrl": "src",
     "paths": {
-      "styles/*": ["styles/*"],
       "components": ["components"],
       "asset": ["asset"],
       "hooks": ["hooks"],

@@ -4,7 +4,6 @@ import envCompatible from "vite-plugin-env-compatible";
 import tsconfigPaths from "vite-tsconfig-paths";
 import checker from "vite-plugin-checker";
 import svgr from "vite-plugin-svgr";
-import sassDts from "vite-plugin-sass-dts";
 import viteImagemin from "vite-plugin-imagemin";
 
 export default defineConfig({
@@ -15,7 +14,7 @@ export default defineConfig({
     open: true,
   },
 
-  base: process.env.NODE_ENV === "development" ? "/" : "./",
+  base: process.env.NODE_ENV === "development" ? "./" : "./",
   build: {
     // rollupoptions에서 각기 다른 폴더에 이미지 css js 들어가도록 설정
     rollupOptions: {
@@ -38,18 +37,10 @@ export default defineConfig({
       },
     },
   },
-  // scss 전역으로 쉽게 설정하기 위한 추가 성정
-  css: {
-    preprocessorOptions: {
-      scss: {
-        additionalData: `@import "./src/styles/variables.scss";`,
-      },
-    },
-  },
+ 
   plugins: [
     react(),
     // scss를 컴파일해주는 플러그인
-    sassDts(),
     // svg이외의 이미지 파일 최적화
     viteImagemin({
       gifsicle: {
@@ -89,7 +80,7 @@ export default defineConfig({
     checker({
       // 타입스크립트 타입 검사
       typescript: true,
-      // eslint 검사 
+      // eslint 검사
       eslint: { lintCommand: "eslint ./src --ext .ts,.tsx" },
     }),
   ],

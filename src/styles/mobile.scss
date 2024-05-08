@@ -1,0 +1,97 @@
+// @media (min-width: 390px) and (max-width: 600px) {
+    
+// }
+
+/* layout */
+.layoutContainer{
+    margin: 0px auto;
+    max-width: 600px;
+    padding-inline: 3.33%;
+    box-sizing: border-box;
+}
+
+/* 로그인 */
+.loginTop{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom:3.5rem;
+    > h2 {
+        font-size:2.4rem;
+        line-height: 1;
+        letter-spacing: -0.22px;
+        color:var(--color-black);
+        font-weight:700;
+    }
+}
+.inputWrap{
+    display: flex;
+    flex-direction: column;
+    gap:2.4rem;
+    margin-bottom:4.1rem;
+    >div{
+        position: relative;
+
+    }
+    > div > svg{
+        position: absolute;
+        right: 2.4rem;
+        top:0;
+        bottom:0;
+        margin:auto 0;
+    }
+}
+.input{
+    width:100%;
+    height:6rem;
+    background:var(--bg-input);
+    border:1px solid var(--border-input);
+    padding-inline:2.4rem 6.4rem;
+    &::placeholder{
+        color:var(--color-black);
+    }
+}
+.loginForm{
+    > button{
+        width:15.4rem;
+        height:4.4rem;
+        letter-spacing: -0.22px;
+        font-size: 1.2rem;
+        font-weight: 700;
+        color:var(--color-black);
+        border: 1px solid var(--border-input);
+            margin: 0 auto;
+    display: block;
+    }
+}
+.loginLink{
+    display:block;
+    line-height: 1.8rem;
+    letter-spacing: -0.22px;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color:var(--color-black);
+    text-align: center;
+    margin-top:1.4rem;
+}
+.sns{
+    margin-top:8.6rem;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    gap:0.8rem;
+    > p {
+        font-size:1.2rem;
+        line-height: 1;
+        letter-spacing: -0.22px;
+        color:var(--color-black);
+        font-weight:700;
+    }
+    >button{
+        background:var(--bg-input);
+        border:1px solid var(--border-input);
+        height:6rem;
+        width:100%;
+        font-weight:700;
+        color:var(--color-black);
+    }
+}

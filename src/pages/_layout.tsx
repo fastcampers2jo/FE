@@ -1,14 +1,13 @@
-import { Suspense } from "react"
-import { Outlet } from "react-router-dom"
+import { Suspense } from "react";
+import { Outlet } from "react-router-dom";
+import "styles/mobile.scss";
 
-const Layout = ()=>{
-    return(
-        <div>
-            <Suspense fallback={<h1>Loading...</h1>}>
-                <Outlet />
-            </Suspense>
-        </div>
-    )
-}
+const layout = () => (
+  <main className="layoutContainer">
+    <Suspense fallback={<h1>Loading...</h1>}>
+      <Outlet />
+    </Suspense>
+  </main>
+);
 
-export default Layout;
+export default layout;
