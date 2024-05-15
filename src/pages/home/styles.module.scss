@@ -1,0 +1,95 @@
+.header{
+    padding: 1.5rem 4.27% 0;
+    display: flex;
+    justify-content: space-between;
+    > h1 {
+        color:var(--color-white);
+        font-weight:700;
+        font-size:1.6rem;
+        line-height: 2.4rem;
+        letter-spacing: -2.2px;
+    }
+    > nav{
+        display: flex;
+        gap: 1.5rem;
+    }
+}
+.btnText{
+    background:var(--bg-040404);
+    padding:3.4rem  4.27% 9.8rem;
+    >button{
+        color:var(--color-white);
+    font-size:2rem;
+    line-height: 3rem;
+    text-align: left;
+    letter-spacing: 0.44px;
+    font-weight:600;
+    >span{
+        font-weight:400;
+    }
+    }
+    
+}
+.goodsContiner{
+    background:var(--bg--color-F2F4F5);
+    position:relative;
+    padding-inline:4.27%;
+    display: flex;
+    gap:1rem;
+    flex-direction: column;
+    &::after{
+        content: '';
+        left:0;
+        right:0;
+        width:100%;
+        margin:0 auto;
+        position:absolute;
+        top:-2.1rem;
+        height: 2.1rem;
+        border-radius: 2rem 2rem 0px 0px;
+        background: var(--bg--color-F2F4F5);
+    }
+}
+.search{
+    background:var(--color-checkbox--black);
+    padding-inline:2rem;
+    text-align: left;
+    line-height: 5rem;
+    border-radius: 5rem;
+    width:100%;
+    color:var(--color-A8A8A8);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom:1.1rem;
+}
+
+.articleBox{
+    padding:2rem;
+    background:var(--color-white);
+    border-radius: 1.5rem;
+}
+.articleBoxTop{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    > h2 {
+        font-size:1.6rem;
+        letter-spacing: -0.352px;
+        line-height: 2.4rem;
+        font-weight:600;
+        color:var(--svg-black);
+        >span{
+            display: block;
+            color:var(--color-666);
+            line-height: 1.5rem;
+            font-size:1rem;
+            font-weight:400;
+        }
+    }
+    >button{
+        color:var(--color-84848);
+        font-size:1rem;
+        letter-spacing: -0.352px;
+    }
+}

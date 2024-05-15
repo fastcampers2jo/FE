@@ -37,10 +37,8 @@ export default defineConfig({
       },
     },
   },
- 
   plugins: [
     react(),
-    // scss를 컴파일해주는 플러그인
     // svg이외의 이미지 파일 최적화
     viteImagemin({
       gifsicle: {

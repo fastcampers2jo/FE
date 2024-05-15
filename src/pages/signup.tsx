@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { LoginTop } from "components";
+import { TitleTop } from "components";
 import { useInput } from "hooks";
 import { Hide } from "assets";
 import "styles/mobile.scss";
@@ -11,7 +11,7 @@ const Signup = () => {
   const [password, onPassword] = useInput("");
   return (
     <section>
-      <LoginTop>회원가입</LoginTop>
+      <TitleTop>회원가입</TitleTop>
       <div className="inputWrap">
         <input
           type="text"
