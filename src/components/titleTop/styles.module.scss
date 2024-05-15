@@ -1,0 +1,22 @@
+.loginTop{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom:3.5rem;
+
+    > h2 {
+        font-size:1.6rem;
+        line-height: 2.4rem;
+        letter-spacing: -0.0912px;
+        color:var(--color-white);
+        font-weight:700;
+    }
+}
+.mypage{
+    display:flex;
+    gap:1.8rem;
+    align-items: center;
+}
+.nobox{
+    width:2.4rem;
+    height:2.4rem;
+}

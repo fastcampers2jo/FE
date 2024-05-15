@@ -1,28 +1,8 @@
-// @media (min-width: 390px) and (max-width: 600px) {
-    
-// }
-
 /* layout */
-.layoutContainer{
-    margin: 0px auto;
-    max-width: 600px;
-    padding-inline: 3.33%;
-    box-sizing: border-box;
-}
+
 
 /* 로그인 */
-.loginTop{
-    display: flex;
-    justify-content: space-between;
-    margin-bottom:3.5rem;
-    > h2 {
-        font-size:2.4rem;
-        line-height: 1;
-        letter-spacing: -0.22px;
-        color:var(--color-black);
-        font-weight:700;
-    }
-}
+
 .inputWrap{
     display: flex;
     flex-direction: column;

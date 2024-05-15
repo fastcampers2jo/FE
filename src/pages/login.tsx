@@ -1,9 +1,9 @@
 import { useState } from "react";
-import { LoginTop } from "components";
+import { Link } from "react-router-dom";
+import { TitleTop } from "components";
 import { useInput } from "hooks";
 import { Hide } from "assets";
 import "styles/mobile.scss";
-import { Link } from "react-router-dom";
 
 const Login = () => {
   const [hide, setHide] = useState<boolean>(false);
@@ -15,7 +15,7 @@ const Login = () => {
   };
   return (
     <section>
-      <LoginTop>로그인</LoginTop>
+      <TitleTop>로그인</TitleTop>
       <form onSubmit={onLogin} className="loginForm">
         <div className="inputWrap">
           <input
