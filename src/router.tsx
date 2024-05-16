@@ -1,11 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
-import {
-  Home,
-  Login,
-  Layout,
-  Signup,
-  Mypage
-} from "./pages";
+import { Home, Login, Layout, Signup, Mypage } from "./pages";
+import LikePage from "pages/likes";
+import LikeListPage from "pages/likes/likeListPage";
 
 const router = createBrowserRouter([
   {
@@ -26,6 +22,14 @@ const router = createBrowserRouter([
       {
         path: "/mypage",
         element: <Mypage />,
+      },
+      {
+        path: "/likes",
+        element: <LikePage />,
+      },
+      {
+        path: "/likelist",
+        element: <LikeListPage />,
       },
     ],
   },

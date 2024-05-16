@@ -30,13 +30,5 @@
   },
   "exclude": ["node_modules"],
   "references": [{ "path": "./tsconfig.node.json" }],
-  "include": [
-    "src",
-    "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx",
-    ".next/types/**/*.ts",
-    "global.d.ts",
-    "svg.d.ts"
-  ],
+  "include": ["src", "next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "global.d.ts", "svg.d.ts"]
 }
