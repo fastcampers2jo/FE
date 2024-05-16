@@ -1,6 +1,10 @@
+$padding-horizontal: 4.27%;
+$button-width: 14.8rem;
+$button-height: 3.4rem;
+
 .profileWrapper{
-    padding: 1.5rem 4.27% 4rem;
-        border-bottom: 7px solid var(--color-d9d9d9);
+    padding: 1.5rem $padding-horizontal 4rem;
+    border-bottom: 7px solid var(--color-d9d9d9);
     > p{
         font-size:1.4rem;
         line-height: 2.1rem;
@@ -37,8 +41,8 @@
         border:1px solid var(--color-A8FF00);
         color:var(--color-A8FF00);
         font-size:1.2rem;
-        width: 14.8rem;
-        height:3.4rem;
+        width: $button-width;
+        height: $button-height;
         border-radius: 2rem;
         margin-top:1.6rem;
     }
@@ -55,7 +59,7 @@
     }
 }
 .list{
-    padding-inline:4.27%;
+    padding-inline: $padding-horizontal;
     margin-top:4rem;
 }
 .listTitle{
@@ -87,7 +91,7 @@
     font-size: 1.2rem;
     letter-spacing: 0.00684rem;
     border: 1px solid var(--color-eee);
-    height: 3.4rem;
+    height: $button-height;
     color: var(--color-eee);
     width: calc(100% - 8.54%);
     margin-top: 6rem;

@@ -1,5 +1,7 @@
+$conpadding: 4.27%;
+
 .header{
-    padding: 1.5rem 4.27% 0;
+    padding: 1.5rem $conpadding 0;
     display: flex;
     justify-content: space-between;
     > h1 {
@@ -16,7 +18,7 @@
 }
 .btnText{
     background:var(--bg-040404);
-    padding:3.4rem  4.27% 9.8rem;
+    padding:3.4rem   $conpadding 9.8rem;
     >button{
         color:var(--color-white);
     font-size:2rem;
@@ -33,7 +35,7 @@
 .goodsContiner{
     background:var(--bg--color-F2F4F5);
     position:relative;
-    padding-inline:4.27%;
+    padding: 0 $conpadding 5.6rem;
     display: flex;
     gap:1rem;
     flex-direction: column;
@@ -73,6 +75,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-bottom:1.5rem;
     > h2 {
         font-size:1.6rem;
         letter-spacing: -0.352px;
@@ -92,4 +95,135 @@
         font-size:1rem;
         letter-spacing: -0.352px;
     }
+}
+
+.popularProduct{
+    padding:0.7rem 1rem;
+    display: flex;
+    align-items: center;
+    gap:1.5rem;
+    justify-content: space-between;
+    > a{
+        display: flex;
+        align-items: center;
+        gap:1.5rem;
+        width: calc(100% - 3.1rem);
+    }
+    .imgbox{
+        width:2.5rem;
+        height:2.5rem;
+        border-radius: 50%;
+        background:#000;
+        > img{
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: cover;
+        }
+    }
+    .textbox{
+        width: 70%;
+        >em{
+            color:#000;
+            letter-spacing: 1rem * -0.022;
+            font-weight:500;
+            display: block;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+        }
+        > p {
+            color:#000;
+            font-size:1.2rem;
+            letter-spacing: 1.2rem * -0.022;
+            font-weight:500;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+        }
+    }
+    > a > span{
+        font-size:1.2rem;
+        letter-spacing:1.2rem * -0.022;
+        line-height: 1;
+        font-weight:500;
+        color:var(--color-FF5500);
+    }
+     > a > p{
+        font-size:1.2rem;
+        letter-spacing:1.2rem * -0.022;
+        line-height: 1;
+        font-weight:700;
+        color:#212121
+     }
+}
+.comparisons{
+    display: flex;
+    align-items: center;
+    gap:3.47%;
+    justify-content: center;
+    .comparison:last-child{
+        background:var(--color-FFF9EA)
+    }
+    > p{
+        font-size:1.5rem;
+        font-weight:500;
+        color:var(--color-FF5500);
+        letter-spacing:1.5rem * -0.022;
+    }
+}
+.comparison{
+    padding:1.5rem 2rem;
+    background:var(--color-E8F4FF);
+    border-radius: 1.5rem;
+    width: calc(50% - 3.47%);
+    >div{
+        width:2.5rem;
+        height:2.5rem;
+        border-radius: 50%;
+        background:#000;
+        margin-bottom:1.5rem;
+        > img{
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: cover;
+        }
+    }
+    p,em{
+        font-size:1.2rem;
+        color:#000;
+        letter-spacing:1.2rem * -0.022;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        line-height:1.5rem;
+    }
+    > span{
+        line-height:1.5rem;
+        color:var(--color-666);
+        display: block;
+        margin-top:3rem;
+    }
+    >strong{
+        font-size:1.5rem;
+        color:#000;
+        font-weight:600;
+        letter-spacing:1.5rem * -0.022;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        line-height:2.2rem;
+        > span{
+            font-size:1.2rem;
+            letter-spacing:1.2rem * -0.022;
+        }
+    }
+}
+.banner{
+    width:100%;
+    height:0;
+    padding-bottom: 23.32%;
+    background:#ABABAB;
+    border-radius: 1.5rem;
 }

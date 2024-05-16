@@ -1,5 +1,5 @@
 import { useCallback, useState } from "react";
-import { Bell, Logo, Mypage, Search } from "assets";
+import { Bell, Logo, Love, Mypage, Search } from "assets";
 import { Link, useNavigate } from "react-router-dom";
 import styles from "./styles.module.scss";
 
@@ -9,6 +9,23 @@ const Home = () => {
   const onlogin = useCallback(() => {
     setLogin((prev) => !prev);
   }, [login]);
+  const goods = [
+    {
+      bank: "우리은행",
+      describe: "우리 첫거래 우대 정기예금",
+      rate: "4.5%",
+    },
+    {
+      bank: "국민은행",
+      describe: "청년을 위한 정기예금",
+      rate: "4.5%",
+    },
+    {
+      bank: "신한은행",
+      describe: "파워적금",
+      rate: "4.5%",
+    },
+  ];
   return (
     <>
       <header className={styles.header}>
@@ -56,6 +73,24 @@ const Home = () => {
               <h2>지금 가장 인기 있는 상품</h2>
               <button>더보기 &gt;</button>
             </div>
+            <ul>
+              {goods.map((good, i) => (
+                <li className={styles.popularProduct} key={i}>
+                  <Link to="/">
+                    <span>{i}</span>
+                    <div className={styles.imgbox} />
+                    <div className={styles.textbox}>
+                      <em>{good.bank}</em>
+                      <p>{good.describe}</p>
+                    </div>
+                    <p>{good.rate}</p>
+                  </Link>
+                  <button type="button">
+                    <Love />
+                  </button>
+                </li>
+              ))}
+            </ul>
           </div>
           <div className={styles.articleBox}>
             <div className={styles.articleBoxTop}>
@@ -65,7 +100,29 @@ const Home = () => {
               </h2>
               <button>더보기 &gt;</button>
             </div>
+            <div className={styles.comparisons}>
+              <div className={styles.comparison}>
+                <div />
+                <em>신한은행</em>
+                <p>최강 적금</p>
+                <span>최고(기본) 금리</span>
+                <strong>
+                  7<span>(2.5)</span>%
+                </strong>
+              </div>
+              <p>vs</p>
+              <div className={styles.comparison}>
+                <div />
+                <em>신한은행</em>
+                <p>최강 적금</p>
+                <span>최고(기본) 금리</span>
+                <strong>
+                  7<span>(2.5)</span>%
+                </strong>
+              </div>
+            </div>
           </div>
+          <div className={styles.banner} />
         </article>
       </section>
     </>
