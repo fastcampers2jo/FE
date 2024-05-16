@@ -18,12 +18,12 @@ const Home = () => {
           </Link>
         </h1>
         <nav>
-          <button>
+          <Link to="/">
             <Bell />
-          </button>
-          <button>
+          </Link>
+          <Link to="/mypage">
             <Mypage />
-          </button>
+          </Link>
         </nav>
       </header>
       <section>
