@@ -15,3 +15,4 @@ export { default as Search } from "./search.svg?react";
 export { default as Setting } from "./setting.svg?react";
 export { default as Edit } from "./edit.svg?react";
 export { default as Sticker } from "./sticker.png";
+export { default as Love } from "./love.svg?react";

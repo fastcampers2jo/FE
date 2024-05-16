@@ -67,5 +67,6 @@ module.exports = {
    "react/react-in-jsx-scope":"off",
    "jsx-a11y/control-has-associated-label": "off",
    "object-curly-newline": "off",
+   "react/jsx-one-expression-per-line":"off",
   },
 }
