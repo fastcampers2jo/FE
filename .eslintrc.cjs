@@ -68,5 +68,6 @@ module.exports = {
    "jsx-a11y/control-has-associated-label": "off",
    "object-curly-newline": "off",
    "react/jsx-one-expression-per-line":"off",
+   "arrow-body-style" : "off",
   },
 }
