@@ -4,7 +4,8 @@ import {
   Login,
   Layout,
   Signup,
-  Mypage
+  Mypage,
+  Finance
 } from "./pages";
 
 const router = createBrowserRouter([
@@ -27,6 +28,10 @@ const router = createBrowserRouter([
         path: "/mypage",
         element: <Mypage />,
       },
+      {
+        path: "/finance",
+        element: <Finance />,
+      }
     ],
   },
 ]);
