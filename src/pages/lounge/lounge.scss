@@ -1,0 +1,326 @@
+html {
+  background-color: gray;
+}
+
+body {
+  background-color: gray;
+  margin-top: 439px;
+  margin-left: 50px;
+  width: 375px;
+  height: auto;
+}
+
+.arrow--right {
+  margin-left: 6px;
+}
+
+.header {
+  background-color: #f6f6f6;
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 16px 16px 16px;
+
+  .page__title {
+    color: #000;
+    font-family: Pretendard;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 150%; /* 27px */
+    letter-spacing: 0.103px;
+  }
+  .post--btn {
+    display: inline-flex;
+    padding: 4px 10px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    background-color: #a8ff00;
+    color: #000;
+
+    /* text/Body 1/Heavy */
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 150%; /* 18px */
+    letter-spacing: 0.068px;
+  }
+}
+
+///// 라운지 메인 페이지 상단 로고바 /////
+
+.logobar {
+  background-color: #fff;
+  padding: 8px 16px 28px 16px;
+  display: flex;
+  justify-content: space-between;
+
+  span {
+    color: #000;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 150%; /* 24px */
+    letter-spacing: -0.352px;
+  }
+  .icons {
+    display: flex;
+    gap: 18px;
+    .bell,
+    .mypage {
+      width: 24px;
+      height: 24px;
+      justify-content: center;
+      align-items: center;
+
+      path {
+        stroke: #000;
+      }
+
+      circle {
+        stroke: #000;
+      }
+    }
+  }
+}
+
+//// 라운지페이지 실시간 핫이슈 섹션 /////
+
+.hottopic {
+  max-width: 375px;
+  // height: 311px;
+  min-height: 172px;
+  height: auto;
+  background-color: #fff;
+  padding-left: 16px;
+  padding-bottom: 40px;
+  .page__title {
+    color: #000;
+    width: auto;
+
+    /* text/Headline 1 */
+    font-family: Pretendard;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 150%; /* 27px */
+    letter-spacing: 0.103px;
+    padding: 0 0 12px 0;
+  }
+
+  .products__comparison__list {
+    display: flex;
+    overflow: hidden;
+    .products__comparison {
+      width: 316px;
+      height: 120px;
+      border-radius: 4px;
+      background: #2a2a2a;
+      display: flex;
+      gap: 4px;
+      justify-content: center;
+
+      p {
+        display: flex;
+        height: 27px;
+        color: var(--color-white-secondary-normal, #f50);
+        font-size: 18px;
+        font-weight: 700;
+        line-height: 150%; /* 27px */
+        letter-spacing: 0.103px;
+        padding: 7px 6px 5px 6px;
+        justify-content: center;
+        text-align: center;
+        align-items: center;
+        margin: auto 0;
+      }
+
+      .product__comparison__wrapped {
+        display: flex;
+        padding-left: 10px;
+        margin-top: 20px;
+        margin-right: 5px;
+
+        .product__comparison {
+          .product {
+            justify-content: flex-start;
+            display: flex;
+            margin-bottom: 15px;
+            align-items: center;
+
+            &__img {
+              width: 32px;
+              height: 32px;
+              background-color: #fff;
+              border-radius: 50%;
+              margin-right: 6px;
+            }
+            &__info {
+              .product__bank {
+                color: #fff;
+
+                /* text/Caption 2 */
+                font-size: 11px;
+                font-weight: 300;
+                line-height: 150%; /* 16.5px */
+                letter-spacing: 0.063px;
+              }
+              .product__title {
+                color: #fff;
+
+                /* text/Headline 3 */
+                font-size: 14px;
+                font-weight: 600;
+                line-height: 150%; /* 21px */
+                letter-spacing: 0.08px;
+              }
+            }
+          }
+        }
+
+        .product__interest {
+          display: inline-flex;
+          color: #000;
+
+          /* text/Body 1/Heavy */
+          font-size: 12px;
+          font-weight: 700;
+          line-height: 150%; /* 18px */
+          letter-spacing: 0.068px;
+          background-color: #e7ffb8;
+          padding: 1px 6px;
+        }
+      }
+    }
+  }
+}
+
+//// 라운지페이지 게시판 섹션///////
+.lounge__notice {
+  width: 375px;
+  height: 513px;
+  background: #f6f6f6;
+
+  .product__categories {
+    margin-left: 16px;
+    margin-bottom: 30px;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    overflow: hidden;
+
+    .product__category {
+      border-radius: 100px;
+      border: 1px solid #949494;
+      min-width: 24px;
+      font-weight: 500;
+      line-height: 20px; /* 142.857% */
+      letter-spacing: -0.6px;
+      padding: 6px 16px;
+      cursor: pointer;
+      justify-content: center;
+      color: #949494;
+      text-align: center;
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 20px; /* 142.857% */
+      letter-spacing: -0.6px;
+
+      &.active {
+        background-color: #333;
+        color: var(--color-black-primary-heavy);
+        font-weight: 600;
+        border: 1px solid #333;
+      }
+
+      &:active,
+      &:focus,
+      &:hover {
+        background-color: #333;
+        color: var(--color-black-primary-heavy);
+        font-weight: 600;
+        border: 1px solid #333;
+      }
+    }
+  }
+
+  .post__section {
+    .post__wrapped {
+      width: 343px;
+      height: 110px;
+      border-radius: 4px;
+      background: #fff;
+      margin: 0 16px;
+
+      .user__info {
+        display: flex;
+        gap: 10px;
+        padding: 16px 0 10px 16px;
+        .user__name {
+          color: #000;
+          /* text/Caption 1 */
+          font-size: 12px;
+          font-weight: 400;
+          line-height: 150%; /* 18px */
+          letter-spacing: 0.068px;
+        }
+        .post__date {
+          color: #666;
+          /* text/Caption 1 */
+          font-size: 12px;
+          font-weight: 400;
+          line-height: 150%; /* 18px */
+          letter-spacing: 0.068px;
+        }
+
+        /* text/Caption 1 */
+        font-size: 12px;
+        font-weight: 400;
+        line-height: 150%; /* 18px */
+        letter-spacing: 0.068px;
+      }
+
+      .post__main {
+        padding: 0 10px;
+
+        .post__title {
+          color: #000;
+          /* text/Caption 1 */
+          font-size: 12px;
+          font-weight: 400;
+          line-height: 150%; /* 18px */
+          letter-spacing: 0.068px;
+        }
+        .post__main__wrapped {
+          display: flex;
+          justify-content: space-between;
+
+          .post__preview {
+            display: inline-flex;
+            padding: 1px 6px;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            color: #000;
+            background: #e7ffb8;
+
+            /* text/Body 1/Normal */
+            font-size: 16px;
+            font-weight: 500;
+            line-height: 150%; /* 24px */
+            letter-spacing: 0.091px;
+          }
+          .post__comments {
+            color: #000;
+
+            /* text/Caption 1 */
+            font-size: 12px;
+            font-weight: 400;
+            line-height: 150%; /* 18px */
+            letter-spacing: 0.068px;
+            margin-bottom: 0;
+            margin-top: auto;
+          }
+        }
+      }
+    }
+  }
+}
