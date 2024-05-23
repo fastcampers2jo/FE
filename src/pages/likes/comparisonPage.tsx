@@ -18,10 +18,7 @@ const ComparisonPage = () => {
   const [activeTab, setActiveTab] = useState<TabType>("상품 비교하기");
   const navigate = useNavigate();
 
-  const tabs : TabType[] = [
-    "상품 비교하기",
-    "비교함 기록 확인하기"
-  ];
+  const tabs: TabType[] = ["상품 비교하기", "비교함 기록 확인하기"];
 
   const hadleDelete = () => {};
 
@@ -91,17 +88,22 @@ const ComparisonPage = () => {
                   </div>
                 </div>
                 <div className="my__interests">
-                  <div className="my__interest">7%
-                    <p> 3% +
-                      <span> 4%</span>
+                  <div className="my__interest">
+                    7%
+                    <p>
+                      {" "}
+                      3% +<span> 4%</span>
                     </p>
                   </div>
-                  <div className="my__interest__info">나의 금리
+                  <div className="my__interest__info">
+                    나의 금리
                     <span>우대금리를 확인하세요!</span>
                   </div>
-                  <div className="my__interest">2.5%
-                    <p> 2.5% +
-                      <span> 0%</span>
+                  <div className="my__interest">
+                    2.5%
+                    <p>
+                      {" "}
+                      2.5% +<span> 0%</span>
                     </p>
                   </div>
                 </div>
@@ -176,10 +178,9 @@ const ComparisonPage = () => {
   return (
     <section>
       <div className="comparison">
-        <div className="page__title">
-          <Back className="back comparison" onClick={() => navigate(-1)} />
-          <form className="comparison__title ">비교하기</form>
-          <p />
+        <div className="statusbar">
+          <Back className="back likelist" onClick={() => navigate(-1)} />
+          status bar (비교하기 페이지)
         </div>
         <div className="comparison__tabs">
           {tabs.map((tab) => (
@@ -193,9 +194,7 @@ const ComparisonPage = () => {
             </div>
           ))}
         </div>
-        <div className="comparison__content">
-          {renderContent()}
-        </div>
+        <div className="comparison__content">{renderContent()}</div>
       </div>
     </section>
   );

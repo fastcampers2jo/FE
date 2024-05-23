@@ -3,7 +3,7 @@ $bgColor: #fff;
 $textColor: #292929;
 $borderColor: #bbb;
 
-//// html, body 개발용 /// 후 삭제해야함/////
+//// html, body 개발용 /// 후 삭제해야함///// // width / height 도 삭제해야댐
 
 html {
   background-color: gray;
@@ -15,27 +15,26 @@ body {
   margin-left: 70px;
   width: 375px;
   height: auto;
-
 }
+
+////삭제삭제삭제삭제삭제삭제삭제삭제삭제삭제////
 
 .statusbar {
   display: flex;
   width: 375px;
-  height: 40px;
-  border-bottom: 1px solid black;
+  height: 90px;
   justify-content: center;
   align-items: center;
-  background-color: #fff;
-  color: #000;
+  background-color: #111;
+  border-bottom: 1px solid #fff;
+  color: #fff;
   font-size: 14px;
 }
-
 
 .checkbox {
   cursor: pointer;
   margin-top: 0;
   margin-bottom: auto;
-  
 }
 
 .xbox {
@@ -58,7 +57,7 @@ body {
     height: 15px;
     margin: 10px 0 24px 20.64px;
   }
-  &.comparison{
+  &.comparison {
     width: 12px;
     height: 15px;
     justify-content: flex-start;
@@ -67,8 +66,6 @@ body {
     padding: 0;
   }
 }
-
-////삭제삭제삭제삭제삭제삭제삭제삭제삭제삭제////
 
 .page__title {
   color: #000;
@@ -278,25 +275,66 @@ body {
 //// LikeListPage 찜한 금융상품페이지 LikeListPage 찜한 금융상품페이지 ////
 
 .likelistpage {
-  width: 375px;
-  height: 804px; /// 375*844 - statusbar 40px
-  background-color: $bgColor;
+  width: auto;
+  min-height: 800px; /// 375*844 - statusbar 40px
+  background-color: #f2f4f5;
+  .product__categories {
+    padding-left: 16px;
+    padding-top: 16px;
+    background-color: #111;
+    height: 44px;
+    text-align: center;
+    justify-content: flex-start;
+    display: flex;
+    gap: 10px;
+    overflow: hidden;
+    align-items: center;
 
-  .likelistpage--back {
-    display: block;
-    width: 8px;
-    height: 12px;
-    margin: 10px 0 24px 20.64px;
-    background-color: $bgColor;
-    
-    path {
-      stroke: #000;
-      stroke-width: 2px ;
-      fill: $bgColor;
+    .product__category {
+      text-align: center;
+      justify-content: center;
+      align-items: center;
+      min-width: 41px;
+      color: var(--color-white-gray-6, #aeb5bc);
+      text-align: center;
+      border-bottom: 3px solid var(--test-02, #111);
+
+      span {
+        font-size: 16px;
+        font-weight: 600;
+        line-height: 150%; /* 24px */
+        letter-spacing: 0.091px;
+        cursor: pointer;
+        margin: 1px;
+        padding-top: 7px;
+        padding-bottom: 9px;
+      }
+
+      /* text/headline/Headline 2 */
+
+      &:active {
+        border-bottom: 3px solid var(--test-02, #01ea2b);
+        padding-bottom: 0;
+        color: #fff;
+        text-align: center;
+        min-width: 50px;
+
+        span {
+          display: flex;
+          margin: 0 auto;
+          padding-top: 7px;
+          padding-bottom: 9px;
+          /* text/headline/Headline 2 */
+          font-size: 16px;
+          font-weight: 600;
+          line-height: 150%; /* 24px */
+          letter-spacing: 0.091px;
+          text-align: center;
+          justify-content: center;
+          align-items: center;
+        }
+      }
     }
-  }
-
-  .product__comparison {
 
     .add__products {
       margin-top: 50px;
@@ -305,14 +343,14 @@ body {
       justify-content: center;
       text-align: center;
       align-items: center;
-      color: #B3B3B3;
+      color: #b3b3b3;
     }
-    
+
     .service__info {
       display: flex;
       height: 42px;
-      background-color: #EEE;
-      color : #666;
+      background-color: #eee;
+      color: #666;
       font-size: 12px;
       font-weight: 400;
       line-height: 150%; /* 18px */
@@ -320,328 +358,263 @@ body {
       align-items: center;
       justify-content: center;
     }
+  }
+  .product__comparison {
+    background-color: #f2f4f5;
+    position: relative;
+    height: auto;
 
-    .product__categories {
-      margin : 20px 0 36px 15px;
-      display: flex;
-      align-items: flex-start;
-      gap : 14px;
-      width: 464px;
-      overflow: hidden;
+    padding-bottom: 10px;
 
-      .product__category{
-        text-align: center;
-        justify-content: center;
-        align-items: center;
-        min-width: 24px;
-        height: auto;
-        color: #000;
-        border: 1px solid #000;
-        border-radius: 48px;
-        font-size: 14px;
-        font-weight: 500;
-        line-height: 150%; /* 21px */
-        letter-spacing: -0.308px;
-        padding: 2px 11px;
-        cursor: pointer;
-        margin: 1px;
-        
+    .product__utilsbar {
+      margin: 0 16px;
+      padding-top: 24px;
 
-        &.active {
-          background-color:#d9d9d9 ;
-          font-weight: 600;
-          border: 1px solid #d9d9d9;
-        }
-
-        &:active, &:focus, &:hover {
-          background-color:#d9d9d9 ;
-          font-weight: 600;
-          border: 1px solid #d9d9d9;
-        }
-      }
-    }
-
-    .product__select {
-      margin : 0 16px 0px 16px;
-
-      .utils{
+      .utils {
         display: flex;
         color: #818181;
-        font-size: 12px;
-        font-weight: 400;
+        font-size: 11px;
+        font-weight: 300;
         line-height: 150%; /* 18px */
-        letter-spacing: -0.264px;
+        letter-spacing: 0.063px;
         justify-content: space-between;
-        margin-bottom: 25px;
-        padding: 0 4px 0 4px;
+        margin-bottom: 14px;
 
-        & .delete{
+        & .delete {
           cursor: pointer;
           color: #818181;
-          font-size: 12px;
-          font-weight: 400;
+          font-size: 11px;
+          font-weight: 300;
           line-height: 150%; /* 18px */
-          letter-spacing: -0.264px;
+          letter-spacing: 0.063px;
         }
       }
     }
+  }
 
-    .products__mapping{
+  ///// 비교하기 버튼 ///
+
+  .comparison__toggle {
+    height: 80px;
+    margin: 10px 0;
+    display: flex;
+
+    .product__comparison__btn {
+      background-color: #fff;
+
       display: flex;
-      justify-content: space-between;
+      width: auto;
+      // height: 56px;
+      justify-content: center;
       align-items: center;
-      margin: 0 16px;
+      color: #aeb5bc;
+      cursor: disabled;
+      cursor: pointer;
+      position: absolute;
+      bottom: 0;
 
-      .product__infos{
-        margin-bottom: 35px;
+      span {
+        margin: 16px 16px 32px 16px;
+        border-radius: 4px;
+        align-items: center;
+        justify-content: center;
         display: flex;
+        background-color: var(--color-white-gray-3, #eaecef);
+        text-align: center;
+        min-width: 197px;
+        height: auto;
+        font-size: 20px;
+        // padding: 26px calpx;
+        width: 343px;
+        height: 56px;
+        font-weight: 700;
+        line-height: 150%; /* 30px */
+        letter-spacing: 0.114px;
+      }
 
-        // align-items: center;
+      &.active {
+        span {
+          background-color: var(--color-white-primary-normal, #01ea2b);
+          color: var(--color-white-static-black, #000);
+        }
+      }
+    }
+  }
+
+  ///// 편집모드 /////
+  .editmode__toggle {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background-color: #fff;
+
+    button {
+      padding: 13px 136px;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      border-radius: 4px;
+      background-color: var(--color-white-gray-8, #4a5056);
+      color: var(--color-white-gray-1, #f8f9fa);
+      text-align: center;
+      margin: 0 16px 32px 16px;
+
+      /* text/title/Title 3 */
+      font-size: 20px;
+      font-weight: 700;
+      line-height: 150%; /* 30px */
+      letter-spacing: 0.114px;
+    }
+
+    span {
+      display: flex;
+      justify-content: center;
+      text-align: center;
+      align-items: center;
+      color: var(--color-white-static-black, #000);
+      text-align: center;
+      margin-top: 16px;
+      margin-bottom: 10px;
+
+      /* text/headline/Headline 3 */
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 150%; /* 21px */
+      letter-spacing: 0.08px;
+    }
+  }
+}
+//// 금융상품리스트 ////
+.products__likelist__wrapped {
+  width: 343px;
+  min-height: 58px;
+  margin: 0 16px;
+
+  .product__likelist {
+    justify-content: space-between;
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    background-color: #fff;
+    padding-top: 0;
+    padding: 12px 16px;
+    border-radius: 5px;
+    height: auto;
+
+    .product__infos {
+      display: flex;
+      margin: auto 0;
+      // align-items: center;
+
+      // text-align: center;
+      // justify-content: center;
+
+      .product__info {
+        display: flex;
         // text-align: center;
         // justify-content: center;
+        align-items: center;
 
-
-        .product__info {
-          display: flex;
-          // text-align: center;
-          // justify-content: center;
-          align-items: center;    
-
-          .check--toggle {
-            top: 0;
+        .check--toggle {
+          button {
+            width: 24px;
+            height: 24px;
           }
+        }
+
+        .product__img {
+          display: block;
+          background-color: #d9d9d9;
+          width: 30px;
+          height: 30px;
+          margin-left: 16px;
+          justify-content: center;
+          cursor: pointer;
+          border-radius: 0;
         }
       }
 
       .product__title {
         display: block;
         align-items: center;
-        margin-left: 11px;
+        margin-left: 8px;
         cursor: pointer;
 
-                      
         .product__name {
           display: block;
-          color: #000;
+          color: #111;
           font-size: 12px;
-          font-weight: 700;
+          font-weight: 600;
           line-height: 120%; /* 14.4px */
-          letter-spacing: -0.264px;
-
+          letter-spacing: 0.068px;
+          max-width: 146px;
+          margin-bottom: 4px;
         }
 
         .product__bankname {
-          display: block;
-          color: #000;
+          color: var(--color-white-back-heavy, #adadad);
+
+          /* text/caption/Caption 2 */
+          font-size: 11px;
+          font-weight: 300;
+          line-height: 150%; /* 16.5px */
+          letter-spacing: 0.063px;
+        }
+
+        .product__property {
+          padding: 2px 5px;
+          margin-right: 8px;
+          border-radius: 2px;
+          background-color: var(--color-white-line-normal, rgba(112, 115, 124, 0.22));
+          color: #333;
+
+          /* text/label/Label 3 */
           font-size: 10px;
           font-weight: 500;
-          line-height: 120%; /* 12px */
-          letter-spacing: -0.22px;
-          margin-top:3px
-        }
-        
-        .product__property{
-          padding: 2px 5px;
-          justify-content: flex-end;
-          align-items: flex-start;
-          gap: 10px;
-          border-radius: 2px;
-          background-color: #CBCBCB;
-          color: #000;
-          font-size: 8px;
-          font-weight: 500;
-          line-height: 120%; /* 9.6px */
-          letter-spacing: -0.176px;
-          margin-top:5px;
+          line-height: 150%; /* 15px */
+          letter-spacing: 0.057px;
         }
       }
+    }
+    .product__interest {
+      display: flex;
+      justify-content: flex-end;
 
-      .product__img {
-        display: block;
-        background-color: #d9d9d9;
-        width: 30px;
-        height: 30px;
-        border-radius: 50%;
-        margin-left: 16px;
-        margin-top: 0;
-        margin-bottom: auto;
-        cursor: pointer;
+      .interest__info {
+        // margin: 0 auto;
 
-        }
-
-      
-
-      .product__interest {
-        display: flex;
-        justify-content: flex-end;
-        margin-top: 0;
-        margin-bottom: auto;
-
-        .interest__info {
-          margin-right: 15.5px;
+        .interest__max {
           display: block;
+          color: var(--color-white-primary-normal, var(--test-02, #01ea2b));
           text-align: right;
 
-          .interest__max{
-            display: block;
-            color: #000;
-            font-size: 12px;
-            font-weight: 700;
-            line-height: 120%; /* 14.4px */
-            letter-spacing: -0.264px;
-            margin-bottom: 6px;
+          /* text/headline/Headline 3 */
+          font-size: 14px;
+          font-weight: 600;
+          line-height: 150%; /* 21px */
+          letter-spacing: 0.08px;
+        }
 
-            .interest__def {
-              display: block;
-              color: #000;
-              font-size: 10px;
-              font-weight: 500;
-              line-height: 120%; /* 12px */
-              letter-spacing: -0.22px;
-              margin-top:3px
-            }
-          }
+        .interest__def {
+          display: block;
+          color: #444;
+          text-align: right;
+
+          /* text/headline/Headline 4 */
+          font-size: 12px;
+          font-weight: 600;
+          line-height: 150%; /* 18px */
+          letter-spacing: 0.068px;
         }
       }
     }
   }
-
-    
-    ///// 비교하기 ///
-  .product__comparison__btn {
-    background-color: #EDEDED;
-    color:#7B7B7B;
-    display: flex;
-    width: 375px;
-    height: 75px;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    text-align: center;
-    font-size: 25px;
-    font-weight: 700;
-    line-height: 120%; /* 30px */
-    letter-spacing: 5px;
-    cursor: pointer;
-    position: absolute;
-    bottom: 0;
-    cursor: disabled;
-
-
-    &.active {
-      background-color: #2B2B2B;
-      color:#fff;
-    }
-  }
-    
-
-    //// 상품선택 토글///
-  
-    .product__comparison--toggle {
-      position:absolute;
-      left: 0;
-      bottom:70px;
-      width: 375px;
-      height: 89px;
-      background-color: rgba(0, 0, 0, 0.70);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      
-    
-      .product__comparison--active {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 0 36px 0 28px;
-        width: 100%;
-
-    
-        .add__product__text {
-          border-radius: 20px;
-          background: #dfdfdf;
-          padding: 10px;
-          color: #3a3a3a;
-          text-align: center;
-          font-size: 8px;
-          font-weight: 500;
-          line-height: 120%; /* 9.6px */
-          letter-spacing: -0.176px;
-          position: absolute;
-          right: 36px;
-    
-          .add__delete {
-            color: #860d0d;
-          }
-        }
-    
-        .add__products {
-          gap: 19px;
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          position: absolute;
-
-                  
-    
-          .add__product {
-            border-radius: 5px;
-            border: 1px dashed #c5c5c5;
-            width: 44px;
-            height: 44px;
-            display: block;
-            position: relative;
-
-            .product__delete {
-              position: absolute;
-              display: block;
-              width: 12px;
-              height: 12px;
-              background-color: #ffffff;
-              border-radius: 50%;
-              right: -6px;
-              top: -7px;
-              z-index: 10;
-    
-              path {
-                stroke-width: 2px;
-                stroke: #898989;
-
-              }
-            }
-    
-            span {
-              position: absolute;
-              color: #cecece;
-              text-align: center;
-              font-size: 8px;
-              font-weight: 500;
-              line-height: 120%; /* 9.6px */
-              letter-spacing: -0.176px;
-              display: block;
-              align-items: center;
-              justify-content: center;
-              padding: 12px 4px; /* 패딩 수정 */
-            }
-            
-            .product__img {
-              background-color: #d9d9d9;
-              width: 35px;
-              height: 35px;
-              border-radius: 50%;
-              margin: 4px;
-            }
-          }
-        }
-      }
-}
 }
 
 /// comparisonpage 금융상품 비교페이지 comparisonpage 금융상품 비교페이지////
 .comparison {
   background-color: $bgColor;
-  height: 1022px;
-  padding-top: 39px;
+  height: auto;
 
   .page__title {
     margin: 0 20.64px 15px 20.64px;
@@ -656,7 +629,7 @@ body {
       font-weight: 700;
       line-height: 150%; /* 30px */
       letter-spacing: -0.44px;
-      margin: 0 auto; 
+      margin: 0 auto;
       padding-right: 0;
       padding-left: auto;
     }
@@ -666,7 +639,7 @@ body {
     display: flex;
     justify-content: space-between;
     margin: 0 40px 0 40px;
-    gap:30px;
+    gap: 30px;
 
     .comparison__tab {
       color: #939090;
@@ -681,14 +654,11 @@ body {
       // width: calc(375 - 30 - 40 - 40) px;
       cursor: pointer;
       min-width: 100px;
-      margin : 0 5px;
-      
-
-
+      margin: 0 5px;
 
       &.product {
         color: #000;
-        border-bottom: 3px solid rgba(0, 0, 0, 0.70);
+        border-bottom: 3px solid rgba(0, 0, 0, 0.7);
         font-size: 15px;
         font-weight: 600;
         line-height: 150%; /* 22.5px */
@@ -697,19 +667,18 @@ body {
         justify-content: center;
         align-items: center;
         min-width: 43px;
-
       }
 
-      &.active{
+      &.active {
         color: #000;
-        border-bottom: 3px solid rgba(0, 0, 0, 0.70);
+        border-bottom: 3px solid rgba(0, 0, 0, 0.7);
       }
     }
   }
 
-  .my__object__set{
+  .my__object__set {
     margin-top: 45px;
-    
+
     .my__object {
       display: flex;
       color: #000;
@@ -718,7 +687,7 @@ body {
       line-height: 120%; /* 18px */
       letter-spacing: -0.33px;
       margin-left: 25px;
-      margin-bottom:25px ;
+      margin-bottom: 25px;
     }
 
     .my__object__info {
@@ -726,10 +695,9 @@ body {
       justify-content: space-between;
       margin: 0 40px 0 35px;
 
-
       &__detail {
         display: flex;
-        color: #5F5F5F;
+        color: #5f5f5f;
         font-size: 15px;
         font-weight: 700;
         line-height: 120%; /* 18px */
@@ -738,9 +706,8 @@ body {
         align-items: center;
 
         .monthaccount {
-          border-bottom: 1.8px solid #5F5F5F;
+          border-bottom: 1.8px solid #5f5f5f;
           padding: 0 5px;
-
         }
 
         .unit {
@@ -751,13 +718,12 @@ body {
           line-height: 120%; /* 14.4px */
           letter-spacing: -0.264px;
           padding-left: 7px;
-        
+
           &.month {
             padding-left: 5px;
           }
-        }        
+        }
       }
-      
 
       &__text {
         color: #939090;
@@ -772,19 +738,18 @@ body {
   .comparison__products {
     margin-top: 51px;
 
-    .products__logos{
+    .products__logos {
       justify-content: space-between;
       margin: 0 51px;
       display: flex;
 
-      .products__logo{
+      .products__logo {
         display: flex;
         width: 50px;
         height: 50px;
         border-radius: 15px;
-        background: #D9D9D9;
+        background: #d9d9d9;
       }
-
     }
 
     .products__titles {
@@ -792,7 +757,7 @@ body {
       margin: 14px 45px 15px 38px;
       display: flex;
 
-      .products__title{
+      .products__title {
         color: #000;
         text-align: center;
         font-family: Pretendard;
@@ -800,26 +765,23 @@ body {
         font-style: normal;
         font-weight: 500;
         line-height: 150%; /* 18px */
-
       }
     }
 
-    .products__makes{
+    .products__makes {
       justify-content: space-between;
       margin: 0 44px 28px 44px;
       display: flex;
 
-      &.more{
+      &.more {
         border-top: 0.5px solid #777;
         margin: 0;
-
       }
 
-
-      .products__make{
+      .products__make {
         display: flex;
         border-radius: 5px;
-        background-color: #D3D3D3;
+        background-color: #d3d3d3;
         padding: 3px 7px;
         color: #000;
         text-align: center;
@@ -829,11 +791,10 @@ body {
         letter-spacing: -0.33px;
 
         &.more {
-          background-color: #EEE;
-          margin: 35px 27px 66px 27px ;  
+          background-color: #eee;
+          margin: 35px 27px 66px 27px;
         }
       }
-
     }
 
     .products__interests {
@@ -842,8 +803,8 @@ body {
       display: flex;
       align-items: center;
 
-      .products__interest{
-        color: #A4A4A4;
+      .products__interest {
+        color: #a4a4a4;
         text-align: center;
         font-size: 15px;
         font-weight: 500;
@@ -851,13 +812,13 @@ body {
         letter-spacing: -0.33px;
 
         &__info {
-          color: #4F4F4F;
+          color: #4f4f4f;
           font-size: 13px;
           font-weight: 600;
           line-height: 150%; /* 19.5px */
           letter-spacing: -0.286px;
         }
-        }
+      }
     }
 
     .products__periods {
@@ -866,8 +827,7 @@ body {
       display: flex;
       align-items: center;
 
-
-      .products__period{
+      .products__period {
         color: #686868;
         text-align: center;
         font-size: 10px;
@@ -875,13 +835,13 @@ body {
         line-height: 150%; /* 15px */
 
         &__info {
-          color: #4F4F4F;
+          color: #4f4f4f;
           font-size: 13px;
           font-weight: 600;
           line-height: 150%; /* 19.5px */
           letter-spacing: -0.286px;
         }
-        }
+      }
     }
 
     .my__interests {
@@ -889,8 +849,8 @@ body {
       margin: 0 34px 0 40px;
       display: flex;
       align-items: center;
-      
-      .my__interest{
+
+      .my__interest {
         color: #858585;
         text-align: center;
         font-size: 15px;
@@ -899,25 +859,24 @@ body {
         letter-spacing: -0.33px;
 
         p {
-          color: #A4A4A4;
+          color: #a4a4a4;
           text-align: center;
           font-size: 10px;
           font-weight: 500;
           line-height: 150%; /* 15px */
           letter-spacing: -0.22px;
 
-
           span {
-          color: #696969;
-          font-size: 10px;
-          font-weight: 500;
-          line-height: 150%;
-          letter-spacing: -0.22px;
-        }
+            color: #696969;
+            font-size: 10px;
+            font-weight: 500;
+            line-height: 150%;
+            letter-spacing: -0.22px;
+          }
         }
 
         &__info {
-          color: #4F4F4F;
+          color: #4f4f4f;
           font-size: 15px;
           font-weight: 700;
           line-height: 150%; /* 22.5px */
@@ -926,10 +885,9 @@ body {
           justify-content: center;
           text-align: center;
 
-
           span {
             display: block;
-            color: #A4A4A4;
+            color: #a4a4a4;
             text-align: center;
             font-size: 10px;
             font-weight: 500;
@@ -940,7 +898,7 @@ body {
             margin: 0;
           }
         }
-        }
+      }
     }
 
     .my__interest__rates {
@@ -949,171 +907,168 @@ body {
       display: flex;
       align-items: center;
 
-
-      .my__interest__rate{
+      .my__interest__rate {
         color: #858585;
         text-align: center;
         font-size: 15px;
         font-weight: 600;
         line-height: 150%; /* 22.5px */
-        letter-spacing: -0.33px;        
+        letter-spacing: -0.33px;
       }
 
-    span {
-      color: #4F4F4F;
-      font-size: 15px;
-      font-weight: 700;
-      line-height: 150%; /* 22.5px */
-      letter-spacing: -0.33px;
-      }   
+      span {
+        color: #4f4f4f;
+        font-size: 15px;
+        font-weight: 700;
+        line-height: 150%; /* 22.5px */
+        letter-spacing: -0.33px;
+      }
     }
 
-  .products__nets {
-    justify-content: space-between;
-    margin: 0 16px 0 16px;
-    padding: 26px 0 23px 0 ;
-    display: flex;
-    align-items: center;
-    border-top: 0.5px solid #777;
-
-    .products__net{
-      color: #858585;
-      text-align: center;
-      font-size: 15px;
-      font-weight: 600;
-      line-height: 150%; /* 22.5px */
-      letter-spacing: -0.33px;        
-    }
-
-  span {
-    color: #4F4F4F;
-    font-size: 15px;
-    font-weight: 700;
-    line-height: 150%; /* 22.5px */
-    letter-spacing: -0.33px;
-  }
-  }
-
-  .products__checks__wrapped {  
-    border-top: 0.5px solid #777;
-    margin: 0 16px;
-  
-
-    .products__checks {
-      margin: 37px 32px 47px 35px  ;
+    .products__nets {
       justify-content: space-between;
+      margin: 0 16px 0 16px;
+      padding: 26px 0 23px 0;
       display: flex;
       align-items: center;
+      border-top: 0.5px solid #777;
 
-      .products__check {
-        width: 52px;
-        height: auto;
-        color: #686868;
+      .products__net {
+        color: #858585;
         text-align: center;
-        font-size: 10px;
-        font-weight: 500;
-        line-height: 150%; /* 15px */
+        font-size: 15px;
+        font-weight: 600;
+        line-height: 150%; /* 22.5px */
+        letter-spacing: -0.33px;
+      }
 
-        span {
+      span {
+        color: #4f4f4f;
+        font-size: 15px;
+        font-weight: 700;
+        line-height: 150%; /* 22.5px */
+        letter-spacing: -0.33px;
+      }
+    }
+
+    .products__checks__wrapped {
+      border-top: 0.5px solid #777;
+      margin: 0 16px;
+
+      .products__checks {
+        margin: 37px 32px 47px 35px;
+        justify-content: space-between;
+        display: flex;
+        align-items: center;
+
+        .products__check {
+          width: 52px;
+          height: auto;
           color: #686868;
           text-align: center;
           font-size: 10px;
           font-weight: 500;
           line-height: 150%; /* 15px */
-        }
-        &__text {
-          display: block;
-          color: #4F4F4F;
-          justify-content: center;
-          text-align: center;
-          width: 58px;
-          padding: 2px;
-          font-size: 15px;
-          font-weight: 700;
-          line-height: 150%; /* 22.5px */
-          letter-spacing: -0.33px;
-        }
-       }
-    }
-  }
-  }
-}
-  
-.comparison__content {
-    .mycomparisonlist {
-      justify-content: center;
-      text-align: center;
-      align-items: center;
-      margin: 29px 16px 0 16px;
 
-      .comparison__products__wrapped {
-        width: 343px;
-        height: 150px;
-        border-radius: 15px;
-        background: #EEE;
-        margin-bottom: 30px;
-        position: relative;
-  
-  
-        .delete--btn {
-          width: 24px;
-          height: 24px;
-          color:#898989;
-          right: 15px;
-          top:13px;
-          position: absolute;
-          cursor: pointer;
-        }
-
-        .comparison__products{
-          display: flex;
-          justify-content: space-between;
-          text-align: center;
-          align-items: center;
-          margin: 0 60px 30px 60px ;
-          padding-top: auto;
-          height: 150px;
-          
           span {
-            color: #000;
+            color: #686868;
+            text-align: center;
+            font-size: 10px;
+            font-weight: 500;
+            line-height: 150%; /* 15px */
+          }
+          &__text {
+            display: block;
+            color: #4f4f4f;
+            justify-content: center;
+            text-align: center;
+            width: 58px;
+            padding: 2px;
             font-size: 15px;
-            font-weight: 600;
+            font-weight: 700;
             line-height: 150%; /* 22.5px */
             letter-spacing: -0.33px;
-            display: flex;
           }
-    
-          .comparison__product {
-            display: block;    
-            align-items: center;
+        }
+      }
+    }
+  }
+}
+
+.comparison__content {
+  .mycomparisonlist {
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    margin: 29px 16px 0 16px;
+
+    .comparison__products__wrapped {
+      width: 343px;
+      height: 150px;
+      border-radius: 15px;
+      background: #eee;
+      margin-bottom: 30px;
+      position: relative;
+
+      .delete--btn {
+        width: 24px;
+        height: 24px;
+        color: #898989;
+        right: 15px;
+        top: 13px;
+        position: absolute;
+        cursor: pointer;
+      }
+
+      .comparison__products {
+        display: flex;
+        justify-content: space-between;
+        text-align: center;
+        align-items: center;
+        margin: 0 60px 30px 60px;
+        padding-top: auto;
+        height: 150px;
+
+        span {
+          color: #000;
+          font-size: 15px;
+          font-weight: 600;
+          line-height: 150%; /* 22.5px */
+          letter-spacing: -0.33px;
+          display: flex;
+        }
+
+        .comparison__product {
+          display: block;
+          align-items: center;
+          justify-content: center;
+
+          .products__logo {
+            display: block;
+            width: 50px;
+            height: 50px;
+            border-radius: 15px;
+            background: #b3b3b3;
+            margin: 0 auto;
+          }
+          .products__titles__wrapped {
             justify-content: center;
-            
-            .products__logo {
-              display: block;
-              width: 50px;
-              height: 50px;
-              border-radius: 15px;
-              background: #B3B3B3;
-              margin: 0 auto;
-            }
-            .products__titles__wrapped{
-              justify-content: center;
-              align-items: center;
+            align-items: center;
+            text-align: center;
+            margin-top: 15px;
+
+            .products__title {
+              color: #000;
               text-align: center;
-              margin-top: 15px;
-    
-              .products__title{
-                color: #000;
-                text-align: center;
-                font-size: 12px;
-                font-weight: 500;
-                line-height: 150%; /* 18px */
-                text-align: center;
-                justify-content: center;
-              }
+              font-size: 12px;
+              font-weight: 500;
+              line-height: 150%; /* 18px */
+              text-align: center;
+              justify-content: center;
             }
           }
         }
       }
     }
+  }
 }

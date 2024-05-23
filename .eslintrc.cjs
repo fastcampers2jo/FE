@@ -4,31 +4,30 @@ module.exports = {
   extends: [
     "airbnb",
     "airbnb-typescript",
-    'eslint:recommended',
-    'plugin:@typescript-eslint/recommended',
-    'plugin:react-hooks/recommended',
-    "plugin:@tanstack/eslint-plugin-query/recommended"
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:react-hooks/recommended",
+    "plugin:@tanstack/eslint-plugin-query/recommended",
   ],
-  ignorePatterns: ['dist', '.eslintrc.cjs'],
-  parser: '@typescript-eslint/parser',
+  ignorePatterns: ["dist", ".eslintrc.cjs"],
+  parser: "@typescript-eslint/parser",
   parserOptions: {
-    "ecmaVersion": "latest",
-    "sourceType": "module",
-    "project": ["./tsconfig.json"]
+    ecmaVersion: "latest",
+    sourceType: "module",
+    project: ["./tsconfig.json"],
   },
-  plugins: ['react-refresh', "@tanstack/query", "@typescript-eslint"],
+  plugins: ["react-refresh", "@tanstack/query", "@typescript-eslint"],
   rules: {
-    'react-refresh/only-export-components': [
-      'warn',
+    "react-refresh/only-export-components": [
+      "warn",
       {
         allowConstantExport: true,
       },
-      
     ],
     "@tanstack/query/exhaustive-deps": "error",
     "@tanstack/query/no-rest-destructuring": "warn",
     "@tanstack/query/stable-query-client": "error",
-    "react-hooks/exhaustive-deps":"off",
+    "react-hooks/exhaustive-deps": "off",
     // 버튼의 타입 지정 권장 제거
     "react/button-has-type": "off",
     "jsx-a11y/label-has-associated-control": "off",
@@ -38,8 +37,8 @@ module.exports = {
     "react/function-component-definition": [
       2,
       {
-        "namedComponents": "arrow-function"
-      }
+        namedComponents: "arrow-function",
+      },
     ],
     // 파일에서 export가 하나인 경우 export default 사용 권장 제거
     "import/prefer-default-export": "off",
@@ -58,15 +57,17 @@ module.exports = {
     "consistent-return": "off",
     // 작은따옴표사용
     "@typescript-eslint/quotes": ["error", "double"],
-    // 줄바꿈 
+    // 줄바꿈
     "linebreak-style": "off",
-    "function-paren-newline":"off",
-    "@typescript-eslint/comma-dangle":"off",
+    "function-paren-newline": "off",
+    "@typescript-eslint/comma-dangle": "off",
     "no-unused-vars": "off",
     "no-undef": "off",
-    "react/react-in-jsx-scope":"off",
+    "react/react-in-jsx-scope": "off",
     "jsx-a11y/control-has-associated-label": "off",
     "object-curly-newline": "off",
-    "react/jsx-one-expression-per-line":"off",
+    "react/jsx-one-expression-per-line": "off",
+    "max-len": "off",
+    "implicit-arrow-linebreak": "off",
   },
-}
+};
