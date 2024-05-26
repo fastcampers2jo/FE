@@ -1,0 +1,190 @@
+.mycomparison {
+  padding: 0 16px;
+  margin: 36px 0;
+  height: auto;
+
+  color: #989ba2;
+  font-family: Pretendard;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%; /* 36px */
+  letter-spacing: 0.137px;
+
+  .my__title {
+    display: flex;
+
+    color: #fff;
+    /* text/title/Title 1 */
+    font-family: Pretendard;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 150%; /* 36px */
+    letter-spacing: 0.137px;
+
+    .greenbar {
+      width: 162px;
+      height: 15px;
+      margin: 0 17px;
+      border-bottom: 4px solid #01ea2b;
+    }
+  }
+
+  .products {
+    display: flex;
+    margin-top: 22px;
+    padding-bottom: 36px;
+    border-bottom: 1px dashed #fff;
+
+    .product {
+      color: var(--test-02, #01ea2b);
+      text-align: center;
+      padding: 24px 0;
+
+      /* text/title/Title 1 */
+      font-family: Pretendard;
+      font-size: 24px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: 150%; /* 36px */
+      letter-spacing: 0.137px;
+
+      &:last-child {
+        border-left: 1px solid #d9d9d9;
+      }
+
+      span {
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 150%; /* 24px */
+        letter-spacing: 0.091px;
+      }
+      .detail {
+        margin-top: 24px;
+        border-radius: 50px;
+        border: 1px solid var(--color-white-interaction-inactive, #989ba2);
+        padding: 4px 17px;
+
+        color: var(--color-white-interaction-inactive, #989ba2);
+
+        /* text/label/Label 1 */
+        font-family: Pretendard;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 150%; /* 21px */
+        letter-spacing: 0.08px;
+      }
+    }
+  }
+
+  .my__checks__wrapped {
+    justify-content: space-between;
+    display: flex;
+    gap: 16px;
+    .my__checks {
+      width: 100%;
+      color: #fff;
+      margin-top: 18px;
+
+      /* text/Title 3 */
+      font-family: Pretendard;
+      font-size: 24px;
+      font-style: normal;
+      font-weight: 600;
+      line-height: 150%; /* 36px */
+      letter-spacing: 0.137px;
+
+      &:last-child {
+        border-left: 1px dashed #fff;
+        padding-left: 16px;
+      }
+
+      .my__check {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 20px;
+
+        margin-bottom: 20px;
+        color: var(--color-white-gray-1, #f8f9fa);
+
+        /* text/headline/Headline 4 */
+        font-family: Pretendard;
+        font-size: 12px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 150%; /* 18px */
+        letter-spacing: 0.068px;
+
+        .checklist {
+          color: var(--color-white-gray-7, #878e95);
+          max-width: 100px;
+          word-break: keep-all;
+
+          /* text/headline/Headline 4 */
+          font-family: Pretendard;
+          font-size: 12px;
+          font-style: normal;
+          font-weight: 600;
+          line-height: 150%; /* 18px */
+          letter-spacing: 0.068px;
+        }
+      }
+    }
+  }
+
+  .my__interests {
+    justify-content: space-between;
+    width: auto;
+    display: flex;
+    margin-top: 18px;
+    padding-bottom: 100px;
+    gap: 16px;
+    span {
+      color: #fff;
+
+      /* text/headline/Headline 2 */
+      font-family: Pretendard;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 600;
+      line-height: 150%; /* 24px */
+      letter-spacing: 0.091px;
+    }
+
+    .my__interest {
+      width: 100%;
+      color: #fff;
+      margin: 6px 0;
+
+      /* text/title/Title 1 */
+      font-family: Pretendard;
+      font-size: 24px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: 150%; /* 36px */
+      letter-spacing: 0.137px;
+
+      &:last-child {
+        border-left: 1px dashed #fff;
+        padding-left: 16px;
+      }
+    }
+  }
+}
+
+.title {
+  color: rgba(255, 255, 255, 0.7);
+  border-bottom: 1px solid #d9d9d9;
+  margin-top: 50px;
+
+  /* text/title/Title 3 */
+  font-family: Pretendard;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 150%; /* 30px */
+  letter-spacing: 0.114px;
+}

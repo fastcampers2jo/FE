@@ -80,7 +80,7 @@ body {
   }
 }
 
-///LikesPopUp 찜한 상품 팝업창 LikesPopUp 찜한 상품 팝업창////
+///LikesPopUp 찜한 상품 팝업창 LikesPopUp 찜한 상품 팝업창 ////
 
 .likepopup {
   padding-left: 20px;
@@ -278,6 +278,7 @@ body {
   width: auto;
   min-height: 800px; /// 375*844 - statusbar 40px
   background-color: #f2f4f5;
+
   .product__categories {
     padding-left: 16px;
     padding-top: 16px;
@@ -336,16 +337,6 @@ body {
       }
     }
 
-    .add__products {
-      margin-top: 50px;
-      display: flex;
-      font-size: 18px;
-      justify-content: center;
-      text-align: center;
-      align-items: center;
-      color: #b3b3b3;
-    }
-
     .service__info {
       display: flex;
       height: 42px;
@@ -363,7 +354,6 @@ body {
     background-color: #f2f4f5;
     position: relative;
     height: auto;
-
     padding-bottom: 10px;
 
     .product__utilsbar {
@@ -380,13 +370,60 @@ body {
         justify-content: space-between;
         margin-bottom: 14px;
 
-        & .delete {
+        .selectCount {
+          display: flex;
+          color: #818181;
+          text-align: center;
+          align-items: center;
+
+          /* text/caption/Caption 2 */
+          font-family: Pretendard;
+          font-size: 11px;
+          font-style: normal;
+          font-weight: 300;
+          line-height: 150%; /* 16.5px */
+          letter-spacing: 0.063px;
+        }
+
+        .cancel {
+          color: #818181;
+
+          /* text/headline/Headline 4 */
+          font-family: Pretendard;
+          font-size: 12px;
+          font-style: normal;
+          font-weight: 600;
+          line-height: 150%; /* 18px */
+          letter-spacing: 0.068px;
+        }
+
+        .edit {
           cursor: pointer;
           color: #818181;
+
+          /* text/caption/Caption 2 */
+          font-family: Pretendard;
           font-size: 11px;
+          font-style: normal;
           font-weight: 300;
-          line-height: 150%; /* 18px */
+          line-height: 150%; /* 16.5px */
           letter-spacing: 0.063px;
+        }
+
+        .selectAll--btn {
+          margin-right: 4px;
+          rect,
+          path {
+            stroke: #aeb5bc;
+            stroke-width: 1.5;
+          }
+
+          &.active {
+            fill: #aeb5bc;
+            path {
+              stroke: #fff;
+            }
+          }
         }
       }
     }
@@ -489,6 +526,16 @@ body {
   width: 343px;
   min-height: 58px;
   margin: 0 16px;
+
+  .add__products {
+    padding-top: 50px;
+    display: flex;
+    font-size: 18px;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    color: #b3b3b3;
+  }
 
   .product__likelist {
     justify-content: space-between;
@@ -613,381 +660,357 @@ body {
 
 /// comparisonpage 금융상품 비교페이지 comparisonpage 금융상품 비교페이지////
 .comparison {
-  background-color: $bgColor;
+  background-color: #fff;
   height: auto;
 
-  .page__title {
-    margin: 0 20.64px 15px 20.64px;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
+  .my__object__set {
+    margin-top: 30px;
+    margin: 30px 16px 85px 16px;
 
-    .comparison__title {
+    span {
       display: flex;
       color: #000;
+      padding-bottom: 12px;
+
+      /* text/title/Title 3 */
+      font-family: Pretendard;
       font-size: 20px;
+      font-style: normal;
       font-weight: 700;
       line-height: 150%; /* 30px */
-      letter-spacing: -0.44px;
-      margin: 0 auto;
-      padding-right: 0;
-      padding-left: auto;
+      letter-spacing: 0.114px;
     }
-  }
-
-  .comparison__tabs {
-    display: flex;
-    justify-content: space-between;
-    margin: 0 40px 0 40px;
-    gap: 30px;
-
-    .comparison__tab {
-      color: #939090;
-      font-size: 15px;
-      font-weight: 600;
-      line-height: 150%; /* 22.5px */
-      letter-spacing: -0.33px;
-      padding: 10px 2px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      // width: calc(375 - 30 - 40 - 40) px;
-      cursor: pointer;
-      min-width: 100px;
-      margin: 0 5px;
-
-      &.product {
-        color: #000;
-        border-bottom: 3px solid rgba(0, 0, 0, 0.7);
-        font-size: 15px;
-        font-weight: 600;
-        line-height: 150%; /* 22.5px */
-        letter-spacing: -0.33px;
-        padding: 10px 23px;
-        justify-content: center;
-        align-items: center;
-        min-width: 43px;
-      }
-
-      &.active {
-        color: #000;
-        border-bottom: 3px solid rgba(0, 0, 0, 0.7);
-      }
-    }
-  }
-
-  .my__object__set {
-    margin-top: 45px;
 
     .my__object {
-      display: flex;
-      color: #000;
-      font-size: 15px;
-      font-weight: 700;
-      line-height: 120%; /* 18px */
-      letter-spacing: -0.33px;
-      margin-left: 25px;
-      margin-bottom: 25px;
-    }
+      width: auto;
+      color: #777;
+      font-size: 24px;
+      font-weight: 400;
+      line-height: 150%; /* 36px */
+      letter-spacing: 0.137px;
 
-    .my__object__info {
-      display: flex;
-      justify-content: space-between;
-      margin: 0 40px 0 35px;
-
-      &__detail {
-        display: flex;
-        color: #5f5f5f;
-        font-size: 15px;
-        font-weight: 700;
-        line-height: 120%; /* 18px */
-        letter-spacing: -0.33px;
-        margin-bottom: 16px;
-        align-items: center;
-
-        .monthaccount {
-          border-bottom: 1.8px solid #5f5f5f;
-          padding: 0 5px;
-        }
-
-        .unit {
-          display: block;
-          color: #000;
-          font-size: 12px;
-          font-weight: 500;
-          line-height: 120%; /* 14.4px */
-          letter-spacing: -0.264px;
-          padding-left: 7px;
-
-          &.month {
-            padding-left: 5px;
-          }
-        }
+      span {
+        color: #777;
+        font-size: 24px;
+        font-weight: 400;
+        line-height: 150%; /* 36px */
+        letter-spacing: 0.137px;
+        padding-left: 4px;
       }
 
-      &__text {
-        color: #939090;
-        font-size: 15px;
-        font-weight: 600;
-        line-height: 120%; /* 18px */
-        letter-spacing: -0.33px;
+      .edit {
+        display: flex;
+        position: absolute;
+        left: 155px;
+        top: 1px;
+      }
+
+      &__inputbox {
+        position: relative;
+        display: flex;
+        width: auto;
+        text-align: center;
+        margin-bottom: 8px;
+
+        &__select {
+          display: flex;
+          select {
+            display: flex;
+            font-family: Pretendard;
+            width: auto;
+            color: #777;
+            font-size: 24px;
+            font-weight: 400;
+            line-height: 150%; /* 36px */
+            letter-spacing: 0.137px;
+            border-bottom: 2px solid #000;
+            margin-right: 14px;
+            justify-content: flex-start;
+            padding-right: 26px;
+            border-top: none;
+            border-left: none;
+            border-right: none;
+            margin-bottom: 6px;
+
+            &:focus {
+              border-top: none;
+              border-left: none;
+              border-right: none;
+              outline: none;
+            }
+          }
+        }
+
+        span {
+          color: #777;
+          font-size: 24px;
+          font-weight: 400;
+          line-height: 150%; /* 36px */
+          letter-spacing: 0.137px;
+        }
+
+        input {
+          width: 180px;
+          border-bottom: 2px solid #000;
+          border-top: none;
+          border-left: none;
+          border-right: none;
+          margin-right: 14px;
+          padding-left: 4px;
+          font-size: 24px;
+          overflow: hidden;
+
+          &::-webkit-outer-spin-button,
+          &::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+          }
+
+          &:active,
+          &:focus {
+            outline: none;
+          }
+
+          &::placeholder {
+            color: #777;
+            font-size: 24px;
+            font-weight: 400;
+            line-height: 150%; /* 36px */
+            letter-spacing: 0.137px;
+          }
+        }
       }
     }
   }
 
   .comparison__products {
-    margin-top: 51px;
+    .category {
+      padding-left: 16px;
+      padding-top: 6px;
+      padding-bottom: 4px;
+      color: #888;
+      border-bottom: 2px solid #d9d9d9;
 
-    .products__logos {
-      justify-content: space-between;
-      margin: 0 51px;
-      display: flex;
+      /* text/title/Title 3 */
+      font-family: Pretendard;
+      font-size: 20px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: 150%; /* 30px */
+      letter-spacing: 0.114px;
 
-      .products__logo {
-        display: flex;
-        width: 50px;
-        height: 50px;
-        border-radius: 15px;
-        background: #d9d9d9;
+      &:first-child {
+        padding-top: 30px;
       }
     }
 
-    .products__titles {
+    .bank__infos {
       justify-content: space-between;
-      margin: 14px 45px 15px 38px;
       display: flex;
+      width: auto;
 
-      .products__title {
-        color: #000;
-        text-align: center;
-        font-family: Pretendard;
-        font-size: 12px;
-        font-style: normal;
-        font-weight: 500;
-        line-height: 150%; /* 18px */
-      }
-    }
+      .bank__info {
+        width: 100%;
+        padding: 40px 50px;
+        height: calc(175 + 32) px;
 
-    .products__makes {
-      justify-content: space-between;
-      margin: 0 44px 28px 44px;
-      display: flex;
+        &:last-child {
+          border-left: 1px solid #000;
+        }
 
-      &.more {
-        border-top: 0.5px solid #777;
-        margin: 0;
-      }
+        .bank__logo {
+          margin: 0 auto;
+          display: flex;
+          width: 50px;
+          height: 50px;
+          border-radius: 15px;
+          background: #d9d9d9;
+          text-align: center;
+          align-items: center;
+          justify-content: center;
+          margin-bottom: 28px;
+        }
 
-      .products__make {
-        display: flex;
-        border-radius: 5px;
-        background-color: #d3d3d3;
-        padding: 3px 7px;
-        color: #000;
-        text-align: center;
-        font-size: 15px;
-        font-weight: 500;
-        line-height: 150%; /* 22.5px */
-        letter-spacing: -0.33px;
-
-        &.more {
-          background-color: #eee;
-          margin: 35px 27px 66px 27px;
+        .bank__name {
+          color: #000;
+          text-align: center;
+          font-family: Pretendard;
+          font-size: 12px;
+          font-style: normal;
+          font-weight: 500;
+          line-height: 150%; /* 18px */
+          margin-bottom: calc(32 + 38) px;
         }
       }
     }
 
     .products__interests {
+      width: auto;
       justify-content: space-between;
-      margin: 14px 45px 0 45px;
       display: flex;
-      align-items: center;
 
-      .products__interest {
-        color: #a4a4a4;
-        text-align: center;
-        font-size: 15px;
-        font-weight: 500;
-        line-height: 150%; /* 22.5px */
-        letter-spacing: -0.33px;
+      .product__interest {
+        width: 100%;
+        color: #000;
 
-        &__info {
-          color: #4f4f4f;
-          font-size: 13px;
+        /* text/title/Title 1 */
+        font-family: Pretendard;
+        font-size: 24px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 150%; /* 36px */
+        letter-spacing: 0.137px;
+        padding-left: 16px;
+        padding-top: 24px;
+
+        &:last-child {
+          border-left: 1px solid #000;
+        }
+
+        .product__interest__wrapped {
+          display: flex;
+          align-items: end;
+          padding-bottom: 30px;
+
+          &.max {
+            color: #00d823;
+          }
+
+          .period {
+            padding-bottom: 5px;
+            color: #000;
+
+            /* text/label/Label 1 */
+            font-family: Pretendard;
+            font-size: 14px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 150%; /* 21px */
+            letter-spacing: 0.08px;
+            margin-left: 8px;
+
+            &.max {
+              color: #00d823;
+            }
+          }
+        }
+
+        .def {
+          color: var(--color-white-gray-8, #4a5056);
+          text-align: center;
+
+          /* text/headline/Headline 3 */
+          font-family: Pretendard;
+          font-size: 14px;
+          font-style: normal;
           font-weight: 600;
-          line-height: 150%; /* 19.5px */
-          letter-spacing: -0.286px;
+          line-height: 150%; /* 21px */
+          letter-spacing: 0.08px;
+
+          &.max {
+            color: #00d823;
+          }
         }
       }
     }
 
     .products__periods {
-      justify-content: space-between;
-      margin: 8px 35px 32px 35px;
       display: flex;
-      align-items: center;
+      justify-content: space-between;
+      width: auto;
+      height: auto;
 
       .products__period {
-        color: #686868;
+        padding: 24px 43px 40px 43px;
+        width: 100%;
+        color: #000;
         text-align: center;
-        font-size: 10px;
-        font-weight: 500;
-        line-height: 150%; /* 15px */
 
-        &__info {
-          color: #4f4f4f;
-          font-size: 13px;
-          font-weight: 600;
-          line-height: 150%; /* 19.5px */
-          letter-spacing: -0.286px;
-        }
-      }
-    }
-
-    .my__interests {
-      justify-content: space-between;
-      margin: 0 34px 0 40px;
-      display: flex;
-      align-items: center;
-
-      .my__interest {
-        color: #858585;
-        text-align: center;
-        font-size: 15px;
-        font-weight: 500;
-        line-height: 150%; /* 22.5px */
-        letter-spacing: -0.33px;
-
-        p {
-          color: #a4a4a4;
-          text-align: center;
-          font-size: 10px;
-          font-weight: 500;
-          line-height: 150%; /* 15px */
-          letter-spacing: -0.22px;
-
-          span {
-            color: #696969;
-            font-size: 10px;
-            font-weight: 500;
-            line-height: 150%;
-            letter-spacing: -0.22px;
-          }
-        }
-
-        &__info {
-          color: #4f4f4f;
-          font-size: 15px;
-          font-weight: 700;
-          line-height: 150%; /* 22.5px */
-          letter-spacing: -0.33px;
-          display: block;
-          justify-content: center;
-          text-align: center;
-
-          span {
-            display: block;
-            color: #a4a4a4;
-            text-align: center;
-            font-size: 10px;
-            font-weight: 500;
-            line-height: 150%; /* 15px */
-            letter-spacing: -0.22px;
-            justify-content: center;
-            text-align: center;
-            margin: 0;
-          }
-        }
-      }
-    }
-
-    .my__interest__rates {
-      justify-content: space-between;
-      margin: 28px 26px 37px 26px;
-      display: flex;
-      align-items: center;
-
-      .my__interest__rate {
-        color: #858585;
-        text-align: center;
-        font-size: 15px;
-        font-weight: 600;
-        line-height: 150%; /* 22.5px */
-        letter-spacing: -0.33px;
-      }
-
-      span {
-        color: #4f4f4f;
-        font-size: 15px;
+        /* text/title/Title 1 */
+        font-family: Pretendard;
+        font-size: 24px;
+        font-style: normal;
         font-weight: 700;
-        line-height: 150%; /* 22.5px */
-        letter-spacing: -0.33px;
-      }
-    }
+        line-height: 150%; /* 36px */
+        letter-spacing: 0.137px;
 
-    .products__nets {
-      justify-content: space-between;
-      margin: 0 16px 0 16px;
-      padding: 26px 0 23px 0;
-      display: flex;
-      align-items: center;
-      border-top: 0.5px solid #777;
-
-      .products__net {
-        color: #858585;
-        text-align: center;
-        font-size: 15px;
-        font-weight: 600;
-        line-height: 150%; /* 22.5px */
-        letter-spacing: -0.33px;
-      }
-
-      span {
-        color: #4f4f4f;
-        font-size: 15px;
-        font-weight: 700;
-        line-height: 150%; /* 22.5px */
-        letter-spacing: -0.33px;
+        &:last-child {
+          border-left: 1px solid #000;
+        }
       }
     }
 
     .products__checks__wrapped {
-      border-top: 0.5px solid #777;
-      margin: 0 16px;
+      justify-content: space-between;
+      display: flex;
 
       .products__checks {
-        margin: 37px 32px 47px 35px;
-        justify-content: space-between;
-        display: flex;
-        align-items: center;
+        width: 100%;
+        height: auto;
+
+        &:last-child {
+          border-left: 1px solid #000;
+        }
 
         .products__check {
-          width: 52px;
-          height: auto;
-          color: #686868;
-          text-align: center;
-          font-size: 10px;
-          font-weight: 500;
-          line-height: 150%; /* 15px */
+          width: calc(100% - 51px);
+          margin: 24px 16px 24px 16px;
+          word-break: keep-all;
+          color: #000;
 
-          span {
-            color: #686868;
-            text-align: center;
-            font-size: 10px;
-            font-weight: 500;
-            line-height: 150%; /* 15px */
+          /* text/label/Label 1 */
+          font-family: Pretendard;
+          font-size: 14px;
+          font-style: normal;
+          font-weight: 400;
+          line-height: 150%; /* 21px */
+          letter-spacing: 0.08px;
+
+          .product__checklist {
+            width: 140px;
+            height: auto;
+            min-height: 85px;
+            color: #000;
+
+            /* text/headline/Headline 3 */
+            font-family: Pretendard;
+            font-size: 14px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: 150%; /* 21px */
+            letter-spacing: 0.08px;
           }
-          &__text {
-            display: block;
-            color: #4f4f4f;
-            justify-content: center;
-            text-align: center;
-            width: 58px;
-            padding: 2px;
-            font-size: 15px;
+
+          .detail {
+            color: #999;
+            /* text/headline/Headline 3 */
+            font-family: Pretendard;
+            font-size: 14px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: 150%; /* 21px */
+            letter-spacing: 0.08px;
+          }
+          .products__check--toggle {
+            position: relative;
+            margin: 24px 30px 30px 0;
+            display: flex;
+            color: #000;
+            align-items: flex-end;
+            justify-content: end;
+
+            /* text/title/Title 1 */
+            font-family: Pretendard;
+            font-size: 24px;
+            font-style: normal;
             font-weight: 700;
-            line-height: 150%; /* 22.5px */
-            letter-spacing: -0.33px;
+            line-height: 150%; /* 36px */
+            letter-spacing: 0.137px;
+
+            .toggle__select {
+              position: absolute;
+              right: -30px;
+              top: 15px;
+            }
           }
         }
       }
@@ -995,78 +1018,81 @@ body {
   }
 }
 
-.comparison__content {
-  .mycomparisonlist {
-    justify-content: center;
-    text-align: center;
-    align-items: center;
-    margin: 29px 16px 0 16px;
+.comparison__makes {
+  width: auto;
+  height: auto;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  // border-top: 1px solid black;
+  box-shadow: 0 -1px rgb(233, 232, 232);
 
-    .comparison__products__wrapped {
-      width: 343px;
-      height: 150px;
-      border-radius: 15px;
-      background: #eee;
-      margin-bottom: 30px;
-      position: relative;
+  span {
+    color: #000;
+    display: flex;
 
-      .delete--btn {
-        width: 24px;
-        height: 24px;
-        color: #898989;
-        right: 15px;
-        top: 13px;
-        position: absolute;
-        cursor: pointer;
+    /* text/title/Title 3 */
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 150%; /* 30px */
+    letter-spacing: 0.114px;
+    padding-top: 29px;
+    padding-left: 24.5px;
+    padding-bottom: 10px;
+  }
+
+  .comparison__make__wrapped {
+    display: flex;
+    justify-content: space-between;
+
+    .comparison__make {
+      width: 100%;
+      height: 100%;
+      border-top: 1px solid #000;
+      border-bottom: 1px solid #000;
+      background: #f6f6f6;
+
+      &:last-child {
+        border-left: 1px solid #000;
       }
 
-      .comparison__products {
-        display: flex;
-        justify-content: space-between;
+      .product__detail {
         text-align: center;
-        align-items: center;
-        margin: 0 60px 30px 60px;
-        padding-top: auto;
-        height: 150px;
+        color: #000;
+        border-top: 1px solid #000;
 
-        span {
+        padding: 14px 12px;
+
+        /* text/headline/Headline 3 */
+        font-size: 14px;
+        font-weight: 600;
+        line-height: 150%; /* 21px */
+        letter-spacing: 0.08px;
+        background: var(--test-02, #01ea2b);
+      }
+
+      .product__info {
+        padding-left: 22.6px;
+
+        .bank__name {
+          padding-top: 16px;
           color: #000;
-          font-size: 15px;
-          font-weight: 600;
-          line-height: 150%; /* 22.5px */
-          letter-spacing: -0.33px;
-          display: flex;
+
+          /* text/caption/Caption 2 */
+          font-size: 11px;
+          font-weight: 300;
+          line-height: 150%; /* 16.5px */
+          letter-spacing: 0.063px;
         }
 
-        .comparison__product {
-          display: block;
-          align-items: center;
-          justify-content: center;
+        .product__title {
+          color: #000;
+          padding-bottom: 16px;
 
-          .products__logo {
-            display: block;
-            width: 50px;
-            height: 50px;
-            border-radius: 15px;
-            background: #b3b3b3;
-            margin: 0 auto;
-          }
-          .products__titles__wrapped {
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            margin-top: 15px;
-
-            .products__title {
-              color: #000;
-              text-align: center;
-              font-size: 12px;
-              font-weight: 500;
-              line-height: 150%; /* 18px */
-              text-align: center;
-              justify-content: center;
-            }
-          }
+          /* text/headline/Headline 2 */
+          font-size: 16px;
+          font-weight: 600;
+          line-height: 150%; /* 24px */
+          letter-spacing: 0.091px;
         }
       }
     }

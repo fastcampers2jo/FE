@@ -69,34 +69,44 @@ const LikeListPage = () => {
   const [isEditing, setIsEditing] = useState(false);
 
   const toggleIcon = (id: number) => {
-    // eslint-disable-next-line @typescript-eslint/no-shadow
-    const product = icons.find((product) => product.id === id);
+    const clickedProduct = icons.find((product) => product.id === id);
 
-    if (!product) {
+    if (!clickedProduct) {
       return; // 해당 id를 가진 상품이 없으면 종료
     }
 
-    // eslint-disable-next-line @typescript-eslint/no-shadow, no-confusing-arrow
-    const updatedIcons = icons.map((product) =>
-      product.id === id ? { ...product, isChecked: !product.isChecked } : product
-    );
+    // 편집 모드 //
+    if (isEditing) {
+      // eslint-disable-next-line no-confusing-arrow
+      const updatedIcons = icons.map((product) =>
+        product.id === id ? { ...product, isChecked: !product.isChecked } : product
+      );
+      const updatedCheckedCount = updatedIcons.filter((product) => product.isChecked).length;
+      setIcons(updatedIcons);
+      setCheckedCount(updatedCheckedCount);
+    } else {
+      // 기존 모드(최대 2개 선택) //
+      // eslint-disable-next-line no-confusing-arrow
+      const updatedIcons = icons.map((product) =>
+        product.id === id ? { ...product, isChecked: !product.isChecked } : product
+      );
+      const clickedProductChecked = clickedProduct.isChecked;
 
-    // eslint-disable-next-line @typescript-eslint/no-shadow
-    const updatedCheckedCount = updatedIcons.filter((product) => product.isChecked).length;
-    // eslint-disable-next-line @typescript-eslint/no-shadow
+      if (!clickedProductChecked && checkedCount >= 2) {
+        return;
+      }
 
-    if (!isEditing && checkedCount >= 2 && !product?.isChecked) {
-      return;
+      setIcons(updatedIcons);
+      setCheckedCount((prevCount) => prevCount + (clickedProductChecked ? -1 : 1));
     }
-
-    setCheckedCount(updatedCheckedCount); // checkedCount 상태 업데이트
-    setIcons(updatedIcons);
   };
 
   const editToggle = () => {
     if (!isEditing) {
-      // 편집 모드로 전환할 때 모든 선택을 해제
       setIcons((prevIcons) => prevIcons.map((product) => ({ ...product, isChecked: false })));
+    } else {
+      setIcons((prevIcons) => prevIcons.map((product) => ({ ...product, isChecked: false })));
+      setCheckedCount(0);
     }
     setIsEditing(!isEditing);
   };
@@ -142,14 +152,23 @@ const LikeListPage = () => {
       <div className="product__comparison">
         <div className="product__utilsbar">
           <div className="utils">
-            <span>전체 {icons.length}개</span>
-            <button type="button" className="delete" onClick={editToggle}>
-              {isEditing ? "" : "편집"}
-            </button>
-            {isEditing && (
-              <button type="button" className="delete" onClick={handleSelectAll}>
-                {icons.every((product) => product.isChecked) ? "전체 해제" : "전체 선택"}
-              </button>
+            {isEditing ? (
+              <>
+                <button type="button" className="selectCount" onClick={handleSelectAll}>
+                  <CheckBox className="selectAll--btn" />
+                  <span className="">전체 {icons.length}개</span>
+                </button>
+                <button type="button" className="cancel" onClick={editToggle}>
+                  취소
+                </button>
+              </>
+            ) : (
+              <>
+                <span>전체 {icons.length}개</span>
+                <button type="button" className="edit" onClick={editToggle}>
+                  편집
+                </button>
+              </>
             )}
           </div>
         </div>
@@ -208,11 +227,7 @@ const LikeListPage = () => {
       {isEditing ? (
         <div className="editmode__toggle">
           <span>{checkedCount}개의 상품이 선택되었습니다.</span>
-          {checkedCount === 0 && (
-            <button type="button" onClick={() => setIsEditing(false)}>
-              완료하기
-            </button>
-          )}
+
           {checkedCount > 0 && (
             <button type="button" onClick={handleSelectDelete}>
               삭제하기
