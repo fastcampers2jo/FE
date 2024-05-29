@@ -2,3 +2,8 @@ export { default as TitleTop } from "./titleTop";
 export { default as Navber } from "./navber";
 export { default as Checkbox } from "./checkbox";
 export { default as MypageList } from "./mypage";
+export { default as Input } from "./input";
+export { default as SnackBar } from "./snackBar";
+export { default as Button } from "./button";
+export { default as LogoTop } from "./logoTop";
+export { default as RankPop } from "./rankpop";

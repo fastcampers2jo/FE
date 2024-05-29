@@ -1,14 +1,11 @@
-import { createBrowserRouter } from "react-router-dom";
-import {
-  Home,
-  Login,
-  Layout,
-  Signup,
-  Mypage
-} from "./pages";
+import { Navigate, createBrowserRouter } from "react-router-dom";
+import { getCookie } from "utils/cookies";
+import { Home, Login, Layout, Signup, Mypage, Alarm, Ranking } from "./pages";
 
+const isLoggedIn = getCookie("token");
 const router = createBrowserRouter([
   {
+    path: "/",
     element: <Layout />,
     children: [
       {
@@ -17,15 +14,23 @@ const router = createBrowserRouter([
       },
       {
         path: "/login",
-        element: <Login />,
+        element: isLoggedIn ? <Navigate to="/" replace /> : <Login />,
       },
       {
         path: "/signup",
-        element: <Signup />,
+        element: isLoggedIn ? <Navigate to="/" replace /> : <Signup />,
       },
       {
         path: "/mypage",
         element: <Mypage />,
+      },
+      {
+        path: "/alarm",
+        element: <Alarm />,
+      },
+      {
+        path: "/ranking/:id",
+        element: <Ranking />,
       },
     ],
   },

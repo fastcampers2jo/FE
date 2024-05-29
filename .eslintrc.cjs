@@ -7,14 +7,15 @@ module.exports = {
     'eslint:recommended',
     'plugin:@typescript-eslint/recommended',
     'plugin:react-hooks/recommended',
-    "plugin:@tanstack/eslint-plugin-query/recommended"
+    "plugin:@tanstack/eslint-plugin-query/recommended",
   ],
   ignorePatterns: ['dist', '.eslintrc.cjs'],
   parser: '@typescript-eslint/parser',
   parserOptions: {
     "ecmaVersion": "latest",
     "sourceType": "module",
-    "project": ["./tsconfig.json"]
+    "project": ["./tsconfig.json"],
+    "createDefaultProgram":true,
   },
   plugins: ['react-refresh', "@tanstack/query", "@typescript-eslint"],
   rules: {
@@ -68,5 +69,6 @@ module.exports = {
    "jsx-a11y/control-has-associated-label": "off",
    "object-curly-newline": "off",
    "react/jsx-one-expression-per-line":"off",
+   "no-alert": "off",
   },
 }

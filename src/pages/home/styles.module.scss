@@ -5,7 +5,7 @@ $conpadding: 4.27%;
     display: flex;
     justify-content: space-between;
     > h1 {
-        color:var(--color-white);
+        color:var(--color-fff);
         font-weight:700;
         font-size:1.6rem;
         line-height: 2.4rem;
@@ -15,25 +15,26 @@ $conpadding: 4.27%;
         display: flex;
         gap: 1.5rem;
     }
+    background:var(--color-040404);
 }
 .btnText{
-    background:var(--bg-040404);
+    background:var(--color-040404);
     padding:3.4rem   $conpadding 9.8rem;
     >button{
-        color:var(--color-white);
-    font-size:2rem;
-    line-height: 3rem;
-    text-align: left;
-    letter-spacing: 0.44px;
-    font-weight:600;
-    >span{
-        font-weight:400;
-    }
+        color:var(--color-fff);
+        font-size:2rem;
+        line-height: 3rem;
+        text-align: left;
+        letter-spacing: 0.44px;
+        font-weight:600;
+        >span{
+            font-weight:400;
+        }
     }
     
 }
 .goodsContiner{
-    background:var(--bg--color-F2F4F5);
+    background:var(--color-F2F4F5);
     position:relative;
     padding: 0 $conpadding 5.6rem;
     display: flex;
@@ -49,11 +50,11 @@ $conpadding: 4.27%;
         top:-2.1rem;
         height: 2.1rem;
         border-radius: 2rem 2rem 0px 0px;
-        background: var(--bg--color-F2F4F5);
+        background: var(--color-F2F4F5);
     }
 }
 .search{
-    background:var(--color-checkbox--black);
+    background:var(--color-333);
     padding-inline:2rem;
     text-align: left;
     line-height: 5rem;
@@ -68,7 +69,7 @@ $conpadding: 4.27%;
 
 .articleBox{
     padding:2rem;
-    background:var(--color-white);
+    background:var(--color-fff);
     border-radius: 1.5rem;
 }
 .articleBoxTop{
@@ -122,7 +123,7 @@ $conpadding: 4.27%;
         }
     }
     .textbox{
-        width: 70%;
+        flex:1;
         >em{
             color:#000;
             letter-spacing: 1rem * -0.022;
