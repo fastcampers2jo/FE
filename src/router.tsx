@@ -4,7 +4,13 @@ import {
   Login,
   Layout,
   Signup,
-  Mypage
+  Mypage,
+  LikeListPage,
+  ComparisonPage,
+  LoungePage,
+  CommunityPage,
+  ComparisonDetailPage,
+  RecommendationPage,
 } from "./pages";
 
 const router = createBrowserRouter([
@@ -26,6 +32,30 @@ const router = createBrowserRouter([
       {
         path: "/mypage",
         element: <Mypage />,
+      },
+      {
+        path: "/likelist",
+        element: <LikeListPage />,
+      },
+      {
+        path: "/comparison",
+        element: <ComparisonPage />,
+      },
+      {
+        path: "/comparisondetail",
+        element: <ComparisonDetailPage />,
+      },
+      {
+        path: "/recommendation",
+        element: <RecommendationPage />,
+      },
+      {
+        path: "/lounge",
+        element: <LoungePage />,
+      },
+      {
+        path: "/community",
+        element: <CommunityPage />,
       },
     ],
   },

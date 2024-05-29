@@ -1,98 +1,181 @@
 @import url("./fonts.css");
 
-:root{
-    --color-white:#fff;
-    --color-black:#222;
-    --color-gery:#888;
-    --bg-input:#FAFAFA;
-    --border-input:#E8E8E8;
-    --color-green:#05BA2D;
-    --color-checkbox--green:#2DEF58;
-    --color-checkbox--black:#333;
-    --color-checkbox--oriange:#FFAB2E;
-    --color-DFDFDF:#DFDFDF;
-    --bg--color-F2F4F5:#F2F4F5;
-    --color-A8A8A8:#A8A8A8;
-    --bg-040404:#040404;
-    --color-666:#666;
-    --color-E8F4FF:#E8F4FF;
-    --color-FFF9EA:#FFF9EA;
-    --color-84848:#848484;
-    --color-d9d9d9:#d9d9d9;
-    --color-eee:#eee;
-    --color-393939:#393939;
-    --svg-black:#000;
-    --color-A8FF00:#A8FF00;
-    --color-FF5500:#FF5500;
+:root {
+  --color-white: #fff;
+  --color-black: #222;
+  --color-gery: #888;
+  --bg-input: #fafafa;
+  --border-input: #e8e8e8;
+  --color-green: #05ba2d;
+  --color-checkbox--green: #2def58;
+  --color-checkbox--black: #333;
+  --color-checkbox--oriange: #ffab2e;
+  --color-DFDFDF: #dfdfdf;
+  --bg--color-F2F4F5: #f2f4f5;
+  --color-A8A8A8: #a8a8a8;
+  --bg-040404: #040404;
+  --color-666: #666;
+  --color-E8F4FF: #e8f4ff;
+  --color-FFF9EA: #fff9ea;
+  --color-84848: #848484;
+  --color-d9d9d9: #d9d9d9;
+  --color-eee: #eee;
+  --color-393939: #393939;
+  --svg-black: #000;
+  --color-A8FF00: #a8ff00;
+  --color-FF5500: #ff5500;
+  --color-black-primary-heavy: #a0f400;
 }
 
-
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	font-size: 100%;
-	font: inherit;
-	vertical-align: baseline;
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
 }
 /* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure, 
-footer, header, hgroup, menu, nav, section {
-	display: block;
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
 }
 
-ol, ul {
-	list-style: none;
+ol,
+ul {
+  list-style: none;
 }
-blockquote, q {
-	quotes: none;
+blockquote,
+q {
+  quotes: none;
 }
-blockquote:before, blockquote:after,
-q:before, q:after {
-	content: '';
-	content: none;
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
 }
 table {
-	border-collapse: collapse;
-	border-spacing: 0;
+  border-collapse: collapse;
+  border-spacing: 0;
 }
-body{
-    overflow-x: hidden;
+body {
+  overflow-x: hidden;
 }
-html,body {
-    color:var(--color-gery);
-    font-size:62.5%;
-    font-weight:400;
-    font-family: 'pretendard', 'sans-serif';
-    line-height: 1.7;
-    background: var(--color-white);
+html,
+body {
+  color: var(--color-gery);
+  font-size: 62.5%;
+  font-weight: 400;
+  font-family: "pretendard", "sans-serif";
+  line-height: 1.7;
+  background: var(--color-white);
 }
-textarea, input{
-        color: var(--color-gery);
-        box-sizing: border-box;
-        font-family: 'pretendard', 'sans-serif';
-    }
-a{
-    text-decoration: none;
-    color:var(--color-gery);
+textarea,
+input {
+  color: var(--color-gery);
+  box-sizing: border-box;
+  font-family: "pretendard", "sans-serif";
 }
-button{
-    cursor: pointer;
-    background:none;
-    border:0;
-    outline: 0;
-    padding: 0;
-    font-family: 'pretendard', 'sans-serif';
+a {
+  text-decoration: none;
+  color: var(--color-gery);
+}
+button {
+  cursor: pointer;
+  background: none;
+  border: 0;
+  outline: 0;
+  padding: 0;
+  font-family: "pretendard", "sans-serif";
 }
