@@ -1,11 +1,20 @@
 import { Navigate, createBrowserRouter } from "react-router-dom";
 import { getCookie } from "utils/cookies";
-import { Home, Login, Layout, Signup, Mypage, Alarm, Ranking,LikeListPage,
+import {
+  Home,
+  Login,
+  Layout,
+  Signup,
+  Mypage,
+  Alarm,
+  Ranking,
+  LikeListPage,
   ComparisonPage,
   LoungePage,
   CommunityPage,
   ComparisonDetailPage,
-  RecommendationPage, } from "./pages";
+  RecommendationPage,
+} from "./pages";
 
 const isLoggedIn = getCookie("token");
 const router = createBrowserRouter([

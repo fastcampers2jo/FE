@@ -1,4 +1,4 @@
-import { Bell, Mypage, RightArrow } from "assets";
+import { IcBell, IcMypage, RightArrow } from "assets";
 import { Link } from "react-router-dom";
 import PostList from "components/lounge/PostList";
 import HotTopic from "components/lounge/HotIssue";
@@ -9,8 +9,8 @@ const LoungePage = () => (
     <div className="logobar">
       <span>Logo </span>
       <div className="icons">
-        <Bell className="bell" />
-        <Mypage className="mypage" />
+        <IcBell className="bell" />
+        <IcMypage className="mypage" />
       </div>
     </div>
     <HotTopic />
