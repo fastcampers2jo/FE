@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
-import { Back, Edit } from "assets";
+import { IcBack, IcEdit } from "assets";
 import ComparisonProducts from "components/likes/ComparisonProducts";
 import OnOffToggle from "components/onoffToggle/onoffToggle";
 import { ChangeEvent, useState } from "react";
@@ -40,15 +40,20 @@ const ComparisonDetailPage = () => {
     <section>
       <form className="comparisonDetail">
         <div className="statusbar">
-          <Back className="back likelist" onClick={() => navigate(-1)} />
+          <IcBack className="back likelist" onClick={() => navigate(-1)} />
           status bar (비교하기 페이지)
         </div>
         <form className="my__object__set">
           <span>내 목표 설정하기</span>
           <div className="my__object">
             <div className="my__object__inputbox">
-              <input type="number" placeholder="저축금액 작성" inputMode="numeric" pattern="[0-9]*" />
-              <Edit className="edit" />
+              <input
+                type="number"
+                placeholder="저축금액 작성"
+                inputMode="numeric"
+                pattern="[0-9]*"
+              />
+              <IcEdit className="edit" />
               으로
             </div>
             <div className="my__object__inputbox__select">
@@ -139,7 +144,8 @@ const ComparisonDetailPage = () => {
               <div className="products__check">
                 01
                 <div className="product__checklist">
-                  급여실적 또는 개인사업자 계좌 실적 보유 시<div className="detail">자세히 &#8744;</div>
+                  급여실적 또는 개인사업자 계좌 실적 보유 시
+                  <div className="detail">자세히 &#8744;</div>
                 </div>
                 <div className="products__check--toggle">
                   1%
@@ -151,7 +157,8 @@ const ComparisonDetailPage = () => {
               <div className="products__check">
                 02
                 <div className="product__checklist">
-                  비대면채널 이체 실적 보유 시<div className="detail">자세히 &#8744;</div>
+                  비대면채널 이체 실적 보유 시
+                  <div className="detail">자세히 &#8744;</div>
                 </div>
                 <div className="products__check--toggle">
                   1%
