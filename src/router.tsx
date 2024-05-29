@@ -1,10 +1,17 @@
 import { createBrowserRouter } from "react-router-dom";
-import { Home, Login, Layout, Signup, Mypage } from "./pages";
-import LikePage from "./pages/likes";
-import ComparisonPage from "./pages/likes/comparisonPage";
-import LikeListPage from "./pages/likes/likeListPage";
-import LoungePage from "./pages/lounge";
-import CommunityPage from "./pages/community";
+import {
+  Home,
+  Login,
+  Layout,
+  Signup,
+  Mypage,
+  LikeListPage,
+  ComparisonPage,
+  LoungePage,
+  CommunityPage,
+  ComparisonDetailPage,
+  RecommendationPage,
+} from "./pages";
 
 const router = createBrowserRouter([
   {
@@ -27,16 +34,20 @@ const router = createBrowserRouter([
         element: <Mypage />,
       },
       {
-        path: "/likes",
-        element: <LikePage />,
-      },
-      {
         path: "/likelist",
         element: <LikeListPage />,
       },
       {
         path: "/comparison",
         element: <ComparisonPage />,
+      },
+      {
+        path: "/comparisondetail",
+        element: <ComparisonDetailPage />,
+      },
+      {
+        path: "/recommendation",
+        element: <RecommendationPage />,
       },
       {
         path: "/lounge",

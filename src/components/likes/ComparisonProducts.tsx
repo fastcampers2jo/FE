@@ -1,4 +1,4 @@
-import "./comparison.scss";
+import "./comparisonComponent.scss";
 
 const ComparisonProducts = () => (
   <form className="mycomparison">
@@ -8,15 +8,19 @@ const ComparisonProducts = () => (
       <div className="greenbar" />
       실수령액은
     </div>
-    <div className="products">
-      <div className="product">
-        900,000 <span>원</span>
+    <div className="products__wrapped">
+      <div className="products">
+        <div className="product">
+          900,000 <div className="smallfont">원</div>
+        </div>
         <button type="button" className="detail">
           자세히보기
         </button>
       </div>
-      <div className="product">
-        700,000 <span>원</span>
+      <div className="products">
+        <div className="product">
+          700,000 <div className="smallfont">원</div>
+        </div>
         <button type="button" className="detail">
           자세히보기
         </button>

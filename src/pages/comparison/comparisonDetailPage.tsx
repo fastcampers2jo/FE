@@ -4,6 +4,7 @@ import ComparisonProducts from "components/likes/ComparisonProducts";
 import OnOffToggle from "components/onoffToggle/onoffToggle";
 import { ChangeEvent, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import "./comparision.scss";
 
 export interface ComparisonProps {
   title?: string;
@@ -25,7 +26,7 @@ const OBJECT__PERIOD = [
   { id: "0008", value: "13개월" },
 ];
 
-const ComparisonPage = () => {
+const ComparisonDetailPage = () => {
   const navigate = useNavigate();
   const [setSelectPeriodValue, setSetselectPeriodValue] = useState("예정기간 선택");
 
@@ -37,7 +38,7 @@ const ComparisonPage = () => {
 
   return (
     <section>
-      <form className="comparison">
+      <form className="comparisonDetail">
         <div className="statusbar">
           <Back className="back likelist" onClick={() => navigate(-1)} />
           status bar (비교하기 페이지)
@@ -193,4 +194,4 @@ const ComparisonPage = () => {
     </section>
   );
 };
-export default ComparisonPage;
+export default ComparisonDetailPage;

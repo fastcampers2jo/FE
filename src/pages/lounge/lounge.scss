@@ -4,10 +4,6 @@ html {
 
 body {
   background-color: gray;
-  margin-top: 439px;
-  margin-left: 50px;
-  width: 375px;
-  height: auto;
 }
 
 .arrow--right {
@@ -195,8 +191,8 @@ body {
 
 //// 라운지페이지 게시판 섹션///////
 .lounge__notice {
-  width: 375px;
-  height: 513px;
+  width: auto;
+  height: auto;
   background: #f6f6f6;
 
   .product__categories {
@@ -206,6 +202,7 @@ body {
     align-items: flex-start;
     gap: 8px;
     overflow: hidden;
+    background-color: #f6f6f6;
 
     .product__category {
       border-radius: 100px;

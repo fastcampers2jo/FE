@@ -3,25 +3,9 @@ $bgColor: #fff;
 $textColor: #292929;
 $borderColor: #bbb;
 
-//// html, body 개발용 /// 후 삭제해야함///// // width / height 도 삭제해야댐
-
-html {
-  background-color: gray;
-}
-
-body {
-  background-color: gray;
-  margin-top: 439px;
-  margin-left: 70px;
-  width: 375px;
-  height: auto;
-}
-
-////삭제삭제삭제삭제삭제삭제삭제삭제삭제삭제////
-
 .statusbar {
   display: flex;
-  width: 375px;
+  width: auto;
   height: 90px;
   justify-content: center;
   align-items: center;
@@ -30,6 +14,8 @@ body {
   color: #fff;
   font-size: 14px;
 }
+
+////삭제삭제삭제삭제삭제삭제삭제삭제삭제삭제////
 
 .checkbox {
   cursor: pointer;
@@ -85,12 +71,12 @@ body {
 .likepopup {
   padding-left: 20px;
   margin-left: 20px;
-  width: 375px;
+  min-width: 375px;
   height: auto;
 
   .status-bar {
     display: flex;
-    width: 375px;
+    min-width: 375px;
     height: 32.443px;
     justify-content: center;
     align-items: center;
@@ -113,7 +99,7 @@ body {
   }
 
   .liketpopup__section {
-    width: 375px;
+    min-width: 375px;
     height: auto;
     background-color: $bgColor;
     // margin: 0 16px 0 16px;
@@ -276,80 +262,11 @@ body {
 
 .likelistpage {
   width: auto;
-  min-height: 800px; /// 375*844 - statusbar 40px
+  height: auto;
+  min-height: 915px;
   background-color: #f2f4f5;
+  position: relative;
 
-  .product__categories {
-    padding-left: 16px;
-    padding-top: 16px;
-    background-color: #111;
-    height: 44px;
-    text-align: center;
-    justify-content: flex-start;
-    display: flex;
-    gap: 10px;
-    overflow: hidden;
-    align-items: center;
-
-    .product__category {
-      text-align: center;
-      justify-content: center;
-      align-items: center;
-      min-width: 41px;
-      color: var(--color-white-gray-6, #aeb5bc);
-      text-align: center;
-      border-bottom: 3px solid var(--test-02, #111);
-
-      span {
-        font-size: 16px;
-        font-weight: 600;
-        line-height: 150%; /* 24px */
-        letter-spacing: 0.091px;
-        cursor: pointer;
-        margin: 1px;
-        padding-top: 7px;
-        padding-bottom: 9px;
-      }
-
-      /* text/headline/Headline 2 */
-
-      &:active {
-        border-bottom: 3px solid var(--test-02, #01ea2b);
-        padding-bottom: 0;
-        color: #fff;
-        text-align: center;
-        min-width: 50px;
-
-        span {
-          display: flex;
-          margin: 0 auto;
-          padding-top: 7px;
-          padding-bottom: 9px;
-          /* text/headline/Headline 2 */
-          font-size: 16px;
-          font-weight: 600;
-          line-height: 150%; /* 24px */
-          letter-spacing: 0.091px;
-          text-align: center;
-          justify-content: center;
-          align-items: center;
-        }
-      }
-    }
-
-    .service__info {
-      display: flex;
-      height: 42px;
-      background-color: #eee;
-      color: #666;
-      font-size: 12px;
-      font-weight: 400;
-      line-height: 150%; /* 18px */
-      letter-spacing: -0.264px;
-      align-items: center;
-      justify-content: center;
-    }
-  }
   .product__comparison {
     background-color: #f2f4f5;
     position: relative;
@@ -434,14 +351,13 @@ body {
   .comparison__toggle {
     height: 80px;
     margin: 10px 0;
+    width: auto;
     display: flex;
 
     .product__comparison__btn {
       background-color: #fff;
-
       display: flex;
-      width: auto;
-      // height: 56px;
+      width: 100%;
       justify-content: center;
       align-items: center;
       color: #aeb5bc;
@@ -458,11 +374,10 @@ body {
         display: flex;
         background-color: var(--color-white-gray-3, #eaecef);
         text-align: center;
-        min-width: 197px;
+        min-width: 343px;
+        width: 100%;
         height: auto;
         font-size: 20px;
-        // padding: 26px calpx;
-        width: 343px;
         height: 56px;
         font-weight: 700;
         line-height: 150%; /* 30px */
@@ -480,16 +395,20 @@ body {
 
   ///// 편집모드 /////
   .editmode__toggle {
+    display: flex;
     position: absolute;
     bottom: 0;
     width: 100%;
+    min-width: 375px;
     background-color: #fff;
+    justify-content: center;
+    flex-direction: column;
 
     button {
+      width: auto;
       padding: 13px 136px;
       justify-content: center;
       align-items: center;
-      gap: 10px;
       border-radius: 4px;
       background-color: var(--color-white-gray-8, #4a5056);
       color: var(--color-white-gray-1, #f8f9fa);
@@ -523,7 +442,8 @@ body {
 }
 //// 금융상품리스트 ////
 .products__likelist__wrapped {
-  width: 343px;
+  min-width: 343px;
+  width: auto;
   min-height: 58px;
   margin: 0 16px;
 
@@ -547,19 +467,13 @@ body {
     padding: 12px 16px;
     border-radius: 5px;
     height: auto;
+    width: auto;
 
     .product__infos {
       display: flex;
-      margin: auto 0;
-      // align-items: center;
-
-      // text-align: center;
-      // justify-content: center;
 
       .product__info {
         display: flex;
-        // text-align: center;
-        // justify-content: center;
         align-items: center;
 
         .check--toggle {
@@ -652,447 +566,6 @@ body {
           font-weight: 600;
           line-height: 150%; /* 18px */
           letter-spacing: 0.068px;
-        }
-      }
-    }
-  }
-}
-
-/// comparisonpage 금융상품 비교페이지 comparisonpage 금융상품 비교페이지////
-.comparison {
-  background-color: #fff;
-  height: auto;
-
-  .my__object__set {
-    margin-top: 30px;
-    margin: 30px 16px 85px 16px;
-
-    span {
-      display: flex;
-      color: #000;
-      padding-bottom: 12px;
-
-      /* text/title/Title 3 */
-      font-family: Pretendard;
-      font-size: 20px;
-      font-style: normal;
-      font-weight: 700;
-      line-height: 150%; /* 30px */
-      letter-spacing: 0.114px;
-    }
-
-    .my__object {
-      width: auto;
-      color: #777;
-      font-size: 24px;
-      font-weight: 400;
-      line-height: 150%; /* 36px */
-      letter-spacing: 0.137px;
-
-      span {
-        color: #777;
-        font-size: 24px;
-        font-weight: 400;
-        line-height: 150%; /* 36px */
-        letter-spacing: 0.137px;
-        padding-left: 4px;
-      }
-
-      .edit {
-        display: flex;
-        position: absolute;
-        left: 155px;
-        top: 1px;
-      }
-
-      &__inputbox {
-        position: relative;
-        display: flex;
-        width: auto;
-        text-align: center;
-        margin-bottom: 8px;
-
-        &__select {
-          display: flex;
-          select {
-            display: flex;
-            font-family: Pretendard;
-            width: auto;
-            color: #777;
-            font-size: 24px;
-            font-weight: 400;
-            line-height: 150%; /* 36px */
-            letter-spacing: 0.137px;
-            border-bottom: 2px solid #000;
-            margin-right: 14px;
-            justify-content: flex-start;
-            padding-right: 26px;
-            border-top: none;
-            border-left: none;
-            border-right: none;
-            margin-bottom: 6px;
-
-            &:focus {
-              border-top: none;
-              border-left: none;
-              border-right: none;
-              outline: none;
-            }
-          }
-        }
-
-        span {
-          color: #777;
-          font-size: 24px;
-          font-weight: 400;
-          line-height: 150%; /* 36px */
-          letter-spacing: 0.137px;
-        }
-
-        input {
-          width: 180px;
-          border-bottom: 2px solid #000;
-          border-top: none;
-          border-left: none;
-          border-right: none;
-          margin-right: 14px;
-          padding-left: 4px;
-          font-size: 24px;
-          overflow: hidden;
-
-          &::-webkit-outer-spin-button,
-          &::-webkit-inner-spin-button {
-            -webkit-appearance: none;
-          }
-
-          &:active,
-          &:focus {
-            outline: none;
-          }
-
-          &::placeholder {
-            color: #777;
-            font-size: 24px;
-            font-weight: 400;
-            line-height: 150%; /* 36px */
-            letter-spacing: 0.137px;
-          }
-        }
-      }
-    }
-  }
-
-  .comparison__products {
-    .category {
-      padding-left: 16px;
-      padding-top: 6px;
-      padding-bottom: 4px;
-      color: #888;
-      border-bottom: 2px solid #d9d9d9;
-
-      /* text/title/Title 3 */
-      font-family: Pretendard;
-      font-size: 20px;
-      font-style: normal;
-      font-weight: 700;
-      line-height: 150%; /* 30px */
-      letter-spacing: 0.114px;
-
-      &:first-child {
-        padding-top: 30px;
-      }
-    }
-
-    .bank__infos {
-      justify-content: space-between;
-      display: flex;
-      width: auto;
-
-      .bank__info {
-        width: 100%;
-        padding: 40px 50px;
-        height: calc(175 + 32) px;
-
-        &:last-child {
-          border-left: 1px solid #000;
-        }
-
-        .bank__logo {
-          margin: 0 auto;
-          display: flex;
-          width: 50px;
-          height: 50px;
-          border-radius: 15px;
-          background: #d9d9d9;
-          text-align: center;
-          align-items: center;
-          justify-content: center;
-          margin-bottom: 28px;
-        }
-
-        .bank__name {
-          color: #000;
-          text-align: center;
-          font-family: Pretendard;
-          font-size: 12px;
-          font-style: normal;
-          font-weight: 500;
-          line-height: 150%; /* 18px */
-          margin-bottom: calc(32 + 38) px;
-        }
-      }
-    }
-
-    .products__interests {
-      width: auto;
-      justify-content: space-between;
-      display: flex;
-
-      .product__interest {
-        width: 100%;
-        color: #000;
-
-        /* text/title/Title 1 */
-        font-family: Pretendard;
-        font-size: 24px;
-        font-style: normal;
-        font-weight: 700;
-        line-height: 150%; /* 36px */
-        letter-spacing: 0.137px;
-        padding-left: 16px;
-        padding-top: 24px;
-
-        &:last-child {
-          border-left: 1px solid #000;
-        }
-
-        .product__interest__wrapped {
-          display: flex;
-          align-items: end;
-          padding-bottom: 30px;
-
-          &.max {
-            color: #00d823;
-          }
-
-          .period {
-            padding-bottom: 5px;
-            color: #000;
-
-            /* text/label/Label 1 */
-            font-family: Pretendard;
-            font-size: 14px;
-            font-style: normal;
-            font-weight: 400;
-            line-height: 150%; /* 21px */
-            letter-spacing: 0.08px;
-            margin-left: 8px;
-
-            &.max {
-              color: #00d823;
-            }
-          }
-        }
-
-        .def {
-          color: var(--color-white-gray-8, #4a5056);
-          text-align: center;
-
-          /* text/headline/Headline 3 */
-          font-family: Pretendard;
-          font-size: 14px;
-          font-style: normal;
-          font-weight: 600;
-          line-height: 150%; /* 21px */
-          letter-spacing: 0.08px;
-
-          &.max {
-            color: #00d823;
-          }
-        }
-      }
-    }
-
-    .products__periods {
-      display: flex;
-      justify-content: space-between;
-      width: auto;
-      height: auto;
-
-      .products__period {
-        padding: 24px 43px 40px 43px;
-        width: 100%;
-        color: #000;
-        text-align: center;
-
-        /* text/title/Title 1 */
-        font-family: Pretendard;
-        font-size: 24px;
-        font-style: normal;
-        font-weight: 700;
-        line-height: 150%; /* 36px */
-        letter-spacing: 0.137px;
-
-        &:last-child {
-          border-left: 1px solid #000;
-        }
-      }
-    }
-
-    .products__checks__wrapped {
-      justify-content: space-between;
-      display: flex;
-
-      .products__checks {
-        width: 100%;
-        height: auto;
-
-        &:last-child {
-          border-left: 1px solid #000;
-        }
-
-        .products__check {
-          width: calc(100% - 51px);
-          margin: 24px 16px 24px 16px;
-          word-break: keep-all;
-          color: #000;
-
-          /* text/label/Label 1 */
-          font-family: Pretendard;
-          font-size: 14px;
-          font-style: normal;
-          font-weight: 400;
-          line-height: 150%; /* 21px */
-          letter-spacing: 0.08px;
-
-          .product__checklist {
-            width: 140px;
-            height: auto;
-            min-height: 85px;
-            color: #000;
-
-            /* text/headline/Headline 3 */
-            font-family: Pretendard;
-            font-size: 14px;
-            font-style: normal;
-            font-weight: 600;
-            line-height: 150%; /* 21px */
-            letter-spacing: 0.08px;
-          }
-
-          .detail {
-            color: #999;
-            /* text/headline/Headline 3 */
-            font-family: Pretendard;
-            font-size: 14px;
-            font-style: normal;
-            font-weight: 600;
-            line-height: 150%; /* 21px */
-            letter-spacing: 0.08px;
-          }
-          .products__check--toggle {
-            position: relative;
-            margin: 24px 30px 30px 0;
-            display: flex;
-            color: #000;
-            align-items: flex-end;
-            justify-content: end;
-
-            /* text/title/Title 1 */
-            font-family: Pretendard;
-            font-size: 24px;
-            font-style: normal;
-            font-weight: 700;
-            line-height: 150%; /* 36px */
-            letter-spacing: 0.137px;
-
-            .toggle__select {
-              position: absolute;
-              right: -30px;
-              top: 15px;
-            }
-          }
-        }
-      }
-    }
-  }
-}
-
-.comparison__makes {
-  width: auto;
-  height: auto;
-  border-top-left-radius: 20px;
-  border-top-right-radius: 20px;
-  // border-top: 1px solid black;
-  box-shadow: 0 -1px rgb(233, 232, 232);
-
-  span {
-    color: #000;
-    display: flex;
-
-    /* text/title/Title 3 */
-    font-size: 20px;
-    font-weight: 700;
-    line-height: 150%; /* 30px */
-    letter-spacing: 0.114px;
-    padding-top: 29px;
-    padding-left: 24.5px;
-    padding-bottom: 10px;
-  }
-
-  .comparison__make__wrapped {
-    display: flex;
-    justify-content: space-between;
-
-    .comparison__make {
-      width: 100%;
-      height: 100%;
-      border-top: 1px solid #000;
-      border-bottom: 1px solid #000;
-      background: #f6f6f6;
-
-      &:last-child {
-        border-left: 1px solid #000;
-      }
-
-      .product__detail {
-        text-align: center;
-        color: #000;
-        border-top: 1px solid #000;
-
-        padding: 14px 12px;
-
-        /* text/headline/Headline 3 */
-        font-size: 14px;
-        font-weight: 600;
-        line-height: 150%; /* 21px */
-        letter-spacing: 0.08px;
-        background: var(--test-02, #01ea2b);
-      }
-
-      .product__info {
-        padding-left: 22.6px;
-
-        .bank__name {
-          padding-top: 16px;
-          color: #000;
-
-          /* text/caption/Caption 2 */
-          font-size: 11px;
-          font-weight: 300;
-          line-height: 150%; /* 16.5px */
-          letter-spacing: 0.063px;
-        }
-
-        .product__title {
-          color: #000;
-          padding-bottom: 16px;
-
-          /* text/headline/Headline 2 */
-          font-size: 16px;
-          font-weight: 600;
-          line-height: 150%; /* 24px */
-          letter-spacing: 0.091px;
         }
       }
     }

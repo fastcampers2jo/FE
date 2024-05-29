@@ -1,13 +1,13 @@
 import { Bell, Mypage, RightArrow } from "assets";
-import "./lounge.scss";
 import { Link } from "react-router-dom";
 import PostList from "components/lounge/PostList";
 import HotTopic from "components/lounge/HotIssue";
+import "./lounge.scss";
 
 const LoungePage = () => (
   <>
     <div className="logobar">
-      <span>Logo</span>
+      <span>Logo </span>
       <div className="icons">
         <Bell className="bell" />
         <Mypage className="mypage" />
