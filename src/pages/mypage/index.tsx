@@ -1,13 +1,19 @@
-import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useQuery } from "@tanstack/react-query";
 import { TitleTop, MypageList } from "components";
-import { Edit, Sticker } from "assets";
+import { IcEdit, IcSticker } from "assets";
+import { keepLogin } from "utils/api";
+import { isLogin } from "types";
 import styles from "./styles.module.scss";
 
 const Mypage = () => {
-  const [login, setLogin] = useState(false);
-  const onlogin = () => {
-    setLogin((prev) => !prev);
-  };
+  const navigate = useNavigate();
+  const { data: login } = useQuery<isLogin>({
+    queryKey: ["login"],
+    queryFn: keepLogin,
+    staleTime: 60 * 1000,
+    gcTime: 300 * 1000,
+  });
   const settingsLinks = [
     { to: "/", text: "알림설정" },
     { to: "/", text: "공지사항" },
@@ -25,20 +31,20 @@ const Mypage = () => {
   ];
 
   return (
-    <section>
+    <section className={styles.section}>
       <article className={styles.profileWrapper}>
-        <TitleTop icon="mypage">마이페이지</TitleTop>
+        <TitleTop>마이페이지</TitleTop>
         <p>로그인 정보</p>
         <div className={styles.profile}>
           <div className={styles.imgbox}>
-            <img src={Sticker} alt="프로필이미지" />
+            <img src={IcSticker} alt="프로필이미지" />
           </div>
           <div className={styles.textbox}>
-            {login ? (
+            {login?.result.resultCode === 200 ? (
               <>
                 <em>
-                  이하진님
-                  <Edit />
+                  {login?.body.name}
+                  <IcEdit />
                 </em>
                 <p>CHACK 맞는 금융생활 되세요</p>
               </>
@@ -49,7 +55,9 @@ const Mypage = () => {
                   <br />
                   로그인/ 회원가입 후 이용해주세요
                 </p>
-                <button onClick={onlogin}>로그인/회원가입</button>
+                <button onClick={() => navigate("/login")}>
+                  로그인/회원가입
+                </button>
               </>
             )}
           </div>
@@ -62,11 +70,7 @@ const Mypage = () => {
         </>
       )}
       <MypageList title="설정" links={settingsLinks} />
-      {login && (
-        <button className={styles.logout} onClick={onlogin}>
-          로그아웃
-        </button>
-      )}
+      {login && <button className={styles.logout}>로그아웃</button>}
     </section>
   );
 };

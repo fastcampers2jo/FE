@@ -2,6 +2,11 @@ $padding-horizontal: 4.27%;
 $button-width: 14.8rem;
 $button-height: 3.4rem;
 
+.section{
+    background:var(--color-111);
+    min-height:100vh;
+}
+
 .profileWrapper{
     padding: 1.5rem $padding-horizontal 4rem;
     border-bottom: 7px solid var(--color-d9d9d9);
@@ -10,6 +15,7 @@ $button-height: 3.4rem;
         line-height: 2.1rem;
         letter-spacing: -0.798px;
         margin-bottom:2.4rem;
+        color:var(--color-999)
     }
 }
 .profile{
@@ -35,7 +41,7 @@ $button-height: 3.4rem;
         font-size:1.5rem;
         line-height: 2.25rem;
         letter-spacing: -0.33px;
-        color:var(--color-white)
+        color:var(--color-fff)
     }
     > button{
         border:1px solid var(--color-A8FF00);
@@ -55,38 +61,14 @@ $button-height: 3.4rem;
         display: flex;
         align-items: center;
         gap: 0.4rem;
-        color:var(--color-white)
+        color:var(--color-fff)
     }
 }
 .list{
     padding-inline: $padding-horizontal;
     margin-top:4rem;
 }
-.listTitle{
-    color:var(--color-white);
-    font-size:1.6rem;
-    font-weight:600;
-    line-height: 2.4rem;
-    border-bottom:1px solid var(--color-d9d9d9);
-    padding-bottom:0.8rem;
-    display: block;
-}
-.listLink{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 1.6rem;
-    line-height: 2.4rem;
-    letter-spacing: 1.6rem * 0.0057;
-    border-bottom: 1px solid var(--color-393939);
-    padding-block: 1.8rem;
-    color:var(--color-white);
-    > svg{
-        transform: rotate(-180deg);
-        width: 1.8rem;
-        height: 1.8rem;
-    }
-}
+
 .logout{
     font-size: 1.2rem;
     letter-spacing: 0.00684rem;
