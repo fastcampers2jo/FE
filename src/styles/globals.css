@@ -1,5 +1,4 @@
 @import url("./fonts.css");
-
 :root{
     --color-F8F9FA:#F8F9FA;
     --color-fff:#fff;
@@ -31,7 +30,8 @@
     --color-818181:#818181;
     --color-F1F3F5:#F1F3F5;
     --color-E0E0E2:#E0E0E2;
-    
+    --color-white: #fff;
+    --color-black-primary-heavy: #a0f400;
 }
 
 html, body, div, span, applet, object, iframe,
@@ -54,29 +54,43 @@ time, mark, audio, video {
 	font: inherit;
 	vertical-align: baseline;
 }
+
 /* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure, 
-footer, header, hgroup, menu, nav, section {
-	display: block;
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
 }
 
-ol, ul {
-	list-style: none;
+ol,
+ul {
+  list-style: none;
 }
-blockquote, q {
-	quotes: none;
+blockquote,
+q {
+  quotes: none;
 }
-blockquote:before, blockquote:after,
-q:before, q:after {
-	content: '';
-	content: none;
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
 }
 table {
-	border-collapse: collapse;
-	border-spacing: 0;
+  border-collapse: collapse;
+  border-spacing: 0;
 }
-body{
-    overflow-x: hidden;
+body {
+  overflow-x: hidden;
 }
 html,body {
     color:var(--color-gery);
@@ -86,14 +100,23 @@ html,body {
     line-height: 1.7;
     background: var(--color-fff);
 }
-textarea, input{
-        color: var(--color-gery);
-        box-sizing: border-box;
-        font-family: 'pretendard', 'sans-serif';
-    }
-a{
-    text-decoration: none;
-    color:var(--color-gery);
+textarea,
+input {
+  color: var(--color-gery);
+  box-sizing: border-box;
+  font-family: "pretendard", "sans-serif";
+}
+a {
+  text-decoration: none;
+  color: var(--color-gery);
+}
+button {
+  cursor: pointer;
+  background: none;
+  border: 0;
+  outline: 0;
+  padding: 0;
+  font-family: "pretendard", "sans-serif";
 }
 button{
     cursor: pointer;

@@ -1,6 +1,11 @@
 import { Navigate, createBrowserRouter } from "react-router-dom";
 import { getCookie } from "utils/cookies";
-import { Home, Login, Layout, Signup, Mypage, Alarm, Ranking } from "./pages";
+import { Home, Login, Layout, Signup, Mypage, Alarm, Ranking,LikeListPage,
+  ComparisonPage,
+  LoungePage,
+  CommunityPage,
+  ComparisonDetailPage,
+  RecommendationPage, } from "./pages";
 
 const isLoggedIn = getCookie("token");
 const router = createBrowserRouter([
@@ -31,6 +36,30 @@ const router = createBrowserRouter([
       {
         path: "/ranking/:id",
         element: <Ranking />,
+      },
+      {
+        path: "/likelist",
+        element: <LikeListPage />,
+      },
+      {
+        path: "/comparison",
+        element: <ComparisonPage />,
+      },
+      {
+        path: "/comparisondetail",
+        element: <ComparisonDetailPage />,
+      },
+      {
+        path: "/recommendation",
+        element: <RecommendationPage />,
+      },
+      {
+        path: "/lounge",
+        element: <LoungePage />,
+      },
+      {
+        path: "/community",
+        element: <CommunityPage />,
       },
     ],
   },
