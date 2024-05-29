@@ -137,9 +137,9 @@ const Ranking = () => {
                         <span>{rank.bank}</span>
                         <p>{rank.name}</p>
                         {rank.tag.map((tags, j) => (
-                          <button type="button" key={j} className={styles.tags}>
+                          <p key={j} className={styles.tags}>
                             {tags}
-                          </button>
+                          </p>
                         ))}
                       </div>
                     </div>
