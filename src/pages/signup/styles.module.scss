@@ -6,6 +6,8 @@
 .wrap{
     padding:1.5rem 4.27% 8.3rem;
     box-sizing: border-box;
+    background:var(--color-F8F9FA);
+    height: 100vh;
 }
 
 .header{
@@ -17,19 +19,23 @@
     }
     > strong{
         color:var(--color-000);
-        letter-spacing: 1.6rem * 0.0057;
+        letter-spacing: 0.091px;
         font-size:1.6rem;
         font-weight:600;
         line-height:2.4rem;
     }
+    > button > svg{
+        fill:var(--color-111)
+    }
+    
 }
 .mid{
     @include flex;
     > p {
         font-size:2rem;
         line-height: 3rem;
-        letter-spacing: 2rem * 0.0057;
-        color:var(--color-000)
+        letter-spacing: 0.114px;
+        color:var(--color-000);
     }
 }
 
@@ -40,7 +46,7 @@
     flex-direction: column;
     > div span {
         line-height: 1.8rem;
-        letter-spacing: 1.2rem * 0.0057;
+        letter-spacing: 0.068px;
         font-size:1.2rem;
         color:var(--color-1C1C1E);
         margin-block-start: 0.4rem;

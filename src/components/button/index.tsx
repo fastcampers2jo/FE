@@ -5,12 +5,14 @@ interface IButton {
   children: string;
   disabled: boolean;
   height?:string
+  width?:string
 }
 
-const Button = ({ type, children, disabled, height }: IButton) => {
+const Button = ({ type, children, disabled, height, width }: IButton) => {
   const buttonclass = [
     styles.button,
     height && styles[`height${height as string}`],
+    width && styles[`width${width as string}`],
   ]
     .filter(Boolean)
     .join(" ");

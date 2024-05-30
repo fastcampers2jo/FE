@@ -8,14 +8,15 @@
 }
 
 .wrap{
-    padding:1.5rem 4.27% 8.3rem;
+    padding: 1.5rem 4.27% 8.3rem;
     box-sizing: border-box;
+    background: var(--color-F8F9FA);
+    height: 100vh;
 }
 
 .back{
-    cursor: pointer;
     > svg{
-        fill:var(--color-000)
+        fill:var(--color-111)
     }
 }
 .title{
