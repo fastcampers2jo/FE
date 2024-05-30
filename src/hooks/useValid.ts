@@ -23,9 +23,9 @@ const useValid = <T extends IVaild>(
         ...prev,
         email: isEmail,
         errorEmail:
-          value.email.includes("@daum.ne")
-          || value.email.includes("@gmail.co")
-          || value.email.includes("@naver.co"),
+          isEmail.includes("@daum.net")
+          || isEmail.includes("@gmail.com")
+          || isEmail.includes("@naver.com"),
       }));
     },
     [value.email, value.errorEmail]
@@ -39,9 +39,10 @@ const useValid = <T extends IVaild>(
         ...prev,
         password: e.target.value,
         errorPassword: Error,
+        errorConfirmPassword: prev.confirmPassword === e.target.value,
       }));
     },
-    [value.password, value.errorPassword]
+    []
   );
   // 패스워드 확인
   const changePasswordCheck = useCallback(
@@ -49,10 +50,10 @@ const useValid = <T extends IVaild>(
       setValue((prev) => ({
         ...prev,
         confirmPassword: e.target.value,
-        errorConfirmPassword: value.password === e.target.value,
+        errorConfirmPassword: prev.password === e.target.value,
       }));
     },
-    [value.password]
+    []
   );
   // 이름 확인
   const changeName = useCallback(

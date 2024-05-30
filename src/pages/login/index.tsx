@@ -1,7 +1,7 @@
 import { useCallback, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useMutation } from "@tanstack/react-query";
-import { Button, Input, SnackBar } from "components";
+import { Button, Input } from "components";
 import { IcBack, IcKakao, IcLoginIcon } from "assets";
 import { useMessage } from "stores/useMessage";
 import { useValid } from "hooks";
@@ -18,7 +18,7 @@ const Login = () => {
     errorPassword: false,
   });
   const { changeEmail, changePassword } = useValid(logins, setLogins);
-  const { setMessage } = useMessage((state) => state);
+  const { setMessage, message } = useMessage((state) => state);
   const { mutate } = useMutation({
     mutationFn: login,
     onSuccess: (data) => {
@@ -45,6 +45,7 @@ const Login = () => {
     },
     [logins.email, logins.password]
   );
+  console.log(logins.errorEmail);
   return (
     <div className={styles.wrap}>
       <header>
@@ -59,8 +60,6 @@ const Login = () => {
         </strong>
       </header>
       <section>
-        <SnackBar />
-
         <form onSubmit={onLogin} className={styles.loginForm}>
           <Input
             type="email"
@@ -69,6 +68,11 @@ const Login = () => {
             value={logins.email}
             name="email"
             onClear={() => onClear("email")}
+            error={
+              !logins.errorEmail && logins.email.length > 0
+                ? "올바른 이메일 형식이 아닙니다."
+                : ""
+            }
           />
           <Input
             type="password"
@@ -77,6 +81,7 @@ const Login = () => {
             value={logins.password}
             name="password"
             onClear={() => onClear("password")}
+            error={message}
           />
           <Button
             type="submit"

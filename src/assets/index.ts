@@ -22,6 +22,7 @@ export { default as IcTaparr } from "./taparr.svg?react";
 export { default as IcLove } from "./love.svg?react";
 export { default as IcBankIcon } from "./bankIcon.png";
 export { default as IcClose } from "./close.svg?react";
+export { default as IcInputFail } from "./inputFail.svg?react";
 /* eslint-disable @typescript-eslint/no-unused-vars */
 export { default as IcSearch } from "./search.svg?react";
 export { default as EmptyHeart } from "./emptyheart.svg?react";
