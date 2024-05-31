@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Back } from "assets";
+import { IcBack } from "assets";
 import styles from "./styles.module.scss";
 
 interface Ilist {
@@ -16,7 +16,7 @@ const Mypage = ({ links, title }: Ilist) => (
     {links.map((link, i) => (
       <Link to={link.to} className={styles.listLink} key={i}>
         {link.text}
-        <Back />
+        <IcBack />
       </Link>
     ))}
   </article>

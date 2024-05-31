@@ -1,15 +1,26 @@
-import { createBrowserRouter } from "react-router-dom";
+import { Navigate, createBrowserRouter } from "react-router-dom";
+import { getCookie } from "utils/cookies";
 import {
   Home,
   Login,
   Layout,
   Signup,
   Mypage,
-  Finance
+  Finance,
+  Alarm,
+  Ranking,
+  LikeListPage,
+  ComparisonPage,
+  LoungePage,
+  CommunityPage,
+  ComparisonDetailPage,
+  RecommendationPage,
 } from "./pages";
 
+const isLoggedIn = getCookie("token");
 const router = createBrowserRouter([
   {
+    path: "/",
     element: <Layout />,
     children: [
       {
@@ -18,11 +29,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/login",
-        element: <Login />,
+        element: isLoggedIn ? <Navigate to="/" replace /> : <Login />,
       },
       {
         path: "/signup",
-        element: <Signup />,
+        element: isLoggedIn ? <Navigate to="/" replace /> : <Signup />,
       },
       {
         path: "/mypage",
@@ -31,7 +42,39 @@ const router = createBrowserRouter([
       {
         path: "/finance",
         element: <Finance />,
-      }
+      },
+      {
+        path: "/alarm",
+        element: <Alarm />,
+      },
+      {
+        path: "/ranking/:id",
+        element: <Ranking />,
+      },
+      {
+        path: "/likelist",
+        element: <LikeListPage />,
+      },
+      {
+        path: "/comparison",
+        element: <ComparisonPage />,
+      },
+      {
+        path: "/comparisondetail",
+        element: <ComparisonDetailPage />,
+      },
+      {
+        path: "/recommendation",
+        element: <RecommendationPage />,
+      },
+      {
+        path: "/lounge",
+        element: <LoungePage />,
+      },
+      {
+        path: "/community",
+        element: <CommunityPage />,
+      },
     ],
   },
 ]);

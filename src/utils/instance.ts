@@ -1,4 +1,5 @@
 import axios from "axios";
+import { getCookie } from "./cookies";
 
 export const baseAxios = axios.create({
   baseURL: `${process.env.REACT_APP_SERVER_URL}`,
@@ -8,7 +9,17 @@ export const baseAxios = axios.create({
   },
 });
 
-baseAxios.interceptors.request.use();
+baseAxios.interceptors.request.use(
+  (config) => {
+    const token = getCookie("token");
+    const newConfig = { ...config };
+    newConfig.headers.Authorization = `Bearer ${token}`;
+    return config;
+  },
+  (error) => {
+    console.error(error.message);
+  }
+);
 
 baseAxios.interceptors.response.use(
   (response) => response,
@@ -16,10 +27,22 @@ baseAxios.interceptors.response.use(
     const errorMessage = error.response.data;
     const errorStatus = error.response.status;
     switch (errorStatus) {
+      case 400:
+        switch (errorMessage.result.resultMessage) {
+          case "사용자 이메일을 찾을 수 없음.":
+            return Promise.reject(
+              new Error("이메일 또는 비밀번호를 다시 확인하세요.")
+            );
+          default:
+            break;
+        }
+        break;
       case 401:
-        switch (errorMessage.message) {
-          case "로그인 문제잇음":
-            return Promise.reject(error);
+        switch (errorMessage.result.resultMessage) {
+          case "유효하지 않은 패스워드.":
+            return Promise.reject(
+              new Error("이메일 또는 비밀번호를 다시 확인하세요.")
+            );
           default:
             break;
         }

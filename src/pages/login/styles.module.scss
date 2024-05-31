@@ -1,0 +1,115 @@
+@mixin button {
+    width:100%;
+    border-radius: 0.4rem;
+    height:4.4rem;
+    font-weight:500;
+    font-size:1.6rem;
+    letter-spacing: 1.6rem * 0.0057;
+}
+
+.wrap{
+    padding:1.5rem 4.27% 8.3rem;
+    box-sizing: border-box;
+}
+
+.back{
+    cursor: pointer;
+    > svg{
+        fill:var(--color-000)
+    }
+}
+.title{
+    font-size:2rem;
+    line-height:3rem;
+    letter-spacing: 2rem * 0.0057;
+    margin-block: 3.1rem 2.8rem;
+    display:block;
+    color:var(--color-000);
+}
+.span{
+    display:block;
+    color:var(--color-000);
+    font-size:1.5rem;
+    line-height:2.2rem;
+    letter-spacing: 1.5rem * 0.0057;
+    margin-top:1.8rem;
+}
+.strong{
+    display:block;
+    color:var(--color-000);
+    font-weight:700;
+    font-size:2.2rem;
+    line-height:3.3rem;
+    letter-spacing: 2.2rem * 0.0057;
+    margin-block-end: 6rem;
+}
+.loginForm{
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+    margin-block-end:1.6rem;
+}
+
+.link{
+    text-align: center;
+    margin-block-end: 3.6rem;
+    > a {
+        font-size:1.2rem;
+        letter-spacing: 1.2rem * 0.0057;
+        color:var(--color-000);
+        font-weight:500;
+        padding-right:1.2rem;
+        margin-right:1.2rem;
+        position: relative;
+    }
+    > a::after{
+        content: "";
+        top:0;
+        bottom:0;
+        right:0;
+        width:1px;
+        height:1.2rem;
+        position: absolute;
+        background: var(--color-E2E3E6);
+    }
+    > a:last-child{
+        padding-right:0rem;
+        margin-right:0rem;
+    }
+    > a:last-child::after{
+        content: none;
+    }
+}
+.sns{
+    text-align: center;
+    > p{
+        font-size:1.5rem;
+        line-height:2.2rem;
+        letter-spacing: 2.2rem * 0.0057;
+        color:var(--color-CFD4D9);
+        margin-block-end: 1.2rem;
+        background: var(--color-F8F9FA);
+        padding: 0 5px;
+        display: inline-flex;
+        position: relative;
+    }
+    >hr{
+        position: relative;
+        bottom: -11px;
+        display: block;
+        margin: 0;
+        width: 100%;
+        height: 1px;
+        background: var(--color-E2E3E6);
+        border: none;
+    }
+    >button{
+        @include button;
+        background:var(--color-FFE812);
+        color:var(--color-222529);
+        
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}

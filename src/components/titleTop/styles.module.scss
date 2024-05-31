@@ -2,12 +2,14 @@
     display: flex;
     justify-content: space-between;
     margin-bottom:3.5rem;
-
+    > button svg{
+        fill: var(--color-fff);
+    }
     > h2 {
         font-size:1.6rem;
         line-height: 2.4rem;
         letter-spacing: -0.0912px;
-        color:var(--color-white);
+        color:var(--color-fff);
         font-weight:700;
     }
 }

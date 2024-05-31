@@ -1,0 +1,62 @@
+@mixin flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.wrap{
+    padding:1.5rem 4.27% 8.3rem;
+    box-sizing: border-box;
+}
+
+.header{
+    @include flex;
+    margin-block-end: 4.1rem;
+    > div{
+        height:2.4rem;
+        width: 2.4rem;
+    }
+    > strong{
+        color:var(--color-000);
+        letter-spacing: 1.6rem * 0.0057;
+        font-size:1.6rem;
+        font-weight:600;
+        line-height:2.4rem;
+    }
+}
+.mid{
+    @include flex;
+    > p {
+        font-size:2rem;
+        line-height: 3rem;
+        letter-spacing: 2rem * 0.0057;
+        color:var(--color-000)
+    }
+}
+
+.form{
+    margin-block-start: 4rem;
+    display: flex;
+    gap: 3rem;
+    flex-direction: column;
+    > div span {
+        line-height: 1.8rem;
+        letter-spacing: 1.2rem * 0.0057;
+        font-size:1.2rem;
+        color:var(--color-1C1C1E);
+        margin-block-start: 0.4rem;
+    }
+}
+
+.button{
+    position: absolute;
+    bottom: 0;
+    left:0;
+    right: 0;
+    margin:auto 0;
+    height:10.4rem;
+    width:100%;
+    background:var(--color-fff);
+    padding:1.6rem;
+    box-shadow: 0px -13px 29px 0px rgba(0, 0, 0, 0.05);
+    box-sizing: border-box;
+}
