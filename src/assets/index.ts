@@ -19,10 +19,14 @@ export { default as IcCard } from "./card.svg?react";
 export { default as IcLounge } from "./lounge.svg?react";
 export { default as IcLank } from "./lank.svg?react";
 export { default as IcTaparr } from "./taparr.svg?react";
-export { default as IcLove } from "./love.svg?react";
+export { default as IcBigLove } from "./bigLove.svg?react";
+export { default as IcBigNotLove } from "./bigNotLove.svg?react";
+export { default as IcSmallLove } from "./smallLove.svg?react";
+export { default as IcSmallNotLove } from "./smallNotLove.svg?react";
 export { default as IcBankIcon } from "./bankIcon.png";
 export { default as IcClose } from "./close.svg?react";
 export { default as IcInputFail } from "./inputFail.svg?react";
+export { default as IcViewCheck } from "./viewCheck.svg?react";
 /* eslint-disable @typescript-eslint/no-unused-vars */
 export { default as IcSearch } from "./search.svg?react";
 export { default as EmptyHeart } from "./emptyheart.svg?react";

@@ -4,11 +4,19 @@ interface IButton {
   type: "button" | "submit";
   children: string;
   disabled: boolean;
-  height?:string
-  width?:string
+  height?: string;
+  width?: string;
+  onClick?: () => void;
 }
 
-const Button = ({ type, children, disabled, height, width }: IButton) => {
+const Button = ({
+  type,
+  children,
+  disabled,
+  height,
+  width,
+  onClick,
+}: IButton) => {
   const buttonclass = [
     styles.button,
     height && styles[`height${height as string}`],
@@ -17,7 +25,12 @@ const Button = ({ type, children, disabled, height, width }: IButton) => {
     .filter(Boolean)
     .join(" ");
   return (
-    <button type={type} className={buttonclass} disabled={disabled}>
+    <button
+      type={type}
+      className={buttonclass}
+      disabled={disabled}
+      onClick={onClick}
+    >
       {children}
     </button>
   );

@@ -1,49 +1,43 @@
-import { useCallback, useState } from "react";
-import { IcBell, IcLogo, IcMypage } from "assets";
 import { Link, useNavigate } from "react-router-dom";
+import { useQuery } from "@tanstack/react-query";
+import { BankList } from "components";
+import { keepLogin } from "utils/api";
+import { isLogin } from "types";
+import { IcBell, IcLogo, IcMypage } from "assets";
+import { fakedata } from "mock/handlers";
 import styles from "./styles.module.scss";
 
 const Home = () => {
   const navigate = useNavigate();
-  const [login, setLogin] = useState(false);
-  const onlogin = useCallback(() => {
-    setLogin((prev) => !prev);
-  }, [login]);
-  const goods = [
-    {
-      bank: "우리은행",
-      describe: "우리 첫거래 우대 정기예금",
-      rate: "4.5%",
-    },
-    {
-      bank: "국민은행",
-      describe: "청년을 위한 정기예금",
-      rate: "4.5%",
-    },
-    {
-      bank: "신한은행",
-      describe: "파워적금",
-      rate: "4.5%",
-    },
-  ];
+  const { data: login } = useQuery<isLogin>({
+    queryKey: ["login"],
+    queryFn: keepLogin,
+    staleTime: 60 * 1000,
+    gcTime: 300 * 1000,
+  });
+  console.log(fakedata);
   return (
     <>
       <header className={styles.header}>
         <h1>
-          <Link to="/"><IcLogo /></Link>
+          <Link to="/">
+            <IcLogo />
+          </Link>
         </h1>
         <nav>
           <Link to="/alarm">
             <IcBell />
           </Link>
-          <Link to="/mypage"><IcMypage /></Link>
+          <Link to="/mypage">
+            <IcMypage />
+          </Link>
         </nav>
       </header>
       <section>
         <article className={styles.btnText}>
-          {login ? (
-            <button onClick={() => onlogin()}>
-              하진님
+          {login?.result?.resultCode === 200 ? (
+            <button onClick={() => navigate("/login")}>
+              {login.body.name}
               <span>께 CHACK 맞는</span>
               <br />
               금융상품을
@@ -60,30 +54,14 @@ const Home = () => {
           )}
         </article>
         <article className={styles.goodsContiner}>
-          <button className={styles.search} onClick={() => navigate("/search")}>
-            원하시는 금융상품을 검색해 보세요 !
-          </button>
           <div className={styles.articleBox}>
             <div className={styles.articleBoxTop}>
-              <h2>지금 가장 인기 있는 상품</h2>
+              <h2>
+                알아서, <span>랭킹 ChaK</span>
+              </h2>
               <button>더보기 &gt;</button>
             </div>
-            <ul>
-              {goods.map((good, i) => (
-                <li className={styles.popularProduct} key={i}>
-                  <Link to="/">
-                    <span>{i}</span>
-                    <div className={styles.imgbox} />
-                    <div className={styles.textbox}>
-                      <em>{good.bank}</em>
-                      <p>{good.describe}</p>
-                    </div>
-                    <p>{good.rate}</p>
-                  </Link>
-                  <button type="button">asd</button>
-                </li>
-              ))}
-            </ul>
+            <BankList data={fakedata.slice(0, 3)} />
           </div>
           <div className={styles.articleBox}>
             <div className={styles.articleBoxTop}>
