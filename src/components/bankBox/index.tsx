@@ -12,53 +12,23 @@ import {
 } from "assets";
 import styles from "./styles.module.scss";
 
-const BankBox = ({ data }: IBank) => {
+interface IBankBox extends IBank {
+  age: string;
+  setAge: React.Dispatch<React.SetStateAction<string>>;
+  time: string;
+  setTime: React.Dispatch<React.SetStateAction<string>>;
+}
+
+const BankBox = ({ data, age, setAge, time, setTime }: IBankBox) => {
   const {
     agePopup,
     closeAgePopup,
     openAgePopup,
-    closeCurrentAgePopup,
-    beforeAge,
-    afterAge,
-    setAfterAge,
-    setBeforeAge,
-
     timePopup,
     openTimePopup,
     closeTimePopup,
-    afterTime,
-    setAfterTime,
-    beforeTime,
-    setBeforeTime,
-    closeCurrentTimePopup,
   } = useRank();
-  const ageRanges = [
-    "전체",
-    "19세 이하",
-    "20-24세",
-    "25-29세",
-    "30-34세",
-    "35세-39세",
-    "40-44세",
-    "45-49세",
-    "50세 이상",
-  ];
-  const views = ["실시간", "오늘", "이번 주", "이번 달"];
   const currentTime = useTime();
-  const onAge = useCallback(
-    (i: string) => {
-      setAfterAge(i);
-      setBeforeAge(afterAge);
-    },
-    [afterAge]
-  );
-  const onView = useCallback(
-    (i: string) => {
-      setAfterTime(i);
-      setBeforeTime(afterTime);
-    },
-    [afterTime]
-  );
   const [love, setLove] = useState<boolean[]>([]);
   const onLove = (e: React.MouseEvent<HTMLButtonElement>, i: number) => {
     e.stopPropagation();
@@ -71,16 +41,40 @@ const BankBox = ({ data }: IBank) => {
     },
     []
   );
+  // 나이 관련
+  const ageRanges = [
+    "전체",
+    "19세 이하",
+    "20-24세",
+    "25-29세",
+    "30-34세",
+    "35세-39세",
+    "40-44세",
+    "45-49세",
+    "50세 이상",
+  ];
+  const [afterAge, setAfterAge] = useState("전체");
+  const onSeletAge = useCallback(() => {
+    setAge(afterAge);
+    closeAgePopup();
+  }, [afterAge]);
+  // 기간 관련
+  const views = ["실시간", "오늘", "이번 주", "이번 달"];
+  const [afterTime, setAfterTime] = useState("실시간");
+  const onSeletView = useCallback(() => {
+    setTime(afterTime);
+    closeTimePopup();
+  }, [afterTime]);
   return (
     <>
       <div className={styles.tapTop}>
         <p className={styles.time}>{currentTime}</p>
         <div className={styles.button}>
           <button type="button" onClick={openAgePopup}>
-            {afterAge} 연령 <IcTaparr />
+            {age} 연령 <IcTaparr />
           </button>
           <button type="button" onClick={openTimePopup}>
-            {afterTime} <IcTaparr />
+            {time} <IcTaparr />
           </button>
         </div>
       </div>
@@ -126,8 +120,8 @@ const BankBox = ({ data }: IBank) => {
       {agePopup && (
         <RankPop
           title="연령대 선택"
-          close={() => closeAgePopup(beforeAge)}
           height="295"
+          close={closeAgePopup}
         >
           <div className={styles.ageContent}>
             <div className={styles.ageBtn}>
@@ -135,18 +129,18 @@ const BankBox = ({ data }: IBank) => {
                 <button
                   type="button"
                   key={ageRange}
-                  onClick={() => onAge(ageRange)}
-                  className={ageRange === afterAge ? styles.on : ""}
+                  className={`${afterAge === ageRange ? styles.on : ""}`}
+                  onClick={() => setAfterAge(ageRange)}
                 >
                   {ageRange}
                 </button>
               ))}
             </div>
-            {beforeAge && beforeAge !== afterAge && (
+            {(afterAge !== "" && afterAge !== age) && (
               <Button
                 type="button"
                 disabled={false}
-                onClick={() => closeCurrentAgePopup(afterAge)}
+                onClick={onSeletAge}
               >
                 선택완료
               </Button>
@@ -157,14 +151,14 @@ const BankBox = ({ data }: IBank) => {
       {timePopup && (
         <RankPop
           title="조회수 선택"
-          close={() => closeTimePopup(beforeTime)}
+          close={closeTimePopup}
           height="406"
         >
           {views.map((view) => (
             <button
               key={view}
               type="button"
-              onClick={() => onView(view)}
+              onClick={() => setAfterTime(view)}
               className={`${styles.viewBtn} ${afterTime === view ? styles.on : ""}`}
             >
               {view}
@@ -174,8 +168,8 @@ const BankBox = ({ data }: IBank) => {
           <div className={styles.viewBtnWrap}>
             <Button
               type="button"
-              disabled={afterTime === beforeTime}
-              onClick={() => closeCurrentTimePopup(afterTime)}
+              disabled={afterTime === "" || afterTime === time}
+              onClick={() => onSeletView()}
             >
               선택완료
             </Button>

@@ -1,0 +1,89 @@
+.swiperWrap {
+  position: relative;
+  > div > div:last-child {
+    position: static;
+    margin-top: 2.4rem;
+    display: flex;
+    gap: 0.6rem;
+    justify-content: center;
+    > span {
+      background: var(--color-AEB5BC);
+      width: 0.6rem;
+      height: 0.6rem;
+      margin: 0 !important;
+      border-radius: 0 !important;
+      opacity: 1;
+    }
+    .swiper-pagination-bullet-active {
+      width: 1.7rem;
+      background: var(--color-111);
+    }
+  }
+}
+.section07Swiper .swiper-slide-active{
+  div {
+    border:2px solid var(--color-01EA2B);
+  }
+  p{
+    color: var(--color-01EA2B);
+    display: block;
+  }
+}
+.section07SwiperWrap{
+  position: relative;
+  &::after{
+    position: absolute;
+    left: 14%;
+    opacity: 0.4;
+    background: var(--color-fff);
+    width: 12.53%;
+    height: 6.8rem;
+    content: "";
+    top: 0;
+    bottom: 0;
+    margin: auto 0;
+    z-index: 9;
+  }
+  &::before{
+    position: absolute;
+    right: 14%;
+    opacity: 0.4;
+    background: var(--color-fff);
+    width: 12.53%;
+    height: 6.8rem;
+    content: "";
+    top: 0;
+    bottom: 0;
+    margin: auto 0;
+    z-index: 9;
+  }
+}
+.section07Swiper{
+  position: relative;
+  &::after{
+    position: absolute;
+    left: 0;
+    opacity: 0.6;
+    background: var(--color-fff);
+    width: 12.53%;
+    height: 6.8rem;
+    content: "";
+    top: 0;
+    bottom: 0;
+    margin: auto 0;
+    z-index: 9;
+  }
+  &::before{
+    position: absolute;
+    right: 0;
+    opacity: 0.6;
+    background: var(--color-fff);
+    width: 12.53%;
+    height: 6.8rem;
+    content: "";
+    top: 0;
+    bottom: 0;
+    margin: auto 0;
+    z-index: 9;
+  }
+}

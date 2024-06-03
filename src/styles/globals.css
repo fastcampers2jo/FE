@@ -1,60 +1,130 @@
 @import url("./fonts.css");
-:root{
-    --color-F8F9FA:#F8F9FA;
-    --color-fff:#fff;
-    --color-111:#111;
-    --color-333:#333;
-    --color-000:#000;
-    --color-878E95:#878E95;
-    --color-F05C2E:#F05C2E;
-    --color-EAECEF:#EAECEF;
-    --color-AEB5BC:#AEB5BC;
-    --color-FFE812:#FFE812;
-    --color-01EA2B:#01EA2B;
-    --color-25FF62:#25FF62;
-    --color-A8FF00:#A8FF00;
-    --color-0073CB:#0073CB;
-    --color-E2E3E6:#E2E3E6;
-    --color-CFD4D9:#CFD4D9;
-    --color-222529:#222529;
-    --color-d9d9d9:#d9d9d9;
-    --color-393939:#393939;
-    --color-999:#999;
-    --color-A1A1A1:#A1A1A1;
-    --color-DFDFDF:#dfdfdf;
-    --color-05BA2D:#05BA2D;
-    --color-040404:#040404;
-    --color-F2F4F5:#F2F4F5;
-    --color-A8A8A8:#A8A8A8;
-    --color-8e8e8e:#8e8e8e;
-    --color-adadad:#adadad;
-    --color-818181:#818181;
-    --color-F1F3F5:#F1F3F5;
-    --color-E0E0E2:#E0E0E2;
-    --color-E0E0E2:#E0E0E2;
-    --color-4A5056: #4A5056;
-    --color-black-primary-heavy: #a0f400;
+:root {
+  --color-F8F9FA: #f8f9fa;
+  --color-fff: #fff;
+  --color-111: #111;
+  --color-333: #333;
+  --color-000: #000;
+  --color-666: #666;
+  --color-878E95: #878e95;
+  --color-F05C2E: #f05c2e;
+  --color-EAECEF: #eaecef;
+  --color-AEB5BC: #aeb5bc;
+  --color-FFE812: #ffe812;
+  --color-01EA2B: #01ea2b;
+  --color-25FF62: #25ff62;
+  --color-A8FF00: #a8ff00;
+  --color-0073CB: #0073cb;
+  --color-E2E3E6: #e2e3e6;
+  --color-CFD4D9: #cfd4d9;
+  --color-222529: #222529;
+  --color-d9d9d9: #d9d9d9;
+  --color-393939: #393939;
+  --color-999: #999;
+  --color-9D9D9D: #9d9d9d;
+  --color-A1A1A1: #a1a1a1;
+  --color-DFDFDF: #dfdfdf;
+  --color-05BA2D: #05ba2d;
+  --color-040404: #040404;
+  --color-F2F4F5: #f2f4f5;
+  --color-A8A8A8: #a8a8a8;
+  --color-8e8e8e: #8e8e8e;
+  --color-adadad: #adadad;
+  --color-818181: #818181;
+  --color-F1F3F5: #f1f3f5;
+  --color-E0E0E2: #e0e0e2;
+  --color-4A5056: #4a5056;
+  --color-stroke: rgba(112, 115, 124, 0.16);
+  --color-black-primary-heavy: #a0f400;
 }
 
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	font-size: 100%;
-	font: inherit;
-	vertical-align: baseline;
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
 }
 
 /* HTML5 display-role reset for older browsers */
@@ -94,13 +164,14 @@ table {
 body {
   overflow-x: hidden;
 }
-html,body {
-    color:var(--color-gery);
-    font-size:62.5%;
-    font-weight:400;
-    font-family: 'pretendard', 'sans-serif';
-    line-height: 1.7;
-    background: var(--color-fff);
+html,
+body {
+  color: var(--color-gery);
+  font-size: 62.5%;
+  font-weight: 400;
+  font-family: "pretendard", "sans-serif";
+  line-height: 1;
+  background: var(--color-fff);
 }
 textarea,
 input {
@@ -120,17 +191,16 @@ button {
   padding: 0;
   font-family: "pretendard", "sans-serif";
 }
-button{
-    cursor: pointer;
-    background:none;
-    border:0;
-    outline: 0;
-    padding: 0;
-    font-family: 'pretendard', 'sans-serif';
+button {
+  cursor: pointer;
+  background: none;
+  border: 0;
+  outline: 0;
+  padding: 0;
+  font-family: "pretendard", "sans-serif";
 }
-label,input{
-    display: block;
-    box-sizing: border-box;
-    
-    
+label,
+input {
+  display: block;
+  box-sizing: border-box;
 }

@@ -47,27 +47,27 @@ const Input = ({
             placeholder={placeholder}
             className={styles.input}
           />
-          {name === "emails" && (
-            <Button type="button" disabled={false} height="39" width="73">
-              중복확인
-            </Button>
-          )}
+          <div className={styles.icon}>
+            {value.length > 0 && (
+              <button onClick={onButton} type="button">
+                <img src={IcInputDelet} alt="삭제" />
+              </button>
+            )}
+            {type === "password" && (
+              <button onClick={onShow} type="button">
+                <img src={hide ? IcShow : IcHide} alt="보기" />
+              </button>
+            )}
+            {name === "confirmPassword" && !errorCode && value.length > 0 && (
+              <IcInputFail />
+            )}
+          </div>
         </div>
-        <div className={styles.icon}>
-          {value.length > 0 && (
-            <button onClick={onButton} type="button">
-              <img src={IcInputDelet} alt="삭제" />
-            </button>
-          )}
-          {type === "password" && (
-            <button onClick={onShow} type="button">
-              <img src={hide ? IcShow : IcHide} alt="보기" />
-            </button>
-          )}
-          {name === "confirmPassword" && !errorCode && value.length > 0 && (
-            <IcInputFail />
-          )}
-        </div>
+        {name === "emails" && (
+          <Button type="button" disabled={false} height="39" width="73">
+            중복확인
+          </Button>
+        )}
       </label>
       <p className={errors}>{value.length > 0 && error}</p>
     </>

@@ -39,10 +39,9 @@ const useValid = <T extends IVaild>(
         ...prev,
         password: e.target.value,
         errorPassword: Error,
-        errorConfirmPassword: prev.confirmPassword === e.target.value,
       }));
     },
-    []
+    [value.password, value.errorPassword]
   );
   // 패스워드 확인
   const changePasswordCheck = useCallback(
@@ -53,7 +52,7 @@ const useValid = <T extends IVaild>(
         errorConfirmPassword: prev.password === e.target.value,
       }));
     },
-    []
+    [value.errorConfirmPassword, value.password, value.confirmPassword]
   );
   // 이름 확인
   const changeName = useCallback(

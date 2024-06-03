@@ -36,7 +36,6 @@ const Login = () => {
     },
     [logins.email, logins.password]
   );
-
   // 제거
   const onClear = useCallback(
     (v: string) => {
@@ -45,7 +44,6 @@ const Login = () => {
     },
     [logins.email, logins.password]
   );
-  console.log(logins.errorEmail);
   return (
     <div className={styles.wrap}>
       <header>

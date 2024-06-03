@@ -22,7 +22,7 @@ const BankList = ({ data }: IBank) => {
           onClick={onLink}
         >
           <p className={styles.currentRank}>
-            {i + 3} <span />
+            {rank.id} <span />
           </p>
           <div className={styles.leftText}>
             <div className={styles.bankImgBox}>
