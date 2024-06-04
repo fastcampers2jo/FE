@@ -1,4 +1,4 @@
-import { Back } from "assets";
+import { IcBack } from "assets";
 import { useNavigate } from "react-router-dom";
 import "./category.scss";
 
@@ -23,7 +23,7 @@ const Category = ({ pagename }: ICategory) => {
   return (
     <header>
       <div className="statusbar">
-        <Back className="cagegory" onClick={() => navigate(-1)} />
+        <IcBack className="cagegory" onClick={() => navigate(-1)} />
         status bar {pagename}
       </div>
 

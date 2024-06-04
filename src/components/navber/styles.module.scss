@@ -7,23 +7,27 @@
     height:4.7rem;
     position: fixed;
     bottom: 0;
-    background:var(--color-white);
+    background:var(--color-fff);
     margin: 0 auto;
     
 }
 .button{
     width: 20%;
-    stroke: var(--svg-black);
-    fill: var(--svg-black);
+    
+    > svg{
+        fill: var(--color-000);
+    }
     > p {
         line-height: 1.8rem;
         font-size:1.2rem;
         text-align:center;
         margin-top:2px;
+        color: var(--color-000);
     }
-    &.active{
-        color: var(--color-green);
-        stroke: var(--color-green);
-        fill: var(--color-green);
+    &.active p {
+        color: var(--color-05BA2D);
+    }
+    &.active > svg{
+        fill: var(--color-05BA2D);
     }
 }

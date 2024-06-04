@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import { Bell, Mypage } from "assets";
+=======
+import { IcBell, IcMypage, RightArrow } from "assets";
+>>>>>>> 0344d45f1260711926601248c38a2f67689280ec
 import { Link } from "react-router-dom";
 import PostList from "components/lounge/PostList";
 import "./lounge.scss";
@@ -12,8 +16,8 @@ const LoungePage = () => (
     <div className="logobar">
       <span className="logotext">Logo </span>
       <div className="icons">
-        <Bell className="bell" />
-        <Mypage className="mypage" />
+        <IcBell className="bell" />
+        <IcMypage className="mypage" />
       </div>
     </div>
     <HotTopic />

@@ -1,4 +1,4 @@
-import { Back, Bell, Mypage, SNSShare, ThumbsUp } from "assets";
+import { Back, Bell, Mypage, SNSShare, ThumbsUp, IcBack, IcBell, Post, IcMypage, IcSearch } from "assets";
 import "./community.scss";
 import { useNavigate } from "react-router-dom";
 import ProductsVote from "components/vote";

@@ -8,6 +8,10 @@ module.exports = {
     "plugin:@typescript-eslint/recommended",
     "plugin:react-hooks/recommended",
     "plugin:@tanstack/eslint-plugin-query/recommended",
+    'eslint:recommended',
+    'plugin:@typescript-eslint/recommended',
+    'plugin:react-hooks/recommended',
+    "plugin:@tanstack/eslint-plugin-query/recommended",
   ],
   ignorePatterns: ["dist", ".eslintrc.cjs"],
   parser: "@typescript-eslint/parser",
@@ -15,6 +19,7 @@ module.exports = {
     ecmaVersion: "latest",
     sourceType: "module",
     project: ["./tsconfig.json"],
+    "createDefaultProgram":true,
   },
   plugins: ["react-refresh", "@tanstack/query", "@typescript-eslint"],
   rules: {
@@ -69,5 +74,6 @@ module.exports = {
     "react/jsx-one-expression-per-line": "off",
     "max-len": "off",
     "implicit-arrow-linebreak": "off",
+   "no-alert": "off",
   },
 };

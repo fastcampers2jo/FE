@@ -1,6 +1,6 @@
 import { useCallback } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { Fit, Finance, Lank, Lounge, Home } from "assets";
+import { IcFit, IcHome, IcCard, IcLounge, IcLank } from "assets";
 import styles from "./styles.module.scss";
 
 const Navbar = () => {
@@ -13,11 +13,11 @@ const Navbar = () => {
     [navigate]
   );
   const links = [
-    { name: "홈", path: "/", img: <Home /> },
-    { name: "랭킹", path: "/login", img: <Lank /> },
-    { name: "맞춤상품", path: "/goods", img: <Fit /> },
-    { name: "나의금융", path: "/finance", img: <Finance /> },
-    { name: "라운지", path: "/lounge", img: <Lounge /> },
+    { name: "홈", path: "/", src: <IcHome />, link: "home" },
+    { name: "랭킹", path: "/ranking/:id", src: <IcLank />, link: "ranking" },
+    { name: "맞춤상품", path: "/goods", src: <IcFit />, link: "goods" },
+    { name: "나의금융", path: "/finance", src: <IcCard />, link: "finance" },
+    { name: "라운지", path: "/lounge", src: <IcLounge />, link: "lounge" },
   ];
   return (
     <div className={styles.navber}>
@@ -25,9 +25,9 @@ const Navbar = () => {
         <button
           onClick={() => handlNave(link.path)}
           key={link.name}
-          className={`${styles.button} ${location.pathname === link.path ? styles.active : ""}`}
+          className={`${styles.button} ${location.pathname.includes(link.link) ? styles.active : ""}`}
         >
-          {link.img}
+          {link.src}
           <p>{link.name}</p>
         </button>
       ))}

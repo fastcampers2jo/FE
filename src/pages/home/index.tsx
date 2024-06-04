@@ -1,11 +1,11 @@
 import { useCallback, useState } from "react";
-import { Bell, Logo, Love, Mypage, Search } from "assets";
+import { IcBell, IcLogo, IcMypage } from "assets";
 import { Link, useNavigate } from "react-router-dom";
 import styles from "./styles.module.scss";
 
 const Home = () => {
   const navigate = useNavigate();
-  const [login, setLogin] = useState(true);
+  const [login, setLogin] = useState(false);
   const onlogin = useCallback(() => {
     setLogin((prev) => !prev);
   }, [login]);
@@ -30,43 +30,38 @@ const Home = () => {
     <>
       <header className={styles.header}>
         <h1>
-          <Link to="/">
-            <Logo />
-          </Link>
+          <Link to="/"><IcLogo /></Link>
         </h1>
         <nav>
-          <Link to="/">
-            <Bell />
+          <Link to="/alarm">
+            <IcBell />
           </Link>
-          <Link to="/mypage">
-            <Mypage />
-          </Link>
+          <Link to="/mypage"><IcMypage /></Link>
         </nav>
       </header>
       <section>
         <article className={styles.btnText}>
           {login ? (
             <button onClick={() => onlogin()}>
-              로그인
-              <span>하고</span>
-              <br />
-              맞춤형 상품
-              <span>추천받으세요 &gt;</span>
-            </button>
-          ) : (
-            <button onClick={() => navigate("/login")}>
               하진님
               <span>께 CHACK 맞는</span>
               <br />
               금융상품을
               <span>추천받아보세요 &gt;</span>
             </button>
+          ) : (
+            <button onClick={() => navigate("/login")}>
+              로그인
+              <span>하고</span>
+              <br />
+              맞춤형 상품
+              <span>추천받으세요 &gt;</span>
+            </button>
           )}
         </article>
         <article className={styles.goodsContiner}>
           <button className={styles.search} onClick={() => navigate("/search")}>
             원하시는 금융상품을 검색해 보세요 !
-            <Search />
           </button>
           <div className={styles.articleBox}>
             <div className={styles.articleBoxTop}>
@@ -85,9 +80,7 @@ const Home = () => {
                     </div>
                     <p>{good.rate}</p>
                   </Link>
-                  <button type="button">
-                    <Love />
-                  </button>
+                  <button type="button">asd</button>
                 </li>
               ))}
             </ul>

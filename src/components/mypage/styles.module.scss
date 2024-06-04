@@ -3,7 +3,7 @@
     margin-top:4rem;
 }
 .listTitle{
-    color:var(--color-white);
+    color:var(--color-fff);
     font-size:1.6rem;
     font-weight:600;
     line-height: 2.4rem;
@@ -20,10 +20,11 @@
     letter-spacing: 0.912px;
     border-bottom: 1px solid var(--color-393939);
     padding-block: 1.8rem;
-    color:var(--color-white);
+    color:var(--color-fff);
     > svg{
         transform: rotate(-180deg);
         width: 1.8rem;
         height: 1.8rem;
+        fill: var(--color-fff);
     }
 }
