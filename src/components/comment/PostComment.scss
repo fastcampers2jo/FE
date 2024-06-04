@@ -1,0 +1,141 @@
+.postcomment {
+  margin: 24px 16px 0;
+}
+
+.comment__utils {
+  display: flex;
+  justify-content: space-between;
+
+  .comment__utils__text {
+    display: flex;
+    color: var(--color-white-gray-9, #353a3f);
+    /* text/caption/Caption 1 */
+    font-family: Pretendard;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 150%; /* 18px */
+    letter-spacing: 0.068px;
+
+    .tab {
+      cursor: pointer;
+
+      &.active {
+        margin-right: 3px;
+        color: var(--color-white-gray-8, #4a5056);
+
+        /* text/Body 1/Heavy */
+        font-family: Pretendard;
+        font-size: 12px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 150%; /* 18px */
+        letter-spacing: 0.068px;
+      }
+    }
+  }
+}
+
+.newcomments {
+  width: auto;
+  height: 39px;
+  padding: 8px 16px;
+  box-shadow: 0px -13px 29px 0px rgba(0, 0, 0, 0.05);
+  display: flex;
+
+  .upload {
+    border-radius: 4px;
+    padding: 8px 10px;
+    margin-left: 6px;
+    background: var(--color-white-gray-3, #eaecef);
+  }
+
+  .comment--input {
+    color: #000;
+    outline: none;
+    border: none;
+    border-bottom: 2px solid var(--color-white-primary-normal-stroke, rgba(112, 115, 124, 0.16));
+    width: 100%;
+
+    /* text/label/Label 1 */
+    font-family: Pretendard;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 150%; /* 21px */
+    letter-spacing: 0.08px;
+
+    &::placeholder {
+      color: var(--color-white-gray-6, #aeb5bc);
+
+      /* text/label/Label 1 */
+      font-family: Pretendard;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 150%; /* 21px */
+      letter-spacing: 0.08px;
+    }
+  }
+}
+.commentsmain {
+  .comments {
+    padding: 21px 0 26px;
+    border-bottom: 1px solid #eaecef;
+
+    &:last-child {
+      border-bottom: none;
+    }
+    .comment__reply {
+      cursor: pointer;
+      color: var(--color-white-gray-8, #4a5056);
+
+      /* text/caption/Caption 2 */
+      font-family: Pretendard;
+      font-size: 11px;
+      font-style: normal;
+      font-weight: 300;
+      line-height: 150%; /* 16.5px */
+      letter-spacing: 0.063px;
+    }
+    .comment__detail {
+      overflow: hidden;
+      color: #000;
+      margin-bottom: 2px;
+
+      /* text/label/Label 1 */
+      font-family: Pretendard;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 150%; /* 21px */
+      letter-spacing: 0.08px;
+    }
+    .comment__info {
+      display: flex;
+      color: var(--color-white-gray-9, #353a3f);
+      margin-bottom: 4px;
+
+      /* text/Body 1/Heavy */
+      font-family: Pretendard;
+      font-size: 12px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: 150%; /* 18px */
+      letter-spacing: 0.068px;
+
+      .comment__time {
+        margin-left: 4px;
+        color: var(--color-white-gray-6, #aeb5bc);
+
+        /* text/caption/Caption 2 */
+        font-family: Pretendard;
+        font-size: 11px;
+        font-style: normal;
+        font-weight: 300;
+        line-height: 150%; /* 16.5px */
+        letter-spacing: 0.063px;
+      }
+    }
+  }
+}
