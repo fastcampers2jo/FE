@@ -14,6 +14,15 @@ import {
   CommunityPage,
   ComparisonDetailPage,
   RecommendationPage,
+  OnboardingMain,
+  Step1,
+  Step2,
+  Step3,
+  Step4,
+  Step5,
+  Step6,
+  NewPost,
+  ProductDetail,
 } from "./pages";
 
 const isLoggedIn = getCookie("token");
@@ -51,6 +60,10 @@ const router = createBrowserRouter([
         element: <LikeListPage />,
       },
       {
+        path: "/productdetail",
+        element: <ProductDetail />,
+      },
+      {
         path: "/comparison",
         element: <ComparisonPage />,
       },
@@ -59,8 +72,36 @@ const router = createBrowserRouter([
         element: <ComparisonDetailPage />,
       },
       {
-        path: "/recommendation",
+        path: "/recommendlist",
         element: <RecommendationPage />,
+      },
+      {
+        path: "/recommend-onboarding/main",
+        element: <OnboardingMain />,
+      },
+      {
+        path: "/recommend-onboarding/step1",
+        element: <Step1 />,
+      },
+      {
+        path: "/recommend-onboarding/step2",
+        element: <Step2 />,
+      },
+      {
+        path: "/recommend-onboarding/step3",
+        element: <Step3 />,
+      },
+      {
+        path: "/recommend-onboarding/step4",
+        element: <Step4 />,
+      },
+      {
+        path: "/recommend-onboarding/step5",
+        element: <Step5 />,
+      },
+      {
+        path: "/recommend-onboarding/step6",
+        element: <Step6 />,
       },
       {
         path: "/lounge",
@@ -69,6 +110,10 @@ const router = createBrowserRouter([
       {
         path: "/community",
         element: <CommunityPage />,
+      },
+      {
+        path: "/community/newpost",
+        element: <NewPost />,
       },
     ],
   },

@@ -1,29 +1,61 @@
+<<<<<<< HEAD
+import { Bell, Mypage } from "assets";
+=======
 import { IcBell, IcMypage, RightArrow } from "assets";
+>>>>>>> 0344d45f1260711926601248c38a2f67689280ec
 import { Link } from "react-router-dom";
 import PostList from "components/lounge/PostList";
-import HotTopic from "components/lounge/HotIssue";
 import "./lounge.scss";
+import HotTopic from "components/lounge/HotTopic";
+import { Swiper, SwiperSlide } from "swiper/react";
+
+import "swiper/css";
 
 const LoungePage = () => (
-  <>
+  <div className="loungeMain">
     <div className="logobar">
-      <span>Logo </span>
+      <span className="logotext">Logo </span>
       <div className="icons">
         <IcBell className="bell" />
         <IcMypage className="mypage" />
       </div>
     </div>
     <HotTopic />
-    <div className="header">
+    <section className="community__section">
       <Link to="/community" className="page__title">
-        게시판 <RightArrow className="arrow--right" />
+        게시판
       </Link>
-      <Link to="/post" className="post--btn">
-        글쓰기
-      </Link>
-    </div>
+      <div className="product__categories">
+        <Swiper slidesPerView={6} spaceBetween={45}>
+          <SwiperSlide>
+            <div className="product__category active">전체</div>
+          </SwiperSlide>
+          <SwiperSlide>
+            <div className="product__category">예금</div>
+          </SwiperSlide>
+          <SwiperSlide>
+            <div className="product__category">적금</div>
+          </SwiperSlide>
+          <SwiperSlide>
+            <div className="product__category">카드</div>
+          </SwiperSlide>
+          <SwiperSlide>
+            <div className="product__category">연금</div>
+          </SwiperSlide>
+          <SwiperSlide>
+            <div className="product__category">파킹</div>
+          </SwiperSlide>
+          <SwiperSlide>
+            <div className="product__category">CMA</div>
+          </SwiperSlide>
+          <SwiperSlide>
+            <div className="product__category" style={{ visibility: "hidden" }} />
+          </SwiperSlide>
+        </Swiper>
+      </div>
+    </section>
     <PostList />
-  </>
+  </div>
 );
 
 export default LoungePage;
