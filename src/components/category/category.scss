@@ -1,26 +1,26 @@
 .statusbar {
   display: flex;
-  min-width: 375px;
+  min-width: 37.5rem;
   width: auto;
-  height: 90px;
+  height: 9rem;
   justify-content: center;
   align-items: center;
   background-color: #111;
-  border-bottom: 1px solid #fff;
+  border-bottom: 0.1rem solid #fff;
   color: #fff;
-  font-size: 14px;
+  font-size: 1.4rem;
 }
 
 .product__categories {
   width: auto;
-  padding-left: 16px;
-  padding-top: 16px;
+  padding-left: 1.6rem;
+  padding-top: 1.6rem;
   background-color: #111;
-  height: 44px;
+  height: 4.4rem;
   text-align: center;
   justify-content: flex-start;
   display: flex;
-  gap: 10px;
+  gap: 1rem;
   overflow: hidden;
   align-items: center;
 
@@ -29,41 +29,41 @@
     text-align: center;
     justify-content: center;
     align-items: center;
-    min-width: 41px;
+    min-width: 4.1rem;
     color: var(--color-white-gray-6, #aeb5bc);
     text-align: center;
-    border-bottom: 3px solid var(--test-02, #111);
+    border-bottom: 0.3rem solid var(--test-02, #111);
 
     span {
-      font-size: 16px;
+      font-size: 1.6rem;
       font-weight: 600;
-      line-height: 150%; /* 24px */
-      letter-spacing: 0.091px;
+      line-height: 150%; /* 2.4rem */
+      letter-spacing: 0.0091rem;
       cursor: pointer;
-      margin: 1px;
-      padding-top: 7px;
-      padding-bottom: 9px;
+      margin: 0.1rem;
+      padding-top: 0.7rem;
+      padding-bottom: 0.9rem;
     }
 
     /* text/headline/Headline 2 */
 
     &:active {
-      border-bottom: 3px solid var(--test-02, #01ea2b);
+      border-bottom: 0.3rem solid var(--test-02, #01ea2b);
       padding-bottom: 0;
       color: #fff;
       text-align: center;
-      min-width: 50px;
+      min-width: 5rem;
 
       span {
         display: flex;
         margin: 0 auto;
-        padding-top: 7px;
-        padding-bottom: 9px;
+        padding-top: 0.7rem;
+        padding-bottom: 0.9rem;
         /* text/headline/Headline 2 */
-        font-size: 16px;
+        font-size: 1.6rem;
         font-weight: 600;
-        line-height: 150%; /* 24px */
-        letter-spacing: 0.091px;
+        line-height: 150%; /* 2.4rem */
+        letter-spacing: 0.0091rem;
         text-align: center;
         justify-content: center;
         align-items: center;

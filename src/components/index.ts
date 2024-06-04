@@ -9,3 +9,6 @@ export { default as LogoTop } from "./logoTop";
 export { default as RankPop } from "./rankpop";
 export { default as Likebox } from "./likebox";
 export { default as Category } from "./category";
+export { default as BankList } from "./bankList";
+export { default as BankBox } from "./bankBox";
+export { default as Slider } from "./slider";

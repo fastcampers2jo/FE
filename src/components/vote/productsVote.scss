@@ -1,0 +1,383 @@
+.productsvote {
+  width: calc(100% - 32px) px;
+  padding: 20px;
+  border-radius: 5px;
+  height: auto;
+  // min-height: 214px;
+  border: 0.5px solid var(--color-white-gray-6, #aeb5bc);
+
+  .vote__utils {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    color: #666;
+
+    /* text/caption/Caption 1 */
+    font-family: Pretendard;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 150%; /* 18px */
+    letter-spacing: 0.068px;
+  }
+}
+
+.vote__list {
+  width: auto;
+  margin-bottom: 2.4rem;
+  height: auto;
+
+  .vote__productlist {
+    justify-content: space-between;
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.4rem;
+    margin-top: 0.8rem;
+    background-color: #fff;
+    height: auto;
+    width: 100%;
+
+    &.newpostvote {
+      width: auto;
+      justify-content: flex-start;
+      margin-bottom: 8px;
+      margin-top: 0;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    .product__infos {
+      display: flex;
+      width: auto;
+      height: auto;
+
+      &.results,
+      &.newpostvote {
+        width: 100%;
+      }
+
+      &.results {
+        display: block;
+      }
+
+      .product__info {
+        display: flex;
+        align-items: center;
+        width: auto;
+        height: auto;
+
+        &.newpostvote {
+          width: 100%;
+          height: auto;
+          border-radius: 4px;
+          background: var(--color-white-gray-2, #f1f3f5);
+          padding: 4px 8px;
+        }
+
+        .vote--toggle {
+          align-items: center;
+          display: flex;
+          width: 2.4rem;
+          height: 2.4rem;
+          cursor: pointer;
+
+          &.active {
+            rect {
+              stroke-width: 0.7rem;
+              stroke: #2def58;
+            }
+          }
+        }
+
+        .product__img {
+          display: flex;
+          background-color: #d9d9d9;
+          width: 2.4rem;
+          height: 2.4rem;
+          border-radius: 50%;
+          margin-left: 2rem;
+          margin-right: 0.8rem;
+          justify-content: center;
+          flex-shrink: 0;
+
+          &.newpostvote {
+            display: flex;
+            justify-content: center;
+            margin-left: 10px;
+            width: 20px;
+            height: 20px;
+          }
+        }
+      }
+
+      .product__title {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        cursor: pointer;
+        width: 100%;
+
+        &.results {
+          display: flex;
+          flex-direction: column;
+          width: 100%;
+          justify-content: space-between;
+
+          .voting__percent {
+            margin-top: 2px; /* 필요에 따라 여백 조정 */
+            height: 5px;
+            width: 100%;
+            display: flex;
+            flex-direction: row-reverse;
+
+            .voting__track__def {
+              height: 100%;
+              width: 100%;
+              background-color: #d9d9d9;
+              border-radius: 300px;
+              position: relative;
+            }
+
+            .voting__track__active {
+              height: 100%;
+
+              position: absolute;
+              background-color: #5ded2a;
+              border-radius: 300px;
+              width: 60%;
+              z-index: 10;
+              top: 0;
+              left: 0;
+
+              &.nonselect {
+                background-color: #797979;
+                border-radius: 300px;
+                width: 45%;
+              }
+            }
+          }
+
+          .voting__info {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+
+            .voting__count {
+              display: flex;
+              width: 22px;
+              margin-right: 0;
+              margin-left: auto;
+              align-items: center;
+              color: #666;
+
+              /* text/label/Label 3 */
+              font-family: Pretendard;
+              font-size: 10px;
+              font-style: normal;
+              font-weight: 500;
+              line-height: 150%; /* 15px */
+              letter-spacing: 0.057px;
+            }
+          }
+        }
+
+        &.newpostvote {
+          display: flex;
+        }
+
+        .product__name {
+          color: #111;
+
+          /* text/headline/Headline 4 */
+          font-family: Pretendard;
+          font-size: 1.2rem;
+          font-style: normal;
+          font-weight: 600;
+          line-height: 150%; /* 1.8rem */
+          letter-spacing: 0.0068rem;
+        }
+
+        .product__bankname {
+          color: var(--color-white-back-heavy, #adadad);
+
+          /* text/caption/Caption 2 */
+          font-family: Pretendard;
+          font-size: 1.1rem;
+          font-style: normal;
+          font-weight: 300;
+          line-height: 150%; /* 1.65rem */
+          letter-spacing: 0.0063rem;
+        }
+      }
+    }
+    .product__interest {
+      display: flex;
+      justify-content: flex-end;
+
+      .interest__info {
+        .interest__max {
+          display: block;
+          color: var(--color-white-primary-normal, var(--test-02, #01ea2b));
+          text-align: right;
+
+          /* text/headline/Headline 3 */
+          font-size: 1.4rem;
+          font-weight: 600;
+          line-height: 150%; /* 2.1rem */
+          letter-spacing: 0.008rem;
+        }
+
+        .interest__def {
+          display: block;
+          color: #444;
+          text-align: right;
+
+          /* text/headline/Headline 4 */
+          font-size: 1.2rem;
+          font-weight: 600;
+          line-height: 150%; /* 1.8rem */
+          letter-spacing: 0.0068rem;
+        }
+      }
+    }
+  }
+
+  &.newpostvote {
+    margin: 0 16px;
+  }
+}
+
+.vote--toggle {
+  height: auto;
+  width: auto;
+
+  .vote__select {
+    cursor: pointer;
+    height: 3.2rem;
+    border-radius: 0.4rem;
+    background: var(--color-white-gray-3, #eaecef);
+    height: auto;
+    padding: 0.4rem 0;
+    justify-content: center;
+    align-items: center;
+    color: var(--color-white-gray-6, #aeb5bc);
+    text-align: center;
+
+    /* text/Body 1/Normal */
+    font-family: Pretendard;
+    font-size: 1.6rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 150%; /* 2.4rem */
+    letter-spacing: 0.0091rem;
+
+    &.results {
+      color: var(--color-white-gray-8, #4a5056);
+    }
+
+    &:active {
+      color: var(--color-white-static-black, #111);
+      background-color: var(--color-white-primary-light, #bcff3a);
+    }
+
+    &.preview {
+      margin-top: 0.8rem;
+      border-radius: 0.4rem;
+      background: var(--color-white-gray-8, #4a5056);
+      color: var(--color-white-gray-1, #f8f9fa);
+    }
+  }
+}
+
+///// 글쓰기 > 투표항목 추가 컴포넌트 /////
+
+.postvote__icons {
+  &__check,
+  &__x {
+    cursor: pointer;
+
+    margin-right: 4px;
+    path,
+    svg,
+    rect {
+      stroke: #4a5056;
+      stroke-width: 1.5px;
+    }
+  }
+  &__plus {
+    padding: 5px;
+    cursor: pointer;
+  }
+}
+
+.postvote {
+  width: auto;
+  margin: 0 16px;
+  padding: 20px 0;
+  border-radius: 4px;
+  border: 0.5px solid var(--color-white-gray-6, #aeb5bc);
+
+  .vote__products__add {
+    border-radius: 4px;
+    background: #f1ffe8;
+    padding: 12px 16px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    margin: 0 16px;
+    gap: 8px;
+
+    &__info {
+      overflow: hidden;
+      color: var(--color-white-gray-8, #4a5056);
+      text-align: center;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+
+      /* text/label/Label 1 */
+      font-family: Pretendard;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 150%; /* 21px */
+      letter-spacing: 0.08px;
+    }
+  }
+
+  &__utils {
+    display: flex;
+    align-items: center;
+    padding: 0 10px 16px;
+    justify-content: space-between;
+
+    color: var(--color-white-gray-8, #4a5056);
+    font-family: Pretendard;
+    font-size: 11px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 150%; /* 16.5px */
+    letter-spacing: 0.063px;
+
+    &.select {
+      margin: 0 6px;
+    }
+
+    span {
+      padding-right: 5%;
+      overflow: hidden;
+      color: var(--color-white-gray-8, #4a5056);
+      text-overflow: ellipsis;
+
+      /* text/Body 1/Heavy */
+      font-family: Pretendard;
+      font-size: 12px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: 150%; /* 18px */
+      letter-spacing: 0.068px;
+    }
+  }
+}
