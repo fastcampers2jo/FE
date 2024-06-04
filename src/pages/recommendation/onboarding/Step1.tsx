@@ -1,4 +1,4 @@
-import { Back, Bar1 } from "assets";
+import { IcBack, Bar1 } from "assets";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import "../recommendation.scss";
@@ -22,11 +22,13 @@ const Step1 = () => {
     <div className="recommendonboarding">
       <form className="recommend__category">
         <section className="recommend__statusbar">
-          <Back className="icon__recommend" onClick={() => navigate(-1)} />
+          <IcBack className="icon__recommend" onClick={() => navigate(-1)} />
           <Bar1 className="icon__disabled" />
         </section>
         <section className="onboarding__title">
-          <div className=" onboarding__title__def category">관심있는 금융상품 카테고리를 선택해주세요</div>
+          <div className=" onboarding__title__def category">
+            관심있는 금융상품 카테고리를 선택해주세요
+          </div>
         </section>
         <section className="onboarding__textboxs">
           <button
@@ -35,7 +37,10 @@ const Step1 = () => {
             onClick={() => handleCategorySelect("저축상품")}
           >
             <div className="text">🪙 저축상품</div>
-            <div className="text small"> 상품은 예금 &#8729; 적금 &#8729; 파킹 &#8729; CMA가 있어요</div>
+            <div className="text small">
+              {" "}
+              상품은 예금 &#8729; 적금 &#8729; 파킹 &#8729; CMA가 있어요
+            </div>
           </button>
           <button
             type="button"

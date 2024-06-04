@@ -1,7 +1,7 @@
 import { useCallback, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useMutation } from "@tanstack/react-query";
-import { Button, Input, SnackBar } from "components";
+import { Button, Input } from "components";
 import { IcBack, IcKakao, IcLoginIcon } from "assets";
 import { useMessage } from "stores/useMessage";
 import { useValid } from "hooks";
@@ -18,7 +18,7 @@ const Login = () => {
     errorPassword: false,
   });
   const { changeEmail, changePassword } = useValid(logins, setLogins);
-  const { setMessage } = useMessage((state) => state);
+  const { setMessage, message } = useMessage((state) => state);
   const { mutate } = useMutation({
     mutationFn: login,
     onSuccess: (data) => {
@@ -36,7 +36,6 @@ const Login = () => {
     },
     [logins.email, logins.password]
   );
-
   // 제거
   const onClear = useCallback(
     (v: string) => {
@@ -59,25 +58,33 @@ const Login = () => {
         </strong>
       </header>
       <section>
-        <SnackBar />
-
         <form onSubmit={onLogin} className={styles.loginForm}>
-          <Input
-            type="email"
-            placeholder="이메일"
-            onChange={changeEmail}
-            value={logins.email}
-            name="email"
-            onClear={() => onClear("email")}
-          />
-          <Input
-            type="password"
-            placeholder="비밀번호"
-            onChange={changePassword}
-            value={logins.password}
-            name="password"
-            onClear={() => onClear("password")}
-          />
+          <div>
+            <Input
+              type="email"
+              placeholder="이메일"
+              onChange={changeEmail}
+              value={logins.email}
+              name="email"
+              onClear={() => onClear("email")}
+              error={
+                !logins.errorEmail && logins.email.length > 0
+                  ? "올바른 이메일 형식이 아닙니다."
+                  : ""
+              }
+            />
+          </div>
+          <div>
+            <Input
+              type="password"
+              placeholder="비밀번호"
+              onChange={changePassword}
+              value={logins.password}
+              name="password"
+              onClear={() => onClear("password")}
+              error={message}
+            />
+          </div>
           <Button
             type="submit"
             disabled={!(logins.errorPassword && logins.errorEmail)}

@@ -1,4 +1,4 @@
-import { Back, Bar4, Edit } from "assets";
+import { IcBack, Bar4, IcEdit } from "assets";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
@@ -26,7 +26,7 @@ const Step4 = () => {
   return (
     <div className="onboarding__myset">
       <section className="recommend__statusbar">
-        <Back className="icon__recommend" onClick={() => navigate(-1)} />
+        <IcBack className="icon__recommend" onClick={() => navigate(-1)} />
         <Bar4 className="icon__disabled" />
       </section>
       <section className="onboarding__title">
@@ -38,7 +38,9 @@ const Step4 = () => {
           <div className="tag__options">20-24세</div>
           <div className="tag__options">소득 100만원 이하</div>
         </div>
-        <div className="onboarding__title__small">의 또래들은 월 평균 30만원을 저축해요!</div>
+        <div className="onboarding__title__small">
+          의 또래들은 월 평균 30만원을 저축해요!
+        </div>
       </section>
 
       <section className="myset__options">
@@ -56,7 +58,7 @@ const Step4 = () => {
             onWheel={(event) => (event.target as HTMLElement).blur()}
             value={inputValue}
           />
-          {!isInputActive && !inputValue && <Edit className="edit" />}
+          {!isInputActive && !inputValue && <IcEdit className="edit" />}
           <span>만원</span>
         </div>
       </section>

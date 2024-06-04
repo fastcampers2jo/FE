@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-import { Bell, Mypage } from "assets";
-=======
-import { IcBell, IcMypage, RightArrow } from "assets";
->>>>>>> 0344d45f1260711926601248c38a2f67689280ec
+import { IcBell, IcMypage } from "assets";
 import { Link } from "react-router-dom";
 import PostList from "components/lounge/PostList";
 import "./lounge.scss";
