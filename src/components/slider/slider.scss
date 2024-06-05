@@ -1,6 +1,6 @@
 .slider-container {
   width: auto;
-  margin: 0 16px;
+  margin: 0 1.6rem;
   text-align: center;
 }
 
@@ -9,7 +9,7 @@
 }
 
 .slider {
-  margin-top: 20px;
+  margin-top: 2rem;
   width: 96.5%;
   left: 3.2%;
 }
@@ -17,18 +17,18 @@
 .thumb {
   z-index: 2;
   position: absolute;
-  top: -1px;
+  top: -0.1rem;
   outline: none;
 }
 .thumb.thumb-0.active {
   border-color: #01ea2b;
-  border: 1.5px solid #01ea2b;
+  border: 0.15rem solid #01ea2b;
 }
 
 .track {
   background-color: #ccc;
-  height: 4px;
-  padding: 0 2px;
+  height: 0.4rem;
+  padding: 0 0.2rem;
 
   &.track-0 {
     background-color: #01ea2b;
@@ -40,13 +40,13 @@
   left: 1%;
   top: 18%;
   transform: translateY(-70%);
-  width: 28px;
-  height: 28px;
+  width: 2.8rem;
+  height: 2.8rem;
   border-radius: 50%;
   background-color: #fff;
   color: #000;
   display: flex;
-  border: 1.5px solid #01ea2b;
+  border: 0.15rem solid #01ea2b;
   justify-content: center;
   align-items: center;
   z-index: 1;
@@ -56,12 +56,12 @@
   width: 100%;
   display: flex;
   justify-content: space-between;
-  padding-top: 12px;
-  gap: 60px;
-  margin: 0 1px;
+  padding-top: 1.2rem;
+  gap: 6rem;
+  margin: 0 0.1rem;
 
   .slider__text {
-    min-width: 37px;
+    min-width: 3.7rem;
     color: #aeb5bc;
     text-align: center;
 
@@ -70,11 +70,11 @@
       color: var(--color-white-gray-6, #aeb5bc);
 
       font-family: Pretendard;
-      font-size: 11px;
+      font-size: 1.1rem;
       font-style: normal;
       font-weight: 300;
       line-height: 150%;
-      letter-spacing: 0.063px;
+      letter-spacing: 0.0063rem;
       white-space: nowrap;
     }
   }

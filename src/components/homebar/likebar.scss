@@ -9,15 +9,15 @@
 
 .likehomebar__icons {
   display: flex;
-  gap: 18px;
+  gap: 1.8rem;
 }
 
 .likehomebar__statusbar {
   justify-content: space-between;
   display: flex;
-  padding: 0 16px;
+  padding: 0 1.6rem;
   background-color: #111;
-  height: 50px;
+  height: 5rem;
   color: #fff;
   text-align: center;
   align-items: center;
@@ -26,10 +26,10 @@
     padding-left: 10%;
     /* text/headline/Headline 2 */
     font-family: Pretendard;
-    font-size: 16px;
+    font-size: 1.6rem;
     font-style: normal;
     font-weight: 600;
-    line-height: 150%; /* 24px */
-    letter-spacing: 0.091px;
+    line-height: 150%; /* 2.4rem */
+    letter-spacing: 0.0091rem;
   }
 }

@@ -1,0 +1,95 @@
+.rankList {
+  border-top: 1px solid var(--color-F1F3F5);
+  padding: 1.6rem 0.8rem;
+  display: flex;
+  gap: 1.6rem;
+  align-items: center;
+  width: 100%;
+  &:first-child {
+    border: none;
+  }
+}
+.currentRank {
+  display: inline-block;
+  color: var(--color-000);
+  font-size: 2rem;
+  line-height: 3rem;
+  letter-spacing: 0.0114px;
+  > span {
+    display: block;
+    background: var(--color-d9d9d9);
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 50%;
+    margin: 0 auto;
+  }
+}
+
+.tags {
+  margin-right: 0.8rem;
+  margin-top: 0.4rem;
+  background: var(--color-EAECEF);
+  line-height: 1.5rem;
+  letter-spacing: 0.0057px;
+  color: var(--color-878E95);
+  display: inline-block;
+  padding: 0.2rem 0.5rem;
+  border-radius: 0.2rem;
+  font-size: 1rem;
+  &:last-child {
+    margin-right: 0;
+  }
+}
+.leftText {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  flex: 1;
+  overflow: hidden;
+}
+.bankTextbox {
+  overflow: hidden;
+  flex: 1;
+  text-align: left;
+  > p {
+    color: var(--color-111);
+    font-size: 1.2rem;
+    letter-spacing: 0.068px;
+    line-height: 1.8rem;
+    font-weight: 600;
+    display: block;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+  > em {
+    color: var(--color-adadad);
+    letter-spacing: 0.063px;
+    font-size: 1.1rem;
+    font-weight: 300;
+    line-height: 1.65rem;
+    display: block;
+  }
+}
+.rightText {
+  display: flex;
+  gap: 1.6rem;
+  align-items: center;
+  text-align: right;
+  span {
+    display: block;
+    font-size: 1.4rem;
+    font-weight: 600;
+    line-height: 2.1rem;
+    letter-spacing: 0.0798px;
+    color: var(--color-01EA2B);
+  }
+  strong {
+    display: block;
+    font-size: 1.2rem;
+    font-weight: 600;
+    line-height: 1.8rem;
+    letter-spacing: 0.0684px;
+    color: var(--color-444);
+  }
+}

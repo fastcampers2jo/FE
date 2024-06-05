@@ -90,7 +90,7 @@ const Signup = () => {
               placeholder="이메일을 입력해주세요."
               onChange={changeEmail}
               value={logins.email}
-              name="email"
+              name="emails"
               onClear={() => onClear("email")}
             />
           </div>
@@ -114,6 +114,13 @@ const Signup = () => {
               value={logins.confirmPassword}
               name="confirmPassword"
               onClear={() => onClear("confirmPassword")}
+              errorCode={logins.errorConfirmPassword}
+              error={
+                !logins.errorConfirmPassword
+                && logins.confirmPassword.length > 0
+                  ? "비밀번호가 일치하지 않습니다."
+                  : "비밀번호가 일치합니다."
+              }
             />
           </div>
           <div className={styles.button}>

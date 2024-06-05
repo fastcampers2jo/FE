@@ -25,7 +25,7 @@ const Navbar = () => {
         <button
           onClick={() => handlNave(link.path)}
           key={link.name}
-          className={`${styles.button} ${location.pathname.includes(link.link) ? styles.active : ""}`}
+          className={`${styles.button} ${location.pathname.split("/")[1] === link.link ? styles.active : ""}`}
         >
           {link.src}
           <p>{link.name}</p>

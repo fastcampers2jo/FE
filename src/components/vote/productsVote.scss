@@ -1,10 +1,10 @@
 .productsvote {
-  width: calc(100% - 32px) px;
-  padding: 20px;
-  border-radius: 5px;
+  width: calc(100% - 3.2rem) px;
+  padding: 2rem;
+  border-radius: 0.5rem;
   height: auto;
-  // min-height: 214px;
-  border: 0.5px solid var(--color-white-gray-6, #aeb5bc);
+  // min-height: 21.4rem;
+  border: 0.05rem solid var(--color-white-gray-6, #aeb5bc);
 
   .vote__utils {
     display: flex;
@@ -14,25 +14,25 @@
 
     /* text/caption/Caption 1 */
     font-family: Pretendard;
-    font-size: 12px;
+    font-size: 1.2rem;
     font-style: normal;
     font-weight: 400;
-    line-height: 150%; /* 18px */
-    letter-spacing: 0.068px;
+    line-height: 150%; /* 1.8rem */
+    letter-spacing: 0.0068rem;
   }
 }
 
 .vote__list {
   width: auto;
-  margin-bottom: 2.4rem;
+  margin-bottom: 24px;
   height: auto;
 
   .vote__productlist {
     justify-content: space-between;
     display: flex;
     align-items: center;
-    margin-bottom: 1.4rem;
-    margin-top: 0.8rem;
+    margin-bottom: 14px;
+    margin-top: 8px;
     background-color: #fff;
     height: auto;
     width: 100%;
@@ -40,7 +40,7 @@
     &.newpostvote {
       width: auto;
       justify-content: flex-start;
-      margin-bottom: 8px;
+      margin-bottom: 0.8rem;
       margin-top: 0;
 
       &:last-child {
@@ -71,21 +71,21 @@
         &.newpostvote {
           width: 100%;
           height: auto;
-          border-radius: 4px;
+          border-radius: 0.4rem;
           background: var(--color-white-gray-2, #f1f3f5);
-          padding: 4px 8px;
+          padding: 0.4rem 0.8rem;
         }
 
         .vote--toggle {
           align-items: center;
           display: flex;
-          width: 2.4rem;
-          height: 2.4rem;
+          width: 24px;
+          height: 24px;
           cursor: pointer;
 
           &.active {
             rect {
-              stroke-width: 0.7rem;
+              stroke-width: 7px;
               stroke: #2def58;
             }
           }
@@ -94,20 +94,20 @@
         .product__img {
           display: flex;
           background-color: #d9d9d9;
-          width: 2.4rem;
-          height: 2.4rem;
+          width: 24px;
+          height: 24px;
           border-radius: 50%;
-          margin-left: 2rem;
-          margin-right: 0.8rem;
+          margin-left: 20px;
+          margin-right: 8px;
           justify-content: center;
           flex-shrink: 0;
 
           &.newpostvote {
             display: flex;
             justify-content: center;
-            margin-left: 10px;
-            width: 20px;
-            height: 20px;
+            margin-left: 1rem;
+            width: 2rem;
+            height: 2rem;
           }
         }
       }
@@ -126,8 +126,8 @@
           justify-content: space-between;
 
           .voting__percent {
-            margin-top: 2px; /* 필요에 따라 여백 조정 */
-            height: 5px;
+            margin-top: 0.2rem; /* 필요에 따라 여백 조정 */
+            height: 0.5rem;
             width: 100%;
             display: flex;
             flex-direction: row-reverse;
@@ -136,7 +136,7 @@
               height: 100%;
               width: 100%;
               background-color: #d9d9d9;
-              border-radius: 300px;
+              border-radius: 30rem;
               position: relative;
             }
 
@@ -145,7 +145,7 @@
 
               position: absolute;
               background-color: #5ded2a;
-              border-radius: 300px;
+              border-radius: 30rem;
               width: 60%;
               z-index: 10;
               top: 0;
@@ -153,7 +153,7 @@
 
               &.nonselect {
                 background-color: #797979;
-                border-radius: 300px;
+                border-radius: 30rem;
                 width: 45%;
               }
             }
@@ -166,7 +166,7 @@
 
             .voting__count {
               display: flex;
-              width: 22px;
+              width: 2.2rem;
               margin-right: 0;
               margin-left: auto;
               align-items: center;
@@ -174,11 +174,11 @@
 
               /* text/label/Label 3 */
               font-family: Pretendard;
-              font-size: 10px;
+              font-size: 1rem;
               font-style: normal;
               font-weight: 500;
-              line-height: 150%; /* 15px */
-              letter-spacing: 0.057px;
+              line-height: 150%; /* 1.5rem */
+              letter-spacing: 0.0057rem;
             }
           }
         }
@@ -192,11 +192,11 @@
 
           /* text/headline/Headline 4 */
           font-family: Pretendard;
-          font-size: 1.2rem;
+          font-size: 12px;
           font-style: normal;
           font-weight: 600;
-          line-height: 150%; /* 1.8rem */
-          letter-spacing: 0.0068rem;
+          line-height: 150%; /* 18px */
+          letter-spacing: 0.068px;
         }
 
         .product__bankname {
@@ -204,11 +204,11 @@
 
           /* text/caption/Caption 2 */
           font-family: Pretendard;
-          font-size: 1.1rem;
+          font-size: 11px;
           font-style: normal;
           font-weight: 300;
-          line-height: 150%; /* 1.65rem */
-          letter-spacing: 0.0063rem;
+          line-height: 150%; /* 16.5px */
+          letter-spacing: 0.063px;
         }
       }
     }
@@ -223,10 +223,10 @@
           text-align: right;
 
           /* text/headline/Headline 3 */
-          font-size: 1.4rem;
+          font-size: 14px;
           font-weight: 600;
-          line-height: 150%; /* 2.1rem */
-          letter-spacing: 0.008rem;
+          line-height: 150%; /* 21px */
+          letter-spacing: 0.08px;
         }
 
         .interest__def {
@@ -235,17 +235,17 @@
           text-align: right;
 
           /* text/headline/Headline 4 */
-          font-size: 1.2rem;
+          font-size: 12px;
           font-weight: 600;
-          line-height: 150%; /* 1.8rem */
-          letter-spacing: 0.0068rem;
+          line-height: 150%; /* 18px */
+          letter-spacing: 0.068px;
         }
       }
     }
   }
 
   &.newpostvote {
-    margin: 0 16px;
+    margin: 0 1.6rem;
   }
 }
 
@@ -255,11 +255,11 @@
 
   .vote__select {
     cursor: pointer;
-    height: 3.2rem;
-    border-radius: 0.4rem;
+    height: 32px;
+    border-radius: 4px;
     background: var(--color-white-gray-3, #eaecef);
     height: auto;
-    padding: 0.4rem 0;
+    padding: 4px 0;
     justify-content: center;
     align-items: center;
     color: var(--color-white-gray-6, #aeb5bc);
@@ -267,11 +267,11 @@
 
     /* text/Body 1/Normal */
     font-family: Pretendard;
-    font-size: 1.6rem;
+    font-size: 16px;
     font-style: normal;
     font-weight: 500;
-    line-height: 150%; /* 2.4rem */
-    letter-spacing: 0.0091rem;
+    line-height: 150%; /* 24px */
+    letter-spacing: 0.091px;
 
     &.results {
       color: var(--color-white-gray-8, #4a5056);
@@ -283,8 +283,8 @@
     }
 
     &.preview {
-      margin-top: 0.8rem;
-      border-radius: 0.4rem;
+      margin-top: 8px;
+      border-radius: 4px;
       background: var(--color-white-gray-8, #4a5056);
       color: var(--color-white-gray-1, #f8f9fa);
     }
@@ -298,37 +298,37 @@
   &__x {
     cursor: pointer;
 
-    margin-right: 4px;
+    margin-right: 0.4rem;
     path,
     svg,
     rect {
       stroke: #4a5056;
-      stroke-width: 1.5px;
+      stroke-width: 0.15rem;
     }
   }
   &__plus {
-    padding: 5px;
+    padding: 0.5rem;
     cursor: pointer;
   }
 }
 
 .postvote {
   width: auto;
-  margin: 0 16px;
-  padding: 20px 0;
-  border-radius: 4px;
-  border: 0.5px solid var(--color-white-gray-6, #aeb5bc);
+  margin: 0 1.6rem;
+  padding: 2rem 0;
+  border-radius: 0.4rem;
+  border: 0.05rem solid var(--color-white-gray-6, #aeb5bc);
 
   .vote__products__add {
-    border-radius: 4px;
+    border-radius: 0.4rem;
     background: #f1ffe8;
-    padding: 12px 16px;
+    padding: 1.2rem 1.6rem;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     display: flex;
-    margin: 0 16px;
-    gap: 8px;
+    margin: 0 1.6rem;
+    gap: 0.8rem;
 
     &__info {
       overflow: hidden;
@@ -339,30 +339,30 @@
 
       /* text/label/Label 1 */
       font-family: Pretendard;
-      font-size: 14px;
+      font-size: 1.4rem;
       font-style: normal;
       font-weight: 400;
-      line-height: 150%; /* 21px */
-      letter-spacing: 0.08px;
+      line-height: 150%; /* 2.1rem */
+      letter-spacing: 0.008rem;
     }
   }
 
   &__utils {
     display: flex;
     align-items: center;
-    padding: 0 10px 16px;
+    padding: 0 1rem 1.6rem;
     justify-content: space-between;
 
     color: var(--color-white-gray-8, #4a5056);
     font-family: Pretendard;
-    font-size: 11px;
+    font-size: 1.1rem;
     font-style: normal;
     font-weight: 300;
-    line-height: 150%; /* 16.5px */
-    letter-spacing: 0.063px;
+    line-height: 150%; /* 1.65rem */
+    letter-spacing: 0.0063rem;
 
     &.select {
-      margin: 0 6px;
+      margin: 0 0.6rem;
     }
 
     span {
@@ -373,11 +373,11 @@
 
       /* text/Body 1/Heavy */
       font-family: Pretendard;
-      font-size: 12px;
+      font-size: 1.2rem;
       font-style: normal;
       font-weight: 700;
-      line-height: 150%; /* 18px */
-      letter-spacing: 0.068px;
+      line-height: 150%; /* 1.8rem */
+      letter-spacing: 0.0068rem;
     }
   }
 }

@@ -1,4 +1,4 @@
-import { IcBack, IcBell, IcSet } from "assets";
+import { IcBack, IcBell, IcMypage, IcSet } from "assets";
 import { Link, useNavigate } from "react-router-dom";
 import styles from "./styles.module.scss";
 
@@ -15,12 +15,20 @@ const TitleTop = ({ children }: ITop) => {
       </button>
       <h2>{children}</h2>
       <div className={styles.mypage}>
-        <Link to="/alarm">
-          <IcBell />
-        </Link>
-        <Link to="/">
-          <IcSet />
-        </Link>
+        {children === "알람" ? (
+          <Link to="/mypage">
+            <IcMypage />
+          </Link>
+        ) : (
+          <>
+            <Link to="/alarm">
+              <IcBell />
+            </Link>
+            <Link to="/">
+              <IcSet />
+            </Link>
+          </>
+        )}
       </div>
     </div>
   );
