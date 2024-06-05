@@ -13,9 +13,9 @@ const Navbar = () => {
     [navigate]
   );
   const links = [
-    { name: "홈", path: "/", src: <IcHome />, link: "" },
-    { name: "랭킹", path: "/ranking/1", src: <IcLank />, link: "ranking" },
-    { name: "맞춤상품", path: "/goods", src: <IcFit />, link: "goods" },
+    { name: "홈", path: "/", src: <IcHome />, link: "home" },
+    { name: "랭킹", path: "/ranking/:id", src: <IcLank />, link: "ranking" },
+    { name: "맞춤상품", path: "/recommend", src: <IcFit />, link: "goods" },
     { name: "나의금융", path: "/finance", src: <IcCard />, link: "finance" },
     { name: "라운지", path: "/lounge", src: <IcLounge />, link: "lounge" },
   ];

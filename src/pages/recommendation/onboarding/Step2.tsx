@@ -2,6 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import "../recommendation.scss";
 import { useState } from "react";
 import { IcBack, Bar2 } from "assets";
+import Navbar from "components/navber";
 
 const Step2 = () => {
   const [selectAge, setSelectAge] = useState("");
@@ -19,18 +20,15 @@ const Step2 = () => {
   };
 
   return (
-    <div className="recommendUserInfo">
+    <div className="step2">
       <section className="recommend__statusbar">
         <IcBack className="icon__recommend" onClick={() => navigate(-1)} />
         <Bar2 className="icon__disabled" />
+        <div />
       </section>
       <section className="onboarding__title">
-        <div className="onboarding__title__def userInfo">
-          하진님에 대해 알려주세요
-        </div>
-        <div className="onboarding__title__small userInfo">
-          하진님의 또래 사용자들의 관심상품 정보를 제공해드려요!
-        </div>
+        <div className="onboarding__title__def userInfo">하진님에 대해 알려주세요</div>
+        <div className="onboarding__title__small userInfo">하진님의 또래 사용자들의 관심상품 정보를 제공해드려요!</div>
       </section>
       <section className="onboarding__userInfo">
         <div className="userAge__wrapped">
@@ -106,6 +104,7 @@ const Step2 = () => {
           계속하기
         </Link>
       </section>
+      <Navbar />
     </div>
   );
 };

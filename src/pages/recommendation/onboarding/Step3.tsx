@@ -1,4 +1,5 @@
 import { IcBack, Bar3 } from "assets";
+import Navbar from "components/navber";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
@@ -19,10 +20,11 @@ const Step3 = () => {
   };
 
   return (
-    <div className="userpaypage">
+    <div className="step3">
       <section className="recommend__statusbar">
         <IcBack className="icon__recommend" onClick={() => navigate(-1)} />
         <Bar3 className="icon__disabled" />
+        <div />
       </section>
       <section className="onboarding__title">
         <div className="onboarding__title__def userpay">
@@ -30,11 +32,9 @@ const Step3 = () => {
           <br /> 월소득이 궁금해요
         </div>
         <div className="onboarding__title__small userpay">
-          또래 사용자의 정보로 하진님이 <br /> 쉽게 상품을 탐색할 수 있게
-          도와드려요!
+          또래 사용자의 정보로 하진님이 <br /> 쉽게 상품을 탐색할 수 있게 도와드려요!
         </div>
       </section>
-
       <section className="onboarding__textboxs userpay">
         <button
           type="button"
@@ -88,6 +88,7 @@ const Step3 = () => {
           계속하기
         </Link>
       </section>
+      <Navbar />
     </div>
   );
 };

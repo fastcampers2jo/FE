@@ -1,4 +1,5 @@
 import { IcBack, Bar4, IcEdit } from "assets";
+import Navbar from "components/navber";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
@@ -24,10 +25,11 @@ const Step4 = () => {
   };
 
   return (
-    <div className="onboarding__myset">
+    <div className="step4">
       <section className="recommend__statusbar">
         <IcBack className="icon__recommend" onClick={() => navigate(-1)} />
         <Bar4 className="icon__disabled" />
+        <div />
       </section>
       <section className="onboarding__title">
         <div className=" onboarding__title__def">
@@ -38,9 +40,7 @@ const Step4 = () => {
           <div className="tag__options">20-24세</div>
           <div className="tag__options">소득 100만원 이하</div>
         </div>
-        <div className="onboarding__title__small">
-          의 또래들은 월 평균 30만원을 저축해요!
-        </div>
+        <div className="onboarding__title__small">의 또래들은 월 평균 30만원을 저축해요!</div>
       </section>
 
       <section className="myset__options">
@@ -72,6 +72,7 @@ const Step4 = () => {
           계속하기
         </Link>
       </section>
+      <Navbar />
     </div>
   );
 };

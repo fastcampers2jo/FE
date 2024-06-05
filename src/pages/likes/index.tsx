@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { CheckBox, FillDarkGrayCheckBox, FillGrayCheckBox, FillGreenCheckBox } from "assets";
 import { Category, Likebox } from "components";
 import "./likes.scss";
+import LikeHomeBar from "components/homebar/LikeHomebar";
 
 interface ProductProps {
   id: number;
@@ -28,7 +29,7 @@ const products: ProductProps[] = [
   },
   {
     id: 2,
-    name: "사장님이 미쳤어요 복리세배이벤트",
+    name: "복리세배이벤트",
     bankName: "야호은행",
     property: "특판",
     maxInterest: "20",
@@ -36,19 +37,19 @@ const products: ProductProps[] = [
   },
   {
     id: 3,
-    name: "우리 첫거래우대 정기예금",
-    bankName: "우리은행",
+    name: "기업 직장인 우대예금",
+    bankName: "기업은행",
     property: "특판",
-    maxInterest: "4.5",
+    maxInterest: "6.5",
     defInterest: "4.5",
   },
   {
     id: 4,
-    name: "우리 첫거래우대 정기예금",
-    bankName: "우리은행",
-    property: "특판",
-    maxInterest: "4.5",
-    defInterest: "4.5",
+    name: "국민 청년 버팀 적금",
+    bankName: "국민은행",
+    property: "기간한정",
+    maxInterest: "5.5",
+    defInterest: "2.5",
   },
 ];
 
@@ -123,9 +124,22 @@ const LikeListPage = () => {
     setCheckedCount(count);
   }, [icons]);
 
+  const selectedProducts = icons.filter((product) => product.isChecked);
+
   return (
     <section className="likelistpage">
-      <Category pagename="찜한 금융상품 페이지" />
+      {isEditing ? (
+        <>
+          <div className="likelistpage__editing__homebar">찜하기 상품 편집</div>
+          <Category />
+        </>
+      ) : (
+        <>
+          <LikeHomeBar pagename="찜한 상품비교" />
+          <Category />
+        </>
+      )}
+
       <div className="product__comparison">
         <div className="product__utilsbar">
           <div className="utils">
@@ -216,7 +230,7 @@ const LikeListPage = () => {
           {checkedCount === 1 && (
             <div className="comparison__toggle">
               <Likebox texts="아직 하나의 상품이 더 담겨져야 해요 !" classname="add__more">
-                KDB 정기예금
+                {selectedProducts.map((product) => product.name)}
               </Likebox>
               <div className="product__comparison__btn">
                 <span>비교하기</span>
@@ -226,7 +240,7 @@ const LikeListPage = () => {
           {checkedCount > 1 && (
             <div className="comparison__toggle">
               <Likebox texts="이제 상품을 비교하실 수 있습니다 !" classname="ready__comparison">
-                KDB 정기예금
+                {selectedProducts.map((product) => product.name)}
               </Likebox>
               <Link
                 to={checkedCount === 2 ? "/comparisondetail" : "#"}

@@ -11,11 +11,11 @@ const CommunityPage = () => {
   return (
     <div className="communitypost">
       <section className="post__statusbar">
-        <IcBack className="icon__post" onClick={() => navigate(-1)} />
+        <IcBack className="community__icon__post" onClick={() => navigate(-1)} />
         <div className="community__title">게시판</div>
-        <div className="icons">
-          <IcBell className="bell" />
-          <IcMypage className="mypage" />
+        <div className="community__post__icons">
+          <IcBell className="community__post__bell" />
+          <IcMypage className="community__post__mypage" />
         </div>
       </section>
       <section className="postdetail__section">
@@ -23,9 +23,7 @@ const CommunityPage = () => {
           <div className="post__detail__username">신화속엘프</div>
           <div className="post__detail__utils">15분전 &#8729;조회 23</div>
         </div>
-        <div className="post__detail__title">
-          20대 주택청약 상품 골라주세요!!!
-        </div>
+        <div className="post__detail__title">20대 주택청약 상품 골라주세요!!!</div>
         <ProductsVote />
         <VotingResults />
         <section className="bottom__utils">
