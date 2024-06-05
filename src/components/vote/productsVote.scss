@@ -1,0 +1,383 @@
+.productsvote {
+  width: calc(100% - 3.2rem) px;
+  padding: 2rem;
+  border-radius: 0.5rem;
+  height: auto;
+  // min-height: 21.4rem;
+  border: 0.05rem solid var(--color-white-gray-6, #aeb5bc);
+
+  .vote__utils {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    color: #666;
+
+    /* text/caption/Caption 1 */
+    font-family: Pretendard;
+    font-size: 1.2rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 150%; /* 1.8rem */
+    letter-spacing: 0.0068rem;
+  }
+}
+
+.vote__list {
+  width: auto;
+  margin-bottom: 24px;
+  height: auto;
+
+  .vote__productlist {
+    justify-content: space-between;
+    display: flex;
+    align-items: center;
+    margin-bottom: 14px;
+    margin-top: 8px;
+    background-color: #fff;
+    height: auto;
+    width: 100%;
+
+    &.newpostvote {
+      width: auto;
+      justify-content: flex-start;
+      margin-bottom: 0.8rem;
+      margin-top: 0;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    .product__infos {
+      display: flex;
+      width: auto;
+      height: auto;
+
+      &.results,
+      &.newpostvote {
+        width: 100%;
+      }
+
+      &.results {
+        display: block;
+      }
+
+      .product__info {
+        display: flex;
+        align-items: center;
+        width: auto;
+        height: auto;
+
+        &.newpostvote {
+          width: 100%;
+          height: auto;
+          border-radius: 0.4rem;
+          background: var(--color-white-gray-2, #f1f3f5);
+          padding: 0.4rem 0.8rem;
+        }
+
+        .vote--toggle {
+          align-items: center;
+          display: flex;
+          width: 24px;
+          height: 24px;
+          cursor: pointer;
+
+          &.active {
+            rect {
+              stroke-width: 7px;
+              stroke: #2def58;
+            }
+          }
+        }
+
+        .product__img {
+          display: flex;
+          background-color: #d9d9d9;
+          width: 24px;
+          height: 24px;
+          border-radius: 50%;
+          margin-left: 20px;
+          margin-right: 8px;
+          justify-content: center;
+          flex-shrink: 0;
+
+          &.newpostvote {
+            display: flex;
+            justify-content: center;
+            margin-left: 1rem;
+            width: 2rem;
+            height: 2rem;
+          }
+        }
+      }
+
+      .product__title {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        cursor: pointer;
+        width: 100%;
+
+        &.results {
+          display: flex;
+          flex-direction: column;
+          width: 100%;
+          justify-content: space-between;
+
+          .voting__percent {
+            margin-top: 0.2rem; /* 필요에 따라 여백 조정 */
+            height: 0.5rem;
+            width: 100%;
+            display: flex;
+            flex-direction: row-reverse;
+
+            .voting__track__def {
+              height: 100%;
+              width: 100%;
+              background-color: #d9d9d9;
+              border-radius: 30rem;
+              position: relative;
+            }
+
+            .voting__track__active {
+              height: 100%;
+
+              position: absolute;
+              background-color: #5ded2a;
+              border-radius: 30rem;
+              width: 60%;
+              z-index: 10;
+              top: 0;
+              left: 0;
+
+              &.nonselect {
+                background-color: #797979;
+                border-radius: 30rem;
+                width: 45%;
+              }
+            }
+          }
+
+          .voting__info {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+
+            .voting__count {
+              display: flex;
+              width: 2.2rem;
+              margin-right: 0;
+              margin-left: auto;
+              align-items: center;
+              color: #666;
+
+              /* text/label/Label 3 */
+              font-family: Pretendard;
+              font-size: 1rem;
+              font-style: normal;
+              font-weight: 500;
+              line-height: 150%; /* 1.5rem */
+              letter-spacing: 0.0057rem;
+            }
+          }
+        }
+
+        &.newpostvote {
+          display: flex;
+        }
+
+        .product__name {
+          color: #111;
+
+          /* text/headline/Headline 4 */
+          font-family: Pretendard;
+          font-size: 12px;
+          font-style: normal;
+          font-weight: 600;
+          line-height: 150%; /* 18px */
+          letter-spacing: 0.068px;
+        }
+
+        .product__bankname {
+          color: var(--color-white-back-heavy, #adadad);
+
+          /* text/caption/Caption 2 */
+          font-family: Pretendard;
+          font-size: 11px;
+          font-style: normal;
+          font-weight: 300;
+          line-height: 150%; /* 16.5px */
+          letter-spacing: 0.063px;
+        }
+      }
+    }
+    .product__interest {
+      display: flex;
+      justify-content: flex-end;
+
+      .interest__info {
+        .interest__max {
+          display: block;
+          color: var(--color-white-primary-normal, var(--test-02, #01ea2b));
+          text-align: right;
+
+          /* text/headline/Headline 3 */
+          font-size: 14px;
+          font-weight: 600;
+          line-height: 150%; /* 21px */
+          letter-spacing: 0.08px;
+        }
+
+        .interest__def {
+          display: block;
+          color: #444;
+          text-align: right;
+
+          /* text/headline/Headline 4 */
+          font-size: 12px;
+          font-weight: 600;
+          line-height: 150%; /* 18px */
+          letter-spacing: 0.068px;
+        }
+      }
+    }
+  }
+
+  &.newpostvote {
+    margin: 0 1.6rem;
+  }
+}
+
+.vote--toggle {
+  height: auto;
+  width: auto;
+
+  .vote__select {
+    cursor: pointer;
+    height: 32px;
+    border-radius: 4px;
+    background: var(--color-white-gray-3, #eaecef);
+    height: auto;
+    padding: 4px 0;
+    justify-content: center;
+    align-items: center;
+    color: var(--color-white-gray-6, #aeb5bc);
+    text-align: center;
+
+    /* text/Body 1/Normal */
+    font-family: Pretendard;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 150%; /* 24px */
+    letter-spacing: 0.091px;
+
+    &.results {
+      color: var(--color-white-gray-8, #4a5056);
+    }
+
+    &:active {
+      color: var(--color-white-static-black, #111);
+      background-color: var(--color-white-primary-light, #bcff3a);
+    }
+
+    &.preview {
+      margin-top: 8px;
+      border-radius: 4px;
+      background: var(--color-white-gray-8, #4a5056);
+      color: var(--color-white-gray-1, #f8f9fa);
+    }
+  }
+}
+
+///// 글쓰기 > 투표항목 추가 컴포넌트 /////
+
+.postvote__icons {
+  &__check,
+  &__x {
+    cursor: pointer;
+
+    margin-right: 0.4rem;
+    path,
+    svg,
+    rect {
+      stroke: #4a5056;
+      stroke-width: 0.15rem;
+    }
+  }
+  &__plus {
+    padding: 0.5rem;
+    cursor: pointer;
+  }
+}
+
+.postvote {
+  width: auto;
+  margin: 0 1.6rem;
+  padding: 2rem 0;
+  border-radius: 0.4rem;
+  border: 0.05rem solid var(--color-white-gray-6, #aeb5bc);
+
+  .vote__products__add {
+    border-radius: 0.4rem;
+    background: #f1ffe8;
+    padding: 1.2rem 1.6rem;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    margin: 0 1.6rem;
+    gap: 0.8rem;
+
+    &__info {
+      overflow: hidden;
+      color: var(--color-white-gray-8, #4a5056);
+      text-align: center;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+
+      /* text/label/Label 1 */
+      font-family: Pretendard;
+      font-size: 1.4rem;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 150%; /* 2.1rem */
+      letter-spacing: 0.008rem;
+    }
+  }
+
+  &__utils {
+    display: flex;
+    align-items: center;
+    padding: 0 1rem 1.6rem;
+    justify-content: space-between;
+
+    color: var(--color-white-gray-8, #4a5056);
+    font-family: Pretendard;
+    font-size: 1.1rem;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 150%; /* 1.65rem */
+    letter-spacing: 0.0063rem;
+
+    &.select {
+      margin: 0 0.6rem;
+    }
+
+    span {
+      padding-right: 5%;
+      overflow: hidden;
+      color: var(--color-white-gray-8, #4a5056);
+      text-overflow: ellipsis;
+
+      /* text/Body 1/Heavy */
+      font-family: Pretendard;
+      font-size: 1.2rem;
+      font-style: normal;
+      font-weight: 700;
+      line-height: 150%; /* 1.8rem */
+      letter-spacing: 0.0068rem;
+    }
+  }
+}

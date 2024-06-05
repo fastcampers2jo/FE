@@ -1,29 +1,58 @@
-import { IcBell, IcMypage, RightArrow } from "assets";
 import { Link } from "react-router-dom";
 import PostList from "components/lounge/PostList";
-import HotTopic from "components/lounge/HotIssue";
 import "./lounge.scss";
+import HotTopic from "components/lounge/HotTopic";
+import { Swiper, SwiperSlide } from "swiper/react";
+
+import "swiper/css";
+import LogoTOP from "components/logoTop";
+import Navbar from "components/navber";
+import { IcEdit } from "assets";
 
 const LoungePage = () => (
-  <>
-    <div className="logobar">
-      <span>Logo </span>
-      <div className="icons">
-        <IcBell className="bell" />
-        <IcMypage className="mypage" />
-      </div>
-    </div>
+  <div className="loungeMain">
+    <LogoTOP />
+    <Link to="/community/newpost">
+      <IcEdit className="loungeMain__icons" />
+    </Link>
     <HotTopic />
-    <div className="header">
+    <section className="community__section">
       <Link to="/community" className="page__title">
-        게시판 <RightArrow className="arrow--right" />
+        게시판
       </Link>
-      <Link to="/post" className="post--btn">
-        글쓰기
-      </Link>
-    </div>
+      <div className="lounge__product__categories">
+        <Swiper slidesPerView={6} spaceBetween={45}>
+          <SwiperSlide>
+            <div className="lounge__product__category active">전체</div>
+          </SwiperSlide>
+          <SwiperSlide>
+            <div className="lounge__product__category">예금</div>
+          </SwiperSlide>
+          <SwiperSlide>
+            <div className="lounge__product__category">적금</div>
+          </SwiperSlide>
+          <SwiperSlide>
+            <div className="lounge__product__category">카드</div>
+          </SwiperSlide>
+          <SwiperSlide>
+            <div className="lounge__product__category">연금</div>
+          </SwiperSlide>
+          <SwiperSlide>
+            <div className="lounge__product__category">파킹</div>
+          </SwiperSlide>
+          <SwiperSlide>
+            <div className="lounge__product__category">CMA</div>
+          </SwiperSlide>
+          <SwiperSlide>
+            <div className="lounge__product__category" style={{ visibility: "hidden" }} />
+          </SwiperSlide>
+        </Swiper>
+      </div>
+    </section>
     <PostList />
-  </>
+
+    <Navbar />
+  </div>
 );
 
 export default LoungePage;
