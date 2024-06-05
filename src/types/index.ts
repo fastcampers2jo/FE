@@ -18,3 +18,15 @@ export interface isLogin {
     resultDescription: string;
   };
 }
+
+export interface IBank {
+  data:{
+    name: string;
+    toprage: number;
+    rage: number;
+    love: boolean;
+    text: string;
+    id: number;
+    tag: string[];
+  }[]
+}

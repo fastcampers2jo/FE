@@ -1,10 +1,10 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
-import { IcBack, IcEdit } from "assets";
+import { BGLogo, BGSticker, IcEdit } from "assets";
 import ComparisonProducts from "components/likes/ComparisonProducts";
 import OnOffToggle from "components/onoffToggle/onoffToggle";
 import { ChangeEvent, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import "./comparision.scss";
+import MainHomeBar from "components/homebar";
 
 export interface ComparisonProps {
   title?: string;
@@ -27,7 +27,6 @@ const OBJECT__PERIOD = [
 ];
 
 const ComparisonDetailPage = () => {
-  const navigate = useNavigate();
   const [setSelectPeriodValue, setSetselectPeriodValue] = useState("예정기간 선택");
 
   const handlePeriodDrop = (e: ChangeEvent<HTMLSelectElement>) => {
@@ -39,20 +38,13 @@ const ComparisonDetailPage = () => {
   return (
     <section>
       <form className="comparisonDetail">
-        <div className="statusbar">
-          <IcBack className="back likelist" onClick={() => navigate(-1)} />
-          status bar (비교하기 페이지)
-        </div>
+        <MainHomeBar pagename="비교하기" />
+
         <form className="my__object__set">
           <span>내 목표 설정하기</span>
           <div className="my__object">
             <div className="my__object__inputbox">
-              <input
-                type="number"
-                placeholder="저축금액 작성"
-                inputMode="numeric"
-                pattern="[0-9]*"
-              />
+              <input type="number" placeholder="저축금액 작성" inputMode="numeric" pattern="[0-9]*" />
               <IcEdit className="edit" />
               으로
             </div>
@@ -71,7 +63,11 @@ const ComparisonDetailPage = () => {
         </form>
         <form>
           <div className="comparison__makes">
-            <span>비교 chak</span>
+            <div className="comparison__makes__bg">
+              <BGLogo className="comparison__makes__bg__icon1" />
+              <BGSticker className="comparison__makes__bg__icon2" />
+            </div>
+            <div className="comparison__make__title">비교 chak</div>
             <div className="comparison__make__wrapped">
               <div className="comparison__make">
                 <div className="product__info">
@@ -139,56 +135,54 @@ const ComparisonDetailPage = () => {
           </div>
 
           <div className="category">우대금리</div>
-          <div className="products__checks__wrapped">
-            <div className="products__checks">
-              <div className="products__check">
+          <div className="comparisondetail__products__checks__wrapped">
+            <div className="comparisondetail__products__checks">
+              <div className="comparisondetail__products__check">
                 01
-                <div className="product__checklist">
-                  급여실적 또는 개인사업자 계좌 실적 보유 시
-                  <div className="detail">자세히 &#8744;</div>
+                <div className="comparisondetail__product__checklist">
+                  급여실적 또는 개인사업자 계좌 실적 보유 시<div className="detail">자세히 &#8744;</div>
                 </div>
-                <div className="products__check--toggle">
+                <div className="comparisondetail__products__check--toggle">
                   1%
-                  <div className="toggle__select">
+                  <div className="comparisondetail__toggle__select">
                     <OnOffToggle />
                   </div>
                 </div>
               </div>
-              <div className="products__check">
-                02
-                <div className="product__checklist">
-                  비대면채널 이체 실적 보유 시
-                  <div className="detail">자세히 &#8744;</div>
+              <div className="comparisondetail__products__check">
+                01
+                <div className="comparisondetail__product__checklist">
+                  마케팅 동의 시<div className="detail">자세히 &#8744;</div>
                 </div>
-                <div className="products__check--toggle">
+                <div className="comparisondetail__products__check--toggle">
                   1%
-                  <div className="toggle__select">
+                  <div className="comparisondetail__toggle__select">
                     <OnOffToggle />
                   </div>
                 </div>
               </div>
             </div>
-            <div className="products__checks">
-              <div className="products__check">
-                01
-                <div className="product__checklist">
-                  마케팅 동의 시<div className="detail">자세히 &#8744;</div>
+            <div className="comparisondetail__products__checks">
+              <div className="comparisondetail__products__check">
+                02
+                <div className="comparisondetail__product__checklist">
+                  비대면 채널 <br /> 이체실적 보유 시 <div className="detail">자세히 &#8744;</div>
                 </div>
-                <div className="products__check--toggle">
-                  0.2%
-                  <div className="toggle__select">
+                <div className="comparisondetail__products__check--toggle">
+                  1%
+                  <div className="comparisondetail__toggle__select">
                     <OnOffToggle />
                   </div>
                 </div>
               </div>
-              <div className="products__check">
+              <div className="comparisondetail__products__check">
                 02
-                <div className="product__checklist">
-                  에너지 절감 시<div className="detail">자세히 &#8744;</div>
+                <div className="comparisondetail__product__checklist">
+                  에너지 절약 시<div className="detail">자세히 &#8744;</div>
                 </div>
-                <div className="products__check--toggle">
-                  0.3%
-                  <div className="toggle__select">
+                <div className="comparisondetail__products__check--toggle">
+                  1%
+                  <div className="comparisondetail__toggle__select">
                     <OnOffToggle />
                   </div>
                 </div>

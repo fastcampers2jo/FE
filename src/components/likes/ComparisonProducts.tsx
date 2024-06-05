@@ -1,8 +1,9 @@
+import { Link } from "react-router-dom";
 import "./comparisonComponent.scss";
 
 const ComparisonProducts = () => (
   <form className="mycomparison">
-    <div>Chak 비교해본</div>
+    <div className="mycomparison__title">Chak 비교해본</div>
     <div className="my__title">
       나의
       <div className="greenbar" />
@@ -13,17 +14,11 @@ const ComparisonProducts = () => (
         <div className="product">
           900,000 <div className="smallfont">원</div>
         </div>
-        <button type="button" className="detail">
-          자세히보기
-        </button>
       </div>
       <div className="products">
         <div className="product">
           700,000 <div className="smallfont">원</div>
         </div>
-        <button type="button" className="detail">
-          자세히보기
-        </button>
       </div>
     </div>
 
@@ -62,11 +57,19 @@ const ComparisonProducts = () => (
     <div className="title">이자 </div>
     <div className="my__interests">
       <div className="my__interest">
-        100,000<span>원</span>
+        100,000 <span>원</span>
       </div>
       <div className="my__interest">
-        100,000<span>원</span>
+        100,000 <span>원</span>
       </div>
+    </div>
+    <div className="productdetail__more">
+      <Link to="/productdetail" className="detail">
+        자세히보기
+      </Link>
+      <Link to="/productdetail" className="detail">
+        자세히보기
+      </Link>
     </div>
   </form>
 );

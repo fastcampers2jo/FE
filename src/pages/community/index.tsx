@@ -1,33 +1,45 @@
-import { IcBack, IcBell, Post, IcMypage, IcSearch } from "assets";
+import { SNSShare, ThumbsUp, IcBack, IcBell, IcMypage } from "assets";
 import "./community.scss";
-import PostList from "../../components/lounge/PostList";
+import { useNavigate } from "react-router-dom";
+import ProductsVote from "components/vote";
+import PostComment from "components/comment";
+import VotingResults from "components/vote/VotingResults";
 
-const CommunityPage = () => (
-  <>
-    <div className="logobar">
-      <IcBack className="back" />
-      <span>게시판</span>
-      <div className="icons">
-        <IcBell className="bell" />
-        <IcMypage className="mypage" />
-      </div>
+const CommunityPage = () => {
+  const navigate = useNavigate();
+
+  return (
+    <div className="communitypost">
+      <section className="post__statusbar">
+        <IcBack className="community__icon__post" onClick={() => navigate(-1)} />
+        <div className="community__title">게시판</div>
+        <div className="community__post__icons">
+          <IcBell className="community__post__bell" />
+          <IcMypage className="community__post__mypage" />
+        </div>
+      </section>
+      <section className="postdetail__section">
+        <div className="post__userInfo">
+          <div className="post__detail__username">신화속엘프</div>
+          <div className="post__detail__utils">15분전 &#8729;조회 23</div>
+        </div>
+        <div className="post__detail__title">20대 주택청약 상품 골라주세요!!!</div>
+        <ProductsVote />
+        <VotingResults />
+        <section className="bottom__utils">
+          <div className="post__up">
+            <ThumbsUp /> 추천하기 4
+          </div>
+          <div className="post__up">
+            <SNSShare /> 공유하기
+          </div>
+        </section>
+      </section>
+      <section className="post__detail__comments">
+        <PostComment />
+      </section>
     </div>
-    <form className="search__section">
-      <label className="search">
-        <input type="text" placeholder="원하시는 금융상품을 검색해 보세요!" />
-        <button type="submit" className="search--btn">
-          <IcSearch />
-        </button>
-      </label>
-      <div className="post__add--btn">
-        <Post className="post__toggle" />
-      </div>
-    </form>
-    <form className="post__section" />
-    <div className="postlist">
-      <PostList />
-    </div>
-  </>
-);
+  );
+};
 
 export default CommunityPage;
