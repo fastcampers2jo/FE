@@ -20,3 +20,4 @@ export { default as Step5 } from "./recommendation/onboarding/Step5";
 export { default as Step6 } from "./recommendation/onboarding/Step6";
 export { default as NewPost } from "./community/newPost";
 export { default as ProductDetail } from "./productDetail";
+export { default as Search } from "./searchs";

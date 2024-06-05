@@ -22,7 +22,7 @@
 }
 .section07Swiper .swiper-slide-active{
   div {
-    border:2px solid var(--color-01EA2B);
+    border:1px solid var(--color-01EA2B);
   }
   p{
     color: var(--color-01EA2B);
@@ -86,4 +86,10 @@
     margin: auto 0;
     z-index: 9;
   }
+}
+.section05 .swiper-slide{
+  width: 14.7rem !important;
+}
+.searchTap .swiper-slide{
+  width: 5.6rem !important;
 }

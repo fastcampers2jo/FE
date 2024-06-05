@@ -317,3 +317,37 @@ export const bankList = [
   { name: "NH저축은행", src: <IcBank26 /> },
   { name: "저축은행", src: <IcBank27 /> },
 ];
+
+export const goodSearch = [
+  { name: "청년 저축상품", id: 1 },
+  { name: "청년 저축상품", id: 2 },
+  { name: "청년 저축상품", id: 3 },
+  { name: "청년 저축상품", id: 4 },
+  { name: "청년 저축상품", id: 5 },
+  { name: "청년 저축상품", id: 6 },
+  { name: "청년 저축상품", id: 7 },
+  { name: "청년 저축상품", id: 8 },
+  { name: "청년 저축상품", id: 9 },
+  { name: "청년 저축상품", id: 10 },
+];
+
+export const searchs = ["주택청약", "주택", "주택보험상품", "청년주택"];
+export const navs = [
+  { name: "예금" },
+  { name: "적금" },
+  { name: "파킹" },
+  { name: "CMA" },
+  { name: "ISA" },
+  { name: "연금" },
+  { name: "카드" },
+];
+export const nav = [
+  { name: "전체" },
+  { name: "예금" },
+  { name: "적금" },
+  { name: "파킹" },
+  { name: "CMA" },
+  { name: "ISA" },
+  { name: "연금" },
+  { name: "카드" },
+];

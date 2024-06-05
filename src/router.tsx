@@ -23,6 +23,7 @@ import {
   Step6,
   NewPost,
   ProductDetail,
+  Search,
 } from "./pages";
 
 const isLoggedIn = getCookie("token");
@@ -58,6 +59,10 @@ const router = createBrowserRouter([
       {
         path: "/likelist",
         element: <LikeListPage />,
+      },
+      {
+        path: "/search/:search/:id",
+        element: <Search />,
       },
       {
         path: "/productdetail",

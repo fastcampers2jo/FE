@@ -1,32 +1,21 @@
 import { useCallback, useState } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useRank } from "stores/useRank";
-import { Navber, LogoTop, BankBox, RankPop, Button } from "components";
-import { fakedata, bankList } from "mock";
+import { Navber, LogoTop, BankBox, RankPop, Button, Fab } from "components";
+import { fakedata, bankList, navs } from "mock";
 import {
   IcBankCheck,
   IcBankDelet,
-  IcFAB,
 } from "assets";
 import styles from "./styles.module.scss";
 
 const Ranking = () => {
   const { bankPopup, openBankPopup, closeBankPopup } = useRank();
   const location = useLocation();
-  const navigate = useNavigate();
   const [tap, setTap] = useState(1);
   const [age, setAge] = useState("전체");
   const [time, setTime] = useState("실시간");
   const tapName = ["전체 베스트", "은행별 베스트"];
-  const navs = [
-    { name: "예금" },
-    { name: "적금" },
-    { name: "파킹" },
-    { name: "CMA" },
-    { name: "ISA" },
-    { name: "연금" },
-    { name: "카드" },
-  ];
   const onTap = useCallback(
     (num: number) => {
       setTap(num);
@@ -152,7 +141,7 @@ const Ranking = () => {
           </div>
         </RankPop>
       )}
-      <IcFAB className={styles.fab} onClick={() => navigate("/")} />
+      <Fab />
     </>
   );
 };

@@ -4,7 +4,7 @@ import styles from "./styles.module.scss";
 
 const Alarm = () => (
   <section className={styles.section}>
-    <TitleTop>알람</TitleTop>
+    <TitleTop>알림</TitleTop>
     <button className={styles.article}>
       <div className={styles.imgbox}>
         <img src={IcAlarmFinance} alt="금융상품" />

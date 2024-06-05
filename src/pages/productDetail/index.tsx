@@ -4,6 +4,7 @@ import OnOffToggle from "components/onoffToggle/onoffToggle";
 import { ChangeEvent, useState } from "react";
 import "swiper/css";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { useNumber } from "hooks";
 import { Link } from "react-router-dom";
 
 const OBJECT__PERIOD = [
@@ -18,7 +19,7 @@ const OBJECT__PERIOD = [
   { id: "0008", value: "13개월" },
 ];
 
-const productDetail = () => {
+const ProductDetail = () => {
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const [selectPeriodValue, setSelectPeriodValue] = useState("예정기간 선택");
 
@@ -27,6 +28,7 @@ const productDetail = () => {
     // setSelectPeriodValue(value);
     setSelectPeriodValue(value);
   };
+  const [number, changNumber] = useNumber("");
   return (
     <div className="productDetail">
       <section className="product__preview">
@@ -126,10 +128,10 @@ const productDetail = () => {
           <div className="my__object">
             <div className="my__object__inputbox">
               <input
-                type="number"
+                onChange={changNumber}
+                value={number}
+                type="text"
                 placeholder="저축금액 작성"
-                inputMode="numeric"
-                pattern="[0-9]*"
               />
               <IcEdit className="edit" />
               으로
@@ -424,4 +426,4 @@ const productDetail = () => {
     </div>
   );
 };
-export default productDetail;
+export default ProductDetail;

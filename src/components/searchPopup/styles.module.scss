@@ -1,0 +1,111 @@
+.searchPop{
+  position: fixed;
+  height: 100vh;
+  width: 100%;
+  max-width: 60rem;
+  top: 0;
+  z-index: 99999999;
+  background: var(--color-111);
+  overflow-y: scroll;
+  margin: 0 auto;
+  -ms-overflow-style: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+
+.searchPopTop{
+  padding: 1.2rem 4.27% 0;
+}
+.searchPopMid{
+  padding: 2.4rem 4.27% 3rem;
+  border-bottom: 10px solid rgba($color: #F8F9FA, $alpha: 0.1);
+}
+.historyTitle{
+  display: block;
+  margin-block: 0 1rem;
+  color: var(--color-fff);
+  font-size: 1.4rem;
+  font-weight: 600;
+  line-height: 2.1rem;
+  letter-spacing: 0.08px;
+}
+.historyKeyword{
+  display: flex;
+  gap: 1rem 0.8rem;
+  flex-wrap: wrap;
+  >button{
+     text-align: left;
+    border-radius: 100px;
+    background: var(--color-333);
+    display: flex;
+    gap: 0.4rem;
+    align-items: center;
+    color: var(--color-BCFF3A);
+    padding: 0.5rem 1.2rem;
+    font-size: 1.3rem;
+    letter-spacing: 0.074px;
+  }
+}
+.searchPopBtm{
+  padding:2.4rem 4.27% 7rem;
+  > p{
+    width: 100%;
+    display: inline-flex;
+    justify-content: space-between;
+    color: var(--color-fff);
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 3rem; 
+    letter-spacing: 0.114px;
+    margin-bottom:1rem;
+    >span{
+      color: var(--color-8e8e8e);
+      font-size: 1rem;
+      font-weight: 500;
+      letter-spacing: 0.057px;
+    }
+  }
+}
+.bestSearch{
+  width: 100%;
+  display: flex;
+  gap: 1.2rem;
+  padding-block: 0.8rem;
+  border-bottom: 1px solid  rgba(112, 115, 124, 0.16);
+  text-align: left;
+    align-items: center;
+  >span{
+    width: 2.5rem;
+    color: var(--color-fff);
+    text-align: center;
+    font-size: 2rem; 
+    line-height: 3rem; 
+    letter-spacing: 0.114px;
+  }
+  >.goodPoint{
+    color: var(--color-BCFF3A);
+  }
+  >p{
+    flex: 1;
+    color: var(--color-DFE2E6);
+    font-size: 1.4rem;
+    letter-spacing: 0.08px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+.searchtag{
+  margin-top:1rem;
+  color: var(--color-fff);
+  display: flex;
+  width: 100%;
+  text-align: left;
+  border-bottom: 1px solid var(--color-424242);
+  padding: 1rem 0.4rem ;
+}
+.highlightedsearchtag{
+  color: var(--color-A8FF00);
+}
