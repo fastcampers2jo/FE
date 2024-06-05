@@ -1,4 +1,4 @@
-import { Back, Bell, Mypage, SNSShare, ThumbsUp, IcBack, IcBell, Post, IcMypage, IcSearch } from "assets";
+import { SNSShare, ThumbsUp, IcBack, IcBell, IcMypage } from "assets";
 import "./community.scss";
 import { useNavigate } from "react-router-dom";
 import ProductsVote from "components/vote";
@@ -11,11 +11,11 @@ const CommunityPage = () => {
   return (
     <div className="communitypost">
       <section className="post__statusbar">
-        <Back className="icon__post" onClick={() => navigate(-1)} />
+        <IcBack className="community__icon__post" onClick={() => navigate(-1)} />
         <div className="community__title">게시판</div>
-        <div className="icons">
-          <Bell className="bell" />
-          <Mypage className="mypage" />
+        <div className="community__post__icons">
+          <IcBell className="community__post__bell" />
+          <IcMypage className="community__post__mypage" />
         </div>
       </section>
       <section className="postdetail__section">

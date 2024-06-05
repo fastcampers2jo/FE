@@ -10,9 +10,29 @@
 }
 
 .productDetail {
+  position: relative;
   width: auto;
   height: auto;
   background-color: #fff;
+
+  .floating__heart {
+    z-index: 10;
+    margin-right: 24px;
+    position: sticky;
+    float: right;
+    top: calc(100% - 46px * 2);
+    width: 30px;
+    height: 30px;
+    background-color: #000;
+    padding: 9px;
+    border-radius: 50%;
+    box-shadow:
+      0px 15px 4px 0px rgba(0, 0, 0, 0),
+      0px 10px 4px 0px rgba(0, 0, 0, 0.01),
+      0px 5px 3px 0px rgba(0, 0, 0, 0.05),
+      0px 2px 2px 0px rgba(0, 0, 0, 0.09),
+      0px 1px 1px 0px rgba(0, 0, 0, 0.1);
+  }
 }
 
 .product__preview {
@@ -195,10 +215,13 @@
   }
 }
 
+.pagebreak {
+  border-bottom: 10px solid rgba(112, 115, 124, 0.08);
+}
 //// chak한 금리계산  detail__interest__set ////
 
 .detail__interest__set {
-  margin: 0 16px;
+  margin: 26px 16px 0;
 
   &__title {
     color: #888;
@@ -291,7 +314,8 @@
       .toggle__select {
         position: absolute;
         right: -3rem;
-        bottom: 5px;
+        bottom: 0;
+        top: -25px;
       }
     }
   }
@@ -706,8 +730,8 @@
 ///// 라운지 가기 // 상품관련 투표글 보이기 /////
 ///
 .productdetail__lounge {
-  margin: 24px 0 100px 16px;
-  height: auto;
+  margin: 24px 0 0 16px;
+  height: 191px;
 }
 .productdetail__lounge__title {
   color: #000;
@@ -784,13 +808,52 @@
   line-height: 150%; /* 18px */
   letter-spacing: 0.068px;
 }
-
-.bottom-btn.productdetail {
-  box-shadow: 0px -13px 29px 0px rgba(0, 0, 0, 0.05);
-  padding-top: 16px;
-  width: auto;
-  height: 100px;
+.productdetail__bottom {
   display: flex;
+  // margin-top: 46px;
+  height: auto;
+  padding-top: 46px;
+  background-color: #fff;
+  position: relative;
+}
+
+.bottom-btn__productdetail {
+  box-shadow: 0px -13px 29px 0px rgba(0, 0, 0, 0.05);
+  padding-top: 20px;
+  background-color: var(--color-white-back-normal, #fff);
+  height: 100px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  z-index: 100;
+  position: absolute;
+
+  .onboarding--btn {
+    bottom: 61px;
+    position: absolute;
+    width: calc(100% - 32px);
+    margin: 0 16px;
+    padding: 18px 0;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border-radius: 4px;
+    background: var(--color-white-gray-3, #eaecef);
+    color: var(--color-white-gray-6, #aeb5bc);
+
+    /* text/title/Title 3 */
+    font-family: Pretendard;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 150%; /* 30px */
+    letter-spacing: 0.114px;
+
+    &.active {
+      background-color: #01ea2b;
+      color: var(--color-white-static-black, #111);
+    }
+  }
 }
 
 .onboarding--btn.active.productdetail {

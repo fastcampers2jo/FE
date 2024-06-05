@@ -1,6 +1,7 @@
 import { GreenDog } from "assets";
 import { Link } from "react-router-dom";
 import "../recommendation.scss";
+import Navbar from "components/navber";
 
 const OnboardingMain = () => (
   <form className="onboardingMain">
@@ -40,6 +41,7 @@ const OnboardingMain = () => (
         시작하기
       </Link>
     </section>
+    <Navbar />
   </form>
 );
 

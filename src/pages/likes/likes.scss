@@ -3,20 +3,6 @@ $bgColor: #fff;
 $textColor: #292929;
 $borderColor: #bbb;
 
-.statusbar {
-  display: flex;
-  width: auto;
-  height: 9rem;
-  justify-content: center;
-  align-items: center;
-  background-color: #111;
-  border-bottom: 0.1rem solid #fff;
-  color: #fff;
-  font-size: 1.4rem;
-}
-
-////삭제삭제삭제삭제삭제삭제삭제삭제삭제삭제////
-
 .checkbox {
   cursor: pointer;
   margin-top: 0;
@@ -259,6 +245,25 @@ $borderColor: #bbb;
 }
 
 //// LikeListPage 찜한 금융상품페이지 LikeListPage 찜한 금융상품페이지 ////
+///
+.likelistpage__editing__homebar {
+  width: auto;
+  height: 50px;
+  background-color: #111;
+  color: #fff;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+
+  /* text/headline/Headline 2 */
+  font-family: Pretendard;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 150%; /* 24px */
+  letter-spacing: 0.091px;
+}
 
 .likelistpage {
   width: auto;
@@ -491,7 +496,7 @@ $borderColor: #bbb;
           margin-left: 1.6rem;
           justify-content: center;
           cursor: pointer;
-          border-radius: 0;
+          border-radius: 50%;
         }
       }
 

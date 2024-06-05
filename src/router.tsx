@@ -72,7 +72,7 @@ const router = createBrowserRouter([
         element: <ComparisonDetailPage />,
       },
       {
-        path: "/recommendlist",
+        path: "/recommend",
         element: <RecommendationPage />,
       },
       {

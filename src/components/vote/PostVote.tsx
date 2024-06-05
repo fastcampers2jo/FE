@@ -1,4 +1,4 @@
-import { Checkinput, PlusGreen, SelectToggle, X } from "assets";
+import { IcCheck, PlusGreen, SelectToggle, X } from "assets";
 import "./productsVote.scss";
 
 const PostVote = () => (
@@ -6,7 +6,7 @@ const PostVote = () => (
     <div className="postvote">
       <section className="postvote__utils">
         <div>
-          <Checkinput className="postvote__icons__check" />
+          <IcCheck className="postvote__icons__check" />
           복수선택
         </div>
         <span>투표 항목 추가</span>
@@ -24,7 +24,7 @@ const PostVote = () => (
     <div className="postvote ">
       <section className="postvote__utils select">
         <div>
-          <Checkinput className="postvote__icons__check" />
+          <IcCheck className="postvote__icons__check" />
           복수선택
         </div>
         <X className="postvote__icons__x" />

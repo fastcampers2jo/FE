@@ -1,5 +1,6 @@
-import { Back, Bar5 } from "assets";
+import { Bar5, IcBack } from "assets";
 import { Slider } from "components";
+import Navbar from "components/navber";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
@@ -12,10 +13,11 @@ const Step5 = () => {
   };
 
   return (
-    <div className="onboarding__period">
+    <div className="step5">
       <section className="recommend__statusbar">
-        <Back className="icon__recommend" onClick={() => navigate(-1)} />
+        <IcBack className="icon__recommend" onClick={() => navigate(-1)} />
         <Bar5 className="icon__disabled" />
+        <div />
       </section>
       <section className="onboarding__title period">
         <div className="onboarding__title__def">
@@ -42,6 +44,7 @@ const Step5 = () => {
           계속하기
         </Link>
       </section>
+      <Navbar />
     </div>
   );
 };

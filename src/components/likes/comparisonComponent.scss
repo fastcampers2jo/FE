@@ -1,7 +1,7 @@
 .mycomparison {
   padding: 0 1.6rem;
-  margin: 3.6rem 0;
   height: auto;
+  background-color: #000;
 
   color: #989ba2;
   font-family: Pretendard;
@@ -10,6 +10,10 @@
   font-weight: 400;
   line-height: 150%; /* 3.6rem */
   letter-spacing: 0.0137rem;
+
+  .mycomparison__title {
+    padding-top: 36px;
+  }
 
   .my__title {
     display: flex;
@@ -37,7 +41,6 @@
     justify-content: space-between;
     width: auto;
     margin-top: 2.2rem;
-    margin-bottom: 3.6rem;
     height: auto;
     border-bottom: 0.1rem dashed #fff;
 
@@ -45,7 +48,6 @@
       display: flex;
       width: 100%;
       height: auto;
-      padding-bottom: 4.85rem;
       margin-bottom: 3.6rem;
       position: relative;
       justify-content: center;
@@ -55,12 +57,12 @@
       }
 
       .product {
+        padding: 54.5px 0;
         display: flex;
         width: auto;
         color: var(--test-02, #01ea2b);
         text-align: center;
         justify-content: center;
-        padding: 2.4rem 0;
 
         /* text/title/Title 1 */
         font-family: Pretendard;
@@ -81,26 +83,6 @@
           line-height: 150%; /* 2.4rem */
           letter-spacing: 0.0091rem;
         }
-      }
-      .detail {
-        top: 8.3rem;
-        height: auto;
-        position: absolute;
-        justify-content: center;
-        border-radius: 5rem;
-        align-items: center;
-        // display: inline-block;
-        padding: 0.4rem 1.7rem;
-        color: var(--color-white-interaction-inactive, #989ba2);
-        border: 0.1rem solid var(--color-white-interaction-inactive, #989ba2);
-
-        /* text/label/Label 1 */
-        font-family: Pretendard;
-        font-size: 1.4rem;
-        font-style: normal;
-        font-weight: 400;
-        line-height: 150%; /* 2.1rem */
-        letter-spacing: 0.008rem;
       }
     }
   }
@@ -165,11 +147,11 @@
     width: auto;
     display: flex;
     margin-top: 1.8rem;
-    padding-bottom: 10rem;
+    padding-bottom: 74px;
     gap: 1.6rem;
+
     span {
       color: #fff;
-
       /* text/headline/Headline 2 */
       font-family: Pretendard;
       font-size: 1.6rem;
@@ -183,20 +165,47 @@
       width: 100%;
       color: #fff;
       margin: 0.6rem 0;
-
-      /* text/title/Title 1 */
-      font-family: Pretendard;
-      font-size: 2.4rem;
-      font-style: normal;
-      font-weight: 700;
-      line-height: 150%; /* 3.6rem */
-      letter-spacing: 0.0137rem;
-
       &:last-child {
         border-left: 0.1rem dashed #fff;
         padding-left: 1.6rem;
       }
+
+      .my__interest__text {
+        /* text/title/Title 1 */
+        font-family: Pretendard;
+        font-size: 2.4rem;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 150%; /* 3.6rem */
+        letter-spacing: 0.0137rem;
+      }
     }
+  }
+}
+.productdetail__more {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+  text-align: center;
+
+  .detail {
+    margin: 0 auto 88px;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5rem;
+    padding: 0.4rem 1.7rem;
+    color: var(--color-white-interaction-inactive, #989ba2);
+    border: 0.1rem solid var(--color-white-interaction-inactive, #989ba2);
+
+    /* text/label/Label 1 */
+    font-family: Pretendard;
+    font-size: 1.4rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 150%; /* 2.1rem */
+    letter-spacing: 0.008rem;
   }
 }
 

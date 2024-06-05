@@ -1,4 +1,5 @@
-import { Back, Bar6 } from "assets";
+import { IcBack, Bar6 } from "assets";
+import Navbar from "components/navber";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
@@ -18,10 +19,11 @@ const Step6 = () => {
   };
 
   return (
-    <div className="onboarding__method">
+    <div className="step6">
       <section className="recommend__statusbar">
-        <Back className="icon__recommend" onClick={() => navigate(-1)} />
+        <IcBack className="icon__recommend" onClick={() => navigate(-1)} />
         <Bar6 className="icon__disabled" />
+        <div />
       </section>
       <section className="onboarding__title">
         <div className="onboarding__title__def method">
@@ -48,10 +50,11 @@ const Step6 = () => {
       </section>
 
       <section className="bottom-btn">
-        <Link to="/recommendlist" type="button" className={`onboarding--btn ${isContinueActive ? "active" : ""}`}>
+        <Link to="/recommend" type="button" className={`onboarding--btn ${isContinueActive ? "active" : ""}`}>
           Chak 맞는 상품 보기
         </Link>
       </section>
+      <Navbar />
     </div>
   );
 };

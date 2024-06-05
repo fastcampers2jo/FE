@@ -49,17 +49,25 @@
     }
   }
 
-  .icons {
+  .community__post__icons {
     display: flex;
     gap: 18px;
 
-    .bell,
-    .mypage {
-      color: #000;
+    .community__post__bell,
+    .community__post__mypage {
+      svg {
+        fill: #000;
+      }
       path,
       rect,
       circle {
         stroke: #000;
+      }
+    }
+    .community__post__mypage {
+      path {
+        fill: #000;
+        stroke-width: 0.1px;
       }
     }
   }
@@ -80,9 +88,9 @@
   }
 }
 
-.icon__post {
+.community__icon__post {
   cursor: pointer;
-  position: absolute;
+  // position: absolute;
   left: 16px;
   rect {
     fill: #fff;

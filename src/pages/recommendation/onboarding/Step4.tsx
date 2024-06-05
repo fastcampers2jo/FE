@@ -1,4 +1,5 @@
-import { Back, Bar4, Edit } from "assets";
+import { IcBack, Bar4, IcEdit } from "assets";
+import Navbar from "components/navber";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
@@ -24,10 +25,11 @@ const Step4 = () => {
   };
 
   return (
-    <div className="onboarding__myset">
+    <div className="step4">
       <section className="recommend__statusbar">
-        <Back className="icon__recommend" onClick={() => navigate(-1)} />
+        <IcBack className="icon__recommend" onClick={() => navigate(-1)} />
         <Bar4 className="icon__disabled" />
+        <div />
       </section>
       <section className="onboarding__title">
         <div className=" onboarding__title__def">
@@ -56,7 +58,7 @@ const Step4 = () => {
             onWheel={(event) => (event.target as HTMLElement).blur()}
             value={inputValue}
           />
-          {!isInputActive && !inputValue && <Edit className="edit" />}
+          {!isInputActive && !inputValue && <IcEdit className="edit" />}
           <span>만원</span>
         </div>
       </section>
@@ -70,6 +72,7 @@ const Step4 = () => {
           계속하기
         </Link>
       </section>
+      <Navbar />
     </div>
   );
 };

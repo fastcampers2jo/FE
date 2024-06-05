@@ -4,12 +4,14 @@
   padding-top: 52px;
   align-items: center;
   margin-bottom: 20px;
+  width: auto;
+  justify-content: space-between;
+  margin-left: 16px;
 }
 
 .icon__recommend {
   cursor: pointer;
-
-  position: absolute;
+  // position: absolute;
   left: 16px;
   rect {
     fill: #fff;
@@ -24,15 +26,55 @@
 }
 
 //// 맞춤 추천 메인페이지 ////
+///
+.product__likelist.recommend {
+  border-bottom: 1px solid #f1f3f5;
+  padding: 16px 0;
+}
+
+.recommend__icons__heart {
+  cursor: pointer;
+  width: 18px;
+  height: 18px;
+  display: flex;
+  margin: auto 5px auto 16px;
+
+  svg,
+  path {
+    fill: #000;
+  }
+}
+
 .recommendationpage {
   background-color: var(--color-white-back-normal, #fff);
   width: auto;
   height: auto;
   min-height: 812px;
+  padding-bottom: 49px;
   position: relative;
 
+  .floating__heart {
+    position: sticky;
+    float: right;
+    z-index: 10;
+    margin-right: 24px;
+    right: 24px;
+    top: calc(100% - 141px);
+    width: 30px;
+    height: 30px;
+    background-color: #000;
+    padding: 9px;
+    border-radius: 50%;
+    box-shadow:
+      0px 15px 4px 0px rgba(0, 0, 0, 0),
+      0px 10px 4px 0px rgba(0, 0, 0, 0.01),
+      0px 5px 3px 0px rgba(0, 0, 0, 0.05),
+      0px 2px 2px 0px rgba(0, 0, 0, 0.09),
+      0px 1px 1px 0px rgba(0, 0, 0, 0.1);
+  }
+
   &__title {
-    margin: 30px 16px;
+    margin: 30px 16px 4px;
     width: 200px;
     color: var(--color-white-static-black, #000);
 
@@ -63,6 +105,7 @@
     display: flex;
     padding: 4px 17px;
     bottom: 81px;
+    margin-bottom: 70px;
     left: 50%;
     transform: translate(-50%, 50%);
     text-align: center;
@@ -273,10 +316,12 @@
   width: 100%;
   display: flex;
   justify-content: center;
+  position: absolute;
+  bottom: 110px;
 
   .onboarding--btn {
     bottom: 61px;
-    position: absolute;
+    top: 0;
     width: calc(100% - 32px);
     margin: 0 16px;
     padding: 18px 0;
@@ -301,19 +346,24 @@
     }
   }
 }
-.recommendonboarding {
+
+.step1 {
   background-color: var(--color-white-back-normal, #fff);
   width: auto;
   height: auto;
   min-height: 812px; // 하단 home 바 34px nav 57 바텀마진 57
   // padding-bottom: 500px;
+  position: relative;
 }
 
 ///// user info ///
 
-.recommendUserInfo {
+.step2 {
   background: var(--color-white-back-normal, #fff);
+  width: auto;
+  height: auto;
   min-height: 812px;
+  position: relative;
 }
 
 .onboarding__userInfo {
@@ -359,18 +409,21 @@
 }
 
 /// userpay ///
-.userpaypage {
+.step3 {
   background: var(--color-white-back-normal, #fff);
-  min-height: 949px; /// 983 - 34(home bar)
+  min-height: 1020px; /// 983 - 34(home bar)
   height: auto;
+  width: auto;
+  position: relative;
 }
 
-.onboarding__myset {
+.step4 {
   background-color: var(--color-white-back-normal, #fff);
   height: auto;
   min-height: 812px;
   width: auto;
   min-width: 375px;
+  position: relative;
 }
 
 .tags {
@@ -457,10 +510,13 @@
   }
 }
 
-.onboarding__period,
-.onboarding__method {
+.step5,
+.step6 {
   background-color: var(--color-white-back-normal, #fff);
   min-height: 812px;
+  width: auto;
+  height: auto;
+  position: relative;
 }
 
 .onboarding__slider {
