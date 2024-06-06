@@ -31,7 +31,7 @@ const useValid = <T extends IVaild>(
     [value.email, value.errorEmail]
   );
   // 패스워드 걸러주기.
-  const pwValid = /^(?=.*[A-Za-z])(?=.*\d|.*[!@#$%^&*]).{8,}$/;
+  const pwValid = /^(?=.*[A-Za-z])(?=.*\d|.*[!@#$%^&*]).{7,}$/;
   const changePassword = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
       const Error = pwValid.test(value.password);

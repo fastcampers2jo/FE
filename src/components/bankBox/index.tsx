@@ -136,15 +136,13 @@ const BankBox = ({ data, age, setAge, time, setTime }: IBankBox) => {
                 </button>
               ))}
             </div>
-            {(afterAge !== "" && afterAge !== age) && (
-              <Button
-                type="button"
-                disabled={false}
-                onClick={onSeletAge}
-              >
-                선택완료
-              </Button>
-            )}
+            <Button
+              type="button"
+              disabled={!(afterAge !== "" && afterAge !== age)}
+              onClick={onSeletAge}
+            >
+              선택완료
+            </Button>
           </div>
         </RankPop>
       )}

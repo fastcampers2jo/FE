@@ -1,0 +1,39 @@
+.searchBox{
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  > button:first-child{
+    width: 2.4rem;
+    > svg{
+          fill: var(--color-fff);
+    }
+  }
+  >div{
+    position: relative;
+    flex: 1;
+  }
+  > div > input{
+    width: 100%;
+    border: 0;
+    border-bottom: 1px solid var(--color-F8F9FA);
+    background: rgba(255, 255, 255, 0.10);
+    padding: 0.4rem 3.8rem 0 1.6rem;
+    height: 30px;
+    outline: 0;
+    color: var(--color-fff);
+    font-size: 1.3rem;
+    letter-spacing: 0.074px;
+    &::placeholder, &::-moz-placeholder{
+      color: var(--color-AEB5BC);
+    }
+  }
+  > div svg{
+    position: absolute;
+    top: 3px;
+    right: 1rem;
+    cursor: pointer;
+  }
+  > div .paramSearch{
+    color: var(--color-A8FF00);
+  }
+}

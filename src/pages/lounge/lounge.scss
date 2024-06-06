@@ -55,15 +55,13 @@
   }
 
   .page__title {
-    color: #000;
-
-    /* text/title/Title 3 */
-    font-family: Pretendard;
+    color: var(--color-000);
     font-size: 2rem;
-    font-style: normal;
     font-weight: 700;
-    line-height: 150%; /* 3rem */
+    line-height: 3rem; 
     letter-spacing: 0.0114rem;
+    display: flex;
+    align-items: center;
   }
 }
 
@@ -306,10 +304,9 @@
   background: #fff;
   padding-top: 0;
 
-  .post__section {
-    padding-top: 1rem;
-
-    .post__wrapped {
+  
+}
+.post__wrapped {
       border-bottom: 0.1rem solid rgba(112, 115, 124, 0.16);
       padding: 2rem 1rem;
       width: auto;
@@ -425,5 +422,3 @@
         }
       }
     }
-  }
-}
