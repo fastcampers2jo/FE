@@ -1,0 +1,58 @@
+.product_card {
+  background: var(--color-fff);
+  border-radius: 15px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  &_title {
+    height: 30px;
+    letter-spacing: 0.57%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    h3 {
+      font-size: 20px;
+      font-weight: 600;
+      color: #1e1e1e;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      span {
+        display: inline-block;
+        color: #7e7e7e;
+        font-size: 11px;
+      }
+    }
+    button {
+      font-size: 10px;
+      color: var(--color-AEB5BC);
+    }
+  }
+  &_list {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    li {
+      display: flex;
+      gap: 5.75px;
+    }
+    &_bank_logo {
+      width: 27.5px;
+    }
+    &_contents {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      font-weight: 600;
+      h4 {
+        font-size: 12px;
+        color: var(--color-9D9D9D);
+      }
+      p {
+        font-size: 14px;
+        color: var(--color-111);
+      }
+    }
+  }
+}
