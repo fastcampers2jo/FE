@@ -1,12 +1,16 @@
 //// comparison 상품비교 메인페이지 /// 상품비교 히스토리 페이지 ////
 
 .products__comparison__list {
-  margin: 0 1.6rem;
+  padding: 0.1rem 1.6rem;
+  width: auto;
+  min-height: 812px;
+  height: auto;
+  background-color: #111111;
 
   .products__category {
     width: auto;
     min-width: 34.3rem;
-    height: auto;
+    height: 100%;
     background-color: #4b4f52;
     border-top-right-radius: 1rem;
     border-top-left-radius: 1rem;
@@ -55,7 +59,7 @@
     }
   }
 
-  .products__comparison {
+  .comparisonpage__products__comparison {
     margin-top: 0.8rem;
     border-radius: 1rem;
     background-color: #f6f6f6;
@@ -79,14 +83,14 @@
       letter-spacing: 0.0068rem;
     }
 
-    .product__comparison {
+    .comparisonpage__product__comparison {
       padding: 2.4rem 0 2.2rem 0;
 
       width: 100%;
       display: flex;
       justify-content: space-between;
 
-      .product {
+      .comparisonpage__product {
         display: flex;
         align-items: center;
         flex: 1;
@@ -101,7 +105,7 @@
         &__info {
           width: auto;
 
-          .product__bank {
+          .comparisonpage__product__bank {
             display: flex;
             color: var(--color-white-gray-9, #353a3f);
 
@@ -113,7 +117,7 @@
             line-height: 150%; /* 1.65rem */
             letter-spacing: 0.0063rem;
           }
-          .product__title {
+          .comparisonpage__product__title {
             display: flex;
             color: #000;
 
@@ -417,21 +421,19 @@
       }
     }
 
-    .products__checks__wrapped {
+    .comparisondetail__products__checks__wrapped {
       justify-content: space-between;
       display: flex;
+      flex-direction: column;
 
-      .products__checks {
+      .comparisondetail__products__checks {
         width: 100%;
         height: auto;
+        display: flex;
 
-        &:last-child {
-          border-left: 0.1rem solid #000;
-        }
-
-        .products__check {
+        .comparisondetail__products__check {
           width: calc(100% - 5.1rem);
-          margin: 2.4rem 1.6rem 2.4rem 1.6rem;
+          padding: 2.4rem 0 2.4rem 1.6rem;
           word-break: keep-all;
           color: #000;
 
@@ -442,8 +444,11 @@
           font-weight: 400;
           line-height: 150%; /* 2.1rem */
           letter-spacing: 0.008rem;
+          &:last-child {
+            border-left: 0.1rem solid #000;
+          }
 
-          .product__checklist {
+          .comparisondetail__product__checklist {
             width: 14rem;
             height: auto;
             min-height: 8.5rem;
@@ -468,9 +473,9 @@
             line-height: 150%; /* 2.1rem */
             letter-spacing: 0.008rem;
           }
-          .products__check--toggle {
+          .comparisondetail__products__check--toggle {
             position: relative;
-            margin: 2.4rem 3rem 3rem 0;
+            margin: 2.4rem 8rem 0 0;
             display: flex;
             color: #000;
             align-items: flex-end;
@@ -484,10 +489,10 @@
             line-height: 150%; /* 3.6rem */
             letter-spacing: 0.0137rem;
 
-            .toggle__select {
+            .comparisondetail__toggle__select {
               position: absolute;
-              right: -3rem;
-              top: 1.5rem;
+              right: -4rem;
+              top: -2.4rem;
             }
           }
         }
@@ -499,14 +504,29 @@
 .comparison__makes {
   width: auto;
   height: auto;
-  border-top-left-radius: 2rem;
-  border-top-right-radius: 2rem;
-  // border-top: .1rem solid black;
-  box-shadow: 0 -0.1rem rgb(233, 232, 232);
+  position: relative;
 
-  span {
+  .comparison__makes__bg {
+    z-index: 0;
+    position: absolute;
+    top: -50px;
+    right: 30%;
+
+    &__icon2 {
+      position: absolute;
+      right: -30px;
+    }
+  }
+
+  .comparison__make__title {
+    box-shadow: 0px -13px 29px 0px rgba(0, 0, 0, 0.05);
+    background-color: #fff;
+    z-index: 100;
     color: #000;
+    position: relative;
     display: flex;
+    border-top-right-radius: 30px;
+    border-top-left-radius: 30px;
 
     /* text/title/Title 3 */
     font-size: 2rem;

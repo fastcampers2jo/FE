@@ -5,7 +5,7 @@ import "swiper/css";
 const HotTopic = () => (
   <form className="hottopic">
     <div className="page__title">지금 뜨는 상품</div>
-    <div className="products__comparison__list">
+    <div className="products__comparison__list__hottopic">
       <Swiper
         loop
         breakpoints={{

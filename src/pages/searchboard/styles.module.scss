@@ -1,0 +1,10 @@
+.boardTop{
+    padding: 1.5rem 4.27% 1.8rem;
+    background:var(--color-111)
+}
+.searchFocus{
+    background:var(--color-111);
+    padding: 1.2rem 4.27% 2.4rem;
+    box-sizing: border-box;
+    min-height: calc(100vh - 13.5rem);
+}

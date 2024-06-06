@@ -12,6 +12,7 @@
   "dependencies": {
     "@tanstack/react-query": "^5.35.1",
     "@tanstack/react-query-devtools": "^5.37.1",
+    "@types/react-slick": "^0.23.13",
     "@vitejs/plugin-react": "^4.2.1",
     "axios": "^1.6.8",
     "cors": "^2.8.5",

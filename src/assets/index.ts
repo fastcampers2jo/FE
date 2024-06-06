@@ -6,6 +6,9 @@ export { default as IcKakao } from "./kakao.svg?react";
 export { default as IcLoginIcon } from "./loginicon.svg?react";
 export { default as IcShow } from "./show.svg?react";
 export { default as IcSet } from "./set.svg?react";
+export { default as IcCheck } from "./check.svg?react";
+export { default as IcBoardArr } from "./boardArr.svg?react";
+export { default as IcPrep } from "./prep.svg?react";
 export { default as IcSticker } from "./sticker.svg?react";
 export { default as IcEdit } from "./edit.svg?react";
 export { default as IcSearchDelet } from "./searchDelet.svg?react";
@@ -70,6 +73,8 @@ export { default as IcBanner } from "./banner.svg?react";
 export { default as IcHomeKeyword } from "./homeKeyword.svg?react";
 /* eslint-disable @typescript-eslint/no-unused-vars */
 export { default as IcSearch } from "./search.svg?react";
+export { default as FloatingHeart } from "./floatingHeart.svg?react";
+
 export { default as EmptyHeart } from "./emptyheart.svg?react";
 export { default as CheckBox } from "./checkbox.svg?react";
 export { default as FillGrayCheckBox } from "./fillgraycheckbox.svg?react";
@@ -93,3 +98,5 @@ export { default as SelectToggle } from "./selectToggle.svg?react";
 export { default as SNSShare } from "./share.svg?react";
 export { default as UpArrow } from "./uparrow.svg?react";
 export { default as PlusGreen } from "./plusGreen.svg?react";
+export { default as BGLogo } from "./logoBG.svg?react";
+export { default as BGSticker } from "./stickerBG.svg?react";

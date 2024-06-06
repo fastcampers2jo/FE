@@ -1,0 +1,12 @@
+.searchtag{
+  margin-top:1rem;
+  color: var(--color-fff);
+  display: flex;
+  width: 100%;
+  text-align: left;
+  border-bottom: 1px solid var(--color-424242);
+  padding: 1rem 0.4rem ;
+}
+.highlightedsearchtag{
+  color: var(--color-A8FF00);
+}
