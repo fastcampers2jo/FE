@@ -87,7 +87,7 @@ const Login = () => {
           </div>
           <Button
             type="submit"
-            disabled={!(logins.errorPassword && logins.errorEmail)}
+            disabled={!(logins.password.length > 7 && logins.errorEmail)}
           >
             로그인
           </Button>

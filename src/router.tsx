@@ -23,6 +23,11 @@ import {
   Step6,
   NewPost,
   ProductDetail,
+  Search,
+  Board,
+  SearchList,
+  Searchboard,
+  Prep,
 } from "./pages";
 
 const isLoggedIn = getCookie("token");
@@ -34,6 +39,10 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home />,
+      },
+      {
+        path: "/nopage",
+        element: <Prep />,
       },
       {
         path: "/login",
@@ -58,6 +67,26 @@ const router = createBrowserRouter([
       {
         path: "/likelist",
         element: <LikeListPage />,
+      },
+      {
+        path: "/board/:id",
+        element: <Board />,
+      },
+      {
+        path: "/board/:search/:id",
+        element: <Board />,
+      },
+      {
+        path: "/searchboard",
+        element: <Searchboard />,
+      },
+      {
+        path: "/search/:search/:id",
+        element: <SearchList />,
+      },
+      {
+        path: "/search",
+        element: <Search />,
       },
       {
         path: "/productdetail",

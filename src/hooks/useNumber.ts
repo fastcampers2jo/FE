@@ -1,4 +1,4 @@
-import { useCallback, useState } from "react";
+import React, { useCallback, useState } from "react";
 
 const useNumber = (initialValue: string) => {
   const [number, setNumber] = useState(initialValue);
@@ -12,9 +12,6 @@ const useNumber = (initialValue: string) => {
     },
     [number]
   );
-  return {
-    number,
-    onChange,
-  } as const;
+  return [number, onChange] as const;
 };
 export default useNumber;

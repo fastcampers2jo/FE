@@ -23,6 +23,7 @@ overflow: hidden;
 }
 .textbox{
     text-align:left;
+        flex: 1;
     > p {
         font-weight:500;
         font-size: 1.6rem;

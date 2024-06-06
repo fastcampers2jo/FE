@@ -37,7 +37,7 @@ const Mypage = () => {
         <p>로그인 정보</p>
         <div className={styles.profile}>
           <div className={styles.imgbox}>
-            <img src={IcSticker} alt="프로필이미지" />
+            <IcSticker />
           </div>
           <div className={styles.textbox}>
             {login?.result.resultCode === 200 ? (
