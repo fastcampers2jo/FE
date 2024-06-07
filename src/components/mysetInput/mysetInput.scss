@@ -1,0 +1,74 @@
+.myperiodselect {
+  width: 18.4rem;
+  margin-right: 14px;
+
+  select {
+    display: flex;
+    font-family: Pretendard;
+    color: #777;
+    font-size: 2.4rem;
+    font-weight: 400;
+    line-height: 150%; /* 3.6rem */
+    letter-spacing: 0.0137rem;
+    border-bottom: 0.2rem solid #000;
+    margin-right: 1.4rem;
+    justify-content: flex-start;
+    padding-right: 2.5rem;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    margin-bottom: 0.6rem;
+
+    &:focus {
+      border-top: none;
+      border-left: none;
+      border-right: none;
+      outline: none;
+    }
+  }
+}
+
+.myset__inputbox {
+  position: relative;
+
+  .icon__edit__myset__inputbox {
+    display: flex;
+    position: absolute;
+    left: 15.5rem;
+    top: 0.1rem;
+    path {
+      stroke: #000;
+    }
+  }
+
+  input {
+    display: flex;
+    width: 18.4rem;
+    border-bottom: 0.2rem solid #000;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    margin-right: 1.4rem;
+    padding-left: 0.4rem;
+    font-size: 2.4rem;
+    overflow: hidden;
+
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+    }
+
+    &:active,
+    &:focus {
+      outline: none;
+    }
+
+    &::placeholder {
+      color: #777;
+      font-size: 2.4rem;
+      font-weight: 400;
+      line-height: 150%; /* 3.6rem */
+      letter-spacing: 0.0137rem;
+    }
+  }
+}

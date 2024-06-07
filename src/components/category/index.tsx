@@ -1,53 +1,60 @@
+/* eslint-disable no-restricted-globals */
 import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
 import "./category.scss";
+import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
 
-const Category = () => (
-  <header>
-    <div className="product__categories">
-      <Swiper slidesPerView={7} spaceBetween={8}>
-        <SwiperSlide>
-          <div className="product__category active">
-            <span>전체</span>
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div className="product__category">
-            <span>예금</span>
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div className="product__category">
-            <span>적금</span>
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div className="product__category">
-            <span>파킹</span>
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div className="product__category">
-            <span>CMA</span>
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div className="product__category">
-            <span>ISA</span>
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div className="product__category">
-            <span>연금</span>
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div className="product__category">
-            <span>카드</span>
-          </div>
-        </SwiperSlide>
-      </Swiper>
-    </div>
-  </header>
-);
+interface CategoryProps {
+  pageUrlName: string;
+}
+
+const Category = ({ pageUrlName }: CategoryProps) => {
+  const [activeIndex, setActiveIndex] = useState(1);
+  const navigate = useNavigate();
+  const location = useLocation();
+  const { id } = useParams<{ id: string }>();
+  const navs = [
+    { name: "전체" },
+    { name: "예금" },
+    { name: "적금" },
+    { name: "파킹" },
+    { name: "CMA" },
+    { name: "ISA" },
+    { name: "연금" },
+    { name: "카드" },
+  ];
+
+  useEffect(() => {
+    const currentPath = location.pathname.split("/")[2];
+    if (currentPath && !isNaN(Number(currentPath))) {
+      setActiveIndex(parseInt(currentPath, 10));
+    } else if (id && !isNaN(Number(id))) {
+      setActiveIndex(parseInt(id, 10));
+    } else {
+      navigate(`/${pageUrlName}/1`);
+    }
+  }, [location, pageUrlName, navigate, id]);
+
+  return (
+    <header>
+      <div className="product__categories">
+        <Swiper slidesPerView={7} spaceBetween={2} direction="horizontal">
+          {navs.map((nav, i) => (
+            <SwiperSlide key={i}>
+              <Link
+                to={`/${pageUrlName}/${i + 1}`}
+                className={`${activeIndex === i + 1 ? "product__category active" : "product__category"}`}
+                onClick={() => setActiveIndex(i + 1)}
+              >
+                <span>{nav.name}</span>
+              </Link>
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      </div>
+    </header>
+  );
+};
 
 export default Category;
