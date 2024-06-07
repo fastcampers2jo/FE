@@ -11,15 +11,20 @@ interface Prop {
 }
 
 const Tabs = ({ lists }: Prop) => {
-  const [isActive, setIsActive] = useState(0);
-  const onActive = (id: number) => {
-    setIsActive(id);
+  const [isActive, setIsActive] = useState("");
+  const onActive = (value: string) => {
+    setIsActive(value);
   };
   return (
     <ul className={styles.tabs}>
       {lists.map((list, i) => (
         <li key={i}>
-          <button className={isActive === i ? styles.on : ""} onClick={() => onActive(i)}>{list.name}</button>
+          <button
+            className={isActive === list.value ? styles.on : ""}
+            onClick={() => onActive(list.value)}
+          >
+            {list.name}
+          </button>
         </li>
       ))}
     </ul>

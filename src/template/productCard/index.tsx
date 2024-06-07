@@ -2,6 +2,7 @@ import styles from "./styles.module.scss";
 
 interface IProductType {
   productType: string;
+  productTitle: string;
   products: {
     title: string;
     bank: string;
@@ -11,14 +12,14 @@ interface IProductType {
 interface Prop {
   lists: IProductType;
   listsCount?: number;
-  cardTitle: string;
 }
 
-const ProductCard = ({ lists, listsCount, cardTitle }: Prop) => (
+const ProductCard = ({ lists, listsCount }: Prop) => (
   <div className={styles.product_card}>
     <div className={styles.product_card_title}>
       <h3>
-        {cardTitle} <span>총 {lists.products.length}개 상품 보유중</span>
+        {lists.productTitle}
+        <span>총 {lists.products.length}개 상품 보유중</span>
       </h3>
       <button>더보기 </button>
     </div>

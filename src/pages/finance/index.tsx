@@ -33,11 +33,13 @@ const Finance = () => {
         </article>
       </section>
       <main className={styles.main}>
-        <ProductCard
-          cardTitle="예금"
-          lists={FINANCE[0]}
-          listsCount={3}
-        />
+        {FINANCE.map((product, i) => (
+          <ProductCard
+            key={i}
+            lists={product}
+            listsCount={3}
+          />
+        ))}
       </main>
       <Navbar />
     </>
