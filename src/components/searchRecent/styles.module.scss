@@ -1,0 +1,26 @@
+.historyTitle{
+  display: block;
+  margin-block: 0 1rem;
+  color: var(--color-fff);
+  font-size: 1.4rem;
+  font-weight: 600;
+  line-height: 2.1rem;
+  letter-spacing: 0.08px;
+}
+.historyKeyword{
+  display: flex;
+  gap: 1rem 0.8rem;
+  flex-wrap: wrap;
+  >button{
+     text-align: left;
+    border-radius: 100px;
+    background: var(--color-333);
+    display: flex;
+    gap: 0.4rem;
+    align-items: center;
+    color: var(--color-BCFF3A);
+    padding: 0.5rem 1.2rem;
+    font-size: 1.3rem;
+    letter-spacing: 0.074px;
+  }
+}

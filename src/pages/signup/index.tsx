@@ -43,7 +43,7 @@ const Signup = () => {
     },
     [logins.email, logins.password, logins.name]
   );
-
+  console.log(logins);
   // 제거
   const onClear = useCallback(
     (v: string) => {
@@ -92,6 +92,11 @@ const Signup = () => {
               value={logins.email}
               name="emails"
               onClear={() => onClear("email")}
+              error={
+                !logins.errorEmail && logins.email.length > 0
+                  ? "올바른 이메일 형식이 아닙니다."
+                  : ""
+              }
             />
           </div>
           <div>
@@ -133,6 +138,10 @@ const Signup = () => {
                   && logins.errorEmail
                   && logins.errorConfirmPassword
                   && logins.errorName
+                  && logins.password.length > 8
+                  && logins.confirmPassword.length > 8
+                  && logins.name.length > 2
+                  && logins.email.length > 1
                 )
               }
             >

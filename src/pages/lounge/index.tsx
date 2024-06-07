@@ -1,24 +1,20 @@
 import { Link } from "react-router-dom";
-import PostList from "components/lounge/PostList";
-import "./lounge.scss";
-import HotTopic from "components/lounge/HotTopic";
 import { Swiper, SwiperSlide } from "swiper/react";
-
-import "swiper/css";
-import LogoTOP from "components/logoTop";
-import Navbar from "components/navber";
-import { IcEdit, RightArrow } from "assets";
+import { LogoTop, Navber, PostList, HotTopic } from "components";
+import { IcBoardArr, IcEdit } from "assets";
+import { launge } from "mock";
+import "./lounge.scss";
 
 const LoungePage = () => (
   <div className="loungeMain">
-    <LogoTOP />
+    <LogoTop />
     <Link to="/community/newpost">
       <IcEdit className="loungeMain__icons" />
     </Link>
     <HotTopic />
     <section className="community__section">
-      <Link to="/community" className="page__title">
-        게시판 <RightArrow className="page__title__icons" />
+      <Link to="/board/1" className="page__title">
+        게시판 <IcBoardArr />
       </Link>
       <div className="lounge__product__categories">
         <Swiper slidesPerView={5.5} spaceBetween={42}>
@@ -44,14 +40,17 @@ const LoungePage = () => (
             <div className="lounge__product__category">CMA</div>
           </SwiperSlide>
           <SwiperSlide>
-            <div className="lounge__product__category" style={{ visibility: "hidden" }} />
+            <div
+              className="lounge__product__category"
+              style={{ visibility: "hidden" }}
+            />
           </SwiperSlide>
         </Swiper>
       </div>
     </section>
-    <PostList />
+    <PostList data={launge} />
 
-    <Navbar />
+    <Navber />
   </div>
 );
 

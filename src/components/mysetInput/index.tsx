@@ -6,7 +6,7 @@ import "./mysetInput.scss";
 const MysetInputBox = () => {
   const [isInputFocused, setIsInputFocused] = useState(false);
   const [hasInputValue, setHasInputValue] = useState(false);
-  const { number, onChange: onNumberChange } = useNumber("");
+  const [number, onNumberChange] = useNumber("");
 
   const handleInputFocus = () => {
     setIsInputFocused(true);

@@ -1,13 +1,12 @@
-import { useCallback, useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Autoplay, Pagination } from "swiper/modules";
 import SwiperCore from "swiper";
-import { BankList, Button, LogoTop, Navber } from "components";
+import { BankList, Button, Fab, LogoTop, Navber } from "components";
 import {
   IcBanner,
-  IcFAB,
   IcHomeArr,
   IcHomeKeyword,
   IcLoginArr,
@@ -15,29 +14,20 @@ import {
   IcSlide01,
   IcSlide02,
 } from "assets";
-import { useInput } from "hooks";
 import { keepLogin } from "utils/api";
 import { isLogin } from "types";
-import { fakedata, boards, product, keywords, bankList } from "mock";
-import "swiper/swiper-bundle.css";
+import { fakedata, boards, product, keywords, bankList, cards, pensions } from "mock";
+
 import styles from "./styles.module.scss";
-import "./swiper.css";
 
 const Home = () => {
   const navigate = useNavigate();
-  const [search, handlerSearch] = useInput("");
   const { data: login } = useQuery<isLogin>({
     queryKey: ["login"],
     queryFn: keepLogin,
     staleTime: 60 * 1000,
     gcTime: 300 * 1000,
   });
-  const onSearch = useCallback(
-    (e: React.FormEvent<HTMLFormElement>) => {
-      e.preventDefault();
-    },
-    [search]
-  );
   // 슬라이더 방향키
   const navigationPrevRef = useRef<HTMLButtonElement>(null);
   const navigationNextRef = useRef<HTMLButtonElement>(null);
@@ -51,7 +41,6 @@ const Home = () => {
       prevEl: navigationPrevRef?.current,
     },
   };
-
   useEffect(() => {
     swiperProps.navigation.nextEl = navigationNextRef.current;
     swiperProps.navigation.prevEl = navigationPrevRef.current;
@@ -91,24 +80,20 @@ const Home = () => {
               </button>
             </>
           )}
-          <form className={styles.searchBox} onSubmit={onSearch}>
-            <button type="submit">
-              <IcMainSearch />
-            </button>
-            <input
-              type="text"
-              value={search}
-              onChange={handlerSearch}
-              placeholder="원하시는 상품을 검색해보세요!"
-            />
-          </form>
+          <button
+            className={styles.goSearch}
+            onClick={() => navigate("/search")}
+          >
+            <IcMainSearch />
+            <p>원하시는 상품을 검색해보세요!</p>
+          </button>
         </article>
         <article className={styles.section02}>
           <div className={styles.articleBoxTop}>
             <h2>
               알아서, <span>랭킹 ChaK</span>
             </h2>
-            <Link to="/rank/1">더보기 &gt;</Link>
+            <Link to="/ranking/1">더보기 &gt;</Link>
           </div>
           <BankList data={fakedata.slice(0, 3)} />
         </article>
@@ -189,12 +174,12 @@ const Home = () => {
             <span>청룡의 해, 여의주 금리우대 이벤트</span>
           </div>
         </article>
-        <article className={styles.section05}>
+        <article className={`${styles.section05} section05`}>
           <h2>
             {login?.result?.resultCode === 200 ? login.body.name : "고객"}님을
             위한 <span>딱! 맞춘 첫 거래 우대 상품</span>
           </h2>
-          <Swiper slidesPerView={2.4} spaceBetween={8} loop={swiperProps.loop}>
+          <Swiper slidesPerView={2.6} spaceBetween={8} loop={swiperProps.loop}>
             {product.map((products, i) => (
               <SwiperSlide key={i}>
                 <div className={styles.section05Box}>
@@ -217,7 +202,7 @@ const Home = () => {
           <h2>
             깔끔하게 <span>밀ChaK 상품추천</span>
           </h2>
-          <details className={`${styles.details}`}>
+          <details className={styles.details}>
             <summary className={styles.summary}>
               키워드별 보험
               <IcHomeArr />
@@ -250,8 +235,11 @@ const Home = () => {
                 <IcHomeKeyword />
               </Link>
             ))}
+            <Link to="/" className={styles.section06Link}>
+              보험상품 전체보기
+            </Link>
           </details>
-          <details className={`${styles.details}`}>
+          <details className={styles.details}>
             <summary className={styles.summary}>
               용도에 맞는 대출
               <IcHomeArr />
@@ -268,14 +256,14 @@ const Home = () => {
                     ))}
                     <ul className={styles.keywordUl}>
                       <li>
-                        <span>월 보험료</span>
+                        <span>평균금리</span>
                         {keyword.price
                           .toString()
                           .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
                         원
                       </li>
                       <li>
-                        <span>보장기간</span>
+                        <span>평균실행금액</span>
                         {keyword.year}년
                       </li>
                     </ul>
@@ -284,6 +272,9 @@ const Home = () => {
                 <IcHomeKeyword />
               </Link>
             ))}
+            <Link to="/" className={styles.section06Link}>
+              대출상품 전체보기
+            </Link>
           </details>
           <details className={`${styles.details}`}>
             <summary className={styles.summary}>
@@ -291,33 +282,23 @@ const Home = () => {
               <IcHomeArr />
               <span>5월 신용카드 이벤트, 참여하고 캐시백 받으세요.</span>
             </summary>
-            {keywords.map((keyword, i) => (
+            {cards.map((keyword, i) => (
               <Link to="/" key={i} className={styles.keywordBox}>
                 <div>
-                  <div className={styles.keywordImgBox}>{keyword.src}</div>
+                  <div className={styles.keywordCardImgBox} />
                   <div className={styles.keywordTextBox}>
                     <strong>{keyword.title}</strong>
                     {keyword.tags.map((tag, j) => (
                       <span key={j}>{tag}</span>
                     ))}
-                    <ul className={styles.keywordUl}>
-                      <li>
-                        <span>월 보험료</span>
-                        {keyword.price
-                          .toString()
-                          .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
-                        원
-                      </li>
-                      <li>
-                        <span>보장기간</span>
-                        {keyword.year}년
-                      </li>
-                    </ul>
                   </div>
                 </div>
                 <IcHomeKeyword />
               </Link>
             ))}
+            <Link to="/" className={styles.section06Link}>
+              카드상품 전체보기
+            </Link>
           </details>
           <details className={`${styles.details}`}>
             <summary className={styles.summary}>
@@ -325,33 +306,21 @@ const Home = () => {
               <IcHomeArr />
               <span>미래를 위해 쌓고 세금혜택도 놓치지 마세요.</span>
             </summary>
-            {keywords.map((keyword, i) => (
+            {pensions.map((keyword, i) => (
               <Link to="/" key={i} className={styles.keywordBox}>
                 <div>
                   <div className={styles.keywordImgBox}>{keyword.src}</div>
                   <div className={styles.keywordTextBox}>
                     <strong>{keyword.title}</strong>
-                    {keyword.tags.map((tag, j) => (
-                      <span key={j}>{tag}</span>
-                    ))}
-                    <ul className={styles.keywordUl}>
-                      <li>
-                        <span>월 보험료</span>
-                        {keyword.price
-                          .toString()
-                          .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
-                        원
-                      </li>
-                      <li>
-                        <span>보장기간</span>
-                        {keyword.year}년
-                      </li>
-                    </ul>
+                    <p>{keyword.sub}</p>
                   </div>
                 </div>
                 <IcHomeKeyword />
               </Link>
             ))}
+            <Link to="/" className={styles.section06Link}>
+              연금상품 전체보기
+            </Link>
           </details>
           <details className={`${styles.details}`}>
             <summary className={styles.summary}>
@@ -359,33 +328,10 @@ const Home = () => {
               <IcHomeArr />
               <span>주택청약 종합저축을 통해 내 집 마련에 도전해보세요.</span>
             </summary>
-            {keywords.map((keyword, i) => (
-              <Link to="/" key={i} className={styles.keywordBox}>
-                <div>
-                  <div className={styles.keywordImgBox}>{keyword.src}</div>
-                  <div className={styles.keywordTextBox}>
-                    <strong>{keyword.title}</strong>
-                    {keyword.tags.map((tag, j) => (
-                      <span key={j}>{tag}</span>
-                    ))}
-                    <ul className={styles.keywordUl}>
-                      <li>
-                        <span>월 보험료</span>
-                        {keyword.price
-                          .toString()
-                          .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
-                        원
-                      </li>
-                      <li>
-                        <span>보장기간</span>
-                        {keyword.year}년
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-                <IcHomeKeyword />
-              </Link>
-            ))}
+            <BankList data={fakedata.slice(0, 3)} />
+            <Link to="/" className={styles.section06Link}>
+              연금상품 전체보기
+            </Link>
           </details>
         </article>
         <article className={styles.section07}>
@@ -415,7 +361,7 @@ const Home = () => {
           </div>
         </article>
       </section>
-      <IcFAB className={styles.fab} onClick={() => navigate("/")} />
+      <Fab />
       <Navber />
     </>
   );

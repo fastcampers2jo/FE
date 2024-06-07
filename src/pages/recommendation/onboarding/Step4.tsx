@@ -8,7 +8,7 @@ import "../recommendation.scss";
 const Step4 = () => {
   const [isInputActive, setIsInputActive] = useState(false);
   const [inputValue, setInputValue] = useState("");
-  const { number, onChange: onNumberChange } = useNumber("");
+  const [number, onNumberChange] = useNumber("");
   const navigate = useNavigate();
 
   const handleInputFocus = () => {
