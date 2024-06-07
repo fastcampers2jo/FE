@@ -2,23 +2,23 @@ import { LogoTop } from "components";
 import Navbar from "components/navber";
 import Tabs from "template/tabs";
 import ProductCard from "template/productCard";
-import { DEPOSIT } from "mockupData/finance";
+import FINANCE from "mockupData/finance";
 import styles from "./styles.module.scss";
 
 const Finance = () => {
   const TABS = [
     {
       name: "전체",
-      value: ""
+      value: "",
     },
     {
       name: "적금",
-      value: "installment"
+      value: "installment",
     },
     {
       name: "예금",
-      value: "deposit"
-    }
+      value: "deposit",
+    },
   ];
 
   return (
@@ -31,10 +31,14 @@ const Finance = () => {
           </p>
           <Tabs lists={TABS} />
         </article>
-        <main className={styles.main}>
-          <ProductCard lists={DEPOSIT} />
-        </main>
       </section>
+      <main className={styles.main}>
+        <ProductCard
+          cardTitle="예금"
+          lists={FINANCE[0]}
+          listsCount={3}
+        />
+      </main>
       <Navbar />
     </>
   );
