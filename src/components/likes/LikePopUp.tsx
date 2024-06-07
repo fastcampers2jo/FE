@@ -18,7 +18,7 @@ const LikePopUp = () => (
             </div>
             <div className="product__interest">4.5%</div>
           </div>
-          <Link to="/likelist" className="product__comparison">
+          <Link to="/likelist/:id" className="product__comparison">
             비교하러 가기 &gt;
             <p />
           </Link>

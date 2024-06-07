@@ -17,7 +17,7 @@ const LikeHomeBar = ({ pagename }: ICategory) => {
         <Link to="/alarm">
           <IcBell />
         </Link>
-        <Link to="/comparison">
+        <Link to="/comparison/:id">
           <IcCard />
         </Link>
       </div>

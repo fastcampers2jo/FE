@@ -7,7 +7,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import LogoTOP from "components/logoTop";
 import Navbar from "components/navber";
-import { IcEdit } from "assets";
+import { IcEdit, RightArrow } from "assets";
 
 const LoungePage = () => (
   <div className="loungeMain">
@@ -18,10 +18,10 @@ const LoungePage = () => (
     <HotTopic />
     <section className="community__section">
       <Link to="/community" className="page__title">
-        게시판
+        게시판 <RightArrow className="page__title__icons" />
       </Link>
       <div className="lounge__product__categories">
-        <Swiper slidesPerView={6} spaceBetween={45}>
+        <Swiper slidesPerView={5.5} spaceBetween={42}>
           <SwiperSlide>
             <div className="lounge__product__category active">전체</div>
           </SwiperSlide>

@@ -1,11 +1,6 @@
-.swiper-wrapper {
-  height: 17.3rem;
-}
-.swiper__slide {
-  height: 17.3rem;
-}
 
 .community__section {
+  width: auto;
   height: auto;
   background-color: #fff;
   padding: 2rem 0 0 1.6rem;
@@ -14,15 +9,18 @@
   .lounge__product__categories {
     display: flex;
     align-items: flex-start;
-    gap: 0.8rem;
     overflow: hidden;
     background-color: #fff;
     padding-left: 0;
     height: 3rem;
     padding-top: 1rem;
     padding-bottom: 1rem;
+    width: 100%;
+
 
     .lounge__product__category {
+      height: 19px;
+      width: auto;
       border-radius: 10rem;
       border: 0.1rem solid #bfbfbf;
       min-width: 2.4rem;
@@ -30,6 +28,7 @@
       width: 100%;
       cursor: pointer;
       justify-content: center;
+      align-items: center;
       text-align: center;
 
       color: #bfbfbf;
@@ -102,9 +101,10 @@
 
 .hottopic {
   width: auto;
-  min-height: 27.3rem;
+  // min-height: 27.3rem;
   height: auto;
   background-color: #fff;
+  padding-bottom: 30px;
 
   .page__title {
     padding: 3rem 1.6rem 0 1.6rem;
@@ -128,11 +128,10 @@
     margin-left: 1.6rem;
 
     .products__comparison {
+      
       padding: 2rem 1rem;
-
       cursor: pointer;
-      margin-top: 0;
-      padding-top: 0;
+      margin-top: 10px;
       min-width: 30.8rem;
       width: auto;
       height: auto;
@@ -141,13 +140,26 @@
       justify-content: center;
 
       .products__vote {
-        margin: 2rem 0 1.6rem 0;
+        margin-bottom: 1.6rem;
         width: auto;
 
         &__title {
           display: flex;
           width: 100%;
-          padding-top: 2rem;
+
+          &__icons {
+            display: flex;
+            width: 24px;
+            height: 24px;
+            text-align: center;
+            margin-left: 8px;
+
+            svg, path,rect {
+              stroke: #000;
+              stroke-width: 2px;
+            }
+            
+          }
 
           .vote--btn {
             border-radius: 0.4rem;

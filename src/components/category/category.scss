@@ -9,10 +9,6 @@
   }
 }
 
-.swiper-slide {
-  margin-right: 0;
-}
-
 .product__categories {
   width: auto;
   padding-left: 1.6rem;
@@ -32,9 +28,16 @@
   justify-content: center;
   align-items: center;
   display: flex;
+  flex-direction: row;
+  width: auto;
+  padding: 0 3px;
+  margin: 0 auto;
+  a {
+    display: flex;
+  }
 
   &.active {
-    padding: 0 0.5rem;
+    display: flex;
 
     span {
       color: #fff;
@@ -55,7 +58,6 @@
   padding-bottom: 0.9rem;
   height: auto;
   color: var(--color-white-gray-6, #aeb5bc);
-  // border-bottom: .3rem solid var(--test-02, #111);
   display: flex;
   align-items: center;
 }

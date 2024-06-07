@@ -1,12 +1,22 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./onofftoggle.scss";
 
-const OnOffToggle = () => {
-  const [isOn, setIsOn] = useState(false);
+interface OnOffToggleProps {
+  isActive: boolean;
+  onToggle: () => void;
+}
+
+const OnOffToggle = ({ isActive, onToggle }: OnOffToggleProps) => {
+  const [isOn, setIsOn] = useState(isActive);
+
+  useEffect(() => {
+    setIsOn(isActive);
+  }, [isActive]);
+
   const handleSwitch = () => {
     setIsOn(!isOn);
+    onToggle();
   };
-  // const [isOn, setIsOn] = useState(value);
 
   // // toggle시 반대값
   // const toggleSwitch = () => {

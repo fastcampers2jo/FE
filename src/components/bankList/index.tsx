@@ -15,12 +15,7 @@ const BankList = ({ data }: IBank) => {
   return (
     <div>
       {data.map((rank, i: number) => (
-        <button
-          key={i}
-          className={styles.rankList}
-          type="button"
-          onClick={onLink}
-        >
+        <button key={i} className={styles.rankList} type="button" onClick={onLink}>
           <p className={styles.currentRank}>
             {rank.id} <span />
           </p>
@@ -43,10 +38,7 @@ const BankList = ({ data }: IBank) => {
               <span>최고 {rank.toprage}%</span>
               <strong>기본 {rank.rage}%</strong>
             </div>
-            <button
-              type="button"
-              onClick={(e: React.MouseEvent<HTMLButtonElement>) => onLove(e, i)}
-            >
+            <button type="button" onClick={(e: React.MouseEvent<HTMLButtonElement>) => onLove(e, i)}>
               {love[i] ? <IcSmallLove /> : <IcSmallNotLove />}
             </button>
           </div>
