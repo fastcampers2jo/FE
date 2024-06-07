@@ -288,6 +288,33 @@ export const keywords = [
     title: "KB손해보험",
   },
 ];
+export const cards = [
+  {
+    tags: ["네이버페이 삼성카드", "쇼핑"],
+    title: "네이버페이 쓸 때마다 10% 캐시백",
+  },
+  {
+    tags: ["네이버페이 삼성카드", "쇼핑"],
+    title: "네이버페이 쓸 때마다 10% 캐시백",
+  },
+];
+export const pensions = [
+  {
+    src: <IcBank19 />,
+    sub: "연금저축 무배당 KDB 다이렉트 연금보험",
+    title: "KDB생명",
+  },
+  {
+    src: <IcBank19 />,
+    sub: "연금저축 무배당 KDB 다이렉트 연금보험",
+    title: "KDB생명",
+  },
+  {
+    src: <IcBank19 />,
+    sub: "연금저축 무배당 KDB 다이렉트 연금보험",
+    title: "KDB생명",
+  },
+];
 export const bankList = [
   { name: "국민은행", src: <IcBank01 /> },
   { name: "기업은행", src: <IcBank02 /> },
@@ -316,4 +343,68 @@ export const bankList = [
   { name: "한국투자증권", src: <IcBank25 /> },
   { name: "NH저축은행", src: <IcBank26 /> },
   { name: "저축은행", src: <IcBank27 /> },
+];
+
+export const goodSearch = [
+  { name: "청년 저축상품", id: 1 },
+  { name: "청년 저축상품", id: 2 },
+  { name: "청년 저축상품", id: 3 },
+  { name: "청년 저축상품", id: 4 },
+  { name: "청년 저축상품", id: 5 },
+  { name: "청년 저축상품", id: 6 },
+  { name: "청년 저축상품", id: 7 },
+  { name: "청년 저축상품", id: 8 },
+  { name: "청년 저축상품", id: 9 },
+  { name: "청년 저축상품", id: 10 },
+];
+
+export const searchs = ["주택청약", "주택", "주택보험상품", "청년주택"];
+export const navs = [
+  { name: "예금" },
+  { name: "적금" },
+  { name: "파킹" },
+  { name: "CMA" },
+  { name: "ISA" },
+  { name: "연금" },
+  { name: "카드" },
+];
+export const nav = [
+  { name: "전체" },
+  { name: "예금" },
+  { name: "적금" },
+  { name: "파킹" },
+  { name: "CMA" },
+  { name: "ISA" },
+  { name: "연금" },
+  { name: "카드" },
+];
+
+export const launge = [
+  {
+    name: "신화속 엘프",
+    time: "15분전",
+    inquiry: 23,
+    title: "갑자기 삘받아서 예금 넣을 생각인데 이거 어때요??",
+    bank: "KDB 기업정기예금",
+    comment: 12,
+    good: 50,
+  },
+  {
+    name: "신화속 엘프",
+    time: "15분전",
+    inquiry: 23,
+    title: "갑자기 삘받아서 예금 넣을 생각인데 이거 어때요??",
+    bank: "KDB 기업정기예금",
+    comment: 12,
+    good: 50,
+  },
+  {
+    name: "신화속 엘프",
+    time: "15분전",
+    inquiry: 23,
+    title: "갑자기 삘받아서 예금 넣을 생각인데 이거 어때요??",
+    bank: "KDB 기업정기예금",
+    comment: 12,
+    good: 50,
+  },
 ];

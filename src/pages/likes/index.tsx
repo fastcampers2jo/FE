@@ -131,12 +131,12 @@ const LikeListPage = () => {
       {isEditing ? (
         <>
           <div className="likelistpage__editing__homebar">찜하기 상품 편집</div>
-          <Category />
+          <Category pageUrlName="likelist" />
         </>
       ) : (
         <>
           <LikeHomeBar pagename="찜한 상품비교" />
-          <Category />
+          <Category pageUrlName="likelist" />
         </>
       )}
 

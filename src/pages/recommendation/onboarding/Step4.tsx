@@ -1,12 +1,14 @@
 import { IcBack, Bar4, IcEdit } from "assets";
 import Navbar from "components/navber";
+import { useNumber } from "hooks";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import "../recommendation.scss";
 
 const Step4 = () => {
-  // const [isContinueActive, setIsContinueActive] = useState(false);
   const [isInputActive, setIsInputActive] = useState(false);
   const [inputValue, setInputValue] = useState("");
+  const [number, onNumberChange] = useNumber("");
   const navigate = useNavigate();
 
   const handleInputFocus = () => {
@@ -19,8 +21,9 @@ const Step4 = () => {
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;
-    if (!Number.isNaN(Number(value)) && Number(value) >= 0) {
-      setInputValue(value);
+    if (!Number.isNaN(Number(value.replace(/,/g, ""))) && Number(value.replace(/,/g, "")) >= 0) {
+      setInputValue(value.replace(/,/g, "")); // 콤마 제거된 값 설정
+      onNumberChange(e);
     }
   };
 
@@ -47,7 +50,7 @@ const Step4 = () => {
         <div className="inputsection">
           <input
             className={`inputbox  ${isInputActive ? "active" : ""}`}
-            type="number"
+            type="text"
             placeholder="금액"
             min="0"
             inputMode="numeric"
@@ -56,9 +59,9 @@ const Step4 = () => {
             onBlur={handleEditDelete}
             onChange={handleChange}
             onWheel={(event) => (event.target as HTMLElement).blur()}
-            value={inputValue}
+            value={number}
           />
-          {!isInputActive && !inputValue && <IcEdit className="edit" />}
+          {!isInputActive && !inputValue && <IcEdit className="step4__icon__edit" />}
           <span>만원</span>
         </div>
       </section>

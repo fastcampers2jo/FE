@@ -24,6 +24,11 @@ import {
   Step6,
   NewPost,
   ProductDetail,
+  Search,
+  Board,
+  SearchList,
+  Searchboard,
+  Prep,
 } from "./pages";
 
 const isLoggedIn = getCookie("token");
@@ -35,6 +40,10 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home />,
+      },
+      {
+        path: "/nopage",
+        element: <Prep />,
       },
       {
         path: "/login",
@@ -61,15 +70,35 @@ const router = createBrowserRouter([
         element: <Ranking />,
       },
       {
-        path: "/likelist",
+        path: "/likelist/:id",
         element: <LikeListPage />,
+      },
+      {
+        path: "/board/:id",
+        element: <Board />,
+      },
+      {
+        path: "/board/:search/:id",
+        element: <Board />,
+      },
+      {
+        path: "/searchboard",
+        element: <Searchboard />,
+      },
+      {
+        path: "/search/:search/:id",
+        element: <SearchList />,
+      },
+      {
+        path: "/search",
+        element: <Search />,
       },
       {
         path: "/productdetail",
         element: <ProductDetail />,
       },
       {
-        path: "/comparison",
+        path: "/comparison/:id",
         element: <ComparisonPage />,
       },
       {
@@ -77,7 +106,7 @@ const router = createBrowserRouter([
         element: <ComparisonDetailPage />,
       },
       {
-        path: "/recommend",
+        path: "/recommend/:id",
         element: <RecommendationPage />,
       },
       {

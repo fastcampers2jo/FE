@@ -1,197 +1,383 @@
+/* eslint-disable @typescript-eslint/indent */
+/* eslint-disable jsx-a11y/alt-text */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
-import { BGLogo, BGSticker, IcEdit } from "assets";
+import { BGLogo, BGSticker, IcHomeArr, RightArrow } from "assets";
 import ComparisonProducts from "components/likes/ComparisonProducts";
 import OnOffToggle from "components/onoffToggle/onoffToggle";
-import { ChangeEvent, useState } from "react";
 import "./comparision.scss";
 import MainHomeBar from "components/homebar";
+import MysetInputBox from "components/mysetInput";
+import MyperiodSelect from "components/mysetInput/myperiodSelect";
+import chakLogo from "assets/chak.png";
+import { useState } from "react";
+import { Link } from "react-router-dom";
 
-export interface ComparisonProps {
-  title?: string;
-  bankName?: string;
-  image?: string;
-  interest?: number;
-  nets?: number;
-}
-
-const OBJECT__PERIOD = [
-  { id: null, value: "예정기간 선택" },
-  { id: "0001", value: "6개월" },
-  { id: "0002", value: "7개월" },
-  { id: "0003", value: "8개월" },
-  { id: "0004", value: "9개월" },
-  { id: "0005", value: "10개월" },
-  { id: "0006", value: "11개월" },
-  { id: "0007", value: "12개월" },
-  { id: "0008", value: "13개월" },
+const Product1 = [
+  {
+    id: 1,
+    def_rate: 3,
+    def_period: 6,
+    max_rate: 6,
+    max_period: 12,
+    bank_name: "KDB 산업은행",
+    title: "KDB 기업 정기예금",
+    descriptions: [
+      { id_description: 1, description: "급여실적 또는 개인사업자 계좌 실적 보유 시", rate: 2, active: false },
+      { id_description: 2, description: "비대면 채널 이체 실적 보유 시", rate: 1, active: false },
+    ],
+  },
 ];
 
-const ComparisonDetailPage = () => {
-  const [setSelectPeriodValue, setSetselectPeriodValue] = useState("예정기간 선택");
+const Product2 = [
+  {
+    id: 2,
+    def_rate: 4,
+    max_rate: 4.5,
+    def_period: 6,
+    max_period: 24,
+    bank_name: "기업은행",
+    title: "기업 직장인 정기예금",
 
-  const handlePeriodDrop = (e: ChangeEvent<HTMLSelectElement>) => {
-    const { value } = e.target;
-    // setSelectPeriodValue(value);
-    setSetselectPeriodValue(value);
+    descriptions: [
+      { id_description: 1, description: "마케팅 동의 시", rate: 0.2, active: false },
+      { id_description: 2, description: "에너지 절감 시", rate: 0.3, active: false },
+    ],
+  },
+];
+
+interface Product {
+  id: number;
+  def_rate: number;
+  def_period: number;
+  max_rate: number;
+  max_period: number;
+  bank_name: string;
+  title: string;
+  descriptions: Description[];
+}
+interface Description {
+  id_description: number;
+  description: string;
+  rate: number;
+  active: boolean;
+}
+
+const getActiveDescriptions = (products: Product[]): Description[] => {
+  const activeDescriptions: Description[] = [];
+  products.forEach((product) => {
+    product.descriptions.forEach((desc) => {
+      if (desc.active) {
+        activeDescriptions.push(desc);
+      }
+    });
+  });
+  return activeDescriptions;
+};
+
+const ComparisonDetailPage = () => {
+  const [products1, setProducts1] = useState(Product1);
+  const [products2, setProducts2] = useState(Product2);
+  const [activeMoreViews1, setActiveMoreViews1] = useState<boolean[]>(Array(Product1[0].descriptions.length).fill(false));
+  const [activeMoreViews2, setActiveMoreViews2] = useState<boolean[]>(Array(Product2[0].descriptions.length).fill(false));
+
+  // 자세히보기 버튼 클릭 시 상세내용 보이기 ///
+  const toggleMoreview = (productIndex: number, descIndex: number) => {
+    if (productIndex === 0) {
+      setActiveMoreViews1((prev) => {
+        const newActiveMoreViews = [...prev];
+        newActiveMoreViews[descIndex] = !newActiveMoreViews[descIndex];
+        return newActiveMoreViews;
+      });
+    } else if (productIndex === 1) {
+      setActiveMoreViews2((prev) => {
+        const newActiveMoreViews = [...prev];
+        newActiveMoreViews[descIndex] = !newActiveMoreViews[descIndex];
+        return newActiveMoreViews;
+      });
+    }
   };
 
-  return (
-    <section>
-      <form className="comparisonDetail">
-        <MainHomeBar pagename="비교하기" />
+  //  토글 //
+  const handleToggle1 = (descIndex: number) => {
+    setProducts1((prev) =>
+      prev.map((product, productIndex) =>
+        productIndex === 0
+          ? {
+              ...product,
+              descriptions: product.descriptions.map((desc, index) =>
+                index === descIndex
+                  ? { ...desc, active: !desc.active }
+                  : desc
+              ),
+            }
+          : product
+      )
+    );
+  };
 
-        <form className="my__object__set">
-          <span>내 목표 설정하기</span>
-          <div className="my__object">
-            <div className="my__object__inputbox">
-              <input type="number" placeholder="저축금액 작성" inputMode="numeric" pattern="[0-9]*" />
-              <IcEdit className="edit" />
-              으로
-            </div>
-            <div className="my__object__inputbox__select">
-              <select value={setSelectPeriodValue} onChange={handlePeriodDrop}>
-                {OBJECT__PERIOD.map((el) => (
-                  <option key={el.id} value={el.value}>
-                    {el.value}
-                  </option>
-                ))}
-              </select>
-              동안
-            </div>
-            <span>저축하고 싶어요!</span>
+  const handleToggle2 = (descIndex: number) => {
+    setProducts2((prev) =>
+      prev.map((product, productIndex) =>
+        productIndex === 0 ? { ...product,
+              descriptions: product.descriptions.map((desc, index) =>
+                index === descIndex
+                  ? { ...desc, active: !desc.active }
+                  : desc
+              ),
+            }
+          : product
+      )
+    );
+  };
+
+  // 총 금리 계산 //
+  const calculateTotalInterest1 = () =>
+    products1
+      .reduce((total, product) => {
+        const defRate = product.def_rate; // 기본 금리
+        const activeDescRateSum = product.descriptions.reduce(
+          (subTotal, desc) => (desc.active ? subTotal + desc.rate : subTotal),
+          0
+        ); // 활성화된 description의 rate 합계
+        return total + defRate + activeDescRateSum; // 기본 금리와 활성화된 description의 rate 합산
+      }, 0)
+      .toFixed(1);
+
+  const calculateTotalInterest2 = () =>
+    products2
+      .reduce((total, product) => {
+        const defRate = product.def_rate; // 기본 금리
+        const activeDescRateSum = product.descriptions.reduce(
+          (subTotal, desc) => (desc.active ? subTotal + desc.rate : subTotal),
+          0
+        ); // 활성화된 description의 rate 합계
+        return total + defRate + activeDescRateSum; // 기본 금리와 활성화된 description의 rate 합산
+      }, 0)
+      .toFixed(1);
+
+  const totalInterest1 = calculateTotalInterest1();
+  const totalInterest2 = calculateTotalInterest2();
+
+  /// toggle 활성화한 description을 ComparisonProducts로 넘기기 ///
+  const activeDescriptions1: Description[] = getActiveDescriptions(products1);
+  const activeDescriptions2: Description[] = getActiveDescriptions(products2);
+
+  return (
+    <section className="comparisonDetail">
+      <MainHomeBar pagename="비교하기" />
+
+      <form className="my__object__set">
+        <span>내 목표 설정하기</span>
+        <div className="my__object">
+          <div className="my__object__inputbox">
+            <MysetInputBox />
+            으로
           </div>
-        </form>
-        <form>
-          <div className="comparison__makes">
-            <div className="comparison__makes__bg">
-              <BGLogo className="comparison__makes__bg__icon1" />
-              <BGSticker className="comparison__makes__bg__icon2" />
+          <div className="my__object__selectbox__comparisondetail">
+            <MyperiodSelect />
+            동안
+          </div>
+          <span>저축하고 싶어요!</span>
+        </div>
+      </form>
+      <div className="comparison__makes">
+        <div className="comparison__makes__bg">
+          <BGLogo className="comparison__makes__bg__icon1" />
+          <BGSticker className="comparison__makes__bg__icon2" />
+        </div>
+      </div>
+
+      <section className="comparison__main__section">
+        <div className="sticker">
+          <div className="comparison__make__title">
+            비교 <img src={chakLogo} alt="비교chak로고" className="chaklogo" />
+          </div>
+          <div className="comparison__make__wrapped">
+            <div className="comparison__make--btn">
+              {products1.map((product) => (
+                <div className="comparison__make" key={product.id}>
+                  <div className="product__info">
+                    <div className="bank__name">{product.bank_name}</div>
+                    <Link to="/productdetail" className="product__title">
+                      {product.title}
+                      <RightArrow className="product__title__icon" />
+                    </Link>
+                  </div>
+                  <Link to="/productdetail" className="product__detail">
+                    가입하기
+                  </Link>
+                </div>
+              ))}
             </div>
-            <div className="comparison__make__title">비교 chak</div>
-            <div className="comparison__make__wrapped">
-              <div className="comparison__make">
-                <div className="product__info">
-                  <div className="bank__name">KDB 산업은행</div>
-                  <div className="product__title">KDB 기업 정기예금</div>
+            <div className="comparison__make--btn">
+              {products2.map((product) => (
+                <div className="comparison__make" key={product.id}>
+                  <div className="product__info">
+                    <div className="bank__name">{product.bank_name}</div>
+                    <Link to="/productdetail" className="product__title">
+                      {product.title}
+                      <RightArrow className="product__title__icon" />
+                    </Link>
+                  </div>
+                  <Link to="/productdetail" className="product__detail">
+                    가입하기
+                  </Link>
                 </div>
-                <div className="product__detail">가입하기</div>
-              </div>
-              <div className="comparison__make">
-                <div className="product__info">
-                  <div className="bank__name">KDB 산업은행</div>
-                  <div className="product__title">KDB 기업 정기예금</div>
-                </div>
-                <div className="product__detail">가입하기</div>
-              </div>
+              ))}
             </div>
           </div>
-        </form>
-        <form className="comparison__products">
+        </div>
+        <div className="comparison__products">
           <div className="category">은행사</div>
           <div className="bank__infos">
-            <div className="bank__info">
-              <div className="bank__logo" />
-              <div className="bank__name">KDB 산업은행</div>
-            </div>
-            <div className="bank__info">
-              <div className="bank__logo" />
-              <div className="bank__name">KDB 산업은행</div>
-            </div>
+            {products1.map((product) => (
+              <div className="bank__info" key={product.id}>
+                <div className="bank__logo" />
+                <div className="bank__name">{product.bank_name}</div>
+              </div>
+            ))}
+            {products2.map((product) => (
+              <div className="bank__info" key={product.id}>
+                <div className="bank__logo" />
+                <div className="bank__name">{product.bank_name}</div>
+              </div>
+            ))}
           </div>
           <div className="category">기본(최고) 금리</div>
           <div className="products__interests">
-            <div className="product__interest">
-              <span className="def">기본</span>
-              <div className="product__interest__wrapped">
-                3%<div className="period">(12개월)</div>
+            {products1.map((product) => (
+              <div className="product__interest" key={product.id}>
+                <span className="def">기본</span>
+                <div className="product__interest__wrapped">
+                  {product.def_rate}%<div className="period">({product.def_period}개월)</div>
+                </div>
+                <span className="def max">최고</span>
+                <div className="product__interest__wrapped max">
+                  {product.max_rate}%<div className="period max">({product.max_period}개월)</div>
+                </div>
               </div>
-              <span className="def max">최고</span>
-              <div className="product__interest__wrapped max">
-                3%<div className="period max">(12개월)</div>
+            ))}
+            {products2.map((product) => (
+              <div className="product__interest" key={product.id}>
+                <span className="def">기본</span>
+                <div className="product__interest__wrapped">
+                  {product.def_rate}%<div className="period">({product.def_period}개월)</div>
+                </div>
+                <span className="def max">최고</span>
+                <div className="product__interest__wrapped max">
+                  {product.max_rate}%<div className="period max">({product.max_period}개월)</div>
+                </div>
               </div>
-            </div>
-            <div className="product__interest">
-              <span className="def">기본</span>
-              <div className="product__interest__wrapped">
-                3%<div className="period">(12개월)</div>
-              </div>
-              <span className="def max">최고</span>
-              <div className="product__interest__wrapped max">
-                3%<div className="period max">(12개월)</div>
-              </div>
-            </div>
+            ))}
           </div>
-
           <div className="category">가입기간</div>
           <div className="products__periods">
-            <div className="products__period">1개월 이상 5년 이하</div>
-            <div className="products__period">1개월 이상 5년 이하</div>
+            <div className="products__period">
+              1개월 이상
+              <br /> 5년 이하
+            </div>
+            <div className="products__period">
+              1개월 이상
+              <br /> 5년 이하
+            </div>
           </div>
-
           <div className="category">가입금액</div>
           <div className="products__periods">
             <div className="products__period">100만원 이상</div>
             <div className="products__period">100만원 이상</div>
           </div>
-
           <div className="category">우대금리</div>
           <div className="comparisondetail__products__checks__wrapped">
             <div className="comparisondetail__products__checks">
-              <div className="comparisondetail__products__check">
-                01
-                <div className="comparisondetail__product__checklist">
-                  급여실적 또는 개인사업자 계좌 실적 보유 시<div className="detail">자세히 &#8744;</div>
-                </div>
-                <div className="comparisondetail__products__check--toggle">
-                  1%
-                  <div className="comparisondetail__toggle__select">
-                    <OnOffToggle />
+              {products1[0].descriptions.map((desc, descIndex) => (
+                <div key={desc.id_description} className="comparisondetail__products__check">
+                  {String(descIndex + 1).padStart(2, "0")}
+                  <div className="comparisondetail__product__checklist">
+                    <div className="comparisondetail__product__description">{desc.description}</div>
+                    <button
+                      className="comparisondetail__product__moreview"
+                      onClick={() => toggleMoreview(0, descIndex)}
+                    >
+                      <div className="moreview__wrapped">
+                        자세히
+                        <span className="comparisondetail__icon__arr">
+                          {activeMoreViews1[descIndex] ? (
+                            <IcHomeArr className="comparisondetail__icon__arr__rotate" />
+                          ) : (
+                            <IcHomeArr />
+                          )}
+                        </span>
+                      </div>
+                      {activeMoreViews1[descIndex] && (
+                        <div>
+                          <div className="moreview__text">
+                            추가 우대금리에 대한 내용이 들어갑니다. 추가 우대금리에 대한 내용이 들어갑니다. 추가
+                            우대금리에 대한 내용이 들어갑니다.
+                          </div>
+                        </div>
+                      )}
+                    </button>
+                  </div>
+                  <div className="comparisondetail__products__check--toggle">
+                    {desc.rate}%
+                    <div className="comparisondetail__toggle__select">
+                      <OnOffToggle isActive={desc.active} onToggle={() => handleToggle1(descIndex)} />
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div className="comparisondetail__products__check">
-                01
-                <div className="comparisondetail__product__checklist">
-                  마케팅 동의 시<div className="detail">자세히 &#8744;</div>
-                </div>
-                <div className="comparisondetail__products__check--toggle">
-                  1%
-                  <div className="comparisondetail__toggle__select">
-                    <OnOffToggle />
-                  </div>
-                </div>
-              </div>
+              ))}
             </div>
             <div className="comparisondetail__products__checks">
-              <div className="comparisondetail__products__check">
-                02
-                <div className="comparisondetail__product__checklist">
-                  비대면 채널 <br /> 이체실적 보유 시 <div className="detail">자세히 &#8744;</div>
-                </div>
-                <div className="comparisondetail__products__check--toggle">
-                  1%
-                  <div className="comparisondetail__toggle__select">
-                    <OnOffToggle />
+              {products2[0].descriptions.map((desc, descIndex) => (
+                <div key={desc.id_description} className="comparisondetail__products__check">
+                  {String(descIndex + 1).padStart(2, "0")}
+                  <div className="comparisondetail__product__checklist">
+                    <div className="comparisondetail__product__description">{desc.description}</div>
+                    <button
+                      className="comparisondetail__product__moreview"
+                      onClick={() => toggleMoreview(1, descIndex)}
+                    >
+                      <div className="moreview__wrapped">
+                        자세히
+                        <span className="comparisondetail__icon__arr">
+                          {activeMoreViews2[descIndex] ? (
+                            <IcHomeArr className="comparisondetail__icon__arr__rotate" />
+                          ) : (
+                            <IcHomeArr />
+                          )}
+                        </span>
+                      </div>
+                      {activeMoreViews2[descIndex] && (
+                        <div>
+                          <div className="moreview__text">
+                            추가 우대금리에 대한 내용이 들어갑니다. 추가 우대금리에 대한 내용이 들어갑니다. 추가
+                            우대금리에 대한 내용이 들어갑니다.
+                          </div>
+                        </div>
+                      )}
+                    </button>
+                  </div>
+                  <div className="comparisondetail__products__check--toggle">
+                    {desc.rate}%
+                    <div className="comparisondetail__toggle__select">
+                      <OnOffToggle isActive={desc.active} onToggle={() => handleToggle2(descIndex)} />
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div className="comparisondetail__products__check">
-                02
-                <div className="comparisondetail__product__checklist">
-                  에너지 절약 시<div className="detail">자세히 &#8744;</div>
-                </div>
-                <div className="comparisondetail__products__check--toggle">
-                  1%
-                  <div className="comparisondetail__toggle__select">
-                    <OnOffToggle />
-                  </div>
-                </div>
-              </div>
+              ))}
             </div>
           </div>
-        </form>
-      </form>
-      <ComparisonProducts />
+        </div>
+      </section>
+
+      <ComparisonProducts
+        defRate1={Product1[0].def_rate}
+        defRate2={products2[0].def_rate}
+        totalInterest1={totalInterest1}
+        totalInterest2={totalInterest2}
+        activeDescriptions1={activeDescriptions1}
+        activeDescriptions2={activeDescriptions2}
+      />
     </section>
   );
 };

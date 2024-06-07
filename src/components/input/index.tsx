@@ -50,12 +50,12 @@ const Input = ({
           <div className={styles.icon}>
             {value.length > 0 && (
               <button onClick={onButton} type="button">
-                <img src={IcInputDelet} alt="삭제" />
+                <IcInputDelet />
               </button>
             )}
-            {type === "password" && (
+            {type === "password" && value.length > 0 && (
               <button onClick={onShow} type="button">
-                <img src={hide ? IcShow : IcHide} alt="보기" />
+                {hide ? <IcShow /> : <IcHide />}
               </button>
             )}
             {name === "confirmPassword" && !errorCode && value.length > 0 && (

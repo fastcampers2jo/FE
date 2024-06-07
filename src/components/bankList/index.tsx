@@ -1,9 +1,11 @@
 import { useCallback, useState } from "react";
+import { useParams } from "react-router-dom";
 import { IBank } from "types";
 import { IcBankIcon, IcSmallLove, IcSmallNotLove } from "assets";
 import styles from "./styles.module.scss";
 
 const BankList = ({ data }: IBank) => {
+  const param = useParams();
   const [love, setLove] = useState<boolean[]>([]);
   const onLove = (e: React.MouseEvent<HTMLButtonElement>, i: number) => {
     e.stopPropagation();
@@ -15,12 +17,7 @@ const BankList = ({ data }: IBank) => {
   return (
     <div>
       {data.map((rank, i: number) => (
-        <button
-          key={i}
-          className={styles.rankList}
-          type="button"
-          onClick={onLink}
-        >
+        <button key={i} className={styles.rankList} type="button" onClick={onLink}>
           <p className={styles.currentRank}>
             {rank.id} <span />
           </p>
@@ -43,12 +40,18 @@ const BankList = ({ data }: IBank) => {
               <span>최고 {rank.toprage}%</span>
               <strong>기본 {rank.rage}%</strong>
             </div>
-            <button
-              type="button"
-              onClick={(e: React.MouseEvent<HTMLButtonElement>) => onLove(e, i)}
-            >
-              {love[i] ? <IcSmallLove /> : <IcSmallNotLove />}
-            </button>
+            {param.search ? (
+              ""
+            ) : (
+              <button
+                type="button"
+                onClick={(e: React.MouseEvent<HTMLButtonElement>) =>
+                  onLove(e, i)
+                }
+              >
+                {love[i] ? <IcSmallLove /> : <IcSmallNotLove />}
+              </button>
+            )}
           </div>
         </button>
       ))}

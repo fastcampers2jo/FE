@@ -1,45 +1,130 @@
-import { IcEdit, EmptyHeart, RightArrow, SNSShare, FloatingHeart } from "assets";
+/* eslint-disable no-plusplus */
+import {
+  EmptyHeart,
+  RightArrow,
+  SNSShare,
+  FloatingHeart,
+  IcBank06,
+  BGSticker,
+  ProductBG1,
+  ProductBG2,
+  IcHomeArr,
+  IcSmallLove,
+} from "assets";
 import "./productDetail.scss";
-import OnOffToggle from "components/onoffToggle/onoffToggle";
-import { ChangeEvent, useState } from "react";
+import { useState } from "react";
 import "swiper/css";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Link } from "react-router-dom";
 import MainHomeBar from "components/homebar";
+import OnOffToggle from "components/onoffToggle/onoffToggle";
+import MysetInputBox from "components/mysetInput";
+import MyperiodSelect from "components/mysetInput/myperiodSelect";
 
-const OBJECT__PERIOD = [
-  { id: null, value: "예정기간 선택" },
-  { id: "0001", value: "6개월" },
-  { id: "0002", value: "7개월" },
-  { id: "0003", value: "8개월" },
-  { id: "0004", value: "9개월" },
-  { id: "0005", value: "10개월" },
-  { id: "0006", value: "11개월" },
-  { id: "0007", value: "12개월" },
-  { id: "0008", value: "13개월" },
+interface Description {
+  id_description: number;
+  description: string;
+  rate: number;
+  active: boolean;
+}
+
+interface Product {
+  id: number;
+  def_rate: number;
+  def_period: number;
+  max_rate: number;
+  max_period: number;
+  bank_name: string;
+  title: string;
+  descriptions: Description[];
+}
+
+const Product1: Product[] = [
+  {
+    id: 1,
+    def_rate: 3,
+    def_period: 6,
+    max_rate: 6,
+    max_period: 12,
+    bank_name: "KDB 산업은행",
+    title: "KDB 기업 정기예금",
+    descriptions: [
+      { id_description: 1, description: "급여실적 또는 개인사업자 계좌 실적 보유 시", rate: 2, active: false },
+      { id_description: 2, description: "비대면 채널 이체 실적 보유 시", rate: 1, active: false },
+    ],
+  },
 ];
 
 const ProductDetail = () => {
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  const [selectPeriodValue, setSelectPeriodValue] = useState("예정기간 선택");
+  const [products, setProducts] = useState<Product[]>(Product1);
+  const [activeMoreViews, setActiveMoreViews] = useState(Array(Product1[0].descriptions.length).fill(false));
+  const [likeProducts, setLikeProducts] = useState<Product[]>([]);
 
-  const handlePeriodDrop = (e: ChangeEvent<HTMLSelectElement>) => {
-    const { value } = e.target;
-    // setSelectPeriodValue(value);
-    setSelectPeriodValue(value);
+  /// 찜하기 버튼 ///
+  const toggleFavorite = (product: Product) => {
+    const index = likeProducts.findIndex((item) => item.id === product.id);
+    if (index === -1) {
+      // 새로운 상품을 찜한 목록에 추가
+      setLikeProducts([...likeProducts, product]);
+    } else {
+      // 이미 찜한 상품을 찜한 목록에서 제거
+      const newLikeProducts = [...likeProducts];
+      newLikeProducts.splice(index, 1);
+      setLikeProducts(newLikeProducts);
+    }
   };
+
+  /// 자세히보기 ///
+  const toggleMoreview = (productIndex: number, descIndex: number) => {
+    if (productIndex === 0) {
+      setActiveMoreViews((prevActiveMoreViews) =>
+        prevActiveMoreViews.map((value, index) => (index === descIndex ? !value : value))
+      );
+    }
+  };
+
+  ///  onoff토글 ///
+  const handleToggle = (productIndex: number, descIndex: number) => {
+    setProducts((prevProducts) =>
+      prevProducts.map((product, idx) =>
+        idx === productIndex
+          ? {
+            ...product,
+            descriptions: product.descriptions.map((desc, dIdx) =>
+              dIdx === descIndex ? { ...desc, active: !desc.active } : desc
+            ),
+          }
+          : product
+      )
+    );
+  };
+
+  /// active한 토글의 금리 총합 ///
+
+  const calculateTotalInterest = () =>
+    products
+      .reduce(
+        (total, product) =>
+          total + product.descriptions.reduce((subTotal, desc) => (desc.active ? subTotal + desc.rate : subTotal), 0),
+        0
+      )
+      .toFixed(1);
+  const totalInterest = calculateTotalInterest();
+
   return (
     <>
       <div className="productDetail">
         <MainHomeBar pagename="우리 첫거래우대 정기예금" />
-        <Link to="/likelist">
+        <Link to="/likelist/:id">
           <FloatingHeart className="floating__heart" />
         </Link>
 
         <section className="product__preview">
           <div className="bank__category">은행 &gt; 우리은행</div>
           <div className="productdetail__info">
-            <div className="productdetail__bank">우리은행 🪙</div>
+            <div className="productdetail__bank">
+              우리은행 <IcBank06 className="productdetail__bank__icons" />
+            </div>
             <br />
             <div className="productdetail__title">첫거래우대 정기예금</div>
             <div className="productdetail__tag">
@@ -80,48 +165,72 @@ const ProductDetail = () => {
           </div>
         </section>
 
+        <section className="popular__section">
+          <div className="popular__title">월 가용금액 50만원의 20대 중반 취준생에게 인기있는 상품</div>
+          <div className="popular__bg__section">
+            <div className="popular__bg1">
+              <div className="popular__round">20대 중반</div>
+              <BGSticker className="sticker__bg1" />
+            </div>
+            <div className="popular__bg2">
+              <BGSticker className="sticker__bg2" />
+              <ProductBG1 className="popular__text__bg2" />
+              <div className="popular__text bg2">
+                가용금액
+                <br /> 50만원
+              </div>
+            </div>
+            <div className="popular__bg3">
+              <BGSticker className="sticker__bg3" />
+              <ProductBG2 className="popular__text__bg3" />
+              <div className="popular__text bg3">취준생</div>
+            </div>
+          </div>
+        </section>
+
         <div className="pagebreak" />
 
         <section className="detail__interest__set">
           <div className="detail__interest__set__title">chak한 금리계산</div>
           <div className="products__checks">
-            <div className="products__check">
-              <div className="product__checklist">
-                <p>01</p> 급여실적 또는 개인사업자 계좌 실적 보유 시<div className="detail">자세히 &#8744;</div>
-              </div>
-              <div className="products__check--toggle">
-                1%
-                <div className="toggle__select">
-                  <OnOffToggle />
+            {products[0].descriptions.map((desc, descIndex) => (
+              <div className="products__check" key={desc.id_description}>
+                <div className="product__checklist">
+                  <p>{String(descIndex + 1).padStart(2, "0")}</p>{" "}
+                  <div className="comparisondetail__product__description">{desc.description}</div>
+                  <button className="comparisondetail__product__moreview" onClick={() => toggleMoreview(0, descIndex)}>
+                    <div className="moreview__wrapped">
+                      자세히
+                      <span className="productdetail__icon__arr">
+                        {activeMoreViews[descIndex] ? (
+                          <IcHomeArr className="productdetail__icon__arr__rotate" />
+                        ) : (
+                          <IcHomeArr />
+                        )}
+                      </span>
+                    </div>
+                    {activeMoreViews[descIndex] && (
+                      <div>
+                        <div className="moreview__text">
+                          추가 우대금리에 대한 내용이 들어갑니다. 추가 우대금리에 대한 내용이 들어갑니다. 추가
+                          우대금리에 대한 내용이 들어갑니다.
+                        </div>
+                      </div>
+                    )}
+                  </button>
+                </div>
+                <div className="products__check--toggle">
+                  {desc.rate}%
+                  <div className="toggle__select">
+                    <OnOffToggle isActive={desc.active} onToggle={() => handleToggle(0, descIndex)} />
+                  </div>
                 </div>
               </div>
-            </div>
-            <div className="products__check">
-              <div className="product__checklist">
-                <p>02</p> 비대면 채널 <br /> 이체 실적 보유 시<div className="detail">자세히 &#8744;</div>
-              </div>
-              <div className="products__check--toggle">
-                1%
-                <div className="toggle__select">
-                  <OnOffToggle />
-                </div>
-              </div>
-            </div>
-            <div className="products__check">
-              <div className="product__checklist">
-                <p>03</p> 마케팅 동의시<div className="detail">자세히 &#8744;</div>
-              </div>
-              <div className="products__check--toggle">
-                0.2%
-                <div className="toggle__select">
-                  <OnOffToggle />
-                </div>
-              </div>
-            </div>
+            ))}
           </div>
           <div className="productdetail__myinterest">
             나의 금리는
-            <div className="total__interest">2.2%</div>
+            <div className="total__interest">{totalInterest}%</div>
           </div>
         </section>
         <section className="productdetail__myoptions">
@@ -129,22 +238,17 @@ const ProductDetail = () => {
             <span>계산 chakchak</span>
             <div className="my__object">
               <div className="my__object__inputbox">
-                <input type="number" placeholder="저축금액 작성" inputMode="numeric" pattern="[0-9]*" />
-                <IcEdit className="edit" />
+                <MysetInputBox />
                 으로
               </div>
-              <div className="my__object__inputbox__select">
-                <select value={selectPeriodValue} onChange={handlePeriodDrop}>
-                  {OBJECT__PERIOD.map((el) => (
-                    <option key={el.id} value={el.value}>
-                      {el.value}
-                    </option>
-                  ))}
-                </select>
+              <form className="my__object__selectbox">
+                <MyperiodSelect />
                 동안
-              </div>
+              </form>
+
               <span>
-                <div className="subActive">단리</div> <div className="percentActive">2.2%</div> 저축하고 싶어요!
+                <div className="subActive">단리</div> <div className="percentActive">{totalInterest}%</div> 저축하고
+                싶어요!
               </span>
             </div>
           </div>
@@ -168,62 +272,66 @@ const ProductDetail = () => {
 
         <section className="productdetail__recommend__more">
           <div className="productdetail__recommend__title">
-            함께보면 좋은 <br />
+            함께 보면 좋은 <br />
             예금 상품 추천Chak
           </div>
           <div className="productdetail__other__slider">
-            <Swiper
-              loop
-              breakpoints={{
-                0: { slidesPerView: 1 },
-                375: {
-                  spaceBetween: 110,
-                  slidesPerView: 2,
-                },
-                400: {
-                  spaceBetween: 90,
-                  slidesPerView: 2,
-                },
-                450: {
-                  spaceBetween: 50,
-                  slidesPerView: 2,
-                },
-                500: { spaceBetween: 230, slidesPerView: 3 },
-              }}
-            >
-              <SwiperSlide>
-                <div className="productdetail__other">
-                  <div className="productdetail__other__wrapped">
-                    <div className="productdetail__other__logo" />
-                    <div className="productdetail__other__bank">KDB 산업은행</div>
-                    <div className="productdetail__other__title">KDB 정기예금</div>
-                    <div className="productdetail__interest">연 2.2%</div>
-                  </div>
-                  <EmptyHeart className="icon__emptyheart" />
-                </div>
-              </SwiperSlide>
-              <SwiperSlide>
-                <div className="productdetail__other">
-                  <div className="productdetail__other__wrapped">
-                    <div className="productdetail__other__logo" />
-                    <div className="productdetail__other__bank">KDB 산업은행</div>
-                    <div className="productdetail__other__title">KDB 정기예금</div>
-                    <div className="productdetail__interest">연 2.2%</div>
-                  </div>
-                  <EmptyHeart className="icon__emptyheart" />
-                </div>
-              </SwiperSlide>
-              <SwiperSlide>
-                <div className="productdetail__other">
-                  <div className="productdetail__other__wrapped">
-                    <div className="productdetail__other__logo" />
-                    <div className="productdetail__other__bank">KDB 산업은행</div>
-                    <div className="productdetail__other__title">KDB 정기예금</div>
-                    <div className="productdetail__interest">연 2.2%</div>
-                  </div>
-                  <EmptyHeart className="icon__emptyheart" />
-                </div>
-              </SwiperSlide>
+            <Swiper loop spaceBetween={10} slidesPerView={1.7}>
+              {products.map((product) => (
+                <>
+                  <SwiperSlide key={product.id}>
+                    <div className="productdetail__other">
+                      <div className="productdetail__other__wrapped">
+                        <div className="productdetail__other__logo" />
+                        <div className="productdetail__other__bank">{product.bank_name}</div>
+                        <div className="productdetail__other__title">{product.title}</div>
+                        <div className="productdetail__interest">연 {product.def_rate}%</div>
+                      </div>
+                      <button className="heart__button" onClick={() => toggleFavorite(product)}>
+                        {likeProducts.some((item: { id: number }) => item.id === product.id) ? (
+                          <IcSmallLove />
+                        ) : (
+                          <EmptyHeart className="icon__emptyheart" />
+                        )}
+                      </button>
+                    </div>
+                  </SwiperSlide>
+                  <SwiperSlide>
+                    <div className="productdetail__other">
+                      <div className="productdetail__other__wrapped">
+                        <div className="productdetail__other__logo" />
+                        <div className="productdetail__other__bank">국민은행</div>
+                        <div className="productdetail__other__title">첫거래우대 정기예금</div>
+                        <div className="productdetail__interest">연 3.3%</div>
+                      </div>
+                      <button className="heart__button" onClick={() => toggleFavorite(product)}>
+                        {likeProducts.some((item: { id: number }) => item.id === product.id) ? (
+                          <IcSmallLove />
+                        ) : (
+                          <EmptyHeart className="icon__emptyheart" />
+                        )}
+                      </button>
+                    </div>
+                  </SwiperSlide>
+                  <SwiperSlide key={product.id}>
+                    <div className="productdetail__other">
+                      <div className="productdetail__other__wrapped">
+                        <div className="productdetail__other__logo" />
+                        <div className="productdetail__other__bank">{product.bank_name}</div>
+                        <div className="productdetail__other__title">{product.title}</div>
+                        <div className="productdetail__interest">연 {product.def_rate}%</div>
+                      </div>
+                      <button className="heart__button" onClick={() => toggleFavorite(product)}>
+                        {likeProducts.some((item: { id: number }) => item.id === product.id) ? (
+                          <IcSmallLove />
+                        ) : (
+                          <EmptyHeart className="icon__emptyheart" />
+                        )}
+                      </button>
+                    </div>
+                  </SwiperSlide>
+                </>
+              ))}
             </Swiper>
           </div>
         </section>
@@ -260,33 +368,15 @@ const ProductDetail = () => {
           </div>
         </section>
 
-        <section className="productdetail__lounge">
+        <section className="productdetail__lounge__section">
           <Link to="/lounge" className="productdetail__lounge__title">
             라운지 <RightArrow />
           </Link>
-          <div className="productdetail__other__slider">
-            <Swiper
-              loop
-              breakpoints={{
-                0: { slidesPerView: 1 },
-                375: {
-                  spaceBetween: 130,
-                  slidesPerView: 2,
-                },
-                400: {
-                  spaceBetween: 90,
-                  slidesPerView: 2,
-                },
-                450: {
-                  spaceBetween: 50,
-                  slidesPerView: 2,
-                },
-                500: { spaceBetween: 230, slidesPerView: 3 },
-              }}
-            >
+          <div className="productdetail__lounge__swiper ">
+            <Swiper loop spaceBetween={10} slidesPerView={1.7}>
               <SwiperSlide>
-                <div className="productdetail__other">
-                  <div className="productdetail__other__wrapped">
+                <div className="productdetail__lounge__slide">
+                  <div className="productdetail__lounge__wrapped ">
                     <div className="productdetail__lounge__post">이 상품 어떻게 생각하시나요?? 첫...</div>
                     <div className="productdetail__lounge__vote">
                       <button type="button" className="productdetail__lounge--btn">
@@ -306,8 +396,8 @@ const ProductDetail = () => {
                 </div>
               </SwiperSlide>
               <SwiperSlide>
-                <div className="productdetail__other">
-                  <div className="productdetail__other__wrapped">
+                <div className="productdetail__lounge__slide">
+                  <div className="productdetail__lounge__wrapped ">
                     <div className="productdetail__lounge__post">이 상품 어떻게 생각하시나요?? 첫...</div>
                     <div className="productdetail__lounge__vote">
                       <button type="button" className="productdetail__lounge--btn">
@@ -327,8 +417,8 @@ const ProductDetail = () => {
                 </div>
               </SwiperSlide>
               <SwiperSlide>
-                <div className="productdetail__other">
-                  <div className="productdetail__other__wrapped">
+                <div className="productdetail__lounge__slide">
+                  <div className="productdetail__lounge__wrapped ">
                     <div className="productdetail__lounge__post">이 상품 어떻게 생각하시나요?? 첫...</div>
                     <div className="productdetail__lounge__vote">
                       <button type="button" className="productdetail__lounge--btn">

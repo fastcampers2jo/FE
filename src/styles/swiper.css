@@ -7,7 +7,7 @@
     gap: 0.6rem;
     justify-content: center;
     > span {
-      background: var(--color-AEB5BC);
+      background-color: var(--color-AEB5BC);
       width: 0.6rem;
       height: 0.6rem;
       margin: 0 !important;
@@ -16,13 +16,13 @@
     }
     .swiper-pagination-bullet-active {
       width: 1.7rem;
-      background: var(--color-111);
+      background-color: var(--color-111);
     }
   }
 }
 .section07Swiper .swiper-slide-active{
   div {
-    border:2px solid var(--color-01EA2B);
+    border:1px solid var(--color-01EA2B);
   }
   p{
     color: var(--color-01EA2B);
@@ -86,4 +86,10 @@
     margin: auto 0;
     z-index: 9;
   }
+}
+.section05 .swiper-slide{
+  width: 14.7rem !important;
+}
+.searchTap .swiper-slide{
+  width: 5.6rem !important;
 }
