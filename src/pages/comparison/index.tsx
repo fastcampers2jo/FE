@@ -38,7 +38,7 @@ const ComparisonPage = () => {
               </div>
             </div>
           </div>
-          <Link to="detail" className="comparison--btn">
+          <Link to="/comparisondetail" className="comparison--btn">
             상품 비교 보러가기
           </Link>
         </div>

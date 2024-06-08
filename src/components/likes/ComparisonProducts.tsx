@@ -9,12 +9,16 @@ interface Description {
 }
 
 interface TotalInterestProps {
-  totalInterest1: string;
-  totalInterest2: string;
+  totalInterest1: number | string;
+  totalInterest2: number | string;
   activeDescriptions1: Description[];
   activeDescriptions2: Description[];
   defRate1: number;
   defRate2: number;
+  commaWithTotalAmount1: number | string;
+  commaWithTotalAmount2: number | string;
+  commaWithTotalInt1: number | string;
+  commaWithTotalInt2: number | string;
 }
 
 const ComparisonProducts = ({
@@ -24,6 +28,10 @@ const ComparisonProducts = ({
   activeDescriptions2,
   totalInterest1,
   totalInterest2,
+  commaWithTotalAmount1,
+  commaWithTotalAmount2,
+  commaWithTotalInt1,
+  commaWithTotalInt2,
 }: TotalInterestProps) => (
   <form className="mycomparison">
     <div className="mycomparison__title">Chak 비교해본</div>
@@ -35,17 +43,18 @@ const ComparisonProducts = ({
     <div className="products__wrapped">
       <div className="products">
         <div className="product">
-          900,000 <div className="smallfont">원</div>
+          {commaWithTotalAmount1} <div className="smallfont">원</div>
         </div>
       </div>
       <div className="products">
         <div className="product">
-          700,000 <div className="smallfont">원</div>
+          {commaWithTotalAmount2} <div className="smallfont">원</div>
         </div>
       </div>
     </div>
 
-    <div className="title">나의 금리를 확인하세요!</div>
+    <div className="sub__title">나의 금리를 확인하세요!</div>
+
     <div className="my__checks__wrapped">
       <div className="my__checks">
         <div>{totalInterest1}%</div>
@@ -77,20 +86,20 @@ const ComparisonProducts = ({
       </div>
     </div>
 
-    <div className="title">이자 </div>
+    <div className="sub__title">이자 </div>
     <div className="my__interests">
       <div className="my__interest">
-        100,000 <span>원</span>
+        {commaWithTotalInt1} <span>원</span>
       </div>
       <div className="my__interest">
-        100,000 <span>원</span>
+        {commaWithTotalInt2} <span>원</span>
       </div>
     </div>
     <div className="productdetail__more">
-      <Link to="/productdetail" className="detail">
+      <Link to="/productdetail/:id" className="detail">
         자세히보기
       </Link>
-      <Link to="/productdetail" className="detail">
+      <Link to="/productdetail/:id" className="detail">
         자세히보기
       </Link>
     </div>

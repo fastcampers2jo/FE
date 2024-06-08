@@ -1,5 +1,6 @@
 import { Navigate, createBrowserRouter } from "react-router-dom";
 import { getCookie } from "utils/cookies";
+import ScrollToTop from "scrollToTop";
 import {
   Home,
   Login,
@@ -66,7 +67,12 @@ const router = createBrowserRouter([
       },
       {
         path: "/likelist/:id",
-        element: <LikeListPage />,
+        element: (
+          <>
+            <ScrollToTop />
+            <LikeListPage />,
+          </>
+        ),
       },
       {
         path: "/board/:id",
@@ -89,60 +95,130 @@ const router = createBrowserRouter([
         element: <Search />,
       },
       {
-        path: "/productdetail",
-        element: <ProductDetail />,
+        path: "/productdetail/:id",
+        element: (
+          <>
+            <ScrollToTop />
+            <ProductDetail />,
+          </>
+        ),
       },
       {
         path: "/comparison/:id",
-        element: <ComparisonPage />,
+        element: (
+          <>
+            <ScrollToTop />
+            <ComparisonPage />
+          </>
+        ),
       },
       {
         path: "/comparisondetail",
-        element: <ComparisonDetailPage />,
+        element: (
+          <>
+            <ScrollToTop />
+            <ComparisonDetailPage />,
+          </>
+        ),
       },
       {
         path: "/recommend/:id",
-        element: <RecommendationPage />,
+        element: (
+          <>
+            <ScrollToTop />
+            <RecommendationPage />,
+          </>
+        ),
       },
       {
         path: "/recommend-onboarding/main",
-        element: <OnboardingMain />,
+        element: (
+          <>
+            <ScrollToTop />
+            <OnboardingMain />,
+          </>
+        ),
       },
       {
         path: "/recommend-onboarding/step1",
-        element: <Step1 />,
+        element: (
+          <>
+            <ScrollToTop />
+            <Step1 />,
+          </>
+        ),
       },
       {
         path: "/recommend-onboarding/step2",
-        element: <Step2 />,
+        element: (
+          <>
+            <ScrollToTop />
+            <Step2 />,
+          </>
+        ),
       },
       {
         path: "/recommend-onboarding/step3",
-        element: <Step3 />,
+        element: (
+          <>
+            <ScrollToTop />
+            <Step3 />,
+          </>
+        ),
       },
       {
         path: "/recommend-onboarding/step4",
-        element: <Step4 />,
+        element: (
+          <>
+            <ScrollToTop />
+            <Step4 />,
+          </>
+        ),
       },
       {
         path: "/recommend-onboarding/step5",
-        element: <Step5 />,
+        element: (
+          <>
+            <ScrollToTop />
+            <Step5 />,
+          </>
+        ),
       },
       {
         path: "/recommend-onboarding/step6",
-        element: <Step6 />,
+        element: (
+          <>
+            <ScrollToTop />
+            <Step6 />,
+          </>
+        ),
       },
       {
         path: "/lounge",
-        element: <LoungePage />,
+        element: (
+          <>
+            <ScrollToTop />
+            <LoungePage />,
+          </>
+        ),
       },
       {
         path: "/community",
-        element: <CommunityPage />,
+        element: (
+          <>
+            <ScrollToTop />
+            <CommunityPage />,
+          </>
+        ),
       },
       {
         path: "/community/newpost",
-        element: <NewPost />,
+        element: (
+          <>
+            <ScrollToTop />
+            <NewPost />,
+          </>
+        ),
       },
     ],
   },

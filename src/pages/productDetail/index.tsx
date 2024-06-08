@@ -56,6 +56,8 @@ const Product1: Product[] = [
 ];
 
 const ProductDetail = () => {
+  const [amount, setAmount] = useState<number>(0);
+  const [period, setPeriod] = useState<number>(0);
   const [products, setProducts] = useState<Product[]>(Product1);
   const [activeMoreViews, setActiveMoreViews] = useState(Array(Product1[0].descriptions.length).fill(false));
   const [likeProducts, setLikeProducts] = useState<Product[]>([]);
@@ -99,17 +101,30 @@ const ProductDetail = () => {
     );
   };
 
+  const rateToggle = (isActive: boolean, baseMode: string, activeMode: string): string =>
+    isActive ? `${baseMode} ${activeMode}` : baseMode;
+
   /// active한 토글의 금리 총합 ///
 
   const calculateTotalInterest = () =>
-    products
-      .reduce(
-        (total, product) =>
-          total + product.descriptions.reduce((subTotal, desc) => (desc.active ? subTotal + desc.rate : subTotal), 0),
-        0
-      )
-      .toFixed(1);
+    products.reduce(
+      (total, product) =>
+        total
+        + product.descriptions.reduce((subTotal, desc) => (desc.active ? subTotal + desc.rate : subTotal), 0)
+        + product.def_rate,
+      0
+    );
+
   const totalInterest = calculateTotalInterest();
+
+  // eslint-disable-next-line @typescript-eslint/no-shadow
+  const calculateTotalAmount = (amount: number, period: number, totalInterest: number): number => {
+    // eslint-disable-next-line no-mixed-operators
+    const total = amount + (amount * totalInterest * (period / 12)) / 100;
+    return Math.floor(total);
+  };
+
+  const totalAmount = calculateTotalAmount(amount, period, Number(totalInterest));
 
   return (
     <>
@@ -135,11 +150,11 @@ const ProductDetail = () => {
             <div className="prductdetail__sub">우리은행 첫거래 고객을 우대하는 비대면 전용예금</div>
             <div className="productdetail__preview__interests">
               <div className="productdetail__interest max">
-                3.6%
+                6%
                 <p>최고</p>
               </div>
               <div className="productdetail__interest">
-                3.6%<p>기본</p>
+                3%<p>기본</p>
               </div>
             </div>
             <div className="productdetail__options">
@@ -219,7 +234,7 @@ const ProductDetail = () => {
                     )}
                   </button>
                 </div>
-                <div className="products__check--toggle">
+                <div className={rateToggle(desc.active, "products__check--toggle", "active")}>
                   {desc.rate}%
                   <div className="toggle__select">
                     <OnOffToggle isActive={desc.active} onToggle={() => handleToggle(0, descIndex)} />
@@ -238,11 +253,11 @@ const ProductDetail = () => {
             <span>계산 chakchak</span>
             <div className="my__object">
               <div className="my__object__inputbox">
-                <MysetInputBox />
-                으로
+                <MysetInputBox onChange={(value) => setAmount(Number(value))} />
+                원으로
               </div>
               <form className="my__object__selectbox">
-                <MyperiodSelect />
+                <MyperiodSelect onChange={(value) => setPeriod(value)} />
                 동안
               </form>
 
@@ -261,7 +276,7 @@ const ProductDetail = () => {
               </div>
               <div className="productdetail__products">
                 <div className="productdetail__product">
-                  총 900,000
+                  총 {totalAmount.toLocaleString()}
                   <span className="productdetail__smallfont">원</span>
                   <span className="info">세전</span>
                 </div>

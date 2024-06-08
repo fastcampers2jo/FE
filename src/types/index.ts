@@ -20,7 +20,7 @@ export interface isLogin {
 }
 
 export interface IBank {
-  data:{
+  data: {
     name: string;
     toprage: number;
     rage: number;
@@ -28,5 +28,17 @@ export interface IBank {
     text: string;
     id: number;
     tag: string[];
-  }[]
+  }[];
+}
+
+export interface Finances {
+  id1: string;
+  id2: string;
+  type: string;
+}
+
+export interface Compare {
+  id1: string;
+  id2: string;
+  type: string;
 }

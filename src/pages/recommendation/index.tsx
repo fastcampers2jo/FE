@@ -35,7 +35,7 @@ const RecommendationPage = () => {
       <div className="products__likelist__wrapped ">
         <div className="product__likelist recommend">
           <div className="product__infos">
-            <Link to="/productdetail">
+            <Link to="/productdetail/:id">
               <div className="product__info">
                 <div className="product__img" />
                 <div className="product__title">
@@ -64,7 +64,7 @@ const RecommendationPage = () => {
         </div>
         <div className="product__likelist recommend">
           <div className="product__infos">
-            <Link to="/productdetail">
+            <Link to="productdetail/:id">
               <div className="product__info">
                 <div className="product__img" />
                 <div className="product__title">

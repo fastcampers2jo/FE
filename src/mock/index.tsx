@@ -408,3 +408,33 @@ export const launge = [
     good: 50,
   },
 ];
+
+export const ProductList = [
+  {
+    id: 1,
+    def_rate: 3,
+    def_period: 6,
+    max_rate: 6,
+    max_period: 12,
+    bank_name: "KDB 산업은행",
+    title: "KDB 기업 정기예금",
+    descriptions: [
+      { id_description: 1, description: "급여실적 또는 개인사업자 계좌 실적 보유 시", rate: 2, active: false },
+      { id_description: 2, description: "비대면 채널 이체 실적 보유 시", rate: 1, active: false },
+    ],
+  },
+  {
+    id: 2,
+    def_rate: 4,
+    max_rate: 4.5,
+    def_period: 6,
+    max_period: 24,
+    bank_name: "기업은행",
+    title: "기업 직장인 정기예금",
+
+    descriptions: [
+      { id_description: 1, description: "마케팅 동의 시", rate: 0.2, active: false },
+      { id_description: 2, description: "에너지 절감 시", rate: 0.3, active: false },
+    ],
+  },
+];

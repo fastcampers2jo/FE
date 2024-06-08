@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import "./mysetInput.scss";
 
 const periodOptions = () => {
@@ -12,13 +12,17 @@ const periodOptions = () => {
 
 const OBJECT__PERIOD = periodOptions();
 
-const MyperiodSelect = () => {
+const MyperiodSelect = ({ onChange }: { onChange: (value: number) => void }) => {
   const [selectPeriodValue, setSelectPeriodValue] = useState(OBJECT__PERIOD[0].value);
 
   const handlePeriodDrop = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const selectedValue = event.target.value;
     setSelectPeriodValue(selectedValue);
+    const period = parseInt(selectedValue.replace("개월", ""), 10);
+    onChange(period);
+    console.log(period);
   };
+
   return (
     <div className="myperiodselect">
       <select value={selectPeriodValue} onChange={handlePeriodDrop}>
