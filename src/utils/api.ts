@@ -16,7 +16,8 @@ export const keepLogin = async () => {
   return res.data;
 };
 
-export const kakaoLogin = async () => {
-  const res = await baseAxios.get("/api/login/kakao");
+export const kakaoLogin = async ({ queryKey }: { queryKey: [string, string] }) => {
+  const [code] = queryKey;
+  const res = await baseAxios.get(`/api/login/kakao?code=${code}`);
   return res.data;
 };

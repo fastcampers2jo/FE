@@ -44,6 +44,9 @@ const Login = () => {
     },
     [logins.email, logins.password]
   );
+  const onkakao = () => {
+    window.location.href = `https://kauth.kakao.com/oauth/authorize?client_id=${process.env.REACT_APP_KAKAO_CLIENT_ID}&redirect_uri=${process.env.REACT_APP_KAKAO_REDIRECT_URI}&response_type=code`;
+  };
   return (
     <div className={styles.wrap}>
       <header>
@@ -100,7 +103,7 @@ const Login = () => {
         <div className={styles.sns}>
           <hr />
           <p>간편 로그인</p>
-          <button>
+          <button type="button" onClick={onkakao}>
             <IcKakao />
             카카오로 로그인
           </button>

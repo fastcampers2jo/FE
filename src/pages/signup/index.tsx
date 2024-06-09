@@ -43,7 +43,16 @@ const Signup = () => {
     },
     [logins.email, logins.password, logins.name]
   );
-  console.log(logins);
+  console.log(
+    "이름",
+    logins.errorName,
+    "email",
+    logins.errorEmail,
+    "비밀번호",
+    logins.errorPassword,
+    "비밀번호확인",
+    logins.errorConfirmPassword
+  );
   // 제거
   const onClear = useCallback(
     (v: string) => {
@@ -138,8 +147,8 @@ const Signup = () => {
                   && logins.errorEmail
                   && logins.errorConfirmPassword
                   && logins.errorName
-                  && logins.password.length > 8
-                  && logins.confirmPassword.length > 8
+                  && logins.password.length > 7
+                  && logins.confirmPassword.length > 7
                   && logins.name.length > 2
                   && logins.email.length > 1
                 )

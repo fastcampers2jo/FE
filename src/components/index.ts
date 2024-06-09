@@ -17,3 +17,4 @@ export { default as SearchBox } from "./searchBox";
 export { default as SearchTag } from "./searchTag";
 export { default as SearchRecent } from "./searchRecent";
 export { default as BoardBox } from "./boardBox";
+export { default as Loding } from "./loding";

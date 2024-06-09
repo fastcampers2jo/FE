@@ -57,7 +57,7 @@ const useValid = <T extends IVaild>(
   // 이름 확인
   const changeName = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
-      const nameVaild = /^[가-힣]{2,30}$/.test(e.target.value);
+      const nameVaild = /^[가-힣a-zA-Z]{2,30}$/.test(e.target.value);
       setValue((prev) => ({
         ...prev,
         name: e.target.value,
