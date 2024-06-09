@@ -3,9 +3,11 @@ import Navbar from "components/navber";
 import Tabs from "template/tabs";
 import ProductCard from "template/productCard";
 import FINANCE from "mockupData/finance";
+import { useTab } from "stores/useTab";
 import styles from "./styles.module.scss";
 
 const Finance = () => {
+  const { activeTab } = useTab((state) => state);
   const TABS = [
     {
       name: "전체",
@@ -21,6 +23,13 @@ const Finance = () => {
     },
   ];
 
+  const listFilter = () => {
+    if (!activeTab) {
+      return FINANCE;
+    }
+    return FINANCE.filter((item) => item.productType === activeTab);
+  };
+
   return (
     <>
       <LogoTop />
@@ -33,11 +42,11 @@ const Finance = () => {
         </article>
       </section>
       <main className={styles.main}>
-        {FINANCE.map((product, i) => (
+        {listFilter().map((product, i) => (
           <ProductCard
             key={i}
             lists={product}
-            listsCount={3}
+            listsCount={!activeTab ? 3 : 0}
           />
         ))}
       </main>

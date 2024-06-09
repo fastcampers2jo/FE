@@ -32,10 +32,15 @@
   &_list {
     display: flex;
     flex-direction: column;
-    gap: 22px;
     li {
       display: flex;
       gap: 5.75px;
+      padding: 16px 0;
+      border-bottom: 1px solid var(--color-F1F3F5);
+      &:last-child,
+      &.all {
+        border-bottom: none;
+      }
     }
     &_bank_logo {
       width: 27.5px;

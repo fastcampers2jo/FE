@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useTab } from "stores/useTab";
 import styles from "./styles.module.scss";
 
 interface ITabs {
@@ -11,16 +11,16 @@ interface Prop {
 }
 
 const Tabs = ({ lists }: Prop) => {
-  const [isActive, setIsActive] = useState("");
+  const { activeTab, setActiveTab } = useTab((state) => state);
   const onActive = (value: string) => {
-    setIsActive(value);
+    setActiveTab(value);
   };
   return (
     <ul className={styles.tabs}>
       {lists.map((list, i) => (
         <li key={i}>
           <button
-            className={isActive === list.value ? styles.on : ""}
+            className={activeTab === list.value ? styles.on : ""}
             onClick={() => onActive(list.value)}
           >
             {list.name}
