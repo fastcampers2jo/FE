@@ -26,3 +26,4 @@ export { default as Search } from "./search";
 export { default as Board } from "./board";
 export { default as Searchboard } from "./searchboard";
 export { default as Prep } from "./prep";
+export { default as Kakao } from "./login/kakao";

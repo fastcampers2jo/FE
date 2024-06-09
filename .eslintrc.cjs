@@ -67,7 +67,7 @@ module.exports = {
     "function-paren-newline": "off",
     "@typescript-eslint/comma-dangle": "off",
     "no-unused-vars": "off",
-    "no-undef": "off", 
+    "no-undef": "off",
     "react/react-in-jsx-scope": "off",
     "jsx-a11y/control-has-associated-label": "off",
     "object-curly-newline": "off",
@@ -78,6 +78,6 @@ module.exports = {
     "react/jsx-curly-newline": "off",
     "no-confusing-arrow": "off",
     "react/destructuring-assignment": "off",
-    "react/jsx-indent": "off"
+    "no-template-curly-in-string": "off",
   },
 };

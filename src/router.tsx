@@ -2,7 +2,6 @@ import { Navigate, createBrowserRouter } from "react-router-dom";
 import { getCookie } from "utils/cookies";
 import {
   Home,
-  Login,
   Layout,
   Signup,
   Mypage,
@@ -29,6 +28,8 @@ import {
   SearchList,
   Searchboard,
   Prep,
+  Login,
+  Kakao,
 } from "./pages";
 
 const isLoggedIn = getCookie("token");
@@ -48,6 +49,10 @@ const router = createBrowserRouter([
       {
         path: "/login",
         element: isLoggedIn ? <Navigate to="/" replace /> : <Login />,
+      },
+      {
+        path: "/api/login/kakao",
+        element: <Kakao />,
       },
       {
         path: "/signup",
