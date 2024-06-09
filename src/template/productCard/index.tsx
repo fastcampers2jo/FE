@@ -16,9 +16,13 @@ interface Prop {
 }
 
 const ProductCard = ({ lists, listsCount }: Prop) => {
-  const { activeTab } = useTab();
+  const { activeTab, setActiveTab } = useTab();
   const productListFilter = () =>
     listsCount ? lists.products.slice(0, listsCount) : lists.products;
+
+  const moreProducts = (productType: string) => {
+    setActiveTab(productType);
+  };
 
   return (
     <div className={styles.product_card}>
@@ -27,7 +31,11 @@ const ProductCard = ({ lists, listsCount }: Prop) => {
           {lists.productTitle}
           <span>총 {lists.products.length}개 상품 보유중</span>
         </h3>
-        {!activeTab && <button>더보기 </button>}
+        {!activeTab && (
+          <button onClick={() => moreProducts(lists.productType)}>
+            더보기
+          </button>
+        )}
       </div>
       <ul className={styles.product_card_list}>
         {productListFilter().map((list, i) => (
