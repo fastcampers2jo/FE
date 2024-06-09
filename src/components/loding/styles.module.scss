@@ -1,0 +1,26 @@
+.section{
+    background: var(--color-111);
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    > p{
+        color: var(--color-fff);
+        font-size: 1.6rem;
+        font-weight: 600;
+        line-height: 2.4rem;
+        letter-spacing: 0.091px;
+        margin-block: 2.4rem 0.8rem;
+    }
+    > svg:first-child{
+        animation: spinner-mu2ebf 1s infinite linear;
+    }
+}
+
+@keyframes spinner-mu2ebf {
+ to {
+  transform: rotate(1turn);
+ }
+}

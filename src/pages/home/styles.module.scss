@@ -284,7 +284,7 @@ $conpadding: 2.4rem 4.27% 3rem;
 .section05TextBox {
   width: 9rem;
   overflow: hidden;
-  margin-left: 1.6rem;
+  margin-left: 0.8rem;
   em {
     text-overflow: ellipsis;
     overflow: hidden;
@@ -416,6 +416,13 @@ $conpadding: 2.4rem 4.27% 3rem;
     padding: 0.2rem 0.5rem;
     border-radius: 0.2rem;
     color: var(--color-878E95);
+  }
+  > p{
+    color: var(--color-222529);
+font-size: 1.1rem;
+font-weight: 300;
+line-height: 1.6rem; 
+letter-spacing: 0.063px;
   }
 }
 .keywordUl{

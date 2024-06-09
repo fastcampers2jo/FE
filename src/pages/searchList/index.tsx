@@ -1,14 +1,35 @@
+import { useCallback, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { BankList, Navber, SearchBox, SearchTag } from "components";
+import {
+  BankList,
+  Button,
+  Navber,
+  RankPop,
+  SearchBox,
+  SearchTag,
+} from "components";
 import { useSearch } from "stores/useSearch";
-import { IcTaparr } from "assets";
+import { useRank } from "stores/useRank";
+import { IcTaparr, IcViewCheck } from "assets";
 import { fakedata, nav, navs } from "mock";
 import styles from "./styles.module.scss";
 
 const SearchList = () => {
   const param = useParams();
   const { searchFocus } = useSearch();
+  const { timePopup, openTimePopup, closeTimePopup } = useRank();
+  // 조회수
+  const orders = ["찜하기순", "인기순", "조회순", "가나다순"];
+  const [order, setOrder] = useState({
+    order: "찜하기순",
+    seletOrder: "찜하기순",
+  });
+
+  const onSeletOrder = useCallback(() => {
+    setOrder({ ...order, seletOrder: order.order });
+    closeTimePopup();
+  }, [order.order, order.seletOrder]);
   return (
     <section>
       <div className={styles.searchTop}>
@@ -41,8 +62,12 @@ const SearchList = () => {
               <p>
                 <span>150</span>개의 검색결과
               </p>
-              <button type="button" className={styles.more}>
-                추천순 <IcTaparr />
+              <button
+                type="button"
+                className={styles.more}
+                onClick={openTimePopup}
+              >
+                {order.seletOrder} <IcTaparr />
               </button>
             </div>
             {param.id === "1" ? (
@@ -67,6 +92,30 @@ const SearchList = () => {
               </article>
             )}
           </div>
+          {timePopup && (
+            <RankPop title="조회수 선택" close={closeTimePopup} height="406">
+              {orders.map((view) => (
+                <button
+                  key={view}
+                  type="button"
+                  onClick={() => setOrder({ ...order, order: view })}
+                  className={`${styles.viewBtn} ${order.order === view ? styles.on : ""}`}
+                >
+                  {view}
+                  {order.order === view && <IcViewCheck />}
+                </button>
+              ))}
+              <div className={styles.viewBtnWrap}>
+                <Button
+                  type="button"
+                  disabled={order.order === "" || order.order === order.seletOrder}
+                  onClick={() => onSeletOrder()}
+                >
+                  선택완료
+                </Button>
+              </div>
+            </RankPop>
+          )}
           <Navber />
         </>
       )}
