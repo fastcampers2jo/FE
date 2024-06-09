@@ -70,7 +70,7 @@ const router = createBrowserRouter([
         element: <Ranking />,
       },
       {
-        path: "/likelist",
+        path: "/likelist/:id",
         element: <LikeListPage />,
       },
       {
@@ -98,7 +98,7 @@ const router = createBrowserRouter([
         element: <ProductDetail />,
       },
       {
-        path: "/comparison",
+        path: "/comparison/:id",
         element: <ComparisonPage />,
       },
       {
@@ -106,7 +106,7 @@ const router = createBrowserRouter([
         element: <ComparisonDetailPage />,
       },
       {
-        path: "/recommend",
+        path: "/recommend/:id",
         element: <RecommendationPage />,
       },
       {

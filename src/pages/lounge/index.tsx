@@ -17,7 +17,7 @@ const LoungePage = () => (
         게시판 <IcBoardArr />
       </Link>
       <div className="lounge__product__categories">
-        <Swiper slidesPerView={6} spaceBetween={45}>
+        <Swiper slidesPerView={5.5} spaceBetween={42}>
           <SwiperSlide>
             <div className="lounge__product__category active">전체</div>
           </SwiperSlide>

@@ -1,7 +1,30 @@
 import { Link } from "react-router-dom";
 import "./comparisonComponent.scss";
 
-const ComparisonProducts = () => (
+interface Description {
+  id_description: number;
+  description: string;
+  rate: number;
+  active: boolean;
+}
+
+interface TotalInterestProps {
+  totalInterest1: string;
+  totalInterest2: string;
+  activeDescriptions1: Description[];
+  activeDescriptions2: Description[];
+  defRate1: number;
+  defRate2: number;
+}
+
+const ComparisonProducts = ({
+  defRate1,
+  defRate2,
+  activeDescriptions1,
+  activeDescriptions2,
+  totalInterest1,
+  totalInterest2,
+}: TotalInterestProps) => (
   <form className="mycomparison">
     <div className="mycomparison__title">Chak 비교해본</div>
     <div className="my__title">
@@ -25,32 +48,32 @@ const ComparisonProducts = () => (
     <div className="title">나의 금리를 확인하세요!</div>
     <div className="my__checks__wrapped">
       <div className="my__checks">
-        <div>7%</div>
+        <div>{totalInterest1}%</div>
 
         <div className="my__check">
           <div className="checklist">기본</div>
-          <div>3%</div>
+          <div>{defRate1}%</div>
         </div>
-        <div className="my__check">
-          <div className="checklist">급여실적 또는 개인사업자 계좌실적</div>
-          <div>3%</div>
-        </div>
+        {activeDescriptions1.map((desc, index) => (
+          <div className="my__check" key={index}>
+            <div className="checklist">{desc.description}</div>
+            <div>{desc.rate}%</div>
+          </div>
+        ))}
       </div>
       <div className="my__checks">
-        <div>3%</div>
+        <div>{totalInterest2}%</div>
 
         <div className="my__check">
           <div className="checklist">기본</div>
-          <div>3%</div>
+          <div>{defRate2}%</div>
         </div>
-        <div className="my__check">
-          <div className="checklist">마케팅 동의</div>
-          <div>1%</div>
-        </div>
-        <div className="my__check">
-          <div className="checklist">에너지 절감</div>
-          <div>1%</div>
-        </div>
+        {activeDescriptions2.map((desc, index) => (
+          <div className="my__check" key={index}>
+            <div className="checklist">{desc.description}</div>
+            <div>{desc.rate}%</div>
+          </div>
+        ))}
       </div>
     </div>
 

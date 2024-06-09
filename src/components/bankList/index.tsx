@@ -17,12 +17,7 @@ const BankList = ({ data }: IBank) => {
   return (
     <div>
       {data.map((rank, i: number) => (
-        <button
-          key={i}
-          className={styles.rankList}
-          type="button"
-          onClick={onLink}
-        >
+        <button key={i} className={styles.rankList} type="button" onClick={onLink}>
           <p className={styles.currentRank}>
             {rank.id} <span />
           </p>

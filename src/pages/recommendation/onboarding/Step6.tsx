@@ -50,7 +50,7 @@ const Step6 = () => {
       </section>
 
       <section className="bottom-btn">
-        <Link to="/recommend" type="button" className={`onboarding--btn ${isContinueActive ? "active" : ""}`}>
+        <Link to="/recommend/:id" type="button" className={`onboarding--btn ${isContinueActive ? "active" : ""}`}>
           Chak 맞는 상품 보기
         </Link>
       </section>

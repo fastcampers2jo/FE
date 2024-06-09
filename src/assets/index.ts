@@ -102,3 +102,5 @@ export { default as UpArrow } from "./uparrow.svg?react";
 export { default as PlusGreen } from "./plusGreen.svg?react";
 export { default as BGLogo } from "./logoBG.svg?react";
 export { default as BGSticker } from "./stickerBG.svg?react";
+export { default as ProductBG1 } from "./productBg1.svg?react";
+export { default as ProductBG2 } from "./productBg2.svg?react";

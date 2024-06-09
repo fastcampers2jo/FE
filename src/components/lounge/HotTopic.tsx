@@ -8,18 +8,8 @@ const HotTopic = () => (
     <div className="products__comparison__list__hottopic">
       <Swiper
         loop
-        breakpoints={{
-          0: { slidesPerView: 1 },
-          375: {
-            spaceBetween: 328,
-            slidesPerView: 2,
-          },
-          400: { spaceBetween: 300, slidesPerView: 2 },
-          450: { spaceBetween: 250, slidesPerView: 2 },
-          500: { spaceBetween: 200, slidesPerView: 2 },
-          550: { spaceBetween: 150, slidesPerView: 2 },
-          600: { spaceBetween: 100, slidesPerView: 2 },
-        }}
+        spaceBetween={316}
+        slidesPerView={2}
       >
         <SwiperSlide>
           <div className="products__comparison">
