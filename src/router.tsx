@@ -5,6 +5,7 @@ import {
   Layout,
   Signup,
   Mypage,
+  Finance,
   Alarm,
   Ranking,
   LikeListPage,
@@ -60,6 +61,10 @@ const router = createBrowserRouter([
       {
         path: "/mypage",
         element: <Mypage />,
+      },
+      {
+        path: "/finance",
+        element: <Finance />,
       },
       {
         path: "/alarm",
