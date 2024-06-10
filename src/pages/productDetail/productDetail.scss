@@ -1,11 +1,18 @@
 .icon__emptyheart {
-  width: 1.8rem;
-  height: 1.8rem;
+  width: 2.4rem;
+  height: 2.4rem;
   color: #aeb5bc;
 
   path {
-    stroke: #aeb5bc;
-    stroke-width: 0.08rem;
+    fill: #aeb5bc;
+  }
+}
+
+.icon__emptyheart__full {
+  width: 2.4rem;
+  height: 2.4rem;
+  parh {
+    fill: #000;
   }
 }
 

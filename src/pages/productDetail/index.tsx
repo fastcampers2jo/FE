@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/indent */
 /* eslint-disable no-plusplus */
 import {
   EmptyHeart,
@@ -91,11 +92,11 @@ const ProductDetail = () => {
       prevProducts.map((product, idx) =>
         idx === productIndex
           ? {
-            ...product,
-            descriptions: product.descriptions.map((desc, dIdx) =>
-              dIdx === descIndex ? { ...desc, active: !desc.active } : desc
-            ),
-          }
+              ...product,
+              descriptions: product.descriptions.map((desc, dIdx) =>
+                dIdx === descIndex ? { ...desc, active: !desc.active } : desc
+              ),
+            }
           : product
       )
     );
@@ -304,7 +305,7 @@ const ProductDetail = () => {
                       </div>
                       <button className="heart__button" onClick={() => toggleFavorite(product)}>
                         {likeProducts.some((item: { id: number }) => item.id === product.id) ? (
-                          <IcSmallLove />
+                          <IcSmallLove className="icon__emptyheart__full" />
                         ) : (
                           <EmptyHeart className="icon__emptyheart" />
                         )}
@@ -321,7 +322,7 @@ const ProductDetail = () => {
                       </div>
                       <button className="heart__button" onClick={() => toggleFavorite(product)}>
                         {likeProducts.some((item: { id: number }) => item.id === product.id) ? (
-                          <IcSmallLove />
+                          <IcSmallLove className="icon__emptyheart__full" />
                         ) : (
                           <EmptyHeart className="icon__emptyheart" />
                         )}
@@ -338,7 +339,7 @@ const ProductDetail = () => {
                       </div>
                       <button className="heart__button" onClick={() => toggleFavorite(product)}>
                         {likeProducts.some((item: { id: number }) => item.id === product.id) ? (
-                          <IcSmallLove />
+                          <IcSmallLove className="icon__emptyheart__full" />
                         ) : (
                           <EmptyHeart className="icon__emptyheart" />
                         )}
@@ -397,7 +398,7 @@ const ProductDetail = () => {
                       <button type="button" className="productdetail__lounge--btn">
                         투표중
                       </button>
-                      <Link to="/community">
+                      <Link to="/community/:id">
                         투표하러가기 <RightArrow />
                       </Link>
                     </div>
@@ -418,7 +419,7 @@ const ProductDetail = () => {
                       <button type="button" className="productdetail__lounge--btn">
                         투표중
                       </button>
-                      <Link to="/community">
+                      <Link to="/community/:id">
                         투표하러가기 <RightArrow />
                       </Link>
                     </div>
@@ -439,7 +440,7 @@ const ProductDetail = () => {
                       <button type="button" className="productdetail__lounge--btn">
                         투표중
                       </button>
-                      <Link to="/community">
+                      <Link to="/community/:id">
                         투표하러가기 <RightArrow />
                       </Link>
                     </div>

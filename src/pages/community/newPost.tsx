@@ -1,40 +1,102 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 import { EmptyHeart, Vote, X } from "assets";
 import "./community.scss";
-import PostVote from "components/vote/PostVote";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import PostVoteForm from "components/vote/PostVoteForm";
 
-const newPost = () => {
-  // eslint-disable-next-line react-hooks/rules-of-hooks
+interface ProductProps {
+  id: number;
+  name: string;
+  bankName: string;
+  property: string;
+  maxInterest: string;
+  defInterest: string;
+  isChecked?: boolean;
+  logo?: string;
+}
+
+const NewPost = () => {
   const navigate = useNavigate();
+  const [title, setTitle] = useState("");
+  const [content, setContent] = useState("");
+  const [showPostVoteAdd, setShowPostVoteAdd] = useState(false);
+  const [selectedProducts, setSelectedProducts] = useState<ProductProps[]>([]); // 선택된 상품 상태 추가
+  const [showTags, setShowTags] = useState(false); // 태그 보이기 상태 추가
+
+  const handleAddPostVote = () => {
+    setShowPostVoteAdd(true);
+  };
+
+  const handleClosePostVote = () => {
+    setShowPostVoteAdd(false);
+    setSelectedProducts([]);
+    setShowTags(false);
+  };
+
+  const handleSelectProducts = (products: ProductProps[]) => {
+    setSelectedProducts(products);
+  };
+
+  const handleTitleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setTitle(event.target.value);
+  };
+
+  const handleContentChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setContent(event.target.value);
+  };
+
+  const isActive = title.trim() !== "" && content.trim() !== "";
+
+  const handleShowTags = () => {
+    setShowTags(!showTags); // 태그 보이기 상태 토글
+  };
 
   return (
     <div className="newpost">
       <section className="post__statusbar">
-        <X className="icon__x" onClick={() => navigate(-1)} />
+        <X className="icon__x statusbar" onClick={() => navigate(-1)} />
         <div className="community__title">글쓰기</div>
-        <div className="newpost__upload">등록</div>
+        <button type="submit" className={`newpost__upload ${isActive ? "active" : ""}`}>
+          등록
+        </button>
       </section>
       <section className="newpost__detail">
-        <input type="textarea" placeholder="제목 입력" className="newpost--input" />
-        <input type="textarea" placeholder="내용을 입력해주세요" className="newpost--input main" />
+        <input type="textarea" placeholder="제목 입력" className="newpost--input" onChange={handleTitleChange} />
+        <input
+          type="textarea"
+          placeholder="내용을 입력해주세요"
+          className="newpost--input main"
+          onChange={handleContentChange}
+        />
+        {showPostVoteAdd && <PostVoteForm onClose={handleClosePostVote} onSelectProducts={handleSelectProducts} />}
       </section>
-      <PostVote />
-      <section className="newpost__products__tag">
-        <div className="newpost__product__tag">DGB함께예금</div>
-        <div className="newpost__product__tag">NH고향사랑기부예금</div>
-      </section>
+
+      {showTags && (
+        <section className="newpost__products__tag">
+          {selectedProducts.map((product) => (
+            <div key={product.id} className="newpost__product__tag">
+              {product.name}
+            </div>
+          ))}
+        </section>
+      )}
       <section className="newpost__bottom__utils">
-        <div className="newpost__bottom__utils--btn">
-          <EmptyHeart className="likeproducts__tag" />
+        <button className={`newpost__bottom__utils--btn ${showTags ? "disabled" : ""}`} onClick={handleShowTags}>
+          <EmptyHeart className={`likeproducts__tag  ${showTags ? "disabled" : ""}`} />
           찜한 상품 태그
-        </div>
-        <div className="newpost__bottom__utils--btn">
-          <Vote className="likeproducts__tag" />
+        </button>
+        <button
+          className={`newpost__bottom__utils--btn ${showPostVoteAdd ? "disabled" : ""}`}
+          onClick={handleAddPostVote}
+          disabled={showPostVoteAdd}
+        >
+          <Vote className={`likeproducts__tag ${showPostVoteAdd ? "disabled" : ""}`} />
           투표 항목 추가
-        </div>
+        </button>
       </section>
     </div>
   );
 };
 
-export default newPost;
+export default NewPost;

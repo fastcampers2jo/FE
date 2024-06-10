@@ -1,84 +1,32 @@
-import { EmptyHeart } from "assets";
 import { Link } from "react-router-dom";
+import "./likepopup.scss";
+import "swiper/css";
+import { Swiper, SwiperSlide } from "swiper/react";
 
 const LikePopUp = () => (
   <section className="likepopup">
-    <form className="status-bar">
+    <div className="statusbar">
       <div className="home-indicator" />
-    </form>
-    <form className="liketpopup__section">
-      <div className="liketpopup__section-1">
-        <div className="like-add-text">찜하기 상품이 담겼습니다</div>
-        <div className="product__infos">
-          <div className="product__info">
-            <div className="product__img" />
-            <div className="product__title">
-              <span> 우리 첫거래우대</span>
-              <span>정기예금 </span>
-            </div>
-            <div className="product__interest">4.5%</div>
-          </div>
-          <Link to="/likelist/:id" className="product__comparison">
-            비교하러 가기 &gt;
-            <p />
-          </Link>
+    </div>
+    <div className="liketpopup__section">
+      <div className="liketpopup__productinfo">
+        <div className="product__img" />
+        <div className="likepopup__text">
+          <span>우리은행 정기예금</span>이 <br /> 찜하기 상품이 담겼습니다
         </div>
       </div>
-      <div className="likepopup__section-2">
-        <div className="like-add-text section-2">이 상품과 비슷한 다른 상품 찜하기</div>
-        <div className="frame56__others">
-          <div className="other">
-            <div className="frame56__product">
-              <div className="frame56__img section-2" />
-              <div className="other__title">
-                <span> 기업은행</span>
-                <span>정기 예금 </span>
-              </div>
-            </div>
-            <div className="likes__toggle">
-              <div className="other-interest">
-                <span>최고(기본) 금리</span>
-                <div className="other-interest__text">7(2.5)%</div>
-              </div>
-              <EmptyHeart className="likes--btn" />
-
-            </div>
-          </div>
-          <div className="other">
-            <div className="frame56__product">
-              <div className="frame56__img section-2" />
-              <div className="other__title">
-                <span> 기업은행</span>
-                <span>정기 예금 </span>
-              </div>
-            </div>
-            <div className="likes__toggle">
-              <div className="other-interest">
-                <span>최고(기본) 금리</span>
-                <div className="other-interest__text">7(2.5)%</div>
-              </div>
-              <EmptyHeart className="likes--btn" />
-            </div>
-          </div>
-          <div className="other">
-            <div className="frame56__product">
-              <div className="frame56__img section-2" />
-              <div className="other__title">
-                <span> 기업은행</span>
-                <span>정기 예금 </span>
-              </div>
-            </div>
-            <div className="likes__toggle">
-              <div className="other-interest">
-                <span>최고(기본) 금리</span>
-                <div className="other-interest__text">7(2.5)%</div>
-              </div>
-              <EmptyHeart className="likes--btn" />
-            </div>
-          </div>
-        </div>
+      <Link to="/likelist/1" className="product__comparison">
+        바로가기
+      </Link>
+    </div>
+    <div className="likepopup__other">
+      20세 사회초년생이 <br /> 함께보면 좋은 정기예금 상품
+      <div className="productdetail__other__slider">
+        <Swiper loop spaceBetween={10} slidesPerView={1.7}>
+          <SwiperSlide>상품정보 가져오기</SwiperSlide>
+        </Swiper>
       </div>
-    </form>
+    </div>
   </section>
 );
 

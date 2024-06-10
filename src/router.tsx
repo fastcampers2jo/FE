@@ -194,7 +194,7 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "/lounge",
+        path: "/lounge/:id",
         element: (
           <>
             <ScrollToTop />
@@ -203,7 +203,7 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "/community",
+        path: "/community/:id",
         element: (
           <>
             <ScrollToTop />

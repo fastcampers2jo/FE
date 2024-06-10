@@ -6,6 +6,7 @@ import { CheckBox, FillDarkGrayCheckBox, FillGrayCheckBox, FillGreenCheckBox } f
 import { Category, Likebox } from "components";
 import "./likes.scss";
 import LikeHomeBar from "components/homebar/LikeHomebar";
+import { productList } from "mock";
 
 interface ProductProps {
   id: number;
@@ -18,45 +19,11 @@ interface ProductProps {
   logo?: string;
 }
 
-const products: ProductProps[] = [
-  {
-    id: 1,
-    name: "우리 첫거래우대 정기예금",
-    bankName: "우리은행",
-    property: "특판",
-    maxInterest: "4.5",
-    defInterest: "4.5",
-  },
-  {
-    id: 2,
-    name: "복리세배이벤트",
-    bankName: "야호은행",
-    property: "특판",
-    maxInterest: "20",
-    defInterest: "5",
-  },
-  {
-    id: 3,
-    name: "기업 직장인 우대예금",
-    bankName: "기업은행",
-    property: "특판",
-    maxInterest: "6.5",
-    defInterest: "4.5",
-  },
-  {
-    id: 4,
-    name: "국민 청년 버팀 적금",
-    bankName: "국민은행",
-    property: "기간한정",
-    maxInterest: "5.5",
-    defInterest: "2.5",
-  },
-];
-
 const LikeListPage = () => {
-  const [icons, setIcons] = useState<ProductProps[]>(products);
+  const [icons, setIcons] = useState<ProductProps[]>(productList);
   const [checkedCount, setCheckedCount] = useState(0);
   const [isEditing, setIsEditing] = useState(false);
+  const [showLikebox, setShowLikebox] = useState(true);
 
   const toggleIcon = (id: number) => {
     const clickedProduct = icons.find((product) => product.id === id);
@@ -67,7 +34,6 @@ const LikeListPage = () => {
 
     // 편집 모드 //
     if (isEditing) {
-      // eslint-disable-next-line no-confusing-arrow
       const updatedIcons = icons.map((product) =>
         product.id === id ? { ...product, isChecked: !product.isChecked } : product
       );
@@ -76,7 +42,6 @@ const LikeListPage = () => {
       setCheckedCount(updatedCheckedCount);
     } else {
       // 기존 모드(최대 2개 선택) //
-      // eslint-disable-next-line no-confusing-arrow
       const updatedIcons = icons.map((product) =>
         product.id === id ? { ...product, isChecked: !product.isChecked } : product
       );
@@ -122,9 +87,18 @@ const LikeListPage = () => {
   useEffect(() => {
     const count = icons.filter((product) => product.isChecked).length;
     setCheckedCount(count);
+    setShowLikebox(count > 0); // 선택된 상품이 있으면 Likebox를 표시
   }, [icons]);
 
   const selectedProducts = icons.filter((product) => product.isChecked);
+
+  /// LikeBox에서 X 아이콘 누르면 선택 취소 ///
+  const handleRemoveProduct = (productName: string) => {
+    const updatedIcons = icons.map((product) =>
+      product.name === productName ? { ...product, isChecked: false } : product
+    );
+    setIcons(updatedIcons);
+  };
 
   return (
     <section className="likelistpage">
@@ -226,31 +200,41 @@ const LikeListPage = () => {
           )}
         </div>
       ) : (
-        <>
-          {checkedCount === 1 && (
-            <div className="comparison__toggle">
-              <Likebox texts="아직 하나의 상품이 더 담겨져야 해요 !" classname="add__more">
-                {selectedProducts.map((product) => product.name)}
-              </Likebox>
-              <div className="product__comparison__btn">
-                <span>비교하기</span>
+        showLikebox && (
+          <>
+            {checkedCount === 1 && (
+              <div className="comparison__toggle">
+                <Likebox
+                  texts="아직 하나의 상품이 더 담겨져야 해요 !"
+                  classname="add__more"
+                  onRemove={handleRemoveProduct}
+                >
+                  {selectedProducts.map((product) => product.name)}
+                </Likebox>
+                <div className="product__comparison__btn">
+                  <span>비교하기</span>
+                </div>
               </div>
-            </div>
-          )}
-          {checkedCount > 1 && (
-            <div className="comparison__toggle">
-              <Likebox texts="이제 상품을 비교하실 수 있습니다 !" classname="ready__comparison">
-                {selectedProducts.map((product) => product.name)}
-              </Likebox>
-              <Link
-                to={checkedCount === 2 ? "/comparisondetail" : "#"}
-                className={`product__comparison__btn ${checkedCount > 1 ? "active" : ""}`}
-              >
-                <span>비교하기</span>
-              </Link>
-            </div>
-          )}
-        </>
+            )}
+            {checkedCount > 1 && (
+              <div className="comparison__toggle">
+                <Likebox
+                  texts="이제 상품을 비교하실 수 있습니다 !"
+                  onRemove={handleRemoveProduct}
+                  classname="ready__comparison"
+                >
+                  {selectedProducts.map((product) => product.name)}
+                </Likebox>
+                <Link
+                  to={checkedCount === 2 ? "/comparisondetail" : "#"}
+                  className={`product__comparison__btn ${checkedCount > 1 ? "active" : ""}`}
+                >
+                  <span>비교하기</span>
+                </Link>
+              </div>
+            )}
+          </>
+        )
       )}
     </section>
   );

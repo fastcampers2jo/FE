@@ -17,7 +17,7 @@ const Navber = () => {
     { name: "랭킹", path: "/ranking/:id", src: <IcLank />, link: "ranking" },
     { name: "맞춤상품", path: "/recommend/:id", src: <IcFit />, link: "goods" },
     { name: "나의금융", path: "/finance", src: <IcCard />, link: "finance" },
-    { name: "라운지", path: "/lounge", src: <IcLounge />, link: "lounge" },
+    { name: "라운지", path: "/lounge/1", src: <IcLounge />, link: "lounge" },
   ];
   return (
     <div className={styles.navber}>
@@ -26,10 +26,14 @@ const Navber = () => {
           onClick={() => handlNave(link.path)}
           key={link.name}
           className={`${styles.button} 
-          ${(location.pathname.split("/")[1] === "search" && link.name === "홈")
-          || (location.pathname.split("/")[1] === "" && link.name === "홈")
-          || (location.pathname.split("/")[1] === "board" && link.name === "라운지")
-          || (location.pathname.split("/")[1] === link.link) ? styles.active : ""}`}
+          ${
+            (location.pathname.split("/")[1] === "search" && link.name === "홈")
+            || (location.pathname.split("/")[1] === "" && link.name === "홈")
+            || (location.pathname.split("/")[1] === "board" && link.name === "라운지")
+            || location.pathname.split("/")[1] === link.link
+              ? styles.active
+              : ""
+          }`}
         >
           {link.src}
           <p>{link.name}</p>

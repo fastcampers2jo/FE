@@ -1,9 +1,9 @@
-import { LogoTop } from "components";
+import { Fab, LogoTop } from "components";
 import "./recommendation.scss";
 import { Link } from "react-router-dom";
 import CategoryWhite from "components/category/white";
 import Navbar from "components/navber";
-import { FloatingHeart, IcSmallLove, IcSmallNotLove } from "assets";
+import { IcSmallLove, IcSmallNotLove } from "assets";
 import { useState } from "react";
 
 /// / 기본 맞춤추천 페이지 (추천받은 상품이 있는경우)////
@@ -20,12 +20,9 @@ const RecommendationPage = () => {
   };
 
   return (
-    <form className="recommendationpage">
+    <div className="recommendationpage">
       <LogoTop />
 
-      <Link to="/likelist/:id">
-        <FloatingHeart className="floating__heart" />
-      </Link>
       <div className="recommendationpage__title">
         하진님에게 <span className="bold">추천</span>하는
         <span className="bold">Chak 상품</span>
@@ -64,7 +61,7 @@ const RecommendationPage = () => {
         </div>
         <div className="product__likelist recommend">
           <div className="product__infos">
-            <Link to="productdetail/:id">
+            <Link to="/productdetail/:id">
               <div className="product__info">
                 <div className="product__img" />
                 <div className="product__title">
@@ -96,8 +93,9 @@ const RecommendationPage = () => {
       <Link to="/recommend-onboarding/main" className="recommendation--btn">
         새로운 상품 추천받기
       </Link>
+      <Fab />
       <Navbar />
-    </form>
+    </div>
   );
 };
 

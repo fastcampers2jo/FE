@@ -78,27 +78,27 @@ const ComparisonDetailPage = () => {
     Array(Product2[0].descriptions.length).fill(false)
   );
 
-  const [productInfo, setProductInfo] = useState(null);
-  const [compare, setCompare] = useState({
-    id1: "",
-    id2: "",
-    type: "",
-  });
-  const { setMessage } = useMessage((state) => state);
-  const { mutate } = useMutation({
-    mutationFn: financesCompare,
-    onSuccess: (data) => {
-      setProductInfo(data);
-      console.log(productInfo, "dsdsadsd");
-    },
-    onError: (err) => {
-      setMessage(err.message);
-    },
-  });
+  // const [productInfo, setProductInfo] = useState(null);
+  // const [compare, setCompare] = useState({
+  //   id1: "",
+  //   id2: "",
+  //   type: "",
+  // });
+  // const { setMessage } = useMessage((state) => state);
+  // const { mutate } = useMutation({
+  //   mutationFn: financesCompare,
+  //   onSuccess: (data) => {
+  //     setProductInfo(data);
+  //     console.log(productInfo, "dsdsadsd");
+  //   },
+  //   onError: (err) => {
+  //     setMessage(err.message);
+  //   },
+  // });
 
-  useEffect(() => {
-    mutate({ id1: compare.id1, id2: compare.id2, type: compare.type });
-  }, [compare.id1, compare.id2, compare.type, mutate]);
+  // useEffect(() => {
+  //   mutate({ id1: compare.id1, id2: compare.id2, type: compare.type });
+  // }, [compare.id1, compare.id2, compare.type, mutate]);
 
   // 자세히보기 버튼 클릭 시 상세내용 보이기 ///
   const toggleMoreview = (productIndex: number, descIndex: number) => {
@@ -155,18 +155,18 @@ const ComparisonDetailPage = () => {
   const calculateTotalInterest1 = () =>
     products1.reduce(
       (total, product) =>
-        total +
-        product.descriptions.reduce((subTotal, desc) => (desc.active ? subTotal + desc.rate : subTotal), 0) +
-        product.def_rate,
+        total
+        + product.descriptions.reduce((subTotal, desc) => (desc.active ? subTotal + desc.rate : subTotal), 0)
+        + product.def_rate,
       0
     );
 
   const calculateTotalInterest2 = () =>
     products2.reduce(
       (total, product) =>
-        total +
-        product.descriptions.reduce((subTotal, desc) => (desc.active ? subTotal + desc.rate : subTotal), 0) +
-        product.def_rate,
+        total
+        + product.descriptions.reduce((subTotal, desc) => (desc.active ? subTotal + desc.rate : subTotal), 0)
+        + product.def_rate,
       0
     );
 

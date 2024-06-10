@@ -6,7 +6,7 @@ const Fab = () => {
   const navigate = useNavigate();
   return (
     <div className={styles.fab}>
-      <IcFAB onClick={() => navigate("/likelist")} />
+      <IcFAB onClick={() => navigate("/likelist/:id")} />
     </div>
   );
 };
