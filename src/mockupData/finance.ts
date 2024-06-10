@@ -6,10 +6,12 @@ const FINANCE = [
       {
         title: "우리 첫거래우대 정기예금",
         bank: "우리은행",
+        bankLogo: "/src/assets/bank06.svg",
       },
       {
         title: "우리 첫거래우대 정기예금",
         bank: "우리은행",
+        bankLogo: "/src/assets/bank06.svg",
       },
     ],
   },
@@ -20,90 +22,112 @@ const FINANCE = [
       {
         title: "우리 첫거래우대 정기적금",
         bank: "우리은행",
+        bankLogo: "/src/assets/bank06.svg",
       },
       {
         title: "우리 첫거래우대 정기적금",
         bank: "우리은행",
+        bankLogo: "/src/assets/bank06.svg",
       },
       {
         title: "우리 첫거래우대 정기적금",
         bank: "우리은행",
+        bankLogo: "/src/assets/bank06.svg",
       },
       {
         title: "우리 첫거래우대 정기적금",
         bank: "우리은행",
+        bankLogo: "/src/assets/bank06.svg",
       },
       {
         title: "우리 첫거래우대 정기적금",
         bank: "우리은행",
+        bankLogo: "/src/assets/bank06.svg",
       },
       {
         title: "우리 첫거래우대 정기적금",
         bank: "우리은행",
+        bankLogo: "/src/assets/bank06.svg",
       },
       {
         title: "우리 첫거래우대 정기적금",
         bank: "우리은행",
+        bankLogo: "/src/assets/bank06.svg",
       },
       {
         title: "우리 첫거래우대 정기적금",
         bank: "우리은행",
+        bankLogo: "/src/assets/bank06.svg",
       },
       {
         title: "우리 첫거래우대 정기적금",
         bank: "우리은행",
+        bankLogo: "/src/assets/bank06.svg",
       },
       {
         title: "우리 첫거래우대 정기적금",
         bank: "우리은행",
+        bankLogo: "/src/assets/bank06.svg",
       },
       {
         title: "우리 첫거래우대 정기적금",
         bank: "우리은행",
+        bankLogo: "/src/assets/bank06.svg",
       },
       {
         title: "우리 첫거래우대 정기적금",
         bank: "우리은행",
+        bankLogo: "/src/assets/bank06.svg",
       },
       {
         title: "우리 첫거래우대 정기적금",
         bank: "우리은행",
+        bankLogo: "/src/assets/bank06.svg",
       },
       {
         title: "우리 첫거래우대 정기적금",
         bank: "우리은행",
+        bankLogo: "/src/assets/bank06.svg",
       },
       {
         title: "우리 첫거래우대 정기적금",
         bank: "우리은행",
+        bankLogo: "/src/assets/bank06.svg",
       },
       {
         title: "우리 첫거래우대 정기적금",
         bank: "우리은행",
+        bankLogo: "/src/assets/bank06.svg",
       },
       {
         title: "우리 첫거래우대 정기적금",
         bank: "우리은행",
+        bankLogo: "/src/assets/bank06.svg",
       },
       {
         title: "우리 첫거래우대 정기적금",
         bank: "우리은행",
+        bankLogo: "/src/assets/bank06.svg",
       },
       {
         title: "우리 첫거래우대 정기적금",
         bank: "우리은행",
+        bankLogo: "/src/assets/bank06.svg",
       },
       {
         title: "우리 첫거래우대 정기적금",
         bank: "우리은행",
+        bankLogo: "/src/assets/bank06.svg",
       },
       {
         title: "우리 첫거래우대 정기적금",
         bank: "우리은행",
+        bankLogo: "/src/assets/bank06.svg",
       },
       {
         title: "우리 첫거래우대 정기적금",
         bank: "우리은행",
+        bankLogo: "/src/assets/bank06.svg",
       },
     ],
   },

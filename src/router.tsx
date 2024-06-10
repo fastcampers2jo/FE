@@ -30,6 +30,7 @@ import {
   Prep,
   Login,
   Kakao,
+  FinanceDetailPage,
 } from "./pages";
 
 const isLoggedIn = getCookie("token");
@@ -48,7 +49,14 @@ const router = createBrowserRouter([
       },
       {
         path: "/login",
-        element: isLoggedIn ? <Navigate to="/" replace /> : <Login />,
+        element: isLoggedIn ? (
+          <Navigate
+            to="/"
+            replace
+          />
+        ) : (
+          <Login />
+        ),
       },
       {
         path: "/api/login/kakao",
@@ -56,7 +64,14 @@ const router = createBrowserRouter([
       },
       {
         path: "/signup",
-        element: isLoggedIn ? <Navigate to="/" replace /> : <Signup />,
+        element: isLoggedIn ? (
+          <Navigate
+            to="/"
+            replace
+          />
+        ) : (
+          <Signup />
+        ),
       },
       {
         path: "/mypage",
@@ -65,6 +80,10 @@ const router = createBrowserRouter([
       {
         path: "/finance",
         element: <Finance />,
+      },
+      {
+        path: "/finance/:id",
+        element: <FinanceDetailPage />,
       },
       {
         path: "/alarm",

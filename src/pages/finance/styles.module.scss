@@ -39,3 +39,36 @@ $conpadding: 2.4rem 4.27% 1.6rem;
   gap: 10px;
   overflow: auto;
 }
+
+.finance_detail_page {
+  background: var(--color-111);
+  padding: 20px 16px;
+  color: var(--color-fff);
+  &_title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+    &_text {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      img {
+        width: 24px;
+      }
+      span:nth-of-type(1) {
+        font-size: 16px;
+        font-weight: 600;
+      }
+      span:nth-of-type(2) {
+        font-size: 15px;
+      }
+    }
+    &_cnt {
+      background: var(--color-BCFF3A);
+      color: var(--color-333);
+      padding: 5px 3px;
+      border-radius: 2px;
+    }
+  }
+}

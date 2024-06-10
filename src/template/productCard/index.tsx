@@ -1,4 +1,5 @@
 import { useTab } from "stores/useTab";
+import { Link } from "react-router-dom";
 import styles from "./styles.module.scss";
 
 interface IProductType {
@@ -7,6 +8,7 @@ interface IProductType {
   products: {
     title: string;
     bank: string;
+    bankLogo: string;
   }[];
 }
 
@@ -43,15 +45,20 @@ const ProductCard = ({ lists, listsCount }: Prop) => {
             key={i}
             className={!activeTab ? styles.all : ""}
           >
-            <img
-              className={styles.product_card_list_bank_logo}
-              src="./src/assets/bank05.svg"
-              alt={`${list.bank} 로고`}
-            />
-            <div className={styles.product_card_list_contents}>
-              <h4>{list.bank}</h4>
-              <p>{list.title}</p>
-            </div>
+            <Link
+              to={`/finance/${list.title}_${i}`}
+              state={{ product: list }}
+            >
+              <img
+                className={styles.product_card_list_bank_logo}
+                src={list.bankLogo}
+                alt={`${list.bank} 로고`}
+              />
+              <div className={styles.product_card_list_contents}>
+                <h4>{list.bank}</h4>
+                <p>{list.title}</p>
+              </div>
+            </Link>
           </li>
         ))}
       </ul>
