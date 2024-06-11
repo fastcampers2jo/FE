@@ -2,7 +2,6 @@
 /* eslint-disable jsx-a11y/alt-text */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 import { BGLogo, BGSticker, IcHomeArr, RightArrow } from "assets";
-import ComparisonProducts from "components/likes/ComparisonProducts";
 import OnOffToggle from "components/onoffToggle/onoffToggle";
 import "./comparision.scss";
 import MainHomeBar from "components/homebar";
@@ -11,6 +10,7 @@ import MyperiodSelect from "components/mysetInput/myperiodSelect";
 import chakLogo from "assets/chak.png";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import ComparisonProducts from "components/likes/ComparisonProducts";
 
 const Product1 = [
   {
@@ -62,23 +62,40 @@ interface Description {
   active: boolean;
 }
 
-const getActiveDescriptions = (products: Product[]): Description[] => {
-  const activeDescriptions: Description[] = [];
-  products.forEach((product) => {
-    product.descriptions.forEach((desc) => {
-      if (desc.active) {
-        activeDescriptions.push(desc);
-      }
-    });
-  });
-  return activeDescriptions;
-};
-
+/// 202405_0010001_WR0001F /// 202405_0010001_WR0001L /// SAVING ///
 const ComparisonDetailPage = () => {
+  const [amount, setAmount] = useState<number>(0);
+  const [period, setPeriod] = useState<number>(0);
   const [products1, setProducts1] = useState(Product1);
   const [products2, setProducts2] = useState(Product2);
-  const [activeMoreViews1, setActiveMoreViews1] = useState<boolean[]>(Array(Product1[0].descriptions.length).fill(false));
-  const [activeMoreViews2, setActiveMoreViews2] = useState<boolean[]>(Array(Product2[0].descriptions.length).fill(false));
+  const [activeMoreViews1, setActiveMoreViews1] = useState<boolean[]>(
+    Array(Product1[0].descriptions.length).fill(false)
+  );
+  const [activeMoreViews2, setActiveMoreViews2] = useState<boolean[]>(
+    Array(Product2[0].descriptions.length).fill(false)
+  );
+
+  // const [productInfo, setProductInfo] = useState(null);
+  // const [compare, setCompare] = useState({
+  //   id1: "",
+  //   id2: "",
+  //   type: "",
+  // });
+  // const { setMessage } = useMessage((state) => state);
+  // const { mutate } = useMutation({
+  //   mutationFn: financesCompare,
+  //   onSuccess: (data) => {
+  //     setProductInfo(data);
+  //     console.log(productInfo, "dsdsadsd");
+  //   },
+  //   onError: (err) => {
+  //     setMessage(err.message);
+  //   },
+  // });
+
+  // useEffect(() => {
+  //   mutate({ id1: compare.id1, id2: compare.id2, type: compare.type });
+  // }, [compare.id1, compare.id2, compare.type, mutate]);
 
   // 자세히보기 버튼 클릭 시 상세내용 보이기 ///
   const toggleMoreview = (productIndex: number, descIndex: number) => {
@@ -105,9 +122,7 @@ const ComparisonDetailPage = () => {
           ? {
               ...product,
               descriptions: product.descriptions.map((desc, index) =>
-                index === descIndex
-                  ? { ...desc, active: !desc.active }
-                  : desc
+                index === descIndex ? { ...desc, active: !desc.active } : desc
               ),
             }
           : product
@@ -118,11 +133,11 @@ const ComparisonDetailPage = () => {
   const handleToggle2 = (descIndex: number) => {
     setProducts2((prev) =>
       prev.map((product, productIndex) =>
-        productIndex === 0 ? { ...product,
+        productIndex === 0
+          ? {
+              ...product,
               descriptions: product.descriptions.map((desc, index) =>
-                index === descIndex
-                  ? { ...desc, active: !desc.active }
-                  : desc
+                index === descIndex ? { ...desc, active: !desc.active } : desc
               ),
             }
           : product
@@ -130,51 +145,84 @@ const ComparisonDetailPage = () => {
     );
   };
 
+  const rateToggle = (isActive: boolean, baseMode: string, activeMode: string): string =>
+    isActive ? `${baseMode} ${activeMode}` : baseMode;
+
   // 총 금리 계산 //
   const calculateTotalInterest1 = () =>
-    products1
-      .reduce((total, product) => {
-        const defRate = product.def_rate; // 기본 금리
-        const activeDescRateSum = product.descriptions.reduce(
-          (subTotal, desc) => (desc.active ? subTotal + desc.rate : subTotal),
-          0
-        ); // 활성화된 description의 rate 합계
-        return total + defRate + activeDescRateSum; // 기본 금리와 활성화된 description의 rate 합산
-      }, 0)
-      .toFixed(1);
+    products1.reduce(
+      (total, product) =>
+        total
+        + product.descriptions.reduce((subTotal, desc) => (desc.active ? subTotal + desc.rate : subTotal), 0)
+        + product.def_rate,
+      0
+    );
 
   const calculateTotalInterest2 = () =>
-    products2
-      .reduce((total, product) => {
-        const defRate = product.def_rate; // 기본 금리
-        const activeDescRateSum = product.descriptions.reduce(
-          (subTotal, desc) => (desc.active ? subTotal + desc.rate : subTotal),
-          0
-        ); // 활성화된 description의 rate 합계
-        return total + defRate + activeDescRateSum; // 기본 금리와 활성화된 description의 rate 합산
-      }, 0)
-      .toFixed(1);
+    products2.reduce(
+      (total, product) =>
+        total
+        + product.descriptions.reduce((subTotal, desc) => (desc.active ? subTotal + desc.rate : subTotal), 0)
+        + product.def_rate,
+      0
+    );
 
   const totalInterest1 = calculateTotalInterest1();
   const totalInterest2 = calculateTotalInterest2();
 
-  /// toggle 활성화한 description을 ComparisonProducts로 넘기기 ///
+  const calculateTotalAmount = (set: number, month: number, int: number): number => {
+    const total = set + (set * month * (int / 12)) / 100;
+    return Math.floor(total);
+  };
+
+  // 총 이자 //
+  const calculateTotalInt = (myset: number, mymonth: number, myint: number): number => {
+    const total = (myset * mymonth * (myint / 12)) / 100;
+    return Math.floor(total);
+  };
+  const onlyTotalInt1 = calculateTotalInt(amount, period, Number(totalInterest1));
+  const onlyTotalInt2 = calculateTotalInt(amount, period, Number(totalInterest2));
+
+  /// 총 금액 ///
+  const totalAmount1 = calculateTotalAmount(amount, period, Number(totalInterest1));
+  const totalAmount2 = calculateTotalAmount(amount, period, Number(totalInterest2));
+
+  /// 3자리 마다 콤마 넣기 ///
+  const formatNumberWithCommas = (total: number) => total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+
+  const commaWithTotalAmount1 = formatNumberWithCommas(totalAmount1);
+  const commaWithTotalAmount2 = formatNumberWithCommas(totalAmount2);
+  const commaWithTotalInt1 = formatNumberWithCommas(onlyTotalInt1);
+  const commaWithTotalInt2 = formatNumberWithCommas(onlyTotalInt2);
+
+  /// toggle 활성화한 description 보여주기 ///
+  const getActiveDescriptions = (products: Product[]): Description[] => {
+    const activeDescriptions: Description[] = [];
+    products.forEach((product) => {
+      product.descriptions.forEach((desc) => {
+        if (desc.active) {
+          activeDescriptions.push(desc);
+        }
+      });
+    });
+    return activeDescriptions;
+  };
   const activeDescriptions1: Description[] = getActiveDescriptions(products1);
   const activeDescriptions2: Description[] = getActiveDescriptions(products2);
 
   return (
     <section className="comparisonDetail">
       <MainHomeBar pagename="비교하기" />
-
+      {/* {productInfo && <div>{JSON.stringify(productInfo, null, 2)}</div>} */}
       <form className="my__object__set">
         <span>내 목표 설정하기</span>
         <div className="my__object">
           <div className="my__object__inputbox">
-            <MysetInputBox />
-            으로
+            <MysetInputBox onChange={(value) => setAmount(Number(value))} />
+            원으로
           </div>
           <div className="my__object__selectbox__comparisondetail">
-            <MyperiodSelect />
+            <MyperiodSelect onChange={(value) => setPeriod(value)} />
             동안
           </div>
           <span>저축하고 싶어요!</span>
@@ -318,7 +366,7 @@ const ComparisonDetailPage = () => {
                       )}
                     </button>
                   </div>
-                  <div className="comparisondetail__products__check--toggle">
+                  <div className={rateToggle(desc.active, "comparisondetail__products__check--toggle", "active")}>
                     {desc.rate}%
                     <div className="comparisondetail__toggle__select">
                       <OnOffToggle isActive={desc.active} onToggle={() => handleToggle1(descIndex)} />
@@ -357,7 +405,7 @@ const ComparisonDetailPage = () => {
                       )}
                     </button>
                   </div>
-                  <div className="comparisondetail__products__check--toggle">
+                  <div className={rateToggle(desc.active, "comparisondetail__products__check--toggle", "active")}>
                     {desc.rate}%
                     <div className="comparisondetail__toggle__select">
                       <OnOffToggle isActive={desc.active} onToggle={() => handleToggle2(descIndex)} />
@@ -368,16 +416,20 @@ const ComparisonDetailPage = () => {
             </div>
           </div>
         </div>
-      </section>
 
-      <ComparisonProducts
-        defRate1={Product1[0].def_rate}
-        defRate2={products2[0].def_rate}
-        totalInterest1={totalInterest1}
-        totalInterest2={totalInterest2}
-        activeDescriptions1={activeDescriptions1}
-        activeDescriptions2={activeDescriptions2}
-      />
+        <ComparisonProducts
+          defRate1={Product1[0].def_rate}
+          defRate2={products2[0].def_rate}
+          totalInterest1={totalInterest1}
+          totalInterest2={totalInterest2}
+          activeDescriptions1={activeDescriptions1}
+          activeDescriptions2={activeDescriptions2}
+          commaWithTotalAmount1={commaWithTotalAmount1}
+          commaWithTotalAmount2={commaWithTotalAmount2}
+          commaWithTotalInt1={commaWithTotalInt1}
+          commaWithTotalInt2={commaWithTotalInt2}
+        />
+      </section>
     </section>
   );
 };

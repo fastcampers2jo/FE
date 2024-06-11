@@ -1,11 +1,18 @@
 .icon__emptyheart {
-  width: 1.8rem;
-  height: 1.8rem;
+  width: 2.4rem;
+  height: 2.4rem;
   color: #aeb5bc;
 
   path {
-    stroke: #aeb5bc;
-    stroke-width: 0.08rem;
+    fill: #aeb5bc;
+  }
+}
+
+.icon__emptyheart__full {
+  width: 2.4rem;
+  height: 2.4rem;
+  parh {
+    fill: #000;
   }
 }
 
@@ -478,7 +485,7 @@
     .products__check--toggle {
       position: relative;
       display: flex;
-      color: #000;
+      color: #d6d6d6;
       margin-right: 6.2rem;
       align-items: flex-end;
       justify-content: end;
@@ -490,6 +497,10 @@
       font-weight: 700;
       line-height: 150%; /* 36px */
       letter-spacing: 0.137px;
+
+      &.active {
+        color: #000;
+      }
 
       .toggle__select {
         position: absolute;
@@ -646,6 +657,7 @@
 
     .productdetail__greenbar {
       min-width: 162px;
+      flex: 1;
       height: 15px;
       margin: 0 17px;
       border-bottom: 4px solid #01ea2b;
@@ -720,7 +732,7 @@
 }
 
 /// 슬라이더 ////
-/// 
+///
 ///라운지///
 .productdetail__lounge__swiper {
   margin-top: 1.2rem;
@@ -732,22 +744,18 @@
   .productdetail__lounge__slide {
     height: 72px;
     width: 185px !important;
-    padding: 1rem ;
+    padding: 1rem;
     align-items: center;
     display: flex;
     border-radius: 0.4rem;
     border: 0.1rem solid var(--color-white-gray-4, #dfe2e6);
     background-color: var(--color-white-gray-1, #f8f9fa);
-  
+
     .productdetail__lounge__wrapped {
       width: 100%;
-  
     }
   }
-
 }
-
-
 
 .productdetail__other__slider {
   margin-top: 1.2rem;
@@ -767,10 +775,10 @@
     border-radius: 0.4rem;
     border: 0.1rem solid var(--color-white-gray-4, #dfe2e6);
     background-color: var(--color-white-gray-1, #f8f9fa);
-  
+
     .productdetail__other__wrapped {
       width: auto;
-  
+
       .productdetail__other__logo {
         margin-bottom: 0.2rem;
         width: 2.8rem;
@@ -778,10 +786,10 @@
         background-color: #aeb5bc;
         border-radius: 50%;
       }
-  
+
       .productdetail__other__bank {
         color: #333;
-  
+
         /* text/caption/Caption 1 */
         font-family: Pretendard;
         font-size: 1.2rem;
@@ -792,7 +800,7 @@
       }
       .productdetail__other__title {
         color: var(--color-white-static-black, #111);
-  
+
         /* text/headline/Headline 2 */
         font-family: Pretendard;
         font-size: 1.6rem;
@@ -804,7 +812,7 @@
       .productdetail__interest {
         margin-top: 0.2rem;
         color: var(--color-white-primary-normal, var(--test-02, #01ea2b));
-  
+
         /* text/Body 1/Heavy */
         font-family: Pretendard;
         font-size: 1.2rem;
@@ -815,10 +823,7 @@
       }
     }
   }
-
 }
-
-
 
 ///// 상품 정보 /////
 ///

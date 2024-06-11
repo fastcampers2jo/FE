@@ -1,6 +1,8 @@
 export { default as IcBack } from "./back.svg?react";
 export { default as IcBell } from "./bell.svg?react";
 export { default as IcHide } from "./hide.svg?react";
+export { default as IcRankBanner } from "./rankBanner.svg?react";
+export { default as IcRanking } from "./ranking.svg?react";
 export { default as IcLoding } from "./loding.svg?react";
 export { default as IcLoding2 } from "./loding2.svg?react";
 export { default as IcInputDelet } from "./inputdelet.svg?react";

@@ -2,6 +2,7 @@
     display: flex;
     justify-content: space-between;
     margin-bottom:3.5rem;
+    position: relative;
     > button svg{
         fill: var(--color-fff);
     }
@@ -11,6 +12,9 @@
         letter-spacing: -0.0912px;
         color:var(--color-fff);
         font-weight:700;
+            position: absolute;
+    transform: translateX(-50%);
+    left: 50%;
     }
 }
 .mypage{

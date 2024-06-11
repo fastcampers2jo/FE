@@ -1,5 +1,5 @@
 import { useCallback } from "react";
-import { IcBack, IcBell, IcMypage, IcSet } from "assets";
+import { IcBack, IcBell, IcCard, IcMypage, IcSet } from "assets";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import styles from "./styles.module.scss";
 
@@ -11,7 +11,7 @@ const TitleTop = ({ children }: ITop) => {
   const navigate = useNavigate();
   const location = useLocation();
   const onNavigate = useCallback(() => {
-    if (location.pathname.includes("/board")) return navigate("/lounge");
+    if (location.pathname.includes("/board")) return navigate("/lounge/1");
     if (location.pathname.includes("/searchboard")) return navigate("/board/1");
     navigate(-1);
   }, [children]);
@@ -22,13 +22,25 @@ const TitleTop = ({ children }: ITop) => {
       </button>
       <h2>{children}</h2>
       <div className={styles.mypage}>
-        {children !== "알림" && children !== "마이페이지" && (
+        {children !== "알림"
+        && children !== "마이페이지"
+        && children !== "찜한 상품비교" && (
           <>
             <Link to="/alarm">
               <IcBell />
             </Link>
             <Link to="/mypage">
               <IcMypage />
+            </Link>
+          </>
+        )}
+        {children === "찜한 상품비교" && (
+          <>
+            <Link to="/alarm">
+              <IcBell />
+            </Link>
+            <Link to="/comparison/1">
+              <IcCard />
             </Link>
           </>
         )}

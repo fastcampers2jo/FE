@@ -1,11 +1,14 @@
 import { useCallback, useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useParams } from "react-router-dom";
+import { useQuery } from "@tanstack/react-query";
+import { bankAll, bankBest } from "utils/api";
 import { useRank } from "stores/useRank";
 import { Navber, LogoTop, BankBox, RankPop, Button, Fab } from "components";
-import { fakedata, bankList, navs } from "mock";
+import { bankList, navs } from "mock";
 import {
   IcBankCheck,
   IcBankDelet,
+  IcRanking,
 } from "assets";
 import styles from "./styles.module.scss";
 
@@ -26,35 +29,61 @@ const Ranking = () => {
     },
     [tap]
   );
-  const [bank, setBank] = useState<{ name: string; id: number }[]>([]);
-  const [banklength, setBanklength] = useState(0);
+  const [bank, setBank] = useState<string[]>([]);
   const onBank = useCallback(
-    (bankName: string, i: number) => {
-      if (bank.some((name) => name.name === bankName)) {
-        setBank(bank.filter((name) => name.name !== bankName));
+    (bankName: string) => {
+      if (bank.some((name) => name === bankName)) {
+        setBank(bank.filter((name) => name !== bankName));
       } else {
-        setBank([...bank, { name: bankName, id: i }]);
+        setBank([...bank, bankName]);
       }
     },
     [bank]
   );
   const onSeletBank = useCallback(() => {
     closeBankPopup();
-    setBanklength(bank.length);
   }, [bank]);
   const onBankDelet = useCallback(
     (e: React.MouseEvent<HTMLOrSVGElement>) => {
       e.stopPropagation();
       setBank([]);
-      setBanklength(0);
     },
-    [bank, banklength]
+    [bank]
   );
+  const param = useParams();
+  const { data: list } = useQuery({
+    queryKey: [
+      "bankall",
+      param.id === "1" ? "DEPOSIT" : "SAVING",
+      tap === 1 ? 10 : 20,
+    ],
+    queryFn: bankAll,
+    staleTime: 60 * 1000,
+    gcTime: 300 * 1000,
+  });
+  const { data: best } = useQuery({
+    queryKey: [
+      "bankBest",
+      param.id === "1" ? "DEPOSIT" : "SAVING",
+      bank,
+      tap === 1 ? 10 : 20,
+    ],
+    queryFn: bankBest,
+    staleTime: 60 * 1000,
+    gcTime: 300 * 1000,
+  });
+  console.log(best);
   return (
     <>
       <LogoTop />
       <section>
-        <article className={styles.banner} />
+        <Link to="/recommend-onboarding/main" className={styles.banner}>
+          <p>
+            나에게 ChaK 맞는
+            <br /> <span>상품 추천</span> 받으러가기
+            <IcRanking />
+          </p>
+        </Link>
         <nav className={styles.nav}>
           {navs.map((nav, i) => (
             <Link
@@ -86,14 +115,14 @@ const Ranking = () => {
                 onClick={openBankPopup}
                 className={styles.bankSelet}
               >
-                {banklength > 0 ? `${banklength}개 선택` : "은행 선택"}
-                {banklength > 0 && <IcBankDelet onClick={onBankDelet} />}
+                {bank.length > 0 ? `${bank.length}개 선택` : "은행 선택"}
+                {bank.length > 0 && <IcBankDelet onClick={onBankDelet} />}
               </button>
             )}
           </div>
           {tap === 1 && (
             <BankBox
-              data={fakedata}
+              data={list?.body}
               age={age}
               setAge={setAge}
               time={time}
@@ -102,7 +131,7 @@ const Ranking = () => {
           )}
           {tap === 2 && (
             <BankBox
-              data={fakedata}
+              data={list?.body}
               age={age}
               setAge={setAge}
               time={time}
@@ -115,18 +144,16 @@ const Ranking = () => {
       {bankPopup && (
         <RankPop title="은행 선택" height="638" close={closeBankPopup}>
           <div className={styles.bankWrap}>
-            {bankList.map((banks, i) => (
+            {bankList.map((banks) => (
               <button
                 key={banks.name}
-                onClick={() => onBank(banks.name, i)}
+                onClick={() => onBank(banks.name)}
                 className={
-                  bank.some((item) => item.name === banks.name) ? styles.on : ""
+                  bank.some((item) => item === banks.name) ? styles.on : ""
                 }
                 type="button"
               >
-                {bank.some((item) => item.name === banks.name) && (
-                  <IcBankCheck />
-                )}
+                {bank.some((item) => item === banks.name) && <IcBankCheck />}
                 <div>{banks.src}</div>
                 <span>{banks.name}</span>
               </button>

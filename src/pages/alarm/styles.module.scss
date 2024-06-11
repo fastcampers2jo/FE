@@ -4,9 +4,12 @@
     padding: 1.5rem 4.27% 4rem;
 }
 .article{
-    display: flex;
-    gap: 1rem;
-    margin-bottom: 2.4rem;
+    margin-top:3.5rem;
+    >button{
+        display: flex;
+        gap: 1rem;
+    }
+    
 }
 .imgbox{
   width: 4rem;

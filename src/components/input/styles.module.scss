@@ -30,16 +30,16 @@
         color:var(--color-AEB5BC);
     }
 }
-.error{
+
+.success{
     font-size: 1.2rem;
     letter-spacing: -0.6px;
     line-height: 1.8rem;
-}
-
-
-.success{
     color:var(--color-0073CB);
 }
 .fail{
+    font-size: 1.2rem;
+    letter-spacing: -0.6px;
+    line-height: 1.8rem;
     color:var(--color-F05C2E);
 }

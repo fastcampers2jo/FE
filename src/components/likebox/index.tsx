@@ -5,9 +5,10 @@ interface ILikebox {
   texts: string;
   children: string[];
   classname: string;
+  onRemove: (productName: string) => void;
 }
 
-const Likebox = ({ children, texts, classname }: ILikebox) => (
+const Likebox = ({ children, texts, classname, onRemove }: ILikebox) => (
   <div className="product__comparison--toggle">
     <div className={`add__product__text ${classname}`}>{texts}</div>
     <div className="product__select">
@@ -17,7 +18,7 @@ const Likebox = ({ children, texts, classname }: ILikebox) => (
           children.map((productName, index) => (
             <div key={index} className="add__product">
               <span>{productName}</span>
-              <X className="product__delete" />
+              <X className="product__delete" onClick={() => onRemove(productName)} />
             </div>
           ))
         ) : (
@@ -26,7 +27,7 @@ const Likebox = ({ children, texts, classname }: ILikebox) => (
             {children.map((productName, index) => (
               <div key={index} className="add__product">
                 <span>{productName}</span>
-                <X className="product__delete" />
+                <X className="product__delete" onClick={() => onRemove(productName)} />
               </div>
             ))}
             {/* 공란으로 둘 두 번째 add__product 요소 */}
