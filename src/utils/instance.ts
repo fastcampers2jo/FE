@@ -2,7 +2,8 @@ import axios from "axios";
 import { getCookie } from "./cookies";
 
 export const baseAxios = axios.create({
-  baseURL: `${process.env.REACT_APP_SERVER_URL}`,
+  // baseURL: `${process.env.REACT_APP_SERVER_URL}`,
+  baseURL: "/api",
   withCredentials: true,
   headers: {
     "Content-Type": "application/json",

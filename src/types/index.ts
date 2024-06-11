@@ -42,3 +42,11 @@ export interface Compare {
   id2: string;
   type: string;
 }
+
+export interface LoungePost {
+  title: string;
+  content: string
+  finProductType: "DEPOSIT";
+  financialProduct1: string
+  financialProduct2: string
+}

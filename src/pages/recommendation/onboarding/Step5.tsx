@@ -22,7 +22,7 @@ const Step5 = () => {
       <section className="onboarding__title period">
         <div className="onboarding__title__def">
           매달 30만원 씩, <br />
-          <span className="period__text">1개월 부터 {sliderValue}개월</span> 동안 저축할래요
+          <span className="period__text">{sliderValue}개월</span> 동안 저축할래요
         </div>
         <div className="tags">
           <div className="tag__options">예상 이자 연4%</div>
