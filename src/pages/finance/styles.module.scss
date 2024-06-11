@@ -1,6 +1,4 @@
 $conpadding: 2.4rem 4.27% 1.6rem;
-.section {
-}
 .section01 {
   background: var(--color-040404);
   padding: $conpadding;
@@ -74,7 +72,7 @@ $conpadding: 2.4rem 4.27% 1.6rem;
   &_stamp {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
-    gap: 1px;
+    margin-bottom: 30px;
     li {
       height: 112.8px;
       display: flex;
@@ -82,9 +80,90 @@ $conpadding: 2.4rem 4.27% 1.6rem;
       align-items: center;
       border: 1px dashed var(--color-fff);
       border-radius: 50%;
-      opacity: 0.5;
       font-size: 16px;
       font-weight: 500;
+      position: relative;
+      opacity: 0.5;
+      img {
+        width: 100%;
+        position: absolute;
+        opacity: 0.5;
+      }
+      &.onCurrentStamp {
+        opacity: 1;
+        img {
+          opacity: 1;
+        }
+      }
     }
+  }
+  &_total_asset {
+    padding: 10px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-size: 24px;
+    font-weight: 700;
+    h3 {
+      display: flex;
+      align-items: center;
+      gap: 17px;
+      span {
+        width: 100px;
+        height: 3px;
+        background: var(--color-01EA2B);
+      }
+    }
+    h4 {
+      color: var(--color-01EA2B);
+      .won {
+        color: var(--color-01EA2B);
+        font-size: 16px;
+      }
+      span {
+        font-size: 12px;
+        font-weight: 400;
+        color: #888;
+      }
+    }
+  }
+}
+
+.finance_detail_page_main {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background: var(--color-F2F4F5);
+  margin-bottom: 4.7rem;
+  > div {
+    background: var(--color-fff);
+  }
+  &_payments {
+    display: flex;
+    padding: 32px 0;
+    > div {
+      width: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-size: 18px;
+      font-weight: 600;
+      > div {
+        line-height: 150%;
+        .won {
+          font-size: 12px;
+        }
+        &:last-child {
+          color: var(--color-878E95);
+          font-size: 15px;
+          font-weight: 500;
+        }
+      }
+      &:first-child {
+        border-right: 1px solid var(--color-F2F4F5);
+      }
+    }
+  }
+  &_rate {
   }
 }
