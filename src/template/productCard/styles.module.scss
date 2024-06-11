@@ -27,16 +27,23 @@
     button {
       font-size: 10px;
       color: var(--color-AEB5BC);
+      display: flex;
+      align-items: center;
+      img {
+        width: 13px;
+      }
     }
   }
   &_list {
     display: flex;
     flex-direction: column;
     li {
-      display: flex;
-      gap: 5.75px;
-      padding: 16px 0;
       border-bottom: 1px solid var(--color-F1F3F5);
+      a {
+        display: flex;
+        gap: 5.75px;
+        padding: 16px 0;
+      }
       &:last-child,
       &.all {
         border-bottom: none;
