@@ -6,6 +6,8 @@ const FinanceDetailPage = () => {
   const location = useLocation();
   const { product } = location.state;
 
+  const numbers = Array.from({ length: 11 }, (_, i) => i);
+
   return (
     <>
       <MainHomeBar pagename="나의 상품" />
@@ -23,6 +25,11 @@ const FinanceDetailPage = () => {
             3회 남았습니다
           </span>
         </div>
+        <ul className={styles.finance_detail_page_stamp}>
+          {numbers.map((list, i) => (
+            <li key={i}>{list + 1}</li>
+          ))}
+        </ul>
       </section>
     </>
   );

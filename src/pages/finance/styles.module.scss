@@ -71,4 +71,20 @@ $conpadding: 2.4rem 4.27% 1.6rem;
       border-radius: 2px;
     }
   }
+  &_stamp {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1px;
+    li {
+      height: 112.8px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: 1px dashed var(--color-fff);
+      border-radius: 50%;
+      opacity: 0.5;
+      font-size: 16px;
+      font-weight: 500;
+    }
+  }
 }

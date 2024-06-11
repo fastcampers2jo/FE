@@ -36,6 +36,10 @@ const ProductCard = ({ lists, listsCount }: Prop) => {
         {!activeTab && (
           <button onClick={() => moreProducts(lists.productType)}>
             더보기
+            <img
+              src="/src/assets/boardArr.svg"
+              alt=""
+            />
           </button>
         )}
       </div>

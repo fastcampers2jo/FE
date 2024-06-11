@@ -27,6 +27,11 @@
     button {
       font-size: 10px;
       color: var(--color-AEB5BC);
+      display: flex;
+      align-items: center;
+      img {
+        width: 13px;
+      }
     }
   }
   &_list {
