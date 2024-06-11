@@ -1,48 +1,51 @@
 import { GreenDog } from "assets";
 import { Link } from "react-router-dom";
-import "../recommendation.scss";
-import Navbar from "components/navber";
+import { Navber } from "components";
+import useAuth from "hooks/useAuth";
+import styles from "../recommendation.module.scss";
 
-const OnboardingMain = () => (
-  <form className="onboardingMain">
-    <section className="onboarding__title">
-      <div className="onboarding__title__small">지금 추천을 위한 테스트를 받아보세요!</div>
-      <div className=" onboarding__title__def">
-        오직 하진님을 위한 <br />
-        Chak 상품이 기다려요!
-      </div>
-    </section>
+const OnboardingMain = () => {
+  const { login } = useAuth();
+  return (
+    <section className={styles.sections}>
+      <article className={styles.title}>
+        <p>지금 추천을 위한 테스트를 받아보세요!</p>
+        <em>
+          오직 {login?.body ? login.body.name : "고객"}님을 위한 <br />
+          Chak 상품이 기다려요!
+        </em>
+      </article>
 
-    <section className="mainpage__background">
-      <div className="circle__wrapped">
-        <GreenDog className="greendog" />
-        <div className="gray__circles">
-          <div className="gray__cir" />
-          <div className="gray__cir" />
-          <div className="gray__cir" />
-          <div className="gray__cir" />
-          <div className="gray__cir" />
-          <div className="gray__cir" />
-          <div className="gray__cir" />
+      <div className={styles.circleWrapped}>
+        <GreenDog className={styles.greendog} />
+        <div className={styles.graycircles}>
+          <div className={styles.graycir} />
+          <div className={styles.graycir} />
+          <div className={styles.graycir} />
+          <div className={styles.graycir} />
+          <div className={styles.graycir} />
+          <div className={styles.graycir} />
+          <div className={styles.graycir} />
         </div>
-        <div className="gray__circles">
-          <div className="gray__cir" />
-          <div className="gray__cir" />
-          <div className="gray__cir" />
-          <div className="gray__cir" />
-          <div className="gray__cir" />
-          <div className="gray__cir" />
-          <div className="gray__cir" />
+        <div className={styles.graycircles}>
+          <div className={styles.graycir} />
+          <div className={styles.graycir} />
+          <div className={styles.graycir} />
+          <div className={styles.graycir} />
+          <div className={styles.graycir} />
+          <div className={styles.graycir} />
+          <div className={styles.graycir} />
         </div>
       </div>
-    </section>
-    <section className="bottom-btn">
-      <Link to="/recommend-onboarding/step1" className="onboarding--btn active">
+      <Link
+        to="/recommend-onboarding/step1"
+        className={`${styles.goBtn} ${styles.active}`}
+      >
         시작하기
       </Link>
+      <Navber />
     </section>
-    <Navbar />
-  </form>
-);
+  );
+};
 
 export default OnboardingMain;

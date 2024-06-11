@@ -14,8 +14,13 @@ const Navber = () => {
   );
   const links = [
     { name: "홈", path: "/", src: <IcHome />, link: "" },
-    { name: "랭킹", path: "/ranking/:id", src: <IcLank />, link: "ranking" },
-    { name: "맞춤상품", path: "/recommend/:id", src: <IcFit />, link: "goods" },
+    { name: "랭킹", path: "/ranking/1", src: <IcLank />, link: "ranking" },
+    {
+      name: "맞춤상품",
+      path: "/recommend-onboarding/main",
+      src: <IcFit />,
+      link: "recommend",
+    },
     { name: "나의금융", path: "/finance", src: <IcCard />, link: "finance" },
     { name: "라운지", path: "/lounge", src: <IcLounge />, link: "lounge" },
   ];
@@ -27,6 +32,7 @@ const Navber = () => {
           key={link.name}
           className={`${styles.button} 
           ${(location.pathname.split("/")[1] === "search" && link.name === "홈")
+          || (location.pathname.includes("recommend") && link.name === "맞춤상품")
           || (location.pathname.split("/")[1] === "" && link.name === "홈")
           || (location.pathname.split("/")[1] === "board" && link.name === "라운지")
           || (location.pathname.split("/")[1] === link.link) ? styles.active : ""}`}

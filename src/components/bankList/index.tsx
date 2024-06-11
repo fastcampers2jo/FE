@@ -1,61 +1,88 @@
-import { useCallback, useState } from "react";
+import { useCallback } from "react";
 import { useParams } from "react-router-dom";
-import { IBank } from "types";
-import { IcBankIcon, IcSmallLove, IcSmallNotLove } from "assets";
+import { useMutation } from "@tanstack/react-query";
+import { like } from "utils/api";
+import { IcSmallLove, IcSmallNotLove } from "assets";
 import styles from "./styles.module.scss";
 
-const BankList = ({ data }: IBank) => {
+interface IBank {
+  finPrdtNm: string;
+  intrRate2Show: number;
+  intrRateShow: number;
+  isLiked?: boolean;
+  korCoNm: string;
+  id: number;
+  joinWayList: string[];
+  bankImageUrl: string;
+  financeId: string;
+  financeType:string;
+}
+
+const BankList = ({
+  finPrdtNm,
+  intrRate2Show,
+  intrRateShow,
+  isLiked,
+  korCoNm,
+  id,
+  joinWayList,
+  bankImageUrl,
+  financeId,
+  financeType
+}: IBank) => {
+  const { mutate } = useMutation({
+    mutationFn: like,
+    onSuccess: (data) => {
+      console.log(data);
+    },
+  });
   const param = useParams();
-  const [love, setLove] = useState<boolean[]>([]);
-  const onLove = (e: React.MouseEvent<HTMLButtonElement>, i: number) => {
+  const onLove = (e: React.MouseEvent<HTMLButtonElement>, id1: string) => {
     e.stopPropagation();
-    setLove({ ...love, [i]: !love[i] });
+    mutate({ id: id1, type: financeType });
   };
   const onLink = useCallback((e: React.MouseEvent<HTMLButtonElement>) => {
     e.stopPropagation();
+    console.log("asd");
   }, []);
   return (
-    <div>
-      {data.map((rank, i: number) => (
-        <button key={i} className={styles.rankList} type="button" onClick={onLink}>
-          <p className={styles.currentRank}>
-            {rank.id} <span />
-          </p>
-          <div className={styles.leftText}>
-            <div className={styles.bankImgBox}>
-              <img src={IcBankIcon} alt="은행명" />
-            </div>
-            <div className={styles.bankTextbox}>
-              <em>{rank.name}</em>
-              <p>{rank.name}</p>
-              {rank.tag.map((tags, j: number) => (
-                <span key={j} className={styles.tags}>
-                  {tags}
-                </span>
-              ))}
-            </div>
-          </div>
-          <div className={styles.rightText}>
-            <div>
-              <span>최고 {rank.toprage}%</span>
-              <strong>기본 {rank.rage}%</strong>
-            </div>
-            {param.search ? (
-              ""
-            ) : (
-              <button
-                type="button"
-                onClick={(e: React.MouseEvent<HTMLButtonElement>) =>
-                  onLove(e, i)
-                }
-              >
-                {love[i] ? <IcSmallLove /> : <IcSmallNotLove />}
-              </button>
-            )}
-          </div>
-        </button>
-      ))}
-    </div>
+    <button className={styles.rankList} type="button" onClick={onLink}>
+      <p className={styles.currentRank}>
+        {id} <span />
+      </p>
+      <div className={styles.leftText}>
+        <div className={styles.bankImgBox}>
+          <img src={bankImageUrl} alt="은행명" />
+        </div>
+        <div className={styles.bankTextbox}>
+          <em>{korCoNm}</em>
+          <p>{finPrdtNm}</p>
+          {joinWayList.map((tags, j: number) => (
+            <span key={j} className={styles.tags}>
+              {tags}
+            </span>
+          ))}
+        </div>
+      </div>
+      <div className={styles.rightText}>
+        <div>
+          <span>최고 {intrRate2Show}%</span>
+          <strong>기본 {intrRateShow}%</strong>
+        </div>
+        {param.search ? (
+          ""
+        ) : (
+          <button
+            type="button"
+            onClick={(e: React.MouseEvent<HTMLButtonElement>) =>
+              onLove(e, financeId)
+            }
+          >
+            {isLiked ? <IcSmallLove /> : <IcSmallNotLove />}
+          </button>
+        )}
+      </div>
+    </button>
   );
 };
 

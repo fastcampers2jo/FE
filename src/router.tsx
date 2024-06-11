@@ -107,35 +107,43 @@ const router = createBrowserRouter([
       },
       {
         path: "/recommend/:id",
-        element: <RecommendationPage />,
+        element: isLoggedIn ? (
+          <RecommendationPage />
+        ) : (
+          <Navigate to="/login" replace />
+        ),
       },
       {
         path: "/recommend-onboarding/main",
-        element: <OnboardingMain />,
+        element: isLoggedIn ? (
+          <OnboardingMain />
+        ) : (
+          <Navigate to="/login" replace />
+        ),
       },
       {
         path: "/recommend-onboarding/step1",
-        element: <Step1 />,
+        element: isLoggedIn ? <Step1 /> : <Navigate to="/login" replace />,
       },
       {
         path: "/recommend-onboarding/step2",
-        element: <Step2 />,
+        element: isLoggedIn ? <Step2 /> : <Navigate to="/login" replace />,
       },
       {
         path: "/recommend-onboarding/step3",
-        element: <Step3 />,
+        element: isLoggedIn ? <Step3 /> : <Navigate to="/login" replace />,
       },
       {
         path: "/recommend-onboarding/step4",
-        element: <Step4 />,
+        element: isLoggedIn ? <Step4 /> : <Navigate to="/login" replace />,
       },
       {
         path: "/recommend-onboarding/step5",
-        element: <Step5 />,
+        element: isLoggedIn ? <Step5 /> : <Navigate to="/login" replace />,
       },
       {
         path: "/recommend-onboarding/step6",
-        element: <Step6 />,
+        element: isLoggedIn ? <Step6 /> : <Navigate to="/login" replace />,
       },
       {
         path: "/lounge",

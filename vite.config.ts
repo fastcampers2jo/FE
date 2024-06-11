@@ -12,9 +12,17 @@ export default defineConfig({
     port: 3000,
     // 서버시작시 자동 브라우저 오픈
     open: true,
+    proxy: {
+      "/api": {
+        target:
+          "http://ec2-43-200-241-105.ap-northeast-2.compute.amazonaws.com:8080",
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api/, ""),
+        ws: true,
+      },
+    },
   },
 
-  base: process.env.NODE_ENV === "development" ? "./" : "./",
   build: {
     // rollupoptions에서 각기 다른 폴더에 이미지 css js 들어가도록 설정
     rollupOptions: {

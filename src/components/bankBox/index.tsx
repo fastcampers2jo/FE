@@ -2,9 +2,8 @@ import { useCallback, useState } from "react";
 import { RankPop, BankList, Button } from "components";
 import { useTime } from "hooks";
 import { useRank } from "stores/useRank";
-import { IBank } from "types";
+import { IBanks, IBank } from "types";
 import {
-  IcBankIcon,
   IcBigLove,
   IcBigNotLove,
   IcTaparr,
@@ -12,7 +11,8 @@ import {
 } from "assets";
 import styles from "./styles.module.scss";
 
-interface IBankBox extends IBank {
+interface IBankBox {
+  data: IBank;
   age: string;
   setAge: React.Dispatch<React.SetStateAction<string>>;
   time: string;
@@ -79,12 +79,10 @@ const BankBox = ({ data, age, setAge, time, setTime }: IBankBox) => {
         </div>
       </div>
       <div className={styles.comparison}>
-        {data.slice(0, 2).map((links, i) => (
+        {data?.content?.slice(0, 2).map((links: IBanks, i: number) => (
           <button
             key={i}
-            onClick={(e: React.MouseEvent<HTMLButtonElement>) =>
-              onLink(e, links.id)
-            }
+            onClick={(e: React.MouseEvent<HTMLButtonElement>) => onLink(e, i)}
             type="button"
           >
             <p className={styles.currentRank}>
@@ -93,7 +91,10 @@ const BankBox = ({ data, age, setAge, time, setTime }: IBankBox) => {
             <div>
               <div className={styles.bankTop}>
                 <div className={styles.bankImgBox}>
-                  <img src={IcBankIcon} alt="은행명" />
+                  <img
+                    src={`${links.financeDetailDto.bankImageUrl}`}
+                    alt="은행명"
+                  />
                 </div>
                 <button
                   type="button"
@@ -105,24 +106,35 @@ const BankBox = ({ data, age, setAge, time, setTime }: IBankBox) => {
                 </button>
               </div>
               <div className={styles.textbox}>
-                <em>{links.name}</em>
-                <p>{links.text}</p>
+                <em>{links.financeDetailDto.korCoNm}</em>
+                <p>{links.financeDetailDto.finPrdtNm}</p>
                 <span>최고(기본) 금리</span>
                 <strong>
-                  {links.toprage}({links.rage})%
+                  {links.financeDetailDto.intrRateShow}(
+                  {links.financeDetailDto.intrRate2Show})%
                 </strong>
               </div>
             </div>
           </button>
         ))}
       </div>
-      <BankList data={data} />
+      {data?.content?.slice(2).map((datas, i: number) => (
+        <div key={i}>
+          <BankList
+            korCoNm={datas.financeDetailDto.korCoNm}
+            intrRateShow={datas.financeDetailDto.intrRateShow}
+            intrRate2Show={datas.financeDetailDto.intrRate2Show}
+            finPrdtNm={datas.financeDetailDto.finPrdtNm}
+            joinWayList={datas.financeDetailDto.joinWayList}
+            id={i + 3}
+            bankImageUrl={datas.financeDetailDto.bankImageUrl}
+            financeId={datas.financeDetailDto.financeId}
+            financeType={datas.finProductType}
+          />
+        </div>
+      ))}
       {agePopup && (
-        <RankPop
-          title="연령대 선택"
-          height="295"
-          close={closeAgePopup}
-        >
+        <RankPop title="연령대 선택" height="295" close={closeAgePopup}>
           <div className={styles.ageContent}>
             <div className={styles.ageBtn}>
               {ageRanges.map((ageRange) => (
@@ -147,11 +159,7 @@ const BankBox = ({ data, age, setAge, time, setTime }: IBankBox) => {
         </RankPop>
       )}
       {timePopup && (
-        <RankPop
-          title="조회수 선택"
-          close={closeTimePopup}
-          height="406"
-        >
+        <RankPop title="조회수 선택" close={closeTimePopup} height="406">
           {views.map((view) => (
             <button
               key={view}

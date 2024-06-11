@@ -20,13 +20,45 @@ export interface isLogin {
 }
 
 export interface IBank {
-  data:{
-    name: string;
-    toprage: number;
-    rage: number;
-    love: boolean;
-    text: string;
-    id: number;
-    tag: string[];
-  }[]
+  content: {
+    finProductType: string;
+    financeDetailDto: {
+      bankImageUrl: string;
+      finPrdtNm: string;
+      financeId: string;
+      intrRate2Show: number;
+      intrRateShow: number;
+      joinWayList: string[];
+      korCoNm: string;
+    };
+  }[];
+}
+export interface IBanks {
+  finProductType: string;
+  financeDetailDto: {
+    bankImageUrl: string;
+    finPrdtNm: string;
+    financeId: string;
+    intrRate2Show: number;
+    intrRateShow: number;
+    joinWayList: string[];
+    korCoNm: string;
+  };
+}
+export interface IRecommend {
+  finPrdtNm: string;
+  imageBase64: string;
+  intrRate2Show: number;
+  intrRateShow: number;
+  korCoNm: string;
+  bankImageUrl: string;
+  tagList: string[];
+  financeType:string;
+  financeId: string;
+  isLiked: boolean;
+}
+
+export interface Like {
+  id: string;
+  type: string;
 }

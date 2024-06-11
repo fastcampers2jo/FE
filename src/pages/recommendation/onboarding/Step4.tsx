@@ -1,24 +1,23 @@
-import { IcBack, Bar4, IcEdit } from "assets";
-import Navbar from "components/navber";
-import { useNumber } from "hooks";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import "../recommendation.scss";
+import { Navber } from "components";
+import { useRecommend } from "stores/useRecommend";
+import { useNumber } from "hooks";
+import { IcBack, Bar4, IcEdit } from "assets";
+import styles from "../recommendation.module.scss";
 
 const Step4 = () => {
   const [isInputActive, setIsInputActive] = useState(false);
   const [inputValue, setInputValue] = useState("");
   const [number, onNumberChange] = useNumber("");
   const navigate = useNavigate();
-
+  const { ageGroups, incomeGroups, setSavingGoal } = useRecommend();
   const handleInputFocus = () => {
     setIsInputActive(true);
   };
-
   const handleEditDelete = () => {
     setIsInputActive(false);
   };
-
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;
     if (!Number.isNaN(Number(value.replace(/,/g, ""))) && Number(value.replace(/,/g, "")) >= 0) {
@@ -26,30 +25,32 @@ const Step4 = () => {
       onNumberChange(e);
     }
   };
-
+  useEffect(() => {
+    setSavingGoal(Number(inputValue) * 10000);
+  }, [inputValue]);
   return (
-    <div className="step4">
-      <section className="recommend__statusbar">
-        <IcBack className="icon__recommend" onClick={() => navigate(-1)} />
-        <Bar4 className="icon__disabled" />
+    <section className={styles.section}>
+      <article className={styles.statusbar}>
+        <IcBack onClick={() => navigate(-1)} />
+        <Bar4 />
         <div />
-      </section>
-      <section className="onboarding__title">
-        <div className=" onboarding__title__def">
+      </article>
+      <article className={styles.title}>
+        <em>
           매달 저축 목표금액도 <br />
           정해볼까요?
+        </em>
+        <div className={styles.tags}>
+          <span className={styles.tag__options}>{ageGroups}</span>
+          <span className={styles.tag__options}>{incomeGroups}</span>
         </div>
-        <div className="tags">
-          <div className="tag__options">20-24세</div>
-          <div className="tag__options">소득 100만원 이하</div>
-        </div>
-        <div className="onboarding__title__small">의 또래들은 월 평균 30만원을 저축해요!</div>
-      </section>
+        <p>의 또래들은 월 평균 30만원을 저축해요!</p>
+      </article>
 
-      <section className="myset__options">
-        <div className="inputsection">
+      <section className={styles.myset__options}>
+        <div className={styles.inputsection}>
           <input
-            className={`inputbox  ${isInputActive ? "active" : ""}`}
+            className={`${styles.inputbox} ${isInputActive ? styles.active : ""}`}
             type="text"
             placeholder="금액"
             min="0"
@@ -61,22 +62,21 @@ const Step4 = () => {
             onWheel={(event) => (event.target as HTMLElement).blur()}
             value={number}
           />
-          {!isInputActive && !inputValue && <IcEdit className="step4__icon__edit" />}
+          {!isInputActive && !inputValue && (
+            <IcEdit className={styles.step4__icon__edit} />
+          )}
           <span>만원</span>
         </div>
       </section>
 
-      <section className="bottom-btn">
-        <Link
-          to="/recommend-onboarding/step5"
-          type="button"
-          className={`onboarding--btn ${inputValue ? "active" : ""}`}
-        >
-          계속하기
-        </Link>
-      </section>
-      <Navbar />
-    </div>
+      <Link
+        to="/recommend-onboarding/step5"
+        className={`${styles.goBtn} ${inputValue.length > 0 ? styles.active : ""}`}
+      >
+        계속하기
+      </Link>
+      <Navber />
+    </section>
   );
 };
 

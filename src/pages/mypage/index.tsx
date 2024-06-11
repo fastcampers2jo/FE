@@ -1,19 +1,12 @@
 import { useNavigate } from "react-router-dom";
-import { useQuery } from "@tanstack/react-query";
 import { TitleTop, MypageList } from "components";
 import { IcEdit, IcSticker } from "assets";
-import { keepLogin } from "utils/api";
-import { isLogin } from "types";
+import useAuth from "hooks/useAuth";
 import styles from "./styles.module.scss";
 
 const Mypage = () => {
   const navigate = useNavigate();
-  const { data: login } = useQuery<isLogin>({
-    queryKey: ["login"],
-    queryFn: keepLogin,
-    staleTime: 60 * 1000,
-    gcTime: 300 * 1000,
-  });
+  const { login } = useAuth();
   const settingsLinks = [
     { to: "/", text: "알림설정" },
     { to: "/", text: "공지사항" },

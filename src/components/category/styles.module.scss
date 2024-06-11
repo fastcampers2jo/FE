@@ -1,0 +1,21 @@
+.nav{
+  margin-left:4.27%;
+  text-align: center;
+  a {
+    color: var(--color-AEB5BC);
+    font-size: 1.6rem;
+    font-weight: 600;
+    line-height: 2.4rem;
+    letter-spacing: 0.091px;
+    display: block;
+    > span{
+      padding-bottom:0.9rem;
+    }
+    &.active span{
+      color: var(--color-fff);
+      border-bottom:3px solid var(--color-01EA2B);
+      display: inline-block;
+    }
+  }
+ 
+}

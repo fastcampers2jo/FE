@@ -1,103 +1,77 @@
-import { LogoTop } from "components";
-import "./recommendation.scss";
-import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Link, redirect } from "react-router-dom";
+import { useQuery } from "@tanstack/react-query";
+import { BankList, Fab, LogoTop, Navber } from "components";
 import CategoryWhite from "components/category/white";
-import Navbar from "components/navber";
-import { FloatingHeart, IcSmallLove, IcSmallNotLove } from "assets";
-import { useState } from "react";
-
-/// / 기본 맞춤추천 페이지 (추천받은 상품이 있는경우)////
+import { useRecommend } from "stores/useRecommend";
+import { recommendation } from "utils/api";
+import useAuth from "hooks/useAuth";
+import { IRecommend } from "types";
+import styles from "./recommendation.module.scss";
 
 const RecommendationPage = () => {
-  const [isLikeActive, setIsLikeActive] = useState<boolean[]>([]);
-
-  const onLike = (index: number) => {
-    setIsLikeActive((prevState) => {
-      const newLikeActive = [...prevState];
-      newLikeActive[index] = !newLikeActive[index];
-      return newLikeActive;
-    });
-  };
-
+  const { login } = useAuth();
+  const { ageGroup, incomeGroup, savingGoal, savingEnd, savingType } = useRecommend();
+  const [able, setAble] = useState(false);
+  const { data } = useQuery({
+    queryKey: [
+      "recommendation",
+      ageGroup,
+      incomeGroup,
+      savingGoal,
+      savingEnd,
+      savingType,
+    ],
+    queryFn: recommendation,
+    staleTime: 60 * 1000,
+    gcTime: 300 * 1000,
+    enabled: able,
+  });
+  useEffect(() => {
+    if (
+      ageGroup === ""
+      || incomeGroup === ""
+      || savingGoal === 0
+      || savingEnd === 0
+      || savingType === ""
+    ) {
+      redirect("/recommend-onboarding/main");
+    } else {
+      setAble(true);
+    }
+  }, [ageGroup, incomeGroup, savingGoal, savingEnd, savingType]);
   return (
-    <form className="recommendationpage">
+    <section>
       <LogoTop />
-
-      <Link to="/likelist/:id">
-        <FloatingHeart className="floating__heart" />
-      </Link>
-      <div className="recommendationpage__title">
-        하진님에게 <span className="bold">추천</span>하는
-        <span className="bold">Chak 상품</span>
+      <div className={styles.recommendationpage__title}>
+        {login?.body ? login?.body.name : "고객"}님에게 <span>추천</span>하는
+        <br />
+        <span>Chak 상품</span>
       </div>
       <CategoryWhite pageUrlName="recommend" />
-
-      <div className="products__likelist__wrapped ">
-        <div className="product__likelist recommend">
-          <div className="product__infos">
-            <Link to="/productdetail">
-              <div className="product__info">
-                <div className="product__img" />
-                <div className="product__title">
-                  <span className="product__bankname">우리은행</span>
-                  <span className="product__name">우리 첫거래우대 정기예금</span>
-                  <span className="product__property">특판</span>
-                  <span className="product__property">첫거래우대</span>
-                  <span className="product__property">방문판매</span>
-                </div>
-              </div>
-            </Link>
-          </div>
-          <div className="product__interest">
-            <div className="interest__info">
-              <span className="interest__max">최고 4.5%</span>
-              <span className="interest__def">기본 4.5%</span>
-            </div>
-            <button type="button" onClick={() => onLike(0)}>
-              {isLikeActive[0] ? (
-                <IcSmallLove className="recommend__icons__heart" />
-              ) : (
-                <IcSmallNotLove className="recommend__icons__heart" />
-              )}
-            </button>
-          </div>
-        </div>
-        <div className="product__likelist recommend">
-          <div className="product__infos">
-            <Link to="/productdetail">
-              <div className="product__info">
-                <div className="product__img" />
-                <div className="product__title">
-                  <span className="product__bankname">우리은행</span>
-                  <span className="product__name">우리 첫거래우대 정기예금</span>
-                  <span className="product__property">특판</span>
-                  <span className="product__property">첫거래우대</span>
-                  <span className="product__property">방문판매</span>
-                </div>
-              </div>
-            </Link>
-          </div>
-          <div className="product__interest">
-            <div className="interest__info">
-              <span className="interest__max">최고 4.5%</span>
-              <span className="interest__def">기본 4.5%</span>
-            </div>
-            <button type="button" onClick={() => onLike(0)}>
-              {isLikeActive[0] ? (
-                <IcSmallLove className="recommend__icons__heart" />
-              ) : (
-                <IcSmallNotLove className="recommend__icons__heart" />
-              )}
-            </button>
-          </div>
-        </div>
+      <div className={styles.bankList}>
+        {data?.body?.allList.map((datas: IRecommend, i: number) => (
+          <BankList
+            korCoNm={datas.korCoNm}
+            intrRateShow={datas.intrRateShow}
+            intrRate2Show={datas.intrRate2Show}
+            finPrdtNm={datas.finPrdtNm}
+            joinWayList={datas.tagList}
+            bankImageUrl={datas.bankImageUrl}
+            isLiked={datas.isLiked}
+            financeId={datas.financeId}
+            financeType={datas.financeType}
+            id={i + 1}
+            key={i}
+          />
+        ))}
       </div>
-
-      <Link to="/recommend-onboarding/main" className="recommendation--btn">
-        새로운 상품 추천받기
-      </Link>
-      <Navbar />
-    </form>
+      <div className={styles.recommendation}>
+        <Link to="/recommend-onboarding/main">새로운 상품 추천받기</Link>
+      </div>
+      <Fab />
+      <Navber />
+    </section>
   );
 };
 
