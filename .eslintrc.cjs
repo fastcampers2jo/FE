@@ -79,5 +79,6 @@ module.exports = {
     "no-confusing-arrow": "off",
     "react/destructuring-assignment": "off",
     "no-template-curly-in-string": "off",
+    "@typescript-eslint/no-unused-vars":"off",
   },
 };

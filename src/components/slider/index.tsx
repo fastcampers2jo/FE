@@ -28,7 +28,6 @@ const Slider: React.FC<{ value: number; onChange: (value: number) => void }> = (
   return (
     <div className="slider-container">
       <div className="slider-wrapper">
-        <div className="fixed-thumb" />
         <ReactSlider
           className="slider"
           thumbClassName="thumb"

@@ -1,5 +1,6 @@
 import { useCallback, useState } from "react";
 import { Link, useParams } from "react-router-dom";
+import { useQuery } from "@tanstack/react-query";
 import { Swiper, SwiperSlide } from "swiper/react";
 import {
   BankList,
@@ -11,8 +12,10 @@ import {
 } from "components";
 import { useSearch } from "stores/useSearch";
 import { useRank } from "stores/useRank";
+import { bankAll } from "utils/api";
+import { IBanks } from "types";
 import { IcTaparr, IcViewCheck } from "assets";
-import { fakedata, nav, navs } from "mock";
+import { nav, navs } from "mock";
 import styles from "./styles.module.scss";
 
 const SearchList = () => {
@@ -30,6 +33,12 @@ const SearchList = () => {
     setOrder({ ...order, seletOrder: order.order });
     closeTimePopup();
   }, [order.order, order.seletOrder]);
+  const { data: list } = useQuery({
+    queryKey: ["bankall", "DEPOSIT", 3],
+    queryFn: bankAll,
+    staleTime: 60 * 1000,
+    gcTime: 300 * 1000,
+  });
   return (
     <section>
       <div className={styles.searchTop}>
@@ -77,7 +86,21 @@ const SearchList = () => {
                     {v.name}
                     <span>총 12개 상품</span>
                   </h4>
-                  <BankList data={fakedata.slice(0, 3)} />
+                  {list.slice(0, 3).map((datas: IBanks, j: number) => (
+                    <div key={j}>
+                      <BankList
+                        korCoNm={datas.financeDetailDto.korCoNm}
+                        intrRateShow={datas.financeDetailDto.intrRateShow}
+                        intrRate2Show={datas.financeDetailDto.intrRate2Show}
+                        finPrdtNm={datas.financeDetailDto.finPrdtNm}
+                        joinWayList={datas.financeDetailDto.joinWayList}
+                        id={i}
+                        bankImageUrl={datas.financeDetailDto.bankImageUrl}
+                        financeId={datas.financeDetailDto.financeId}
+                        financeType={datas.finProductType}
+                      />
+                    </div>
+                  ))}
                   <Link
                     to={`/search/${param.search}/${i + 2}`}
                     className={styles.link}
@@ -88,7 +111,21 @@ const SearchList = () => {
               ))
             ) : (
               <article className={styles.article}>
-                <BankList data={fakedata} />
+                {list.slice(0, 3).map((datas: IBanks, i: number) => (
+                  <div key={i}>
+                    <BankList
+                      korCoNm={datas.financeDetailDto.korCoNm}
+                      intrRateShow={datas.financeDetailDto.intrRateShow}
+                      intrRate2Show={datas.financeDetailDto.intrRate2Show}
+                      finPrdtNm={datas.financeDetailDto.finPrdtNm}
+                      joinWayList={datas.financeDetailDto.joinWayList}
+                      id={i}
+                      bankImageUrl={datas.financeDetailDto.bankImageUrl}
+                      financeId={datas.financeDetailDto.financeId}
+                      financeType={datas.finProductType}
+                    />
+                  </div>
+                ))}
               </article>
             )}
           </div>
@@ -108,7 +145,9 @@ const SearchList = () => {
               <div className={styles.viewBtnWrap}>
                 <Button
                   type="button"
-                  disabled={order.order === "" || order.order === order.seletOrder}
+                  disabled={
+                    order.order === "" || order.order === order.seletOrder
+                  }
                   onClick={() => onSeletOrder()}
                 >
                   선택완료

@@ -1,10 +1,10 @@
 import { useEffect, useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { useQuery } from "@tanstack/react-query";
+// import { useQuery } from "@tanstack/react-query";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Autoplay, Pagination } from "swiper/modules";
 import SwiperCore from "swiper";
-import { BankList, Button, Fab, LogoTop, Navber } from "components";
+import { Button, Fab, LogoTop, Navber } from "components";
 import {
   IcBanner,
   IcHomeArr,
@@ -14,20 +14,20 @@ import {
   IcSlide01,
   IcSlide02,
 } from "assets";
-import { keepLogin } from "utils/api";
-import { isLogin } from "types";
-import { fakedata, boards, product, keywords, bankList, cards, pensions } from "mock";
-
+import useAuth from "hooks/useAuth";
+// import { bankAll } from "utils/api";
+import { boards, product, keywords, bankList, cards, pensions } from "mock";
 import styles from "./styles.module.scss";
 
 const Home = () => {
   const navigate = useNavigate();
-  const { data: login } = useQuery<isLogin>({
-    queryKey: ["login"],
-    queryFn: keepLogin,
-    staleTime: 60 * 1000,
-    gcTime: 300 * 1000,
-  });
+  const { login } = useAuth();
+  // const { data: list } = useQuery({
+  //   queryKey: ["bankall", "DEPOSIT", 3],
+  //   queryFn: bankAll,
+  //   staleTime: 60 * 1000,
+  //   gcTime: 300 * 1000,
+  // });
   // 슬라이더 방향키
   const navigationPrevRef = useRef<HTMLButtonElement>(null);
   const navigationNextRef = useRef<HTMLButtonElement>(null);
@@ -95,7 +95,25 @@ const Home = () => {
             </h2>
             <Link to="/ranking/1">더보기 &gt;</Link>
           </div>
-          <BankList data={fakedata.slice(0, 3)} />
+          {/* {list?.body?.content.slice(0, 3).map((datas: IBanks, i: number) => (
+            <div key={i}>
+              <BankList
+                korCoNm={datas.financeDetailDto.korCoNm}
+                intrRateShow={datas.financeDetailDto.intrRateShow}
+                intrRate2Show={datas.financeDetailDto.intrRate2Show}
+                finPrdtNm={datas.financeDetailDto.finPrdtNm}
+                joinWayList={datas.financeDetailDto.joinWayList}
+                id={i}
+  isLiked,
+  korCoNm,
+  id,
+  ,
+  bankImageUrl,
+  financeId,
+  financeType
+              />
+            </div>
+          ))} */}
         </article>
         <article className={styles.section03}>
           <div className={styles.articleBoxTop}>
@@ -328,7 +346,18 @@ const Home = () => {
               <IcHomeArr />
               <span>주택청약 종합저축을 통해 내 집 마련에 도전해보세요.</span>
             </summary>
-            <BankList data={fakedata.slice(0, 3)} />
+            {/* {list?.body?.content.slice(0, 3).map((datas: IBanks, i: number) => (
+              <div key={i}>
+                <BankList
+                  korCoNm={datas.financeDetailDto.korCoNm}
+                  intrRateShow={datas.financeDetailDto.intrRateShow}
+                  intrRate2Show={datas.financeDetailDto.intrRate2Show}
+                  finPrdtNm={datas.financeDetailDto.finPrdtNm}
+                  joinWayList={datas.financeDetailDto.joinWayList}
+                  id={i}
+                />
+              </div>
+            ))} */}
             <Link to="/" className={styles.section06Link}>
               연금상품 전체보기
             </Link>

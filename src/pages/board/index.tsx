@@ -3,17 +3,13 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { PostList, TitleTop, Navber, SearchRecent, BoardBox } from "components";
 import { useSearch } from "stores/useSearch";
 import { IcMainSearch, IcTaparr } from "assets";
-import { launge, nav } from "mock";
+import { lounge, nav } from "mock";
 import styles from "./styles.module.scss";
 
 const Board = () => {
   const param = useParams();
   const navigate = useNavigate();
-  const {
-    boardHistory,
-    setBoardHistory,
-    searchFocus,
-  } = useSearch();
+  const { boardHistory, setBoardHistory, searchFocus } = useSearch();
   return (
     <section>
       <div className={styles.boardTop}>
@@ -21,11 +17,7 @@ const Board = () => {
         {param.search ? (
           <BoardBox />
         ) : (
-          <button
-            type="button"
-            onClick={() => navigate("/searchboard")}
-            className={styles.boardBtn}
-          >
+          <button type="button" onClick={() => navigate("/searchboard")} className={styles.boardBtn}>
             <p>제목 + 내용으로 검색해보세요</p>
             <IcMainSearch />
           </button>
@@ -33,11 +25,7 @@ const Board = () => {
       </div>
       {searchFocus && param.search ? (
         <div className={styles.searchFocus}>
-          <SearchRecent
-            local="board"
-            historys={boardHistory}
-            setHistory={setBoardHistory}
-          />
+          <SearchRecent local="board" historys={boardHistory} setHistory={setBoardHistory} />
         </div>
       ) : (
         <>
@@ -45,12 +33,7 @@ const Board = () => {
             <Swiper spaceBetween={8} slidesPerView={5.6}>
               {nav.map((cate, i) => (
                 <SwiperSlide key={cate.name}>
-                  <Link
-                    to={`/board/${i + 1}`}
-                    className={
-                      Number(param?.id) === i + 1 ? styles.navsButton : ""
-                    }
-                  >
+                  <Link to={`/board/${i + 1}`} className={Number(param?.id) === i + 1 ? styles.navsButton : ""}>
                     {cate.name}
                   </Link>
                 </SwiperSlide>
@@ -68,7 +51,7 @@ const Board = () => {
             </div>
           )}
 
-          <PostList data={launge} />
+          <PostList data={lounge} />
           <Navber />
         </>
       )}

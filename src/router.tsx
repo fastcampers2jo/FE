@@ -1,5 +1,6 @@
 import { Navigate, createBrowserRouter } from "react-router-dom";
 import { getCookie } from "utils/cookies";
+import ScrollToTop from "scrollToTop";
 import {
   Home,
   Layout,
@@ -36,7 +37,12 @@ const isLoggedIn = getCookie("token");
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Layout />,
+    element: (
+      <>
+        <ScrollToTop />
+        <Layout />
+      </>
+    ),
     children: [
       {
         path: "/",
@@ -99,7 +105,7 @@ const router = createBrowserRouter([
         element: <Search />,
       },
       {
-        path: "/productdetail",
+        path: "/productdetail/:id",
         element: <ProductDetail />,
       },
       {
@@ -112,7 +118,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/recommend/:id",
-        element: <RecommendationPage />,
+        element: isLoggedIn ? (
+          <RecommendationPage />
+        ) : (
+          <Navigate to="/login" replace />
+        ),
       },
       {
         path: "/recommend-onboarding/main",
@@ -143,16 +153,31 @@ const router = createBrowserRouter([
         element: <Step6 />,
       },
       {
-        path: "/lounge",
-        element: <LoungePage />,
+        path: "/lounge/:id",
+        element: (
+          <>
+            <ScrollToTop />
+            <LoungePage />,
+          </>
+        ),
       },
       {
-        path: "/community",
-        element: <CommunityPage />,
+        path: "/community/:id",
+        element: (
+          <>
+            <ScrollToTop />
+            <CommunityPage />,
+          </>
+        ),
       },
       {
         path: "/community/newpost",
-        element: <NewPost />,
+        element: (
+          <>
+            <ScrollToTop />
+            <NewPost />,
+          </>
+        ),
       },
     ],
   },

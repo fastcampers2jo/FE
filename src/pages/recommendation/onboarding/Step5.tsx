@@ -1,51 +1,61 @@
-import { Bar5, IcBack } from "assets";
-import { Slider } from "components";
-import Navbar from "components/navber";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { Slider, Navber } from "components";
+import { useRecommend } from "stores/useRecommend";
+import { Bar5, IcBack } from "assets";
+import styles from "../recommendation.module.scss";
 
 const Step5 = () => {
   const [sliderValue, setSliderValue] = useState(12);
   const navigate = useNavigate();
-
+  const { setSavingEnd } = useRecommend();
   const handleSliderChange = (value: number) => {
     setSliderValue(value);
   };
-
+  useEffect(() => {
+    setSavingEnd(sliderValue);
+  }, [sliderValue]);
+  const num = sliderValue * 300000 * (1 + (0.04 * sliderValue)) * 0.846;
   return (
-    <div className="step5">
-      <section className="recommend__statusbar">
-        <IcBack className="icon__recommend" onClick={() => navigate(-1)} />
-        <Bar5 className="icon__disabled" />
+    <section className={styles.section}>
+      <article className={styles.statusbar}>
+        <IcBack onClick={() => navigate(-1)} />
+        <Bar5 />
         <div />
-      </section>
-      <section className="onboarding__title period">
-        <div className="onboarding__title__def">
+      </article>
+      <article className={styles.title}>
+        <em>
           매달 30만원 씩, <br />
-          <span className="period__text">1개월 부터 {sliderValue}개월</span> 동안 저축할래요
+          <span className="period__text">{sliderValue}개월</span> 동안
+          저축할래요
+        </em>
+        <div className={styles.tags}>
+          <span className={styles.tag__options}>예상 이자 연4%</span>
         </div>
-        <div className="tags">
-          <div className="tag__options">예상 이자 연4%</div>
-        </div>
-        <div className="onboarding__title__small">추후 선택하신 상품에 따라 이자가 변동될 수 있어요</div>
-      </section>
-      <section className="onboarding__total">
+        <p>추후 선택하신 상품에 따라 이자가 변동될 수 있어요</p>
+      </article>
+      <article className="onboarding__total">
         <div className=" onboarding__title__def ">
-          9,900,000<span className="small__unit">원</span>
+          {String(sliderValue * 300000).replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+          <span className="small__unit">원</span>
         </div>
-        <div className="onboarding__total__info">총 세후 이자 243,890원(연4% 기준)</div>
-      </section>
-      <section className="onboarding__slider">
+        <div className="onboarding__total__info">
+          총 세후 이자{" "}
+          {String(Math.floor(num)).replace(/\B(?=(\d{3})+(?!\d))/g, ",")}원(연4%
+          기준)
+        </div>
+      </article>
+      <article className="onboarding__slider">
         <Slider value={sliderValue} onChange={handleSliderChange} />
-      </section>
-
-      <section className="bottom-btn">
-        <Link to="/recommend-onboarding/step6" type="button" className="onboarding--btn active">
-          계속하기
-        </Link>
-      </section>
-      <Navbar />
-    </div>
+      </article>
+      <Link
+        to="/recommend-onboarding/step6"
+        className={`${styles.goBtn} ${styles.active}`}
+      >
+        계속하기
+      </Link>
+      <Navber />
+    </section>
   );
 };
 

@@ -1,10 +1,10 @@
 import { useCallback, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import { Button, Input } from "components";
 import { IcBack, IcLoginIcon } from "assets";
 import { useValid } from "hooks";
-import { signup } from "utils/api";
+import { duplicateId, signup } from "utils/api";
 import styles from "./styles.module.scss";
 
 const Signup = () => {
@@ -18,6 +18,7 @@ const Signup = () => {
     errorPassword: false,
     errorName: false,
     errorConfirmPassword: false,
+    duplicateId: false,
   });
   const { changeEmail,
     changePassword,
@@ -27,9 +28,6 @@ const Signup = () => {
     mutationFn: signup,
     onSuccess: () => {
       navigate("/login");
-    },
-    onError: (err) => {
-      console.error(err.message);
     },
   });
   const onSign = useCallback(
@@ -43,16 +41,6 @@ const Signup = () => {
     },
     [logins.email, logins.password, logins.name]
   );
-  console.log(
-    "이름",
-    logins.errorName,
-    "email",
-    logins.errorEmail,
-    "비밀번호",
-    logins.errorPassword,
-    "비밀번호확인",
-    logins.errorConfirmPassword
-  );
   // 제거
   const onClear = useCallback(
     (v: string) => {
@@ -63,6 +51,17 @@ const Signup = () => {
     },
     [logins.email, logins.password, logins.name, logins.confirmPassword]
   );
+  const { data, refetch } = useQuery({
+    queryKey: ["duplicate", logins.email],
+    queryFn: duplicateId,
+    enabled: logins.duplicateId,
+  });
+  const onDuplicate = () => {
+    setLogins({ ...logins, duplicateId: true });
+    refetch().then(() => {
+      setLogins((current) => ({ ...current, duplicateId: false }));
+    });
+  };
   return (
     <div className={styles.wrap}>
       <header className={styles.header}>
@@ -100,7 +99,10 @@ const Signup = () => {
               onChange={changeEmail}
               value={logins.email}
               name="emails"
+              onClick={onDuplicate}
               onClear={() => onClear("email")}
+              duplicateCode={data?.body && data.body?.taken}
+              errorCode={logins.errorEmail}
               error={
                 !logins.errorEmail && logins.email.length > 0
                   ? "올바른 이메일 형식이 아닙니다."
@@ -131,7 +133,7 @@ const Signup = () => {
               errorCode={logins.errorConfirmPassword}
               error={
                 !logins.errorConfirmPassword
-                && logins.confirmPassword.length > 0
+              && logins.confirmPassword.length > 0
                   ? "비밀번호가 일치하지 않습니다."
                   : "비밀번호가 일치합니다."
               }
@@ -144,13 +146,9 @@ const Signup = () => {
               disabled={
                 !(
                   logins.errorPassword
-                  && logins.errorEmail
-                  && logins.errorConfirmPassword
-                  && logins.errorName
-                  && logins.password.length > 7
-                  && logins.confirmPassword.length > 7
-                  && logins.name.length > 2
-                  && logins.email.length > 1
+                && logins.errorEmail
+                && logins.errorConfirmPassword
+                && logins.errorName
                 )
               }
             >

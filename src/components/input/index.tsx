@@ -12,6 +12,8 @@ interface IInput {
   onClear: () => void;
   error?: string;
   errorCode?: boolean;
+  onClick?: () => void;
+  duplicateCode?: boolean;
 }
 
 const Input = ({
@@ -23,6 +25,8 @@ const Input = ({
   onClear,
   error,
   errorCode,
+  onClick,
+  duplicateCode,
 }: IInput) => {
   const [hide, setHide] = useState(false);
   const onShow = () => setHide((prev) => !prev);
@@ -64,12 +68,24 @@ const Input = ({
           </div>
         </div>
         {name === "emails" && (
-          <Button type="button" disabled={false} height="39" width="73">
+          <Button
+            type="button"
+            disabled={name === "emails" && duplicateCode === true}
+            height="39"
+            width="73"
+            onClick={() => onClick?.()}
+          >
             중복확인
           </Button>
         )}
       </label>
       <p className={errors}>{value.length > 0 && error}</p>
+      {name === "emails" && duplicateCode !== undefined && (
+        <p className={duplicateCode ? styles.fail : styles.success}>
+          {duplicateCode && "이미 가입된 메일이에요"}
+          {duplicateCode === false && "사용가능한 메일이에요"}
+        </p>
+      )}
     </>
   );
 };

@@ -1,0 +1,356 @@
+.section{
+  padding: 1.5rem 4.27% 0rem;
+  min-height: 100vh;
+  position: relative;
+  box-sizing: border-box;
+  background: var(--color-F8F9FA);
+}
+
+.statusbar{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 4.1rem;
+  > svg:first-child{
+    cursor: pointer;
+    fill: var(--color-111);
+  }
+}
+.title{
+  min-height: 12.2rem;
+  > em{
+    display: block;
+    color: var(--color-111);
+    font-size: 2.4rem;
+    font-weight: 700;
+    line-height: 3.6rem; 
+    letter-spacing: 0.137px;
+    > span {
+      color: var(--color-01EA2B);
+      font-size: 2.4rem;
+      font-weight: 700;
+      line-height: 150%;
+      letter-spacing: 0.0137rem;
+    }
+  }
+  > p{
+    color: var(--color-878E95);
+    font-size: 1.4rem;
+    font-weight: 600;
+    line-height: 2.1rem;
+    letter-spacing: 0.08px;
+    margin-top:0.8rem
+  }
+  
+}
+
+// 연령대
+
+.ageInfo{
+ display: flex;
+ gap: 0.8rem;
+ flex-wrap: wrap;
+ margin-top:5rem;
+}
+.ageBtn{
+width: calc((100% - 1.6rem) / 3 );
+  height: 4.5rem;
+  border-radius: 100px;
+  border: 1px solid var(--color-CFD4D9);
+  background: var(--color-fff);
+  color: var(--color-111);
+  font-size: 1.4rem;
+  font-weight: 600;
+  line-height: 2.1rem;
+  letter-spacing: 0.08px;
+  position: relative;
+}
+.activeAge{
+  border: 1px solid var(--color-01EA2B);
+  background: rgba(1, 234, 43, 0.10);
+  &::after{
+    border-radius: 100px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    content: "";
+     border: 3px solid var(--color-01EA2B);
+     box-sizing: border-box;
+  }
+}
+.goBtn{
+  width: calc(100% - 8.54%);
+  margin: 0 auto;
+  height: 5.6rem;
+  background: var(--color-EAECEF);
+  text-align: center;
+  line-height: 5.6rem;
+  color: var(--color-AEB5BC);
+  border-radius: 4px;
+  display: block;
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: 0.114px;
+  position: absolute;
+    bottom: 11rem;
+    left: 0;
+    right: 0;
+    &.active{
+      background: var(--color-01EA2B);
+       color: var(--color-111);
+    }
+}
+.goBtn2{
+  width: 100%;
+  margin-top:3rem;
+  height: 5.6rem;
+  background: var(--color-EAECEF);
+  text-align: center;
+  line-height: 5.6rem;
+  color: var(--color-AEB5BC);
+  border-radius: 4px;
+  display: block;
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: 0.114px;
+    &.active{
+      background: var(--color-01EA2B);
+       color: var(--color-111);
+    }
+}
+// 시작
+
+.sections{
+  padding-top: 8rem;
+  min-height: 100vh;
+  box-sizing: border-box;
+  background: var(--color-F8F9FA);
+  
+  position: relative;
+  overflow: hidden;
+  .title{
+    margin-left: 4.27%
+  }
+  .title > p {
+    margin-block: 0 0.8rem;
+    
+  };
+}
+.graycircles:nth-of-type(1) .graycir:nth-child(4) {
+  opacity: 0;
+}
+.circleWrapped {
+  position: absolute;
+  top: 32rem;
+  left: -8.6rem;
+}
+.greendog {
+  position: absolute;
+  right: 30rem;
+  bottom: 20rem;
+}
+.graycircles {
+  display: flex;
+} 
+    
+.graycir {
+  width: 10rem;
+  height: 10rem;
+  background-color: #dfe2e6;
+  border-radius: 50%;
+}
+
+
+
+
+
+
+
+.onboarding__textboxs {
+  margin-top: 5rem;
+}
+.onboarding__textbox {
+  border-radius: 0.4rem;
+  border: 0.1rem solid var(--color-white-gray-5, #cfd4d9);
+  display: flex;
+  width: 100%;
+  padding: 2.6rem 4rem 2.6rem 2.4rem;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin-bottom: 1rem;
+
+  &.active {
+    border: 0.2rem solid var(--test-02, #01ea2b);
+    background: rgba(1, 234, 43, 0.1);
+  }
+
+  &.userpay {
+    padding: 2.4rem;
+  }
+
+  .text {
+    color: var(--color-white-back-dark, #111);
+
+    /* text/headline/Headline 1 */
+    font-family: Pretendard;
+    font-size: 1.8rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 150%; /* 2.7rem */
+    letter-spacing: 0.0103rem;
+    &.small {
+      color: var(--color-white-gray-7, #878e95);
+      padding-left: 0.5rem;
+      margin-top: 0.15rem;
+
+      /* text/caption/Caption 1 */
+      font-family: Pretendard;
+      font-size: 1.2rem;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 150%; /* 1.8rem */
+      letter-spacing: 0.0068rem;
+    }
+  }
+}
+
+.textBoxWrap{
+  margin-top:5rem;
+  flex-direction: column;
+  display: flex;
+  gap: 0.8rem;
+  
+  > button{
+    text-align: left;
+    width: 100%;
+    padding: 2.4rem 4rem 2.4rem 2.4rem;
+    border-radius: 0.4rem;
+    border: 1px solid var(--color-CFD4D9);
+    color: var(--color-111);
+    font-size: 1.6rem;
+    font-weight: 600;
+    line-height: 2.4rem; 
+    letter-spacing: 0.091px;
+    &.active{
+     border: 1px solid var(--color-01EA2B);
+    background: rgba(1, 234, 43, 0.10);
+    position: relative;
+      &::after{
+        border-radius: 0.4rem;
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 100%;
+        height: 100%;
+        content: "";
+        border: 3px solid var(--color-01EA2B);
+        box-sizing: border-box;
+      }
+    }
+  }
+}
+
+.tags {
+  display: flex;
+  gap: 0.8rem;
+  margin-top: 0.8rem;
+  margin-bottom: 0.3rem;
+  
+}
+.tag__options {
+  border-radius: 0.2rem;
+  background: var(--color-EAECEF);
+  padding: 0.3rem 0.6rem;
+  color: #333;
+
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.5rem;
+  letter-spacing: 0.0057rem;
+}
+
+
+.myset__options {
+  margin-top: 5.8rem;
+
+  .inputsection {
+    position: relative;
+    display: flex;
+    gap: 14px;
+    width: 100%;
+
+    span {
+      color: var(--color-white-static-black, #111);
+      font-family: Pretendard;
+      font-size: 2.4rem;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 150%; /* 3.6rem */
+      letter-spacing: 0.0137rem;
+      white-space: nowrap;
+    }
+
+    .inputbox {
+      color: #111111;
+      width: 100%;
+      outline: none;
+      height: 3.6rem;
+      border-top: none;
+      border-left: none;
+      border-right: none;
+      font-size: 2.4rem;
+
+      &::-webkit-outer-spin-button,
+      &::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+      }
+
+      &::placeholder {
+        color: var(--color-white-gray-7, #878e95);
+        align-items: center;
+
+        font-size: 2.4rem;
+        line-height: 3.6rem;
+        letter-spacing: 0.0137rem;
+      }
+
+      &.active {
+        border-bottom: 0.2rem solid #f05c2e;
+      }
+    }
+    .step4__icon__edit {
+      position: absolute;
+      top: 4px;
+      right: 5.6rem;
+    }
+  }
+}
+.bankList{
+  padding-inline: 4.27%;
+}
+.recommendationpage__title{
+  margin: 3rem 4.27% 2rem;
+  color: var(--color-111);
+  font-size: 2.4rem;
+  line-height: 3.6rem; 
+  letter-spacing: 0.137px;
+  > span{
+font-weight: 700;
+  }
+}
+.recommendation{
+    text-align: center;
+    margin-top:2.4rem;
+    > a{
+      color: var(--color-989BA2);
+       border-radius: 50px;
+      border: 1px solid var(--color-989BA2);
+      letter-spacing: 0.08px;
+      font-size: 1.4rem;
+      padding: 4px 17px;
+      display: inline-flex;
+    }
+}
