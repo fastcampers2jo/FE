@@ -4,7 +4,7 @@ import { useState } from "react";
 import AddVoteProduct from "./AddVoteProduct";
 
 interface ProductProps {
-  id: number;
+  id: string ;
   name: string;
   bankName: string;
   property: string;

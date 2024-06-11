@@ -501,7 +501,7 @@ export const lounge = [
 
 export const productList = [
   {
-    id: 1,
+    id: "1",
     name: "우리 첫거래우대 정기예금",
     bankName: "우리은행",
     property: "특판",
@@ -509,7 +509,7 @@ export const productList = [
     defInterest: "4.5",
   },
   {
-    id: 2,
+    id: "2",
     name: "복리세배이벤트",
     bankName: "야호은행",
     property: "특판",
@@ -517,7 +517,7 @@ export const productList = [
     defInterest: "5",
   },
   {
-    id: 3,
+    id: "3",
     name: "기업 직장인 우대예금",
     bankName: "기업은행",
     property: "특판",
@@ -525,7 +525,7 @@ export const productList = [
     defInterest: "4.5",
   },
   {
-    id: 4,
+    id: "4",
     name: "국민 청년 버팀 적금",
     bankName: "국민은행",
     property: "기간한정",

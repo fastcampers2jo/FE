@@ -8,7 +8,7 @@ import { useMutation } from "@tanstack/react-query";
 import { postLounge } from "utils/api";
 
 interface ProductProps {
-  id: number;
+  id: string;
   name: string;
   bankName: string;
   property: string;
@@ -77,8 +77,8 @@ const NewPost = () => {
     if (products.length > 0) {
       setLoungePosts((prevState) => ({
         ...prevState,
-        financialProduct1: products[0].name,
-        financialProduct2: products[1] ? products[1].name : "",
+        financialProduct1: products[0].id,
+        financialProduct2: products[1] ? products[1].id : "",
       }));
     }
   };

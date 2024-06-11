@@ -9,7 +9,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 
 interface ProductProps {
-  id: number;
+  id: string;
   name: string;
   bankName: string;
   property: string;
@@ -33,7 +33,7 @@ const AddVoteProduct = ({ onClose, onSelect }: AddVoteProductProps) => {
   const [activeCategory, setActiveIndex] = useState(0);
   const [activeTab, setActiveTab] = useState(0);
 
-  const toggleIcon = (id: number) => {
+  const toggleIcon = (id: string) => {
     const clickedProduct = icons.find((product) => product.id === id);
 
     if (!clickedProduct) {

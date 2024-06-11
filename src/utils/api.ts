@@ -52,8 +52,8 @@ export const voteLounge = async (data: I.Vote) => {
 
 /// /// lounge/1 처럼 뒤에 1붙은거는 /${post.id} 이런식으로 params로 처리해야하는건가..? ///
 
-/// 라운지 글 전체 조회 - loungepage/// /api/v1/lounge/all
-export const getAllLounge = async (data: I.LoungGetAll) => {
+/// 게시판 글 전체 조회 - loungepage/// /api/v1/lounge/all
+export const getAllLounge = async (data: I.BoardGetAll) => {
   const res = await baseAxios.get("/api/v1/lounge/all?page=0&size=1&sort=string", data);
   return res.data;
 };
