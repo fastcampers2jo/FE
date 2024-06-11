@@ -22,7 +22,7 @@ const Navber = () => {
       link: "recommend",
     },
     { name: "나의금융", path: "/finance", src: <IcCard />, link: "finance" },
-    { name: "라운지", path: "/lounge", src: <IcLounge />, link: "lounge" },
+    { name: "라운지", path: "/lounge/1", src: <IcLounge />, link: "lounge" },
   ];
   return (
     <div className={styles.navber}>

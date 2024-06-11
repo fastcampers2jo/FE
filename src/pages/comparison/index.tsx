@@ -9,7 +9,7 @@ const ComparisonPage = () => {
   const currentCategoryIndex = parseInt(location.pathname.split("/")[2], 10);
 
   return (
-    <form>
+    <div>
       <MainHomeBar pagename="비교히스토리" />
       <Category pageUrlName="comparison" />
       <div className="products__comparison__list">
@@ -38,7 +38,7 @@ const ComparisonPage = () => {
               </div>
             </div>
           </div>
-          <Link to="detail" className="comparison--btn">
+          <Link to="/comparisondetail" className="comparison--btn">
             상품 비교 보러가기
           </Link>
         </div>
@@ -114,7 +114,7 @@ const ComparisonPage = () => {
           </Link>
         </div>
       </div>
-    </form>
+    </div>
   );
 };
 

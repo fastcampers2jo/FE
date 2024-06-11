@@ -1,0 +1,457 @@
+.addvoteproduct__homebar {
+  display: flex;
+  background-color: #111;
+  padding: 0 1.6rem 0.8rem;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  height: 5rem;
+  padding-top: 1.5rem;
+
+  .addvoteproduct__homebar__tabs {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    gap: 1.2rem;
+  }
+
+  .homebar__icons__back__addvoteproduct {
+    display: flex;
+    background-color: #111;
+    path {
+      fill: #fff;
+    }
+  }
+}
+
+.addvoteproduct__homebar__tab {
+  opacity: 0.3;
+  width: auto;
+  background-color: #111;
+  color: #fff;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  margin: auto 0;
+
+  /* text/headline/Headline 2 */
+  font-family: Pretendard;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 150%; /* 24px */
+  letter-spacing: 0.091px;
+
+  &.active {
+    opacity: 1;
+  }
+}
+
+.checkbox {
+  cursor: pointer;
+  margin-top: 0;
+  margin-bottom: auto;
+}
+
+.xbox {
+  cursor: pointer;
+}
+
+.back {
+  cursor: pointer;
+
+  path {
+    stroke-width: 2px;
+    stroke: #000;
+    fill: #fff;
+  }
+  rect {
+    fill: #fff;
+  }
+  &.likelist {
+    width: 15px;
+    height: 15px;
+    margin: 10px 0 24px 20.64px;
+  }
+  &.comparison {
+    width: 12px;
+    height: 15px;
+    justify-content: flex-start;
+    display: flex;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+.page__title {
+  color: #000;
+  font-size: 200px;
+  font-weight: 600;
+  line-height: 150%; /* 30px */
+  letter-spacing: -0.44px;
+
+  &.likespage {
+    padding-left: 20.64px;
+    margin-bottom: 36.3px;
+  }
+}
+
+//// LikeListPage 찜한 금융상품페이지 LikeListPage 찜한 금융상품페이지 ////
+///
+.likelistpage__editing__homebar {
+  width: auto;
+  height: 50px;
+  background-color: #111;
+  color: #fff;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+
+  /* text/headline/Headline 2 */
+  font-family: Pretendard;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 150%; /* 24px */
+  letter-spacing: 0.091px;
+}
+
+.likelistpage {
+  width: auto;
+  height: auto;
+  min-height: 812px;
+  background-color: #f2f4f5;
+  position: relative;
+
+  .product__comparison {
+    background-color: #f2f4f5;
+    position: relative;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 10px;
+
+    .product__utilsbar {
+      margin: 0 16px;
+      display: flex;
+      padding-top: 24px;
+      justify-content: space-between;
+
+      .utils {
+        display: flex;
+        width: 100%;
+        color: #818181;
+        font-size: 11px;
+        font-weight: 300;
+        line-height: 150%; /* 1.8rem */
+        letter-spacing: 0.0063rem;
+        justify-content: space-between;
+        margin-bottom: 14px;
+
+        .selectCount {
+          display: flex;
+          color: #818181;
+          text-align: center;
+          align-items: center;
+
+          /* text/caption/Caption 2 */
+          font-family: Pretendard;
+          font-size: 11px;
+          font-style: normal;
+          font-weight: 300;
+          line-height: 150%; /* 16.5px */
+          letter-spacing: 0.063px;
+        }
+
+        .cancel {
+          color: #818181;
+
+          /* text/headline/Headline 4 */
+          font-family: Pretendard;
+          font-size: 12px;
+          font-style: normal;
+          font-weight: 600;
+          line-height: 150%; /* 1.8rem */
+          letter-spacing: 0.0068rem;
+        }
+
+        .edit {
+          cursor: pointer;
+          color: #818181;
+
+          /* text/caption/Caption 2 */
+          font-family: Pretendard;
+          font-size: 11px;
+          font-style: normal;
+          font-weight: 300;
+          line-height: 150%; /* 1.65rem */
+          letter-spacing: 0.0063rem;
+        }
+
+        .selectAll--btn {
+          margin-right: 0.4rem;
+          rect,
+          path {
+            stroke: #aeb5bc;
+            stroke-width: 1.5;
+          }
+
+          &.active {
+            fill: #aeb5bc;
+            path {
+              stroke: #fff;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  ///// 비교하기 버튼 ///
+
+  .comparison__toggle {
+    height: 8rem;
+    margin: 1rem 0;
+    width: auto;
+    display: flex;
+
+    .product__comparison__btn {
+      background-color: #fff;
+      display: flex;
+      width: 100%;
+      justify-content: center;
+      align-items: center;
+      color: #aeb5bc;
+      cursor: disabled;
+      cursor: pointer;
+      position: absolute;
+      bottom: 0;
+
+      span {
+        margin: 1.6rem 1.6rem 3.2rem 1.6rem;
+        border-radius: 0.4rem;
+        align-items: center;
+        justify-content: center;
+        display: flex;
+        background-color: var(--color-white-gray-3, #eaecef);
+        text-align: center;
+        min-width: 34.3rem;
+        width: 100%;
+        height: auto;
+        font-size: 2rem;
+        height: 5.6rem;
+        font-weight: 700;
+        line-height: 150%; /* 3rem */
+        letter-spacing: 0.0114rem;
+      }
+
+      &.active {
+        span {
+          background-color: var(--color-white-primary-normal, #01ea2b);
+          color: var(--color-white-static-black, #000);
+        }
+      }
+    }
+  }
+
+  .addvoteproduct__bottom {
+    position: absolute;
+    bottom: 10.4rem;
+    width: 100%;
+    background: var(--color-white-gray-6, #aeb5bc);
+    color: #fff;
+    display: flex;
+    height: 24px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+
+    /* text/caption/Caption 1 */
+    font-family: Pretendard;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 150%; /* 18px */
+    letter-spacing: 0.068px;
+  }
+
+  ///// 편집모드 /////
+  .editmode__toggle {
+    display: flex;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    min-width: 375px;
+    background-color: #fff;
+    justify-content: center;
+    flex-direction: column;
+
+    button {
+      width: auto;
+      padding: 1.3rem 13.6rem;
+      justify-content: center;
+      align-items: center;
+      border-radius: 0.4rem;
+      background-color: var(--color-white-gray-8, #4a5056);
+      color: var(--color-white-gray-1, #f8f9fa);
+      text-align: center;
+      margin: 0 1.6rem 3.2rem 1.6rem;
+
+      /* text/title/Title 3 */
+      font-size: 2rem;
+      font-weight: 700;
+      line-height: 150%; /* 3rem */
+      letter-spacing: 0.0114rem;
+    }
+
+    span {
+      display: flex;
+      justify-content: center;
+      text-align: center;
+      align-items: center;
+      color: var(--color-white-static-black, #000);
+      text-align: center;
+      margin-top: 1.6rem;
+      margin-bottom: 1rem;
+
+      /* text/headline/Headline 3 */
+      font-size: 1.4rem;
+      font-weight: 600;
+      line-height: 150%; /* 2.1rem */
+      letter-spacing: 0.008rem;
+    }
+  }
+}
+//// 금융상품리스트 ////
+.products__likelist__wrapped {
+  min-width: 34.3rem;
+  width: auto;
+  min-height: 5.8rem;
+  margin: 0 0.6rem;
+
+  .add__products {
+    padding-top: 5rem;
+    display: flex;
+    font-size: 1.8rem;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    color: #b3b3b3;
+  }
+
+  .product__likelist {
+    justify-content: space-between;
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+    background-color: #fff;
+    padding-top: 0;
+    padding: 1.2rem 1.6rem;
+    border-radius: 0.5rem;
+    height: auto;
+    width: auto;
+
+    .product__infos {
+      display: flex;
+
+      .product__info {
+        display: flex;
+        align-items: center;
+
+        .check--toggle {
+          button {
+            width: 2.4rem;
+            height: 2.4rem;
+          }
+        }
+
+        .product__img {
+          display: block;
+          background-color: #d9d9d9;
+          width: 3rem;
+          height: 3rem;
+          margin-left: 1.6rem;
+          justify-content: center;
+          cursor: pointer;
+          border-radius: 50%;
+        }
+      }
+
+      .product__title {
+        display: block;
+        align-items: center;
+        margin-left: 0.8rem;
+        cursor: pointer;
+
+        .product__name {
+          display: block;
+          color: #111;
+          font-size: 1.2rem;
+          font-weight: 600;
+          line-height: 120%; /* 1.44rem */
+          letter-spacing: 0.0068rem;
+          max-width: 14.6rem;
+          margin-bottom: 0.4rem;
+        }
+
+        .product__bankname {
+          color: var(--color-white-back-heavy, #adadad);
+
+          /* text/caption/Caption 2 */
+          font-size: 1.1rem;
+          font-weight: 300;
+          line-height: 150%; /* 1.65rem */
+          letter-spacing: 0.0063rem;
+        }
+
+        .product__property {
+          padding: 0.2rem 0.5rem;
+          margin-right: 0.8rem;
+          border-radius: 0.2rem;
+          background-color: var(--color-white-line-normal, rgba(112, 115, 124, 0.22));
+          color: #333;
+
+          /* text/label/Label 3 */
+          font-size: 1rem;
+          font-weight: 500;
+          line-height: 150%; /* 1.5rem */
+          letter-spacing: 0.0057rem;
+        }
+      }
+    }
+    .product__interest {
+      display: flex;
+      justify-content: flex-end;
+
+      .interest__info {
+        // margin: 0 auto;
+
+        .interest__max {
+          display: block;
+          color: var(--color-white-primary-normal, var(--test-02, #01ea2b));
+          text-align: right;
+
+          /* text/headline/Headline 3 */
+          font-size: 1.4rem;
+          font-weight: 600;
+          line-height: 150%; /* 2.1rem */
+          letter-spacing: 0.008rem;
+        }
+
+        .interest__def {
+          display: block;
+          color: #444;
+          text-align: right;
+
+          /* text/headline/Headline 4 */
+          font-size: 1.2rem;
+          font-weight: 600;
+          line-height: 150%; /* 1.8rem */
+          letter-spacing: 0.0068rem;
+        }
+      }
+    }
+  }
+}

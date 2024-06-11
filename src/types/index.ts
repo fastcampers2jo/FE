@@ -62,3 +62,23 @@ export interface Like {
   id: string;
   type: string;
 }
+
+export interface Finances {
+  id1: string;
+  id2: string;
+  type: string;
+}
+
+export interface Compare {
+  id1: string;
+  id2: string;
+  type: string;
+}
+
+export interface LoungePost {
+  title: string;
+  content: string
+  finProductType: "DEPOSIT";
+  financialProduct1: string
+  financialProduct2: string
+}

@@ -1,0 +1,115 @@
+///LikesPopUp 찜한 상품 팝업창 LikesPopUp 찜한 상품 팝업창 ////
+
+.likepopup {
+  height: auto;
+  background-color: #fff;
+  width: auto;
+  height: auto;
+
+  .statusbar {
+    display: flex;
+    height: 36px;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    position: relative;
+    background-color: #fff;
+    // margin: 0 16px 0 16px;
+
+    .home-indicator {
+      margin-top: 12px;
+      margin-bottom: 19px;
+      width: 38px;
+      border-radius: 100px;
+      border: 2.5px solid #d9d9d9;
+      position: absolute;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+  }
+}
+
+.liketpopup__section {
+  border-bottom: 1px solid #d9d9d9;
+  margin-bottom: 24px;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 16px 16px;
+  align-items: center;
+}
+
+.liketpopup__productinfo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.product__img {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #d9d9d9;
+  margin-right: 8px;
+}
+
+.product__comparison {
+  border-radius: 4px;
+  background: var(--color-white-gray-8, #4a5056);
+  display: flex;
+  width: auto;
+  padding: 8px 10px;
+
+  color: var(--color-white-static-white, #fff);
+
+  /* text/Body 2/Reading */
+  font-family: Pretendard;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%; /* 22.5px */
+  letter-spacing: 0.085px;
+}
+
+.likepopup__text {
+  color: #292929;
+
+  /* text/Body 2/Reading */
+  font-family: Pretendard;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%; /* 22.5px */
+  letter-spacing: 0.085px;
+
+  span {
+    color: #292929;
+
+    /* text/headline/Headline 2 */
+    font-family: Pretendard;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 150%; /* 24px */
+    letter-spacing: 0.091px;
+  }
+}
+
+.likepopup__other {
+  padding-left: 16px;
+  padding-bottom: 10px;
+  margin-bottom: 48px;
+  color: #000;
+  height: 242px;
+
+  /* text/Body 1/Normal */
+  font-family: Pretendard;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 150%; /* 24px */
+  letter-spacing: 0.091px;
+}

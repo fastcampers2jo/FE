@@ -1,5 +1,6 @@
 import { Navigate, createBrowserRouter } from "react-router-dom";
 import { getCookie } from "utils/cookies";
+import ScrollToTop from "scrollToTop";
 import {
   Home,
   Layout,
@@ -35,7 +36,12 @@ const isLoggedIn = getCookie("token");
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Layout />,
+    element: (
+      <>
+        <ScrollToTop />
+        <Layout />
+      </>
+    ),
     children: [
       {
         path: "/",
@@ -94,7 +100,7 @@ const router = createBrowserRouter([
         element: <Search />,
       },
       {
-        path: "/productdetail",
+        path: "/productdetail/:id",
         element: <ProductDetail />,
       },
       {
@@ -115,47 +121,58 @@ const router = createBrowserRouter([
       },
       {
         path: "/recommend-onboarding/main",
-        element: isLoggedIn ? (
-          <OnboardingMain />
-        ) : (
-          <Navigate to="/login" replace />
-        ),
+        element: <OnboardingMain />,
       },
       {
         path: "/recommend-onboarding/step1",
-        element: isLoggedIn ? <Step1 /> : <Navigate to="/login" replace />,
+        element: <Step1 />,
       },
       {
         path: "/recommend-onboarding/step2",
-        element: isLoggedIn ? <Step2 /> : <Navigate to="/login" replace />,
+        element: <Step2 />,
       },
       {
         path: "/recommend-onboarding/step3",
-        element: isLoggedIn ? <Step3 /> : <Navigate to="/login" replace />,
+        element: <Step3 />,
       },
       {
         path: "/recommend-onboarding/step4",
-        element: isLoggedIn ? <Step4 /> : <Navigate to="/login" replace />,
+        element: <Step4 />,
       },
       {
         path: "/recommend-onboarding/step5",
-        element: isLoggedIn ? <Step5 /> : <Navigate to="/login" replace />,
+        element: <Step5 />,
       },
       {
         path: "/recommend-onboarding/step6",
-        element: isLoggedIn ? <Step6 /> : <Navigate to="/login" replace />,
+        element: <Step6 />,
       },
       {
-        path: "/lounge",
-        element: <LoungePage />,
+        path: "/lounge/:id",
+        element: (
+          <>
+            <ScrollToTop />
+            <LoungePage />,
+          </>
+        ),
       },
       {
-        path: "/community",
-        element: <CommunityPage />,
+        path: "/community/:id",
+        element: (
+          <>
+            <ScrollToTop />
+            <CommunityPage />,
+          </>
+        ),
       },
       {
         path: "/community/newpost",
-        element: <NewPost />,
+        element: (
+          <>
+            <ScrollToTop />
+            <NewPost />,
+          </>
+        ),
       },
     ],
   },

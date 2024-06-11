@@ -1,9 +1,9 @@
 import { useCallback, useState } from "react";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { getLikeList } from "utils/api";
 import { CheckBox, FillDarkGrayCheckBox, FillGrayCheckBox, FillGreenCheckBox, IcBankIcon } from "assets";
-import { Category, Likebox, TitleTop } from "components";
+import { Category, TitleTop } from "components";
 import { fakedata } from "mock";
 import styles from "./styles.module.scss";
 
@@ -48,9 +48,9 @@ const LikeListPage = () => {
       return prevCheck;
     });
   };
-  const handleSelectDelete = () => {
-    setCheck((prev) => prev.filter((item) => !item.id));
-  };
+  // const handleSelectDelete = () => {
+  //   setCheck((prev) => prev.filter((item) => !item.id));
+  // };
   // 편집 취소시 배열 비우기
   const onEditing = useCallback(() => {
     setCheck([]);
@@ -65,7 +65,7 @@ const LikeListPage = () => {
       return fakedata;
     });
   }, []);
-  const selectedProducts = check.filter((product) => product.id);
+  // const selectedProducts = check.filter((product) => product.id);
   return (
     <section className={styles.likelistpage}>
       <div className={styles.likeTitle}>
@@ -195,7 +195,7 @@ const LikeListPage = () => {
         ))}
       </article>
 
-      {isEditing ? (
+      {/* {isEditing ? (
         <div className="editmode__toggle">
           <span>{check.length}개의 상품이 선택되었습니다.</span>
 
@@ -212,6 +212,7 @@ const LikeListPage = () => {
               <Likebox
                 texts="아직 하나의 상품이 더 담겨져야 해요 !"
                 classname="add__more"
+                onRemove=
               >
                 {selectedProducts.map((product) => product.name)}
               </Likebox>
@@ -237,7 +238,7 @@ const LikeListPage = () => {
             </div>
           )}
         </>
-      )}
+      )} */}
     </section>
   );
 };

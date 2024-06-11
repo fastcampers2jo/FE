@@ -11,7 +11,7 @@ const TitleTop = ({ children }: ITop) => {
   const navigate = useNavigate();
   const location = useLocation();
   const onNavigate = useCallback(() => {
-    if (location.pathname.includes("/board")) return navigate("/lounge");
+    if (location.pathname.includes("/board")) return navigate("/lounge/1");
     if (location.pathname.includes("/searchboard")) return navigate("/board/1");
     navigate(-1);
   }, [children]);

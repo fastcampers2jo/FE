@@ -408,3 +408,128 @@ export const launge = [
     good: 50,
   },
 ];
+
+export const lounge = [
+  {
+    id: 1,
+    post: [
+      {
+        name: "신화속 엘프",
+        time: "15분전",
+        inquiry: 23,
+        title: "갑자기 삘받아서 예금 넣을 생각인데 이거 어때요??",
+        comment: 2,
+        good: 25,
+      },
+    ],
+    product: [
+      {
+        def_rate: 3,
+        max_rate: 6,
+        bank_name: "KDB 산업은행",
+        title: "KDB 기업 정기예금",
+        voteCount: 73,
+      },
+      {
+        def_rate: 4,
+        max_rate: 4.5,
+        bank_name: "신한은행",
+        title: "2024 신한 프로야구 적금",
+        voteCount: 27,
+      },
+    ],
+  },
+  {
+    id: 2,
+    post: [
+      {
+        name: "돈많은백수",
+        time: "3시간전",
+        inquiry: 12,
+        title: "직장인 우대 관련한 금융상품 골라주세요",
+        comment: 10,
+        good: 13,
+      },
+    ],
+    product: [
+      {
+        def_rate: 1.5,
+        max_rate: 5,
+        bank_name: "신한은행",
+        title: "신한 쏠만해 적금",
+        voteCount: 49,
+      },
+      {
+        def_rate: 3.5,
+        max_rate: 3.5,
+        bank_name: "신한은행",
+        title: "신한 My플러스 정기예금",
+        voteCount: 51,
+      },
+    ],
+  },
+  {
+    id: 3,
+    post: [
+      {
+        name: "로또당첨기원N년차",
+        time: "2024.06.09",
+        inquiry: 41,
+        title: "주택청약 상품 1위 투표",
+        comment: 5,
+        good: 18,
+      },
+    ],
+    product: [
+      {
+        def_rate: 2.8,
+        max_rate: 2.8,
+        bank_name: "기업은행",
+        title: "마이홈플랜 주택청약 종합저축",
+        voteCount: 32,
+      },
+      {
+        def_rate: 2.8,
+        max_rate: 4.5,
+        bank_name: "국민은행",
+        title: "국민 주택드림 청약통장",
+        voteCount: 68,
+      },
+    ],
+  },
+];
+
+export const productList = [
+  {
+    id: "1",
+    name: "우리 첫거래우대 정기예금",
+    bankName: "우리은행",
+    property: "특판",
+    maxInterest: "4.5",
+    defInterest: "4.5",
+  },
+  {
+    id: "2",
+    name: "복리세배이벤트",
+    bankName: "야호은행",
+    property: "특판",
+    maxInterest: "20",
+    defInterest: "5",
+  },
+  {
+    id: "3",
+    name: "기업 직장인 우대예금",
+    bankName: "기업은행",
+    property: "특판",
+    maxInterest: "6.5",
+    defInterest: "4.5",
+  },
+  {
+    id: "4",
+    name: "국민 청년 버팀 적금",
+    bankName: "국민은행",
+    property: "기간한정",
+    maxInterest: "5.5",
+    defInterest: "2.5",
+  },
+];
