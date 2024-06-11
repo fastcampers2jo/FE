@@ -41,7 +41,7 @@ const RecommendationPage = () => {
     }
   }, [ageGroup, incomeGroup, savingGoal, savingEnd, savingType]);
   return (
-    <section>
+    <section className={styles.section3}>
       <LogoTop />
       <div className={styles.recommendationpage__title}>
         {login?.body ? login?.body.name : "고객"}님에게 <span>추천</span>하는

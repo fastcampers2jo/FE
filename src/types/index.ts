@@ -82,3 +82,34 @@ export interface LoungePost {
   financialProduct1: string
   financialProduct2: string
 }
+export interface ILike {
+  finProductType: string;
+  likedFinanceDto: {
+    bankImageUrl: string;
+    finPrdtNm: string;
+    id: string;
+    intrRate2Show: number;
+    intrRateShow: number;
+    joinWayList: string[];
+    korCoNm: string;
+  };
+}
+
+export interface ILikes {
+  body: {
+    finProductType: string;
+    likedFinanceDto: {
+      bankImageUrl: string;
+      finPrdtNm: string;
+      id: string;
+      intrRate2Show: number;
+      intrRateShow: number;
+      joinWayList: string[];
+      korCoNm: string;
+    };
+  }[]
+}
+export interface LikeDel {
+  ids: string[];
+  finProductType: string;
+}

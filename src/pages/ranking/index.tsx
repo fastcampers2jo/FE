@@ -5,11 +5,7 @@ import { bankAll, bankBest } from "utils/api";
 import { useRank } from "stores/useRank";
 import { Navber, LogoTop, BankBox, RankPop, Button, Fab } from "components";
 import { bankList, navs } from "mock";
-import {
-  IcBankCheck,
-  IcBankDelet,
-  IcRanking,
-} from "assets";
+import { IcBankCheck, IcBankDelet, IcRanking } from "assets";
 import styles from "./styles.module.scss";
 
 const Ranking = () => {
@@ -19,6 +15,31 @@ const Ranking = () => {
   const [age, setAge] = useState("전체");
   const [time, setTime] = useState("실시간");
   const tapName = ["전체 베스트", "은행별 베스트"];
+  const [bank, setBank] = useState<string[]>([]);
+  const [seletBank, setSeltBank] = useState(false);
+  const param = useParams();
+  const { data: list } = useQuery({
+    queryKey: [
+      "bankall",
+      param.id === "1" ? "DEPOSIT" : "SAVING",
+      tap === 1 ? 10 : 20,
+    ],
+    queryFn: bankAll,
+    staleTime: 60 * 1000,
+    gcTime: 300 * 1000,
+  });
+  const { data: best, refetch } = useQuery({
+    queryKey: [
+      "bankBest",
+      param.id === "1" ? "DEPOSIT" : "SAVING",
+      bank,
+      tap === 1 ? 10 : 20,
+    ],
+    queryFn: bankBest,
+    staleTime: 60 * 1000,
+    gcTime: 300 * 1000,
+    enabled: seletBank,
+  });
   const onTap = useCallback(
     (num: number) => {
       setTap(num);
@@ -29,7 +50,6 @@ const Ranking = () => {
     },
     [tap]
   );
-  const [bank, setBank] = useState<string[]>([]);
   const onBank = useCallback(
     (bankName: string) => {
       if (bank.some((name) => name === bankName)) {
@@ -42,6 +62,10 @@ const Ranking = () => {
   );
   const onSeletBank = useCallback(() => {
     closeBankPopup();
+    setSeltBank(true);
+    refetch().then(() => {
+      setSeltBank(false);
+    });
   }, [bank]);
   const onBankDelet = useCallback(
     (e: React.MouseEvent<HTMLOrSVGElement>) => {
@@ -50,29 +74,9 @@ const Ranking = () => {
     },
     [bank]
   );
-  const param = useParams();
-  const { data: list } = useQuery({
-    queryKey: [
-      "bankall",
-      param.id === "1" ? "DEPOSIT" : "SAVING",
-      tap === 1 ? 10 : 20,
-    ],
-    queryFn: bankAll,
-    staleTime: 60 * 1000,
-    gcTime: 300 * 1000,
-  });
-  const { data: best } = useQuery({
-    queryKey: [
-      "bankBest",
-      param.id === "1" ? "DEPOSIT" : "SAVING",
-      bank,
-      tap === 1 ? 10 : 20,
-    ],
-    queryFn: bankBest,
-    staleTime: 60 * 1000,
-    gcTime: 300 * 1000,
-  });
+
   console.log(best);
+
   return (
     <>
       <LogoTop />
