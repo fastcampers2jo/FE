@@ -1,0 +1,67 @@
+.likebox{
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  max-width: 60rem;
+  background:var(--color-fff)
+}
+.span{
+  width: 100%;
+  text-align: center;
+  line-height: 2.4rem;
+  color: var(--color-fff);
+  font-size: 1.2rem;
+  letter-spacing: 0.068px;
+  background: var(--color-4A5056);
+}
+.spanOne{
+  background: var(--color-AEB5BC);
+}
+.text{
+  height: 4.4rem;
+  width: 100%;
+  display: flex;
+  padding-inline:4.65% ;
+  > p{
+    width: calc((100% - 4.65%)/2);
+    color: var(--color-111);
+    font-size: 1.2rem;
+    font-weight: 600;
+    line-height: 1.8rem;
+    letter-spacing: 0.068px;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    position: relative;
+  }
+  > p:first-child{
+    margin-right: 4.65%;
+  }
+  > p:first-child::before{
+    content: '';
+      width: 2px;
+      height: 2rem;
+      background: var(--color-d9d9d9);
+      right: 0;
+      top: 0;
+      bottom: 0;
+      margin: auto 0;
+      position: absolute;
+  }
+  
+}
+.button{
+  width: calc(100% - 9.3%);
+  margin: 4.65%;
+  height: 5.6rem;
+  border-radius: 0.4rem;
+  background: var(--color-01EA2B);
+  color: var(--color-111);
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: 0.114px;
+&:disabled{
+background: var(--color-EAECEF);
+  color: var(--color-AEB5BC);
+}
+}

@@ -33,7 +33,7 @@ const Step3 = () => {
     { name: "500만원 이상", value: "income500up" },
   ];
   return (
-    <section className={styles.section}>
+    <section className={styles.section2}>
       <article className={styles.statusbar}>
         <IcBack onClick={() => navigate(-1)} />
         <Bar3 />

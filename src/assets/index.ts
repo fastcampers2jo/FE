@@ -74,6 +74,7 @@ export { default as IcMainSearch } from "./mainSearch.svg?react";
 export { default as IcSlide01 } from "./slide01.svg?react";
 export { default as IcSlide02 } from "./slide02.svg?react";
 export { default as IcBanner } from "./banner.svg?react";
+export { default as IcComparison } from "./comparison.svg?react";
 export { default as IcHomeKeyword } from "./homeKeyword.svg?react";
 /* eslint-disable @typescript-eslint/no-unused-vars */
 export { default as IcSearch } from "./search.svg?react";

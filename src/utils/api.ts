@@ -1,7 +1,7 @@
 import { baseAxios } from "utils/instance";
 import * as I from "types";
-// import axios from "axios";
 
+// 회원가입
 export const login = async (data: I.Login) => {
   const res = await baseAxios.post("/api/v1/users/login", data);
   return res.data;
@@ -13,7 +13,7 @@ export const signup = async (data: I.Sign) => {
 };
 
 export const keepLogin = async () => {
-  const res = await baseAxios("/api/v1/users/me");
+  const res = await baseAxios.get("/api/v1/users/me");
   return res.data;
 };
 
@@ -33,18 +33,25 @@ export const duplicateId = async ({ queryKey }: { queryKey: [string, string] }) 
   return res.data;
 };
 
-export const getLikeList = async () => {
-  const res = await baseAxios.get("/api/v1/liked/me");
-  return res.data;
-};
-
-export const getLoungeAll = async () => {
+// 찜하기
+export const getLikeList = async ({ queryKey }: { queryKey: [string, string] }) => {
+  const [_1, finProductType] = queryKey;
   const res = await baseAxios.get(
-    "/api/v1/lounge/all?page=0&size=1&sort=string"
+    `/api/v1/liked/me?finProductType=${finProductType}`
   );
   return res.data;
 };
+export const delLikeList = async (data:I.LikeDel) => {
+  const res = await baseAxios.delete("/api/v1/liked", { data });
+  return res.data;
+};
 
+export const like = async (data: I.Like) => {
+  const res = await baseAxios.post("/api/v1/liked", data);
+  return res.data;
+};
+
+// 랭크
 export const bankAll = async ({ queryKey }: { queryKey: [string, string, number] }) => {
   const [_1, finProductType, size] = queryKey;
   const res = await baseAxios.get(
@@ -64,11 +71,6 @@ export const recommendation = async ({
   return res.data;
 };
 
-export const like = async (data: I.Like) => {
-  const res = await baseAxios.post("/api/v1/liked", data);
-  return res.data;
-};
-
 export const bankBest = async ({
   queryKey,
 }: {
@@ -81,13 +83,21 @@ export const bankBest = async ({
   return res.data;
 };
 
-export const financesDetail = async (data: I.Finances) => {
-  const res = await baseAxios.post("/api/v1/finances", data);
+// 비교하기
+export const financesCompare = async (data: I.Compare) => {
+  const res = await baseAxios.post("/api/v1/compare", data);
   return res.data;
 };
 
-export const financesCompare = async (data: I.Compare) => {
-  const res = await baseAxios.post("/api/v1/compare", data);
+export const getLoungeAll = async () => {
+  const res = await baseAxios.get(
+    "/api/v1/lounge/all?page=0&size=1&sort=string"
+  );
+  return res.data;
+};
+
+export const financesDetail = async (data: I.Finances) => {
+  const res = await baseAxios.post("/api/v1/finances", data);
   return res.data;
 };
 

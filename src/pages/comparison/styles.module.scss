@@ -1,0 +1,53 @@
+.header{
+    background: var(--color-111);
+    padding: 1.5rem 4.27% 1.1rem;
+    > div{
+        margin: 0;
+    }
+}
+.article01{
+    background: var(--color-fff);
+    padding: 3rem 4.27% 8.5rem;
+    > h5{
+        color: var(--color-000);
+        font-size: 2rem;
+        font-weight: 700;
+        line-height: 3rem;
+        letter-spacing: 0.114px;
+        margin-bottom: 1.2rem;
+    }
+}
+.article10{
+    display: flex;
+    align-items: center;
+    gap: 1.4rem;
+    > label{
+        border-bottom: 2px solid var(--color-000);
+        width: 18.4rem;
+        display: flex;
+        align-items: center;
+        >input{
+            border: 0;
+            outline: 0;
+            color: var(--color-777);
+            font-size: 2.4rem;
+            line-height: 3.6rem;
+            letter-spacing: 0.137px;
+            width: calc(100% - 2.4rem);
+        }
+    }
+    p{
+        color: var(--color-777);
+        font-size: 2.4rem;
+        letter-spacing: 0.137px;
+    }
+}
+.article11{
+    margin-top: 0.8rem;
+    display: flex;
+        align-items: center;
+    >select{
+        border-bottom: 2px solid var(--color-000);
+        width: 18.4rem;
+    }
+}

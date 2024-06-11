@@ -1,52 +1,21 @@
-.addvoteproduct__homebar {
+$color--black: #282828;
+$bgColor: #fff;
+$textColor: #292929;
+$borderColor: #bbb;
+
+.statusbar {
   display: flex;
-  background-color: #111;
-  padding: 0 1.6rem 0.8rem;
-  justify-content: space-between;
-  align-items: center;
-  text-align: center;
-  height: 5rem;
-  padding-top: 1.5rem;
-
-  .addvoteproduct__homebar__tabs {
-    display: flex;
-    align-items: center;
-    text-align: center;
-    gap: 1.2rem;
-  }
-
-  .homebar__icons__back__addvoteproduct {
-    display: flex;
-    background-color: #111;
-    path {
-      fill: #fff;
-    }
-  }
-}
-
-.addvoteproduct__homebar__tab {
-  opacity: 0.3;
   width: auto;
-  background-color: #111;
-  color: #fff;
-  text-align: center;
+  height: 90px;
   justify-content: center;
   align-items: center;
-  display: flex;
-  margin: auto 0;
-
-  /* text/headline/Headline 2 */
-  font-family: Pretendard;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: 150%; /* 24px */
-  letter-spacing: 0.091px;
-
-  &.active {
-    opacity: 1;
-  }
+  background-color: #111;
+  border-bottom: 1px solid #fff;
+  color: #fff;
+  font-size: 14px;
 }
+
+////삭제삭제삭제삭제삭제삭제삭제삭제삭제삭제////
 
 .checkbox {
   cursor: pointer;
@@ -64,10 +33,10 @@
   path {
     stroke-width: 2px;
     stroke: #000;
-    fill: #fff;
+    fill: $bgColor;
   }
   rect {
-    fill: #fff;
+    fill: $bgColor;
   }
   &.likelist {
     width: 15px;
@@ -86,7 +55,7 @@
 
 .page__title {
   color: #000;
-  font-size: 200px;
+  font-size: 20px;
   font-weight: 600;
   line-height: 150%; /* 30px */
   letter-spacing: -0.44px;
@@ -97,31 +66,204 @@
   }
 }
 
-//// LikeListPage 찜한 금융상품페이지 LikeListPage 찜한 금융상품페이지 ////
-///
-.likelistpage__editing__homebar {
-  width: auto;
-  height: 50px;
-  background-color: #111;
-  color: #fff;
-  text-align: center;
-  justify-content: center;
-  align-items: center;
-  display: flex;
+///LikesPopUp 찜한 상품 팝업창 LikesPopUp 찜한 상품 팝업창 ////
 
-  /* text/headline/Headline 2 */
-  font-family: Pretendard;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: 150%; /* 24px */
-  letter-spacing: 0.091px;
+.likepopup {
+  padding-left: 20px;
+  margin-left: 20px;
+  min-width: 375px;
+  height: auto;
+
+  .status-bar {
+    display: flex;
+    min-width: 375px;
+    height: 32.443px;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    border-radius: 30px 30px 0 0;
+    position: relative;
+    background-color: $bgColor;
+    // margin: 0 16px 0 16px;
+
+    .home-indicator {
+      width: 130px;
+      flex-shrink: 0;
+      border-radius: 100px;
+      border: 2.5px solid $color--black;
+      position: absolute;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+  }
+
+  .liketpopup__section {
+    min-width: 375px;
+    height: auto;
+    background-color: $bgColor;
+    // margin: 0 16px 0 16px;
+
+    .liketpopup__section-1 {
+      border-bottom: 0.5px solid $borderColor;
+
+      .product__infos {
+        display: flex;
+        margin: 30px 16px 0 16px;
+        padding-bottom: 27px;
+        justify-content: space-between;
+
+        .product__info {
+          display: flex;
+
+          .product__img {
+            background-color: #d9d9d9;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+          }
+
+          .product__title {
+            display: block;
+            width: auto;
+            color: #000;
+            font-size: 12px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: 120%; /* 14.4px */
+            letter-spacing: -0.264px;
+            margin-left: 15px;
+
+            span {
+              display: block;
+            }
+          }
+
+          .product__interest {
+            display: flex;
+            align-items: center;
+            color: #3e3e3e;
+            font-size: 12px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: 120%; /* 14.4px */
+            letter-spacing: -0.264px;
+            margin-left: 15px;
+            text-align: center;
+          }
+        }
+
+        .product__comparison {
+          display: flex;
+          align-items: center;
+          color: #5e5e5e;
+          text-align: right;
+          font-size: 10px;
+          font-style: normal;
+          font-weight: 500;
+          line-height: 120%; /* 12px */
+          letter-spacing: -0.22px;
+        }
+      }
+    }
+
+    .likepopup__section-2 {
+      margin-left: 16px;
+      overflow: hidden;
+
+      .frame56__others {
+        margin: 20px 0 48px 0;
+        display: flex;
+        gap: 25px;
+
+        .other {
+          width: 110px;
+          height: 110px;
+          flex-shrink: 0;
+          border-radius: 5px;
+          background: #d9d9d9;
+
+          .frame56__product {
+            padding: 18px 17px 13px 15px;
+            display: flex;
+
+            .frame56__img {
+              background-color: #fdfdfd;
+              width: 30px;
+              height: 30px;
+              border-radius: 50%;
+            }
+            .other__title {
+              color: #000;
+              font-size: 10px;
+              font-style: normal;
+              font-weight: 600;
+              line-height: 150%; /* 15px */
+              letter-spacing: -0.22px;
+              margin-left: 11px;
+
+              span {
+                display: block;
+              }
+            }
+          }
+        }
+        .likes__toggle {
+          justify-content: space-between;
+          margin-left: 15px;
+          display: flex;
+
+          svg {
+            display: block;
+            margin: 14px 14px 0 0;
+            cursor: pointer;
+          }
+
+          .other-interest {
+            &__text {
+              color: #000;
+              font-size: 13px;
+              font-weight: 600;
+              line-height: 150%; /* 19.5px */
+              letter-spacing: -0.286px;
+              display: block;
+            }
+            span {
+              display: block;
+              color: #666;
+              font-size: 8px;
+              font-weight: 400;
+              line-height: 150%;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .like-add-text {
+    color: $textColor;
+    font-family: Pretendard;
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 120%; /* 18px */
+    letter-spacing: -0.33px;
+    margin: 0 16px 0 16px;
+    padding-top: 13.56px;
+
+    &.section-2 {
+      padding-top: 28px;
+      margin: 0;
+    }
+  }
 }
+
+//// LikeListPage 찜한 금융상품페이지 LikeListPage 찜한 금융상품페이지 ////
 
 .likelistpage {
   width: auto;
   height: auto;
-  min-height: 812px;
+  min-height: 915px;
   background-color: #f2f4f5;
   position: relative;
 
@@ -129,24 +271,19 @@
     background-color: #f2f4f5;
     position: relative;
     height: auto;
-    display: flex;
-    flex-direction: column;
     padding-bottom: 10px;
 
     .product__utilsbar {
       margin: 0 16px;
-      display: flex;
       padding-top: 24px;
-      justify-content: space-between;
 
       .utils {
         display: flex;
-        width: 100%;
         color: #818181;
         font-size: 11px;
         font-weight: 300;
-        line-height: 150%; /* 1.8rem */
-        letter-spacing: 0.0063rem;
+        line-height: 150%; /* 18px */
+        letter-spacing: 0.063px;
         justify-content: space-between;
         margin-bottom: 14px;
 
@@ -173,8 +310,8 @@
           font-size: 12px;
           font-style: normal;
           font-weight: 600;
-          line-height: 150%; /* 1.8rem */
-          letter-spacing: 0.0068rem;
+          line-height: 150%; /* 18px */
+          letter-spacing: 0.068px;
         }
 
         .edit {
@@ -186,12 +323,12 @@
           font-size: 11px;
           font-style: normal;
           font-weight: 300;
-          line-height: 150%; /* 1.65rem */
-          letter-spacing: 0.0063rem;
+          line-height: 150%; /* 16.5px */
+          letter-spacing: 0.063px;
         }
 
         .selectAll--btn {
-          margin-right: 0.4rem;
+          margin-right: 4px;
           rect,
           path {
             stroke: #aeb5bc;
@@ -212,8 +349,8 @@
   ///// 비교하기 버튼 ///
 
   .comparison__toggle {
-    height: 8rem;
-    margin: 1rem 0;
+    height: 80px;
+    margin: 10px 0;
     width: auto;
     display: flex;
 
@@ -230,21 +367,21 @@
       bottom: 0;
 
       span {
-        margin: 1.6rem 1.6rem 3.2rem 1.6rem;
-        border-radius: 0.4rem;
+        margin: 16px 16px 32px 16px;
+        border-radius: 4px;
         align-items: center;
         justify-content: center;
         display: flex;
         background-color: var(--color-white-gray-3, #eaecef);
         text-align: center;
-        min-width: 34.3rem;
+        min-width: 343px;
         width: 100%;
         height: auto;
-        font-size: 2rem;
-        height: 5.6rem;
+        font-size: 20px;
+        height: 56px;
         font-weight: 700;
-        line-height: 150%; /* 3rem */
-        letter-spacing: 0.0114rem;
+        line-height: 150%; /* 30px */
+        letter-spacing: 0.114px;
       }
 
       &.active {
@@ -254,27 +391,6 @@
         }
       }
     }
-  }
-
-  .addvoteproduct__bottom {
-    position: absolute;
-    bottom: 10.4rem;
-    width: 100%;
-    background: var(--color-white-gray-6, #aeb5bc);
-    color: #fff;
-    display: flex;
-    height: 24px;
-    text-align: center;
-    justify-content: center;
-    align-items: center;
-
-    /* text/caption/Caption 1 */
-    font-family: Pretendard;
-    font-size: 12px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 150%; /* 18px */
-    letter-spacing: 0.068px;
   }
 
   ///// 편집모드 /////
@@ -290,20 +406,20 @@
 
     button {
       width: auto;
-      padding: 1.3rem 13.6rem;
+      padding: 13px 136px;
       justify-content: center;
       align-items: center;
-      border-radius: 0.4rem;
+      border-radius: 4px;
       background-color: var(--color-white-gray-8, #4a5056);
       color: var(--color-white-gray-1, #f8f9fa);
       text-align: center;
-      margin: 0 1.6rem 3.2rem 1.6rem;
+      margin: 0 16px 32px 16px;
 
       /* text/title/Title 3 */
-      font-size: 2rem;
+      font-size: 20px;
       font-weight: 700;
-      line-height: 150%; /* 3rem */
-      letter-spacing: 0.0114rem;
+      line-height: 150%; /* 30px */
+      letter-spacing: 0.114px;
     }
 
     span {
@@ -313,28 +429,28 @@
       align-items: center;
       color: var(--color-white-static-black, #000);
       text-align: center;
-      margin-top: 1.6rem;
-      margin-bottom: 1rem;
+      margin-top: 16px;
+      margin-bottom: 10px;
 
       /* text/headline/Headline 3 */
-      font-size: 1.4rem;
+      font-size: 14px;
       font-weight: 600;
-      line-height: 150%; /* 2.1rem */
-      letter-spacing: 0.008rem;
+      line-height: 150%; /* 21px */
+      letter-spacing: 0.08px;
     }
   }
 }
 //// 금융상품리스트 ////
 .products__likelist__wrapped {
-  min-width: 34.3rem;
+  min-width: 343px;
   width: auto;
-  min-height: 5.8rem;
-  margin: 0 0.6rem;
+  min-height: 58px;
+  margin: 0 16px;
 
   .add__products {
-    padding-top: 5rem;
+    padding-top: 50px;
     display: flex;
-    font-size: 1.8rem;
+    font-size: 18px;
     justify-content: center;
     text-align: center;
     align-items: center;
@@ -345,11 +461,11 @@
     justify-content: space-between;
     display: flex;
     align-items: center;
-    margin-bottom: 1rem;
+    margin-bottom: 10px;
     background-color: #fff;
     padding-top: 0;
-    padding: 1.2rem 1.6rem;
-    border-radius: 0.5rem;
+    padding: 12px 16px;
+    border-radius: 5px;
     height: auto;
     width: auto;
 
@@ -362,62 +478,62 @@
 
         .check--toggle {
           button {
-            width: 2.4rem;
-            height: 2.4rem;
+            width: 24px;
+            height: 24px;
           }
         }
 
         .product__img {
           display: block;
           background-color: #d9d9d9;
-          width: 3rem;
-          height: 3rem;
-          margin-left: 1.6rem;
+          width: 30px;
+          height: 30px;
+          margin-left: 16px;
           justify-content: center;
           cursor: pointer;
-          border-radius: 50%;
+          border-radius: 0;
         }
       }
 
       .product__title {
         display: block;
         align-items: center;
-        margin-left: 0.8rem;
+        margin-left: 8px;
         cursor: pointer;
 
         .product__name {
           display: block;
           color: #111;
-          font-size: 1.2rem;
+          font-size: 12px;
           font-weight: 600;
-          line-height: 120%; /* 1.44rem */
-          letter-spacing: 0.0068rem;
-          max-width: 14.6rem;
-          margin-bottom: 0.4rem;
+          line-height: 120%; /* 14.4px */
+          letter-spacing: 0.068px;
+          max-width: 146px;
+          margin-bottom: 4px;
         }
 
         .product__bankname {
           color: var(--color-white-back-heavy, #adadad);
 
           /* text/caption/Caption 2 */
-          font-size: 1.1rem;
+          font-size: 11px;
           font-weight: 300;
-          line-height: 150%; /* 1.65rem */
-          letter-spacing: 0.0063rem;
+          line-height: 150%; /* 16.5px */
+          letter-spacing: 0.063px;
         }
 
         .product__property {
-          padding: 0.2rem 0.5rem;
-          margin-right: 0.8rem;
-          border-radius: 0.2rem;
+          padding: 2px 5px;
+          margin-right: 8px;
+          border-radius: 2px;
           background-color: var(--color-white-line-normal, rgba(112, 115, 124, 0.22));
           color: #333;
 
           /* text/label/Label 3 */
-          font-size: 1rem;
+          font-size: 10px;
           font-weight: 500;
-          line-height: 150%; /* 1.5rem */
-          letter-spacing: 0.0057rem;
+          line-height: 150%; /* 15px */
+          letter-spacing: 0.057px;
         }
       }
     }
@@ -434,10 +550,10 @@
           text-align: right;
 
           /* text/headline/Headline 3 */
-          font-size: 1.4rem;
+          font-size: 14px;
           font-weight: 600;
-          line-height: 150%; /* 2.1rem */
-          letter-spacing: 0.008rem;
+          line-height: 150%; /* 21px */
+          letter-spacing: 0.08px;
         }
 
         .interest__def {
@@ -446,10 +562,10 @@
           text-align: right;
 
           /* text/headline/Headline 4 */
-          font-size: 1.2rem;
+          font-size: 12px;
           font-weight: 600;
-          line-height: 150%; /* 1.8rem */
-          letter-spacing: 0.0068rem;
+          line-height: 150%; /* 18px */
+          letter-spacing: 0.068px;
         }
       }
     }
