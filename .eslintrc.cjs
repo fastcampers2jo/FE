@@ -78,7 +78,7 @@ module.exports = {
     "react/jsx-curly-newline": "off",
     "no-confusing-arrow": "off",
     "react/destructuring-assignment": "off",
-    "no-template-curly-in-string":"off",
-    "@typescript-eslint/no-unused-vars":"off"
+    "no-template-curly-in-string": "off",
+    "@typescript-eslint/no-unused-vars":"off",
   },
 };

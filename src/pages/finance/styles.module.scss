@@ -1,0 +1,41 @@
+$conpadding: 2.4rem 4.27% 1.6rem;
+.section {
+}
+.section01 {
+  background: var(--color-040404);
+  padding: $conpadding;
+  > p {
+    color: var(--color-fff);
+    font-size: 2rem;
+    line-height: 3rem;
+    text-align: left;
+    letter-spacing: 0.114px;
+    font-weight: 400;
+    margin-bottom: 2rem;
+    > span {
+      font-weight: 700;
+      font-size: 2.2rem;
+      line-height: 3.3rem;
+      letter-spacing: 0.125px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      &::after {
+        content: "";
+        display: block;
+        width: 90px;
+        height: 3px;
+        background: var(--color-01EA2B);
+      }
+    }
+  }
+}
+.main {
+  background: var(--color-F2F4F5);
+  height: calc(100vh - 262px);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  overflow: auto;
+}
