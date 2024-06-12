@@ -8,6 +8,7 @@ interface IButton {
   width?: string;
   onClick?: () => void;
   color?: string;
+  font?: string;
 }
 
 const Button = ({
@@ -18,12 +19,14 @@ const Button = ({
   width,
   onClick,
   color,
+  font,
 }: IButton) => {
   const buttonclass = [
     styles.button,
     height && styles[`height${height as string}`],
     width && styles[`width${width as string}`],
     color && styles[`color${color as string}`],
+    font && styles[`font${font as string}`],
   ]
     .filter(Boolean)
     .join(" ");

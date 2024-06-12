@@ -26,7 +26,7 @@ const Step4 = () => {
     }
   };
   useEffect(() => {
-    setSavingGoal(Number(inputValue) * 10000);
+    setSavingGoal(Number(inputValue));
   }, [inputValue]);
   return (
     <section className={styles.section}>

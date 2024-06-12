@@ -344,7 +344,7 @@ const Home = () => {
               <IcHomeArr />
               <span>주택청약 종합저축을 통해 내 집 마련에 도전해보세요.</span>
             </summary>
-            {/* {list?.body?.content.slice(0, 3).map((datas: IBanks, i: number) => (
+            {list?.body?.content.slice(3).map((datas: IBanks, i: number) => (
               <div key={i}>
                 <BankList
                   korCoNm={datas.financeDetailDto.korCoNm}
@@ -352,10 +352,14 @@ const Home = () => {
                   intrRate2Show={datas.financeDetailDto.intrRate2Show}
                   finPrdtNm={datas.financeDetailDto.finPrdtNm}
                   joinWayList={datas.financeDetailDto.joinWayList}
-                  id={i}
+                  id={i + 1}
+                  bankImageUrl={datas.financeDetailDto.bankImageUrl}
+                  financeId={datas.financeDetailDto.financeId}
+                  financeType={datas.finProductType}
+                  isLiked={datas.financeDetailDto.isLiked}
                 />
               </div>
-            ))} */}
+            ))}
             <Link to="/" className={styles.section06Link}>
               연금상품 전체보기
             </Link>

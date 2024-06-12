@@ -79,7 +79,7 @@ export const bankSearch = async ({
 }) => {
   const [_1, finProductType, keyword, size] = queryKey;
   const res = await baseAxios.get(
-    `/api/v1/finances/search?finProductType=${finProductType}&keyword=${keyword}&page=0&size=${size}&sort=string`
+    `/api/v1/home/search?finProductType=${finProductType}&keryword=${keyword}&page=0&size=${size}&sort=string`
   );
   return res.data;
 };
@@ -120,7 +120,7 @@ export const getLoungeAll = async () => {
   );
   return res.data;
 };
-
+// 상세
 export const financesDetail = async (data: I.Finances) => {
   const res = await baseAxios.post("/api/v1/finances", data);
   return res.data;

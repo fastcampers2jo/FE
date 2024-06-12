@@ -16,7 +16,9 @@ interface IBank {
   joinWayList: string[];
   bankImageUrl: string;
   financeId: string;
-  financeType:string;
+  financeType: string;
+  tap?: number;
+  bank?: string[];
 }
 
 const BankList = ({
@@ -29,7 +31,9 @@ const BankList = ({
   joinWayList,
   bankImageUrl,
   financeId,
-  financeType
+  financeType,
+  bank,
+  tap,
 }: IBank) => {
   const navigate = useNavigate();
   const queryClient = useQueryClient();
@@ -46,14 +50,30 @@ const BankList = ({
       });
     },
   });
+  const { mutate: best } = useMutation({
+    mutationFn: like,
+    onSuccess: () => {
+      queryClient.invalidateQueries({
+        queryKey: [
+          "bankBest",
+          param.id === "1" ? "DEPOSIT" : "SAVING",
+          bank,
+          param.id === "1" ? 10 : 20,
+        ],
+      });
+    },
+  });
   const { login } = useAuth();
   const onLove = (e: React.MouseEvent<HTMLButtonElement>, id1: string) => {
     e.stopPropagation();
+    if (tap === 2 && (bank?.length as number) > 0) {
+      best({ id: id1, type: financeType });
+    }
     mutate({ id: id1, type: financeType });
   };
   const onLink = useCallback((e: React.MouseEvent<HTMLButtonElement>, ids:string, type:string) => {
     e.stopPropagation();
-    navigate(`/productdetail?${ids}&type=${type}`);
+    navigate(`/productdetail?id=${ids}&type=${type}`);
   }, []);
   const onLogin = useCallback(
     (e: React.MouseEvent<HTMLButtonElement>) => {

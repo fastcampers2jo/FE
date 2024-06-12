@@ -83,11 +83,15 @@ const router = createBrowserRouter([
       },
       {
         path: "/ranking/:id",
-        element: isLoggedIn ? <Ranking /> : <Navigate to="/login" replace />,
+        element: <Ranking />,
       },
       {
         path: "/likelist/:id",
-        element: isLoggedIn ? <LikeListPage /> : <Navigate to="/login" replace />,
+        element: isLoggedIn ? (
+          <LikeListPage />
+        ) : (
+          <Navigate to="/login" replace />
+        ),
       },
       {
         path: "/board/:id",
