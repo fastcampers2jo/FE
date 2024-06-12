@@ -1,5 +1,7 @@
 export { default as IcBack } from "./back.svg?react";
+export { default as IcComArr } from "./comArr.svg?react";
 export { default as IcBell } from "./bell.svg?react";
+export { default as IcChak } from "./chak.svg?react";
 export { default as IcHide } from "./hide.svg?react";
 export { default as IcRankBanner } from "./rankBanner.svg?react";
 export { default as IcRanking } from "./ranking.svg?react";

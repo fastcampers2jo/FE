@@ -12,7 +12,7 @@ import {
 } from "components";
 import { useSearch } from "stores/useSearch";
 import { useRank } from "stores/useRank";
-import { bankAll } from "utils/api";
+import { bankSearch } from "utils/api";
 import { IBanks } from "types";
 import { IcTaparr, IcViewCheck } from "assets";
 import { nav, navs } from "mock";
@@ -34,8 +34,13 @@ const SearchList = () => {
     closeTimePopup();
   }, [order.order, order.seletOrder]);
   const { data: list } = useQuery({
-    queryKey: ["bankall", "DEPOSIT", 3],
-    queryFn: bankAll,
+    queryKey: [
+      "bankSearch",
+      param.id === "2" ? "DEPOSIT" : "SAVING",
+      param.search as string,
+      10,
+    ],
+    queryFn: bankSearch,
     staleTime: 60 * 1000,
     gcTime: 300 * 1000,
   });
@@ -69,7 +74,12 @@ const SearchList = () => {
           <div className={styles.searchWrap}>
             <div className={styles.other}>
               <p>
-                <span>150</span>개의 검색결과
+                <span>
+                  {list?.body?.content?.length > 0
+                    ? list?.body?.content?.length
+                    : 0}
+                </span>
+                개의 검색결과
               </p>
               <button
                 type="button"
@@ -84,10 +94,48 @@ const SearchList = () => {
                 <article className={styles.article} key={i}>
                   <h4>
                     {v.name}
-                    <span>총 12개 상품</span>
+                    <span>
+                      총{" "}
+                      {list?.body?.content?.length > 0
+                        ? list?.body?.content?.length
+                        : 0}
+                      개 상품
+                    </span>
                   </h4>
-                  {list.slice(0, 3).map((datas: IBanks, j: number) => (
-                    <div key={j}>
+                  {list &&
+                    list.body.content
+                      ?.slice(0, 3)
+                      .map((datas: IBanks, j: number) => (
+                        <div key={j}>
+                          <BankList
+                            korCoNm={datas.financeDetailDto.korCoNm}
+                            intrRateShow={datas.financeDetailDto.intrRateShow}
+                            intrRate2Show={datas.financeDetailDto.intrRate2Show}
+                            finPrdtNm={datas.financeDetailDto.finPrdtNm}
+                            joinWayList={datas.financeDetailDto.joinWayList}
+                            id={i}
+                            bankImageUrl={datas.financeDetailDto.bankImageUrl}
+                            financeId={datas.financeDetailDto.financeId}
+                            financeType={datas.finProductType}
+                          />
+                        </div>
+                      ))}
+                  {!list && (
+                    <p className={styles.nodata}>검색결과가 없습니다.</p>
+                  )}
+                  <Link
+                    to={`/search/${param.search}/${i + 2}`}
+                    className={styles.link}
+                  >
+                    {v.name} 더보기 <IcTaparr />
+                  </Link>
+                </article>
+              ))
+            ) : (
+              <article className={styles.article}>
+                {list &&
+                  list.body.content.map((datas: IBanks, i: number) => (
+                    <div key={i}>
                       <BankList
                         korCoNm={datas.financeDetailDto.korCoNm}
                         intrRateShow={datas.financeDetailDto.intrRateShow}
@@ -101,31 +149,7 @@ const SearchList = () => {
                       />
                     </div>
                   ))}
-                  <Link
-                    to={`/search/${param.search}/${i + 2}`}
-                    className={styles.link}
-                  >
-                    {v.name} 더보기 <IcTaparr />
-                  </Link>
-                </article>
-              ))
-            ) : (
-              <article className={styles.article}>
-                {list.slice(0, 3).map((datas: IBanks, i: number) => (
-                  <div key={i}>
-                    <BankList
-                      korCoNm={datas.financeDetailDto.korCoNm}
-                      intrRateShow={datas.financeDetailDto.intrRateShow}
-                      intrRate2Show={datas.financeDetailDto.intrRate2Show}
-                      finPrdtNm={datas.financeDetailDto.finPrdtNm}
-                      joinWayList={datas.financeDetailDto.joinWayList}
-                      id={i}
-                      bankImageUrl={datas.financeDetailDto.bankImageUrl}
-                      financeId={datas.financeDetailDto.financeId}
-                      financeType={datas.finProductType}
-                    />
-                  </div>
-                ))}
+                {!list && <p className={styles.nodata}>검색결과가 없습니다.</p>}
               </article>
             )}
           </div>

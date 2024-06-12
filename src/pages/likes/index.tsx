@@ -155,7 +155,7 @@ const LikeListPage = () => {
                )}
              <div className={styles.leftText}>
                <div className={styles.bankImgBox}>
-                 <img src={IcBankIcon} alt="은행명" />
+                 <img src={itam.likedFinanceDto.bankImageUrl} alt="은행명" />
                </div>
                <div className={styles.bankTextbox}>
                  <em>{itam.likedFinanceDto.korCoNm}</em>
@@ -169,8 +169,8 @@ const LikeListPage = () => {
              </div>
              <div className={styles.rightText}>
                <div>
-                 <span>최고 {itam.likedFinanceDto.intrRateShow}%</span>
-                 <strong>기본 {itam.likedFinanceDto.intrRate2Show}%</strong>
+                 <span>최고 {itam.likedFinanceDto.intrRate2Show}%</span>
+                 <strong>기본 {itam.likedFinanceDto.intrRateShow}%</strong>
                </div>
              </div>
            </label>

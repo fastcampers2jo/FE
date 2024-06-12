@@ -366,3 +366,26 @@ font-weight: 700;
       display: inline-flex;
     }
 }
+.onboarding__total{
+  margin-block: 5.7rem 3.6rem;
+  text-align: center;
+  > em{
+    display: block;
+    color: var(--color-111);
+    font-size: 2.4rem;
+    font-weight: 700;
+    line-height: 3.6rem;
+    letter-spacing: 0.137px;
+    >span{
+      font-size: 1.6rem;
+      font-weight: 600;
+      letter-spacing: 0.091px;
+     }
+  }
+  >p{
+    color: var(--color-878E95);
+font-size: 1.5rem;
+line-height: 2.2rem; 
+letter-spacing: 0.085px;
+  }
+}

@@ -1,7 +1,8 @@
 import { useCallback } from "react";
-import { useParams } from "react-router-dom";
-import { useMutation } from "@tanstack/react-query";
+import { useNavigate, useParams } from "react-router-dom";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { like } from "utils/api";
+import useAuth from "hooks/useAuth";
 import { IcSmallLove, IcSmallNotLove } from "assets";
 import styles from "./styles.module.scss";
 
@@ -30,26 +31,53 @@ const BankList = ({
   financeId,
   financeType
 }: IBank) => {
+  const navigate = useNavigate();
+  const queryClient = useQueryClient();
+  const param = useParams();
   const { mutate } = useMutation({
     mutationFn: like,
-    onSuccess: (data) => {
-      console.log(data);
+    onSuccess: () => {
+      queryClient.invalidateQueries({
+        queryKey: [
+          "bankall",
+          param.id === "1" ? "DEPOSIT" : "SAVING",
+          param.id === "1" ? 10 : 20,
+        ],
+      });
     },
   });
-  const param = useParams();
+  const { login } = useAuth();
   const onLove = (e: React.MouseEvent<HTMLButtonElement>, id1: string) => {
     e.stopPropagation();
     mutate({ id: id1, type: financeType });
   };
-  const onLink = useCallback((e: React.MouseEvent<HTMLButtonElement>) => {
+  const onLink = useCallback((e: React.MouseEvent<HTMLButtonElement>, ids:string, type:string) => {
     e.stopPropagation();
-    console.log("asd");
+    navigate(`/productdetail?${ids}&type=${type}`);
   }, []);
+  const onLogin = useCallback(
+    (e: React.MouseEvent<HTMLButtonElement>) => {
+      e.stopPropagation();
+      navigate("/login");
+    },
+    []
+  );
   return (
-    <button className={styles.rankList} type="button" onClick={onLink}>
-      <p className={styles.currentRank}>
-        {id} <span />
-      </p>
+    <button
+      className={styles.rankList}
+      type="button"
+      onClick={(e: React.MouseEvent<HTMLButtonElement>) =>
+        onLink(e, financeId, financeType)
+      }
+    >
+      {param.search ? (
+        ""
+      ) : (
+        <p className={styles.currentRank}>
+          {id} <span />
+        </p>
+      )}
+
       <div className={styles.leftText}>
         <div className={styles.bankImgBox}>
           <img src={bankImageUrl} alt="은행명" />
@@ -69,16 +97,21 @@ const BankList = ({
           <span>최고 {intrRate2Show}%</span>
           <strong>기본 {intrRateShow}%</strong>
         </div>
-        {param.search ? (
-          ""
-        ) : (
+        {param.search ? null : login?.body.email ? (
           <button
             type="button"
             onClick={(e: React.MouseEvent<HTMLButtonElement>) =>
               onLove(e, financeId)
             }
           >
-            {isLiked ? <IcSmallLove /> : <IcSmallNotLove />}
+            {isLiked === true ? <IcSmallLove /> : <IcSmallNotLove />}
+          </button>
+        ) : (
+          <button
+            type="button"
+            onClick={(e: React.MouseEvent<HTMLButtonElement>) => onLogin(e)}
+          >
+            {isLiked === true ? <IcSmallLove /> : <IcSmallNotLove />}
           </button>
         )}
       </div>

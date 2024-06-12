@@ -149,7 +149,8 @@ const Signup = () => {
                 && logins.errorEmail
                 && logins.errorConfirmPassword
                 && logins.errorName
-                )
+                && logins.duplicateId
+                ) && data ? data?.body?.taken : true
               }
             >
               회원가입

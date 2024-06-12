@@ -12,15 +12,6 @@ export default defineConfig({
     port: 3000,
     // 서버시작시 자동 브라우저 오픈
     open: true,
-    proxy: {
-      "/api": {
-        target:
-          "http://ec2-43-200-241-105.ap-northeast-2.compute.amazonaws.com:8080",
-        changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/api/, ""),
-        ws: true,
-      },
-    },
   },
 
   build: {

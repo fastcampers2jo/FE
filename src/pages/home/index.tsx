@@ -1,10 +1,10 @@
 import { useEffect, useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
-// import { useQuery } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Autoplay, Pagination } from "swiper/modules";
 import SwiperCore from "swiper";
-import { Button, Fab, LogoTop, Navber } from "components";
+import { BankList, Button, Fab, LogoTop, Navber } from "components";
 import {
   IcBanner,
   IcHomeArr,
@@ -15,19 +15,20 @@ import {
   IcSlide02,
 } from "assets";
 import useAuth from "hooks/useAuth";
-// import { bankAll } from "utils/api";
+import { bankHome } from "utils/api";
+import { IBanks } from "types";
 import { boards, product, keywords, bankList, cards, pensions } from "mock";
 import styles from "./styles.module.scss";
 
 const Home = () => {
   const navigate = useNavigate();
   const { login } = useAuth();
-  // const { data: list } = useQuery({
-  //   queryKey: ["bankall", "DEPOSIT", 3],
-  //   queryFn: bankAll,
-  //   staleTime: 60 * 1000,
-  //   gcTime: 300 * 1000,
-  // });
+  const { data: list } = useQuery({
+    queryKey: ["bankHome", 3],
+    queryFn: bankHome,
+    staleTime: 60 * 1000,
+    gcTime: 300 * 1000,
+  });
   // 슬라이더 방향키
   const navigationPrevRef = useRef<HTMLButtonElement>(null);
   const navigationNextRef = useRef<HTMLButtonElement>(null);
@@ -95,7 +96,7 @@ const Home = () => {
             </h2>
             <Link to="/ranking/1">더보기 &gt;</Link>
           </div>
-          {/* {list?.body?.content.slice(0, 3).map((datas: IBanks, i: number) => (
+          {list?.body?.content.slice(0, 3).map((datas: IBanks, i: number) => (
             <div key={i}>
               <BankList
                 korCoNm={datas.financeDetailDto.korCoNm}
@@ -103,17 +104,14 @@ const Home = () => {
                 intrRate2Show={datas.financeDetailDto.intrRate2Show}
                 finPrdtNm={datas.financeDetailDto.finPrdtNm}
                 joinWayList={datas.financeDetailDto.joinWayList}
-                id={i}
-  isLiked,
-  korCoNm,
-  id,
-  ,
-  bankImageUrl,
-  financeId,
-  financeType
+                id={i + 1}
+                bankImageUrl={datas.financeDetailDto.bankImageUrl}
+                financeId={datas.financeDetailDto.financeId}
+                financeType={datas.finProductType}
+                isLiked={datas.financeDetailDto.isLiked}
               />
             </div>
-          ))} */}
+          ))}
         </article>
         <article className={styles.section03}>
           <div className={styles.articleBoxTop}>

@@ -30,6 +30,7 @@ export interface IBank {
       intrRateShow: number;
       joinWayList: string[];
       korCoNm: string;
+      isLiked: boolean;
     };
   }[];
 }
@@ -43,11 +44,12 @@ export interface IBanks {
     intrRateShow: number;
     joinWayList: string[];
     korCoNm: string;
+    isLiked:boolean
+
   };
 }
 export interface IRecommend {
   finPrdtNm: string;
-  imageBase64: string;
   intrRate2Show: number;
   intrRateShow: number;
   korCoNm: string;

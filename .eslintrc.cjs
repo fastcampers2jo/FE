@@ -80,5 +80,7 @@ module.exports = {
     "react/destructuring-assignment": "off",
     "no-template-curly-in-string": "off",
     "@typescript-eslint/no-unused-vars":"off",
+    "operator-linebreak": "off",
+    "no-nested-ternary": "off",
   },
 };
