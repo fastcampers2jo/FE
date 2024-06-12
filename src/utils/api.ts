@@ -59,6 +59,31 @@ export const bankAll = async ({ queryKey }: { queryKey: [string, string, number]
   );
   return res.data;
 };
+// 홈
+export const bankHome = async ({
+  queryKey,
+}: {
+  queryKey: [string, number];
+}) => {
+  const [_1, size] = queryKey;
+  const res = await baseAxios.get(
+    `/api/v1/home?page=0&size=${size}`
+  );
+  return res.data;
+};
+// 검색
+export const bankSearch = async ({
+  queryKey,
+}: {
+  queryKey: [string, string, string, number];
+}) => {
+  const [_1, finProductType, keyword, size] = queryKey;
+  const res = await baseAxios.get(
+    `/api/v1/finances/search?finProductType=${finProductType}&keyword=${keyword}&page=0&size=${size}&sort=string`
+  );
+  return res.data;
+};
+
 export const recommendation = async ({
   queryKey,
 }: {

@@ -55,14 +55,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/login",
-        element: isLoggedIn ? (
-          <Navigate
-            to="/"
-            replace
-          />
-        ) : (
-          <Login />
-        ),
+        element: isLoggedIn ? <Navigate to="/" replace /> : <Login />,
       },
       {
         path: "/api/login/kakao",
@@ -70,14 +63,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/signup",
-        element: isLoggedIn ? (
-          <Navigate
-            to="/"
-            replace
-          />
-        ) : (
-          <Signup />
-        ),
+        element: isLoggedIn ? <Navigate to="/" replace /> : <Signup />,
       },
       {
         path: "/mypage",
@@ -97,11 +83,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/ranking/:id",
-        element: <Ranking />,
+        element: isLoggedIn ? <Ranking /> : <Navigate to="/login" replace />,
       },
       {
         path: "/likelist/:id",
-        element: <LikeListPage />,
+        element: isLoggedIn ? <LikeListPage /> : <Navigate to="/login" replace />,
       },
       {
         path: "/board/:id",
@@ -124,7 +110,7 @@ const router = createBrowserRouter([
         element: <Search />,
       },
       {
-        path: "/productdetail/:id",
+        path: "/productdetail",
         element: <ProductDetail />,
       },
       {
@@ -145,58 +131,47 @@ const router = createBrowserRouter([
       },
       {
         path: "/recommend-onboarding/main",
-        element: <OnboardingMain />,
+        element: isLoggedIn ? (
+          <OnboardingMain />
+        ) : (
+          <Navigate to="/login" replace />
+        ),
       },
       {
         path: "/recommend-onboarding/step1",
-        element: <Step1 />,
+        element: isLoggedIn ? <Step1 /> : <Navigate to="/login" replace />,
       },
       {
         path: "/recommend-onboarding/step2",
-        element: <Step2 />,
+        element: isLoggedIn ? <Step2 /> : <Navigate to="/login" replace />,
       },
       {
         path: "/recommend-onboarding/step3",
-        element: <Step3 />,
+        element: isLoggedIn ? <Step3 /> : <Navigate to="/login" replace />,
       },
       {
         path: "/recommend-onboarding/step4",
-        element: <Step4 />,
+        element: isLoggedIn ? <Step4 /> : <Navigate to="/login" replace />,
       },
       {
         path: "/recommend-onboarding/step5",
-        element: <Step5 />,
+        element: isLoggedIn ? <Step5 /> : <Navigate to="/login" replace />,
       },
       {
         path: "/recommend-onboarding/step6",
-        element: <Step6 />,
+        element: isLoggedIn ? <Step6 /> : <Navigate to="/login" replace />,
       },
       {
         path: "/lounge/:id",
-        element: (
-          <>
-            <ScrollToTop />
-            <LoungePage />,
-          </>
-        ),
+        element: <LoungePage />,
       },
       {
         path: "/community/:id",
-        element: (
-          <>
-            <ScrollToTop />
-            <CommunityPage />,
-          </>
-        ),
+        element: <CommunityPage />,
       },
       {
         path: "/community/newpost",
-        element: (
-          <>
-            <ScrollToTop />
-            <NewPost />,
-          </>
-        ),
+        element: <NewPost />,
       },
     ],
   },

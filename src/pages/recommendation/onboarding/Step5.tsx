@@ -8,14 +8,14 @@ import styles from "../recommendation.module.scss";
 const Step5 = () => {
   const [sliderValue, setSliderValue] = useState(12);
   const navigate = useNavigate();
-  const { setSavingEnd } = useRecommend();
+  const { setSavingEnd, savingGoal } = useRecommend();
   const handleSliderChange = (value: number) => {
     setSliderValue(value);
   };
   useEffect(() => {
     setSavingEnd(sliderValue);
   }, [sliderValue]);
-  const num = sliderValue * 300000 * (1 + (0.04 * sliderValue)) * 0.846;
+  const num = savingGoal * 10000 * (sliderValue + 0.04 * sliderValue * (sliderValue + 1)) * 0.846;
   return (
     <section className={styles.section}>
       <article className={styles.statusbar}>
@@ -25,7 +25,7 @@ const Step5 = () => {
       </article>
       <article className={styles.title}>
         <em>
-          매달 30만원 씩, <br />
+          매달 {savingGoal}만원 씩, <br />
           <span className="period__text">{sliderValue}개월</span> 동안
           저축할래요
         </em>
@@ -34,16 +34,19 @@ const Step5 = () => {
         </div>
         <p>추후 선택하신 상품에 따라 이자가 변동될 수 있어요</p>
       </article>
-      <article className="onboarding__total">
-        <div className=" onboarding__title__def ">
-          {String(sliderValue * 300000).replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+      <article className={styles.onboarding__total}>
+        <em>
+          {String(sliderValue * savingGoal * 10000).replace(
+            /\B(?=(\d{3})+(?!\d))/g,
+            ","
+          )}
           <span className="small__unit">원</span>
-        </div>
-        <div className="onboarding__total__info">
+        </em>
+        <p>
           총 세후 이자{" "}
           {String(Math.floor(num)).replace(/\B(?=(\d{3})+(?!\d))/g, ",")}원(연4%
           기준)
-        </div>
+        </p>
       </article>
       <article className="onboarding__slider">
         <Slider value={sliderValue} onChange={handleSliderChange} />

@@ -4,7 +4,6 @@ import {
   EmptyHeart,
   RightArrow,
   SNSShare,
-  FloatingHeart,
   IcBank06,
   BGSticker,
   ProductBG1,
@@ -17,10 +16,11 @@ import { useState } from "react";
 import "swiper/css";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Link } from "react-router-dom";
-import MainHomeBar from "components/homebar";
 import OnOffToggle from "components/onoffToggle/onoffToggle";
 import MysetInputBox from "components/mysetInput";
 import MyperiodSelect from "components/mysetInput/myperiodSelect";
+import { TitleTop } from "components";
+import styles from "./styles.module.scss";
 
 interface Description {
   id_description: number;
@@ -130,11 +130,9 @@ const ProductDetail = () => {
   return (
     <>
       <div className="productDetail">
-        <MainHomeBar pagename="우리 첫거래우대 정기예금" />
-        <Link to="/likelist/:id">
-          <FloatingHeart className="floating__heart" />
-        </Link>
-
+        <div className={styles.header}>
+          <TitleTop>비교하기</TitleTop>
+        </div>
         <section className="product__preview">
           <div className="bank__category">은행 &gt; 우리은행</div>
           <div className="productdetail__info">
@@ -148,7 +146,9 @@ const ProductDetail = () => {
               <div className="tag__component">누구나가입</div>
               <div className="tag__component"> 첫거래우대</div>
             </div>
-            <div className="prductdetail__sub">우리은행 첫거래 고객을 우대하는 비대면 전용예금</div>
+            <div className="prductdetail__sub">
+              우리은행 첫거래 고객을 우대하는 비대면 전용예금
+            </div>
             <div className="productdetail__preview__interests">
               <div className="productdetail__interest max">
                 6%
@@ -182,7 +182,9 @@ const ProductDetail = () => {
         </section>
 
         <section className="popular__section">
-          <div className="popular__title">월 가용금액 50만원의 20대 중반 취준생에게 인기있는 상품</div>
+          <div className="popular__title">
+            월 가용금액 50만원의 20대 중반 취준생에게 인기있는 상품
+          </div>
           <div className="popular__bg__section">
             <div className="popular__bg1">
               <div className="popular__round">20대 중반</div>
@@ -213,8 +215,13 @@ const ProductDetail = () => {
               <div className="products__check" key={desc.id_description}>
                 <div className="product__checklist">
                   <p>{String(descIndex + 1).padStart(2, "0")}</p>{" "}
-                  <div className="comparisondetail__product__description">{desc.description}</div>
-                  <button className="comparisondetail__product__moreview" onClick={() => toggleMoreview(0, descIndex)}>
+                  <div className="comparisondetail__product__description">
+                    {desc.description}
+                  </div>
+                  <button
+                    className="comparisondetail__product__moreview"
+                    onClick={() => toggleMoreview(0, descIndex)}
+                  >
                     <div className="moreview__wrapped">
                       자세히
                       <span className="productdetail__icon__arr">
@@ -228,17 +235,27 @@ const ProductDetail = () => {
                     {activeMoreViews[descIndex] && (
                       <div>
                         <div className="moreview__text">
-                          추가 우대금리에 대한 내용이 들어갑니다. 추가 우대금리에 대한 내용이 들어갑니다. 추가
-                          우대금리에 대한 내용이 들어갑니다.
+                          추가 우대금리에 대한 내용이 들어갑니다. 추가
+                          우대금리에 대한 내용이 들어갑니다. 추가 우대금리에
+                          대한 내용이 들어갑니다.
                         </div>
                       </div>
                     )}
                   </button>
                 </div>
-                <div className={rateToggle(desc.active, "products__check--toggle", "active")}>
+                <div
+                  className={rateToggle(
+                    desc.active,
+                    "products__check--toggle",
+                    "active"
+                  )}
+                >
                   {desc.rate}%
                   <div className="toggle__select">
-                    <OnOffToggle isActive={desc.active} onToggle={() => handleToggle(0, descIndex)} />
+                    <OnOffToggle
+                      isActive={desc.active}
+                      onToggle={() => handleToggle(0, descIndex)}
+                    />
                   </div>
                 </div>
               </div>
@@ -263,7 +280,8 @@ const ProductDetail = () => {
               </form>
 
               <span>
-                <div className="subActive">단리</div> <div className="percentActive">{totalInterest}%</div> 저축하고
+                <div className="subActive">단리</div>{" "}
+                <div className="percentActive">{totalInterest}%</div> 저축하고
                 싶어요!
               </span>
             </div>
@@ -299,12 +317,23 @@ const ProductDetail = () => {
                     <div className="productdetail__other">
                       <div className="productdetail__other__wrapped">
                         <div className="productdetail__other__logo" />
-                        <div className="productdetail__other__bank">{product.bank_name}</div>
-                        <div className="productdetail__other__title">{product.title}</div>
-                        <div className="productdetail__interest">연 {product.def_rate}%</div>
+                        <div className="productdetail__other__bank">
+                          {product.bank_name}
+                        </div>
+                        <div className="productdetail__other__title">
+                          {product.title}
+                        </div>
+                        <div className="productdetail__interest">
+                          연 {product.def_rate}%
+                        </div>
                       </div>
-                      <button className="heart__button" onClick={() => toggleFavorite(product)}>
-                        {likeProducts.some((item: { id: number }) => item.id === product.id) ? (
+                      <button
+                        className="heart__button"
+                        onClick={() => toggleFavorite(product)}
+                      >
+                        {likeProducts.some(
+                          (item: { id: number }) => item.id === product.id
+                        ) ? (
                           <IcSmallLove className="icon__emptyheart__full" />
                         ) : (
                           <EmptyHeart className="icon__emptyheart" />
@@ -316,12 +345,21 @@ const ProductDetail = () => {
                     <div className="productdetail__other">
                       <div className="productdetail__other__wrapped">
                         <div className="productdetail__other__logo" />
-                        <div className="productdetail__other__bank">국민은행</div>
-                        <div className="productdetail__other__title">첫거래우대 정기예금</div>
+                        <div className="productdetail__other__bank">
+                          국민은행
+                        </div>
+                        <div className="productdetail__other__title">
+                          첫거래우대 정기예금
+                        </div>
                         <div className="productdetail__interest">연 3.3%</div>
                       </div>
-                      <button className="heart__button" onClick={() => toggleFavorite(product)}>
-                        {likeProducts.some((item: { id: number }) => item.id === product.id) ? (
+                      <button
+                        className="heart__button"
+                        onClick={() => toggleFavorite(product)}
+                      >
+                        {likeProducts.some(
+                          (item: { id: number }) => item.id === product.id
+                        ) ? (
                           <IcSmallLove className="icon__emptyheart__full" />
                         ) : (
                           <EmptyHeart className="icon__emptyheart" />
@@ -333,12 +371,23 @@ const ProductDetail = () => {
                     <div className="productdetail__other">
                       <div className="productdetail__other__wrapped">
                         <div className="productdetail__other__logo" />
-                        <div className="productdetail__other__bank">{product.bank_name}</div>
-                        <div className="productdetail__other__title">{product.title}</div>
-                        <div className="productdetail__interest">연 {product.def_rate}%</div>
+                        <div className="productdetail__other__bank">
+                          {product.bank_name}
+                        </div>
+                        <div className="productdetail__other__title">
+                          {product.title}
+                        </div>
+                        <div className="productdetail__interest">
+                          연 {product.def_rate}%
+                        </div>
                       </div>
-                      <button className="heart__button" onClick={() => toggleFavorite(product)}>
-                        {likeProducts.some((item: { id: number }) => item.id === product.id) ? (
+                      <button
+                        className="heart__button"
+                        onClick={() => toggleFavorite(product)}
+                      >
+                        {likeProducts.some(
+                          (item: { id: number }) => item.id === product.id
+                        ) ? (
                           <IcSmallLove className="icon__emptyheart__full" />
                         ) : (
                           <EmptyHeart className="icon__emptyheart" />
@@ -356,11 +405,15 @@ const ProductDetail = () => {
           <div className="productdetail__detail__info__title">상품정보</div>
           <div className="productdetail__detail__wrapped">
             <div className="productdetail__detail__info">가입금액</div>
-            <div className="prouctdetail__detail__suv">최소 1만원 ~ 최대 100만원</div>
+            <div className="prouctdetail__detail__suv">
+              최소 1만원 ~ 최대 100만원
+            </div>
           </div>
           <div className="productdetail__detail__wrapped">
             <div className="productdetail__detail__info">가입대상</div>
-            <div className="prouctdetail__detail__suv">실명의 개인 · 개인사업자 제외 · 1인 1계좌</div>
+            <div className="prouctdetail__detail__suv">
+              실명의 개인 · 개인사업자 제외 · 1인 1계좌
+            </div>
           </div>
           <div className="productdetail__detail__wrapped">
             <div className="productdetail__detail__info">가입방법</div>
@@ -369,18 +422,23 @@ const ProductDetail = () => {
           <div className="productdetail__detail__wrapped">
             <div className="productdetail__detail__info">만기 후 이자율</div>
             <div className="prouctdetail__detail__suv">
-              만기일 당시 정기적금 만기후금리 적용 <br /> · 1개월 이내: 만기일 당시 약정금리x50% <br /> · 1개월 초과
-              6개월 이내: 만기일 당시 약정금리x30%
+              만기일 당시 정기적금 만기후금리 적용 <br /> · 1개월 이내: 만기일
+              당시 약정금리x50% <br /> · 1개월 초과 6개월 이내: 만기일 당시
+              약정금리x30%
               <br /> · 6개월 초과: 만기일 당시 약정금리x20%
             </div>
           </div>
           <div className="productdetail__detail__wrapped">
             <div className="productdetail__detail__info">세제혜택</div>
-            <div className="prouctdetail__detail__suv">비과세종합저축으로가입가능</div>
+            <div className="prouctdetail__detail__suv">
+              비과세종합저축으로가입가능
+            </div>
           </div>
           <div className="productdetail__detail__wrapped">
             <div className="productdetail__detail__info">예금자 보호</div>
-            <div className="prouctdetail__detail__suv">예금보험공사 보호금융상품(1인당 최고 5천만원)</div>
+            <div className="prouctdetail__detail__suv">
+              예금보험공사 보호금융상품(1인당 최고 5천만원)
+            </div>
           </div>
         </section>
 
@@ -393,9 +451,14 @@ const ProductDetail = () => {
               <SwiperSlide>
                 <div className="productdetail__lounge__slide">
                   <div className="productdetail__lounge__wrapped ">
-                    <div className="productdetail__lounge__post">이 상품 어떻게 생각하시나요?? 첫...</div>
+                    <div className="productdetail__lounge__post">
+                      이 상품 어떻게 생각하시나요?? 첫...
+                    </div>
                     <div className="productdetail__lounge__vote">
-                      <button type="button" className="productdetail__lounge--btn">
+                      <button
+                        type="button"
+                        className="productdetail__lounge--btn"
+                      >
                         투표중
                       </button>
                       <Link to="/community/:id">
@@ -403,10 +466,21 @@ const ProductDetail = () => {
                       </Link>
                     </div>
                     <div className="productdetail__lounge__post__info">
-                      <div className="productdetail__lounge__post__time">5분전</div>·
-                      <div className="productdetail__lounge__post__view">조회 12</div>·
-                      <div className="productdetail__lounge__post__comments">댓글 1</div>·
-                      <div className="productdetail__lounge__post__thumbs">추천13</div>
+                      <div className="productdetail__lounge__post__time">
+                        5분전
+                      </div>
+                      ·
+                      <div className="productdetail__lounge__post__view">
+                        조회 12
+                      </div>
+                      ·
+                      <div className="productdetail__lounge__post__comments">
+                        댓글 1
+                      </div>
+                      ·
+                      <div className="productdetail__lounge__post__thumbs">
+                        추천13
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -414,9 +488,14 @@ const ProductDetail = () => {
               <SwiperSlide>
                 <div className="productdetail__lounge__slide">
                   <div className="productdetail__lounge__wrapped ">
-                    <div className="productdetail__lounge__post">이 상품 어떻게 생각하시나요?? 첫...</div>
+                    <div className="productdetail__lounge__post">
+                      이 상품 어떻게 생각하시나요?? 첫...
+                    </div>
                     <div className="productdetail__lounge__vote">
-                      <button type="button" className="productdetail__lounge--btn">
+                      <button
+                        type="button"
+                        className="productdetail__lounge--btn"
+                      >
                         투표중
                       </button>
                       <Link to="/community/:id">
@@ -424,10 +503,21 @@ const ProductDetail = () => {
                       </Link>
                     </div>
                     <div className="productdetail__lounge__post__info">
-                      <div className="productdetail__lounge__post__time">5분전</div>·
-                      <div className="productdetail__lounge__post__view">조회 12</div>·
-                      <div className="productdetail__lounge__post__comments">댓글 1</div>·
-                      <div className="productdetail__lounge__post__thumbs">추천13</div>
+                      <div className="productdetail__lounge__post__time">
+                        5분전
+                      </div>
+                      ·
+                      <div className="productdetail__lounge__post__view">
+                        조회 12
+                      </div>
+                      ·
+                      <div className="productdetail__lounge__post__comments">
+                        댓글 1
+                      </div>
+                      ·
+                      <div className="productdetail__lounge__post__thumbs">
+                        추천13
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -435,9 +525,14 @@ const ProductDetail = () => {
               <SwiperSlide>
                 <div className="productdetail__lounge__slide">
                   <div className="productdetail__lounge__wrapped ">
-                    <div className="productdetail__lounge__post">이 상품 어떻게 생각하시나요?? 첫...</div>
+                    <div className="productdetail__lounge__post">
+                      이 상품 어떻게 생각하시나요?? 첫...
+                    </div>
                     <div className="productdetail__lounge__vote">
-                      <button type="button" className="productdetail__lounge--btn">
+                      <button
+                        type="button"
+                        className="productdetail__lounge--btn"
+                      >
                         투표중
                       </button>
                       <Link to="/community/:id">
@@ -445,10 +540,21 @@ const ProductDetail = () => {
                       </Link>
                     </div>
                     <div className="productdetail__lounge__post__info">
-                      <div className="productdetail__lounge__post__time">5분전</div>·
-                      <div className="productdetail__lounge__post__view">조회 12</div>·
-                      <div className="productdetail__lounge__post__comments">댓글 1</div>·
-                      <div className="productdetail__lounge__post__thumbs">추천13</div>
+                      <div className="productdetail__lounge__post__time">
+                        5분전
+                      </div>
+                      ·
+                      <div className="productdetail__lounge__post__view">
+                        조회 12
+                      </div>
+                      ·
+                      <div className="productdetail__lounge__post__comments">
+                        댓글 1
+                      </div>
+                      ·
+                      <div className="productdetail__lounge__post__thumbs">
+                        추천13
+                      </div>
                     </div>
                   </div>
                 </div>

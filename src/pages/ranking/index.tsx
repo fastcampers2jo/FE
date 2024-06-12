@@ -16,6 +16,7 @@ const Ranking = () => {
   const [time, setTime] = useState("실시간");
   const tapName = ["전체 베스트", "은행별 베스트"];
   const [bank, setBank] = useState<string[]>([]);
+  const [bankEmun, setBanksEmun] = useState<string[]>([]);
   const [seletBank, setSeltBank] = useState(false);
   const param = useParams();
   const { data: list } = useQuery({
@@ -32,7 +33,7 @@ const Ranking = () => {
     queryKey: [
       "bankBest",
       param.id === "1" ? "DEPOSIT" : "SAVING",
-      bank,
+      bankEmun,
       tap === 1 ? 10 : 20,
     ],
     queryFn: bankBest,
@@ -51,11 +52,13 @@ const Ranking = () => {
     [tap]
   );
   const onBank = useCallback(
-    (bankName: string) => {
+    (bankName: string, id:string) => {
       if (bank.some((name) => name === bankName)) {
         setBank(bank.filter((name) => name !== bankName));
+        setBank(bank.filter((ids) => ids !== id));
       } else {
         setBank([...bank, bankName]);
+        setBanksEmun([...bankEmun, id]);
       }
     },
     [bank]
@@ -151,7 +154,7 @@ const Ranking = () => {
             {bankList.map((banks) => (
               <button
                 key={banks.name}
-                onClick={() => onBank(banks.name)}
+                onClick={() => onBank(banks.name, banks.Enum)}
                 className={
                   bank.some((item) => item === banks.name) ? styles.on : ""
                 }

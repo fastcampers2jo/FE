@@ -1,4 +1,7 @@
 import { useCallback, useState } from "react";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useNavigate, useParams } from "react-router-dom";
+import { like } from "utils/api";
 import { RankPop, BankList, Button } from "components";
 import { useTime } from "hooks";
 import { useRank } from "stores/useRank";
@@ -28,16 +31,34 @@ const BankBox = ({ data, age, setAge, time, setTime }: IBankBox) => {
     openTimePopup,
     closeTimePopup,
   } = useRank();
+  const navigate = useNavigate();
   const currentTime = useTime();
-  const [love, setLove] = useState<boolean[]>([]);
-  const onLove = (e: React.MouseEvent<HTMLButtonElement>, i: number) => {
+  const queryClient = useQueryClient();
+  const param = useParams();
+  const { mutate } = useMutation({
+    mutationFn: like,
+    onSuccess: () => {
+      queryClient.invalidateQueries({
+        queryKey: [
+          "bankall",
+          param.id === "1" ? "DEPOSIT" : "SAVING",
+          param.id === "1" ? 10 : 20,
+        ],
+      });
+    },
+  });
+  const onLove = (
+    e: React.MouseEvent<HTMLButtonElement>,
+    id1: string,
+    financeType:string
+  ) => {
     e.stopPropagation();
-    setLove({ ...love, [i]: !love[i] });
+    mutate({ id: id1, type: financeType });
   };
   const onLink = useCallback(
-    (e: React.MouseEvent<HTMLButtonElement>, i: number) => {
+    (e: React.MouseEvent<HTMLButtonElement>, ids: string, type: string) => {
       e.stopPropagation();
-      console.log(i);
+      navigate(`/productdetail?${ids}&type=${type}`);
     },
     []
   );
@@ -82,7 +103,9 @@ const BankBox = ({ data, age, setAge, time, setTime }: IBankBox) => {
         {data?.content?.slice(0, 2).map((links: IBanks, i: number) => (
           <button
             key={i}
-            onClick={(e: React.MouseEvent<HTMLButtonElement>) => onLink(e, i)}
+            onClick={(e: React.MouseEvent<HTMLButtonElement>) =>
+              onLink(e, links.financeDetailDto.financeId, links.finProductType)
+            }
             type="button"
           >
             <p className={styles.currentRank}>
@@ -99,10 +122,18 @@ const BankBox = ({ data, age, setAge, time, setTime }: IBankBox) => {
                 <button
                   type="button"
                   onClick={(e: React.MouseEvent<HTMLButtonElement>) =>
-                    onLove(e, i)
+                    onLove(
+                      e,
+                      links.financeDetailDto.financeId,
+                      links.finProductType
+                    )
                   }
                 >
-                  {love[i] ? <IcBigLove /> : <IcBigNotLove />}
+                  {links.financeDetailDto.isLiked ? (
+                    <IcBigLove />
+                  ) : (
+                    <IcBigNotLove />
+                  )}
                 </button>
               </div>
               <div className={styles.textbox}>
@@ -130,6 +161,7 @@ const BankBox = ({ data, age, setAge, time, setTime }: IBankBox) => {
             bankImageUrl={datas.financeDetailDto.bankImageUrl}
             financeId={datas.financeDetailDto.financeId}
             financeType={datas.finProductType}
+            isLiked={datas.financeDetailDto.isLiked}
           />
         </div>
       ))}

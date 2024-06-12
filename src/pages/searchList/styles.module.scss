@@ -35,7 +35,7 @@
     }
 }
 .searchWrap{
-    padding: 1.6rem 4.27%;
+    padding: 1.6rem 4.27% 8rem;
 }
 .other{
     display: flex;
@@ -110,4 +110,12 @@
 }
 .viewBtnWrap {
   padding: 1.6rem;
+}
+.nodata{
+    text-align: center;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--color-111);
+    height: 6rem;
+    line-height: 6rem;
 }
