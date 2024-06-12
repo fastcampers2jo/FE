@@ -83,7 +83,6 @@ $conpadding: 2.4rem 4.27% 1.6rem;
       font-size: 16px;
       font-weight: 500;
       position: relative;
-      opacity: 0.5;
       img {
         width: 100%;
         position: absolute;
@@ -210,9 +209,56 @@ $conpadding: 2.4rem 4.27% 1.6rem;
         font-size: 24px;
         font-weight: 700;
         line-height: 36px;
+        display: flex;
+        gap: 10px;
+        color: #e3e3e4;
         position: absolute;
         right: 0;
         bottom: 0;
+        &_switch {
+          input[type="checkbox"] {
+            height: 0;
+            width: 0;
+            visibility: hidden;
+          }
+          label {
+            cursor: pointer;
+            text-indent: -9999px;
+            width: 44px;
+            height: 24px;
+            background: #e3e3e4;
+            display: block;
+            border-radius: 50px;
+            position: relative;
+          }
+
+          label:after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 2px;
+            transform: translateY(-50%);
+            width: 20px;
+            height: 20px;
+            background: #fff;
+            border-radius: 50px;
+            transition: 0.3s;
+          }
+
+          input:checked + label {
+            background: var(--color-01EA2B);
+          }
+
+          input:checked + label:after {
+            top: 50%;
+            left: calc(100% - 2px);
+            transform: translate(-100%, -50%);
+          }
+        }
+
+        &.checked {
+          color: var(--color-000);
+        }
       }
     }
   }

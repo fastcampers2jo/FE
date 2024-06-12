@@ -1,3 +1,4 @@
+import { Fragment, useEffect, useState } from "react";
 import MainHomeBar from "components/homebar";
 import { useLocation } from "react-router-dom";
 import Navbar from "components/navber";
@@ -7,8 +8,46 @@ const FinanceDetailPage = () => {
   const location = useLocation();
   const { product } = location.state;
 
+  const [checkedIndexes, setCheckedIndexes] = useState<number[]>([]);
+  const [rateSum, setRateSum] = useState(0);
+
+  const MYRATELIST = [
+    {
+      text: "급여실적 또는\n개인사업자 계좌 실적\n보유 시",
+      percentage: 1,
+    },
+    {
+      text: "비대면 채널\n이체 실적 보유 시",
+      percentage: 1,
+    },
+    {
+      text: "마케팅 동의시",
+      percentage: 0.2,
+    },
+  ];
+
+  useEffect(() => {
+    const calculateSum = () => {
+      const total = checkedIndexes.reduce(
+        (acc, index) => acc + MYRATELIST[index].percentage,
+        0
+      );
+      setRateSum(total);
+    };
+
+    calculateSum();
+  }, [checkedIndexes]);
+
   const stampListLength = Array.from({ length: 11 }, (_, i) => i);
   const trueStamp = Array.from({ length: product.stamp }, (_, i) => i);
+
+  const rateChecked = (index: number) => {
+    setCheckedIndexes((prevIndexes) =>
+      prevIndexes.includes(index)
+        ? prevIndexes.filter((i) => i !== index)
+        : [...prevIndexes, index]
+    );
+  };
 
   return (
     <>
@@ -64,7 +103,7 @@ const FinanceDetailPage = () => {
         <div className={styles.finance_detail_page_main_payments}>
           <div>
             <div>
-              {product.totalAsset.toLocaleString()}
+              {(product.totalAsset * (rateSum / 100)).toLocaleString()}
               <span className={styles.won}>원</span>
             </div>
             <div>예상누적 이자</div>
@@ -81,67 +120,45 @@ const FinanceDetailPage = () => {
           <div className={styles.finance_detail_page_main_rate_title}>
             나의 금리
             <span>
-              <span>총 금리</span>2.2%
+              <span>총 금리</span>
+              {rateSum}%
             </span>
           </div>
           <ul className={styles.finance_detail_page_main_rate_contents}>
-            <li>
-              <span>01</span>
-              <div
-                className={styles.finance_detail_page_main_rate_contents_text}
-              >
-                급여실적 또는
-                <br />
-                개인사업자 계좌 실적
-                <br />
-                보유 시
-                <br />
-                <button>자세히</button>
-              </div>
-              <div
-                className={
-                  styles.finance_detail_page_main_rate_contents_percent
-                }
-              >
-                1%
-              </div>
-            </li>
-            <li>
-              <span>02</span>
-              <div
-                className={styles.finance_detail_page_main_rate_contents_text}
-              >
-                비대면 채널
-                <br />
-                이체 실적 보유 시
-                <br />
-                <button>자세히</button>
-              </div>
-              <div
-                className={
-                  styles.finance_detail_page_main_rate_contents_percent
-                }
-              >
-                1%
-              </div>
-            </li>
-            <li>
-              <span>03</span>
-              <div
-                className={styles.finance_detail_page_main_rate_contents_text}
-              >
-                마케팅 동의시
-                <br />
-                <button>자세히</button>
-              </div>
-              <div
-                className={
-                  styles.finance_detail_page_main_rate_contents_percent
-                }
-              >
-                0.2%
-              </div>
-            </li>
+            {MYRATELIST.map((list, k) => (
+              <li key={k}>
+                <span>0{k + 1}</span>
+                <div
+                  className={styles.finance_detail_page_main_rate_contents_text}
+                >
+                  {list.text.split("\n").map((line, l) => (
+                    <Fragment key={l}>
+                      {line}
+                      <br />
+                    </Fragment>
+                  ))}
+                  <button>자세히</button>
+                </div>
+                <div
+                  className={`${styles.finance_detail_page_main_rate_contents_percent} ${checkedIndexes.includes(k) && styles.checked}`}
+                >
+                  {list.percentage}%
+                  <div
+                    className={
+                      styles.finance_detail_page_main_rate_contents_percent_switch
+                    }
+                  >
+                    <input
+                      type="checkbox"
+                      id={`switch${k}`}
+                      defaultChecked={checkedIndexes.includes(k)}
+                      onClick={() => rateChecked(k)}
+                    />
+                    <label htmlFor={`switch${k}`}>Toggle</label>
+                  </div>
+                </div>
+              </li>
+            ))}
           </ul>
         </div>
       </main>
