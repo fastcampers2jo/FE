@@ -4,6 +4,7 @@ import { useMutation } from "@tanstack/react-query";
 import { TitleTop } from "components";
 import { IcChak, IcComArr, IcEdit, IcHomeArr } from "assets";
 import { financesCompare } from "utils/api";
+import { IRate } from "types";
 import { useNumber } from "hooks";
 import styles from "./styles.module.scss";
 
@@ -25,14 +26,6 @@ interface ICom {
   korCoNm: string;
 }
 
-interface IRate {
-  financeId: string;
-  rate: {
-    intrRateNm: string;
-    selectedRate: number;
-  }[];
-}
-
 const ComparisonDetailPage = () => {
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
@@ -46,7 +39,6 @@ const ComparisonDetailPage = () => {
       setList(data.body.financeDtoList);
     },
   });
-
   useEffect(() => {
     mutate({ id1: id1 as string, id2: id2 as string, type: type as string });
   }, []);
@@ -114,7 +106,7 @@ const ComparisonDetailPage = () => {
       ];
     });
   };
-  const calculateSelectedRateSum = (lists: ICom, pres: IRate[]) => {
+  const rate = (lists: ICom, pres: IRate[]) => {
     const matchedFinance = pres.find((q) => q.financeId === lists.financeId);
     if (matchedFinance) {
       const rateSum = matchedFinance.rate.reduce(
@@ -125,7 +117,7 @@ const ComparisonDetailPage = () => {
     }
     return 0;
   };
-
+  const money = Number(num) * 10000 * day;
   return (
     <section>
       <div className={styles.header}>
@@ -301,23 +293,13 @@ const ComparisonDetailPage = () => {
         <p>
           나의
           <span />
-          실수령 액은
+          실수령액은
         </p>
         <div>
           {list.map((lists: ICom, i) => (
             <p key={i}>
-              {String(
-                Number(num) * 10000 * day +
-                  Math.ceil(
-                    Number(num) *
-                      10000 *
-                      (day +
-                        (lists.intrRateShow +
-                          calculateSelectedRateSum(lists, pre) *
-                            day *
-                            (day + 1))) *
-                      0.846
-                  )
+              {String(money +
+                Math.round(money * ((lists.intrRateShow + rate(lists, pre)) * 0.01) * 0.083 * day - money * ((lists.intrRateShow + rate(lists, pre)) * 0.01) * 0.083 * day * 0.154)
               ).replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
               <span>원</span>
             </p>
@@ -329,9 +311,7 @@ const ComparisonDetailPage = () => {
         <div>
           {list.map((lists: ICom, i) => (
             <div key={i} className={styles.article08box}>
-              <em>
-                {lists.intrRateShow + calculateSelectedRateSum(lists, pre)}%
-              </em>
+              <em>{lists.intrRateShow + rate(lists, pre)}%</em>
               <p>
                 기본 <span>{lists.intrRateShow}%</span>
               </p>
@@ -357,22 +337,23 @@ const ComparisonDetailPage = () => {
             <div className={styles.article09box} key={i}>
               <p>
                 {String(
-                  Math.ceil(
-                    Number(num) *
-                      10000 *
-                      (day +
-                        (lists.intrRateShow +
-                          calculateSelectedRateSum(lists, pre) *
-                            day *
-                            (day + 1))) *
-                      0.846
+                  Math.round(
+                    money *
+                      ((lists.intrRateShow + rate(lists, pre)) * 0.01) *
+                      0.083 *
+                      day -
+                      money *
+                        ((lists.intrRateShow + rate(lists, pre)) * 0.01) *
+                        0.083 *
+                        day *
+                        0.154
                   )
                 ).replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
                 <span>원</span>
               </p>
               <div>
                 <Link
-                  to={`/productdetail?${lists.financeId}&type=${lists.financeType}`}
+                  to={`/productdetail?id=${lists.financeId}&type=${lists.financeType}`}
                 >
                   자세히보기
                 </Link>

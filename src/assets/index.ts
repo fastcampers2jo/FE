@@ -1,4 +1,6 @@
 export { default as IcBack } from "./back.svg?react";
+export { default as IcDetailbg } from "./detailbg.svg?react";
+export { default as IcDetailarr } from "./detailarr.svg?react";
 export { default as IcComArr } from "./comArr.svg?react";
 export { default as IcBell } from "./bell.svg?react";
 export { default as IcChak } from "./chak.svg?react";

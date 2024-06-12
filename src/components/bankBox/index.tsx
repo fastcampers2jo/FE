@@ -5,6 +5,7 @@ import { like } from "utils/api";
 import { RankPop, BankList, Button } from "components";
 import { useTime } from "hooks";
 import { useRank } from "stores/useRank";
+import useAuth from "hooks/useAuth";
 import { IBanks, IBank } from "types";
 import {
   IcBigLove,
@@ -20,9 +21,19 @@ interface IBankBox {
   setAge: React.Dispatch<React.SetStateAction<string>>;
   time: string;
   setTime: React.Dispatch<React.SetStateAction<string>>;
+  tap?: number;
+  bank?: string[];
 }
 
-const BankBox = ({ data, age, setAge, time, setTime }: IBankBox) => {
+const BankBox = ({
+  data,
+  age,
+  setAge,
+  time,
+  setTime,
+  bank,
+  tap,
+}: IBankBox) => {
   const {
     agePopup,
     closeAgePopup,
@@ -35,6 +46,7 @@ const BankBox = ({ data, age, setAge, time, setTime }: IBankBox) => {
   const currentTime = useTime();
   const queryClient = useQueryClient();
   const param = useParams();
+  const { login } = useAuth();
   const { mutate } = useMutation({
     mutationFn: like,
     onSuccess: () => {
@@ -47,21 +59,41 @@ const BankBox = ({ data, age, setAge, time, setTime }: IBankBox) => {
       });
     },
   });
+  const { mutate: best } = useMutation({
+    mutationFn: like,
+    onSuccess: () => {
+      queryClient.invalidateQueries({
+        queryKey: [
+          "bankBest",
+          param.id === "1" ? "DEPOSIT" : "SAVING",
+          bank,
+          param.id === "1" ? 10 : 20,
+        ],
+      });
+    },
+  });
   const onLove = (
     e: React.MouseEvent<HTMLButtonElement>,
     id1: string,
-    financeType:string
+    financeType: string
   ) => {
     e.stopPropagation();
+    if (tap === 2 && bank?.length as number > 0) {
+      best({ id: id1, type: financeType });
+    }
     mutate({ id: id1, type: financeType });
   };
   const onLink = useCallback(
     (e: React.MouseEvent<HTMLButtonElement>, ids: string, type: string) => {
       e.stopPropagation();
-      navigate(`/productdetail?${ids}&type=${type}`);
+      navigate(`/productdetail?id=${ids}&type=${type}`);
     },
     []
   );
+  const onLogin = useCallback((e: React.MouseEvent<HTMLButtonElement>) => {
+    e.stopPropagation();
+    navigate("/login");
+  }, []);
   // 나이 관련
   const ageRanges = [
     "전체",
@@ -119,30 +151,45 @@ const BankBox = ({ data, age, setAge, time, setTime }: IBankBox) => {
                     alt="은행명"
                   />
                 </div>
-                <button
-                  type="button"
-                  onClick={(e: React.MouseEvent<HTMLButtonElement>) =>
-                    onLove(
-                      e,
-                      links.financeDetailDto.financeId,
-                      links.finProductType
-                    )
-                  }
-                >
-                  {links.financeDetailDto.isLiked ? (
-                    <IcBigLove />
-                  ) : (
-                    <IcBigNotLove />
-                  )}
-                </button>
+                {login?.body.email ? (
+                  <button
+                    type="button"
+                    onClick={(e: React.MouseEvent<HTMLButtonElement>) =>
+                      onLove(
+                        e,
+                        links.financeDetailDto.financeId,
+                        links.finProductType
+                      )
+                    }
+                  >
+                    {links.financeDetailDto.isLiked === true ? (
+                      <IcBigLove />
+                    ) : (
+                      <IcBigNotLove />
+                    )}
+                  </button>
+                ) : (
+                  <button
+                    type="button"
+                    onClick={(e: React.MouseEvent<HTMLButtonElement>) =>
+                      onLogin(e)
+                    }
+                  >
+                    {links.financeDetailDto.isLiked ? (
+                      <IcBigLove />
+                    ) : (
+                      <IcBigNotLove />
+                    )}
+                  </button>
+                )}
               </div>
               <div className={styles.textbox}>
                 <em>{links.financeDetailDto.korCoNm}</em>
                 <p>{links.financeDetailDto.finPrdtNm}</p>
                 <span>최고(기본) 금리</span>
                 <strong>
-                  {links.financeDetailDto.intrRateShow}(
-                  {links.financeDetailDto.intrRate2Show})%
+                  {links.financeDetailDto.intrRate2Show}(
+                  {links.financeDetailDto.intrRateShow})%
                 </strong>
               </div>
             </div>
@@ -162,6 +209,8 @@ const BankBox = ({ data, age, setAge, time, setTime }: IBankBox) => {
             financeId={datas.financeDetailDto.financeId}
             financeType={datas.finProductType}
             isLiked={datas.financeDetailDto.isLiked}
+            tap={tap}
+            bank={bank}
           />
         </div>
       ))}

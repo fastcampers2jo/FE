@@ -66,8 +66,7 @@ export interface Like {
 }
 
 export interface Finances {
-  id1: string;
-  id2: string;
+  id: string;
   type: string;
 }
 
@@ -114,4 +113,12 @@ export interface ILikes {
 export interface LikeDel {
   ids: string[];
   finProductType: string;
+}
+
+export interface IRate {
+  financeId: string;
+  rate: {
+    intrRateNm: string;
+    selectedRate: number;
+  }[];
 }

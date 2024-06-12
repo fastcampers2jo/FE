@@ -1,4 +1,4 @@
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { Link, useLocation, useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { bankAll, bankBest } from "utils/api";
@@ -15,31 +15,31 @@ const Ranking = () => {
   const [age, setAge] = useState("전체");
   const [time, setTime] = useState("실시간");
   const tapName = ["전체 베스트", "은행별 베스트"];
-  const [bank, setBank] = useState<string[]>([]);
-  const [bankEmun, setBanksEmun] = useState<string[]>([]);
-  const [seletBank, setSeltBank] = useState(false);
+  const [bank, setBank] = useState<{ emun: string; name: string }[]>([]);
+  const [seletBank, setSeltBank] = useState<boolean>(false);
   const param = useParams();
+  const emuns = bank.map((v) => v.emun);
   const { data: list } = useQuery({
     queryKey: [
       "bankall",
       param.id === "1" ? "DEPOSIT" : "SAVING",
-      tap === 1 ? 10 : 20,
+      param.id === "1" ? 10 : 20,
     ],
     queryFn: bankAll,
     staleTime: 60 * 1000,
     gcTime: 300 * 1000,
   });
-  const { data: best, refetch } = useQuery({
+  const { data: best } = useQuery({
     queryKey: [
       "bankBest",
       param.id === "1" ? "DEPOSIT" : "SAVING",
-      bankEmun,
-      tap === 1 ? 10 : 20,
+      emuns,
+      param.id === "1" ? 10 : 20,
     ],
     queryFn: bankBest,
+    enabled: seletBank,
     staleTime: 60 * 1000,
     gcTime: 300 * 1000,
-    enabled: seletBank,
   });
   const onTap = useCallback(
     (num: number) => {
@@ -47,18 +47,17 @@ const Ranking = () => {
       if (tap !== num) {
         setAge("전체");
         setTime("실시간");
+        setBank([]);
       }
     },
     [tap]
   );
   const onBank = useCallback(
-    (bankName: string, id:string) => {
-      if (bank.some((name) => name === bankName)) {
-        setBank(bank.filter((name) => name !== bankName));
-        setBank(bank.filter((ids) => ids !== id));
+    (emun: string, name: string) => {
+      if (bank.some((Emuns) => Emuns.name === name)) {
+        setBank(bank.filter((id) => id.name !== name));
       } else {
-        setBank([...bank, bankName]);
-        setBanksEmun([...bankEmun, id]);
+        setBank([...bank, { emun, name }]);
       }
     },
     [bank]
@@ -66,9 +65,6 @@ const Ranking = () => {
   const onSeletBank = useCallback(() => {
     closeBankPopup();
     setSeltBank(true);
-    refetch().then(() => {
-      setSeltBank(false);
-    });
   }, [bank]);
   const onBankDelet = useCallback(
     (e: React.MouseEvent<HTMLOrSVGElement>) => {
@@ -77,8 +73,9 @@ const Ranking = () => {
     },
     [bank]
   );
-
-  console.log(best);
+  useEffect(() => {
+    setBank([]);
+  }, [param.id]);
 
   return (
     <>
@@ -138,8 +135,10 @@ const Ranking = () => {
           )}
           {tap === 2 && (
             <BankBox
-              data={list?.body}
+              data={best ? best.body : list?.body}
               age={age}
+              tap={tap}
+              bank={emuns}
               setAge={setAge}
               time={time}
               setTime={setTime}
@@ -154,13 +153,15 @@ const Ranking = () => {
             {bankList.map((banks) => (
               <button
                 key={banks.name}
-                onClick={() => onBank(banks.name, banks.Enum)}
+                onClick={() => onBank(banks.Enum, banks.name)}
                 className={
-                  bank.some((item) => item === banks.name) ? styles.on : ""
+                  bank.some((item) => item.name === banks.name) ? styles.on : ""
                 }
                 type="button"
               >
-                {bank.some((item) => item === banks.name) && <IcBankCheck />}
+                {bank.some((item) => item.name === banks.name) && (
+                  <IcBankCheck />
+                )}
                 <div>{banks.src}</div>
                 <span>{banks.name}</span>
               </button>

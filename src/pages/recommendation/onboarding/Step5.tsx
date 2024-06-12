@@ -15,7 +15,11 @@ const Step5 = () => {
   useEffect(() => {
     setSavingEnd(sliderValue);
   }, [sliderValue]);
-  const num = savingGoal * 10000 * (sliderValue + 0.04 * sliderValue * (sliderValue + 1)) * 0.846;
+  // const num = savingGoal * 10000 * (sliderValue + 0.02 * sliderValue * (sliderValue + 1)) * 0.846;
+  const num =
+    savingGoal * 10000 * sliderValue * 0.083 * 0.04 -
+    savingGoal * 10000 * sliderValue * 0.083 * 0.04 * 0.154;
+
   return (
     <section className={styles.section}>
       <article className={styles.statusbar}>
