@@ -78,7 +78,71 @@ const FinanceDetailPage = () => {
           </div>
         </div>
         <div className={styles.finance_detail_page_main_rate}>
-          <div>나의 금리</div>
+          <div className={styles.finance_detail_page_main_rate_title}>
+            나의 금리
+            <span>
+              <span>총 금리</span>2.2%
+            </span>
+          </div>
+          <ul className={styles.finance_detail_page_main_rate_contents}>
+            <li>
+              <span>01</span>
+              <div
+                className={styles.finance_detail_page_main_rate_contents_text}
+              >
+                급여실적 또는
+                <br />
+                개인사업자 계좌 실적
+                <br />
+                보유 시
+                <br />
+                <button>자세히</button>
+              </div>
+              <div
+                className={
+                  styles.finance_detail_page_main_rate_contents_percent
+                }
+              >
+                1%
+              </div>
+            </li>
+            <li>
+              <span>02</span>
+              <div
+                className={styles.finance_detail_page_main_rate_contents_text}
+              >
+                비대면 채널
+                <br />
+                이체 실적 보유 시
+                <br />
+                <button>자세히</button>
+              </div>
+              <div
+                className={
+                  styles.finance_detail_page_main_rate_contents_percent
+                }
+              >
+                1%
+              </div>
+            </li>
+            <li>
+              <span>03</span>
+              <div
+                className={styles.finance_detail_page_main_rate_contents_text}
+              >
+                마케팅 동의시
+                <br />
+                <button>자세히</button>
+              </div>
+              <div
+                className={
+                  styles.finance_detail_page_main_rate_contents_percent
+                }
+              >
+                0.2%
+              </div>
+            </li>
+          </ul>
         </div>
       </main>
       <Navbar />
