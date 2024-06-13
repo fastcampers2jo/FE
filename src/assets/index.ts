@@ -24,6 +24,7 @@ export { default as IcSearchDelets } from "./searchDelets.svg?react";
 export { default as IcAlarmFinance } from "./alarmFinance.png";
 export { default as IcAlarmComment } from "./alarmComment.png";
 export { default as IcAlarmGoods } from "./alarmGoods.png";
+export { default as IcGreendog } from "./greendog.svg?react";
 export { default as IcLogo } from "./logo.svg?react";
 export { default as IcMypage } from "./mypage.svg?react";
 export { default as IcFit } from "./fit.svg?react";
