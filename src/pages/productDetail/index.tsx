@@ -57,7 +57,7 @@ const ProductDetail = () => {
   });
   useEffect(() => {
     mutate({ id: ids as string, type: type as string });
-  }, [list]);
+  }, []);
   const { mutate: likes } = useMutation({
     mutationFn: like,
     onSuccess: () => {
