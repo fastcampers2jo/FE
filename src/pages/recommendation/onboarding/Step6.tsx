@@ -20,7 +20,6 @@ const Step6 = () => {
       setSavingType(name);
     }
   };
-  console.log(selectMethod);
   return (
     <section className={styles.section}>
       <article className={styles.statusbar}>
