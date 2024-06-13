@@ -27,7 +27,6 @@ const RecommendationPage = () => {
     gcTime: 600 * 1000,
     enabled: able,
   });
-
   useEffect(() => {
     if (
       ageGroup === "" ||

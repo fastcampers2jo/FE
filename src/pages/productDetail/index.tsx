@@ -8,7 +8,7 @@ import { useNumber } from "hooks";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 import SwiperCore from "swiper";
-import { bankHome, financesDetail, like } from "utils/api";
+import { bankHome, delLikeList, financesDetail, like } from "utils/api";
 import styles from "./styles.module.scss";
 
 interface RootObject {
@@ -57,17 +57,33 @@ const ProductDetail = () => {
   });
   useEffect(() => {
     mutate({ id: ids as string, type: type as string });
-  }, []);
+  }, [list]);
   const { mutate: likes } = useMutation({
     mutationFn: like,
+    onSuccess: () => {
+      mutate({ id: ids as string, type: type as string });
+    },
+  });
+  // 삭제
+  const { mutate: unlike } = useMutation({
+    mutationFn: delLikeList,
+    onSuccess: () => {
+      mutate({ id: ids as string, type: type as string });
+    },
   });
   // 찜하기
   const onlike = useCallback(() => {
     likes({ id: ids as string, type: type as string });
   }, [ids, type]);
-  const onlikes = useCallback((id:string, types:string) => {
+  const onlikes = useCallback((id: string, types: string) => {
     likes({ id, type: types });
   }, []);
+  const onUnLove = (
+    e: React.MouseEvent<HTMLButtonElement>,
+  ) => {
+    e.stopPropagation();
+    unlike({ ids: [ids as string], finProductType: type as string });
+  };
   const [isActive, setIsActive] = useState(
     Array(list?.financePreferenceDtoList.length).fill(false)
   );
@@ -201,9 +217,15 @@ const ProductDetail = () => {
             <SNSShare />
             공유하기
           </button>
-          <button type="button" onClick={onlike}>
-            {list?.isLiked ? <IcBigLove /> : <IcBigNotLove />}찜하기
-          </button>
+          {list?.isLiked ? (
+            <button type="button" onClick={onUnLove}>
+              <IcBigLove /> 찜하기
+            </button>
+          ) : (
+            <button type="button" onClick={onlike}>
+              <IcBigNotLove /> 찜하기
+            </button>
+          )}
         </div>
       </article>
       <article className={styles.article02}>
@@ -407,10 +429,7 @@ const ProductDetail = () => {
                   이 상품 어떻게 생각하시나요?? 첫...
                 </div>
                 <div className="productdetail__lounge__vote">
-                  <button
-                    type="button"
-                    className="productdetail__lounge--btn"
-                  >
+                  <button type="button" className="productdetail__lounge--btn">
                     투표중
                   </button>
                   <Link to="/community/:id">
@@ -418,9 +437,7 @@ const ProductDetail = () => {
                   </Link>
                 </div>
                 <div className="productdetail__lounge__post__info">
-                  <div className="productdetail__lounge__post__time">
-                    5분전
-                  </div>
+                  <div className="productdetail__lounge__post__time">5분전</div>
                   ·
                   <div className="productdetail__lounge__post__view">
                     조회 12
@@ -444,10 +461,7 @@ const ProductDetail = () => {
                   이 상품 어떻게 생각하시나요?? 첫...
                 </div>
                 <div className="productdetail__lounge__vote">
-                  <button
-                    type="button"
-                    className="productdetail__lounge--btn"
-                  >
+                  <button type="button" className="productdetail__lounge--btn">
                     투표중
                   </button>
                   <Link to="/community/:id">
@@ -455,9 +469,7 @@ const ProductDetail = () => {
                   </Link>
                 </div>
                 <div className="productdetail__lounge__post__info">
-                  <div className="productdetail__lounge__post__time">
-                    5분전
-                  </div>
+                  <div className="productdetail__lounge__post__time">5분전</div>
                   ·
                   <div className="productdetail__lounge__post__view">
                     조회 12
@@ -481,10 +493,7 @@ const ProductDetail = () => {
                   이 상품 어떻게 생각하시나요?? 첫...
                 </div>
                 <div className="productdetail__lounge__vote">
-                  <button
-                    type="button"
-                    className="productdetail__lounge--btn"
-                  >
+                  <button type="button" className="productdetail__lounge--btn">
                     투표중
                   </button>
                   <Link to="/community/:id">
@@ -492,9 +501,7 @@ const ProductDetail = () => {
                   </Link>
                 </div>
                 <div className="productdetail__lounge__post__info">
-                  <div className="productdetail__lounge__post__time">
-                    5분전
-                  </div>
+                  <div className="productdetail__lounge__post__time">5분전</div>
                   ·
                   <div className="productdetail__lounge__post__view">
                     조회 12
@@ -514,7 +521,15 @@ const ProductDetail = () => {
         </Swiper>
       </article>
       <div className={styles.buttton}>
-        <Button type="button" font="20" disabled={false} color="111" height="56">가입하기</Button>
+        <Button
+          type="button"
+          font="20"
+          disabled={false}
+          color="111"
+          height="56"
+        >
+          가입하기
+        </Button>
       </div>
       <Fab />
     </section>

@@ -1,8 +1,9 @@
 import { useCallback } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { delLikeList, like } from "utils/api";
 import useAuth from "hooks/useAuth";
+import { useRecommend } from "stores/useRecommend";
 import { IcSmallLove, IcSmallNotLove } from "assets";
 import styles from "./styles.module.scss";
 
@@ -37,7 +38,12 @@ const BankList = ({
 }: IBank) => {
   const navigate = useNavigate();
   const queryClient = useQueryClient();
+  const loaction = useLocation();
+  console.log(loaction.pathname.split("/")[1]);
   const param = useParams();
+  const { ageGroup, incomeGroup, savingGoal, savingEnd, savingType } =
+      useRecommend();
+
   const { mutate } = useMutation({
     mutationFn: like,
     onSuccess: () => {
@@ -89,20 +95,56 @@ const BankList = ({
       });
     },
   });
+  const { mutate: unlike3 } = useMutation({
+    mutationFn: delLikeList,
+    onSuccess: () => {
+      queryClient.invalidateQueries({
+        queryKey: [
+          "recommendation",
+          ageGroup,
+          incomeGroup,
+          savingGoal,
+          savingEnd,
+          savingType,
+        ],
+      });
+    },
+  });
+  const { mutate: like2 } = useMutation({
+    mutationFn: like,
+    onSuccess: () => {
+      queryClient.invalidateQueries({
+        queryKey: [
+          "recommendation",
+          ageGroup,
+          incomeGroup,
+          savingGoal,
+          savingEnd,
+          savingType,
+        ],
+      });
+    },
+  });
   const onUnLove = (
     e: React.MouseEvent<HTMLButtonElement>,
     id1: string,
     financeTypes: string
   ) => {
     e.stopPropagation();
+    if (loaction.pathname.split("/")[1]) {
+      return unlike3({ ids: [id1], finProductType: financeType });
+    }
     if (tap === 2 && (bank?.length as number) > 0) {
-      unlike({ ids: [id1], finProductType: financeTypes });
+      return unlike({ ids: [id1], finProductType: financeTypes });
     }
     unlike2({ ids: [id1], finProductType: financeTypes });
   };
   const { login } = useAuth();
   const onLove = (e: React.MouseEvent<HTMLButtonElement>, id1: string) => {
     e.stopPropagation();
+    if (loaction.pathname.split("/")[1]) {
+      like2({ id: id1, type: financeType });
+    }
     if (tap === 2 && (bank?.length as number) > 0) {
       best({ id: id1, type: financeType });
     }
@@ -140,7 +182,7 @@ const BankList = ({
           <img src={bankImageUrl} alt="은행명" />
         </div>
         <div className={styles.bankTextbox}>
-          <em>{korCoNm}</em>
+          <em>{korCoNm}a</em>
           <p>{finPrdtNm}</p>
           {joinWayList.map((tags, j: number) => (
             <span key={j} className={styles.tags}>
