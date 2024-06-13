@@ -1,7 +1,7 @@
 import { useCallback } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { like } from "utils/api";
+import { delLikeList, like } from "utils/api";
 import useAuth from "hooks/useAuth";
 import { IcSmallLove, IcSmallNotLove } from "assets";
 import styles from "./styles.module.scss";
@@ -63,6 +63,43 @@ const BankList = ({
       });
     },
   });
+  // 삭제
+  const { mutate: unlike } = useMutation({
+    mutationFn: delLikeList,
+    onSuccess: () => {
+      queryClient.invalidateQueries({
+        queryKey: [
+          "bankBest",
+          param.id === "1" ? "DEPOSIT" : "SAVING",
+          bank,
+          param.id === "1" ? 10 : 20,
+        ],
+      });
+    },
+  });
+  const { mutate: unlike2 } = useMutation({
+    mutationFn: delLikeList,
+    onSuccess: () => {
+      queryClient.invalidateQueries({
+        queryKey: [
+          "bankall",
+          param.id === "1" ? "DEPOSIT" : "SAVING",
+          param.id === "1" ? 10 : 20,
+        ],
+      });
+    },
+  });
+  const onUnLove = (
+    e: React.MouseEvent<HTMLButtonElement>,
+    id1: string,
+    financeTypes: string
+  ) => {
+    e.stopPropagation();
+    if (tap === 2 && (bank?.length as number) > 0) {
+      unlike({ ids: [id1], finProductType: financeTypes });
+    }
+    unlike2({ ids: [id1], finProductType: financeTypes });
+  };
   const { login } = useAuth();
   const onLove = (e: React.MouseEvent<HTMLButtonElement>, id1: string) => {
     e.stopPropagation();
@@ -71,17 +108,17 @@ const BankList = ({
     }
     mutate({ id: id1, type: financeType });
   };
-  const onLink = useCallback((e: React.MouseEvent<HTMLButtonElement>, ids:string, type:string) => {
-    e.stopPropagation();
-    navigate(`/productdetail?id=${ids}&type=${type}`);
-  }, []);
-  const onLogin = useCallback(
-    (e: React.MouseEvent<HTMLButtonElement>) => {
+  const onLink = useCallback(
+    (e: React.MouseEvent<HTMLButtonElement>, ids: string, type: string) => {
       e.stopPropagation();
-      navigate("/login");
+      navigate(`/productdetail?id=${ids}&type=${type}`);
     },
     []
   );
+  const onLogin = useCallback((e: React.MouseEvent<HTMLButtonElement>) => {
+    e.stopPropagation();
+    navigate("/login");
+  }, []);
   return (
     <button
       className={styles.rankList}
@@ -118,20 +155,28 @@ const BankList = ({
           <strong>기본 {intrRateShow}%</strong>
         </div>
         {param.search ? null : login?.body.email ? (
-          <button
-            type="button"
-            onClick={(e: React.MouseEvent<HTMLButtonElement>) =>
-              onLove(e, financeId)
-            }
-          >
-            {isLiked === true ? <IcSmallLove /> : <IcSmallNotLove />}
-          </button>
+          isLiked ? (
+            <button
+              type="button"
+              onClick={(e: React.MouseEvent<HTMLButtonElement>) =>
+                onUnLove(e, financeId, financeType)
+              }
+            >
+              <IcSmallLove />
+            </button>
+          ) : (
+            <button
+              type="button"
+              onClick={(e: React.MouseEvent<HTMLButtonElement>) =>
+                onLove(e, financeId)
+              }
+            >
+              <IcSmallNotLove />
+            </button>
+          )
         ) : (
-          <button
-            type="button"
-            onClick={(e: React.MouseEvent<HTMLButtonElement>) => onLogin(e)}
-          >
-            {isLiked === true ? <IcSmallLove /> : <IcSmallNotLove />}
+          <button type="button" onClick={onLogin}>
+            {isLiked ? <IcSmallLove /> : <IcSmallNotLove />}
           </button>
         )}
       </div>

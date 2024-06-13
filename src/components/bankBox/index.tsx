@@ -1,7 +1,7 @@
 import { useCallback, useState } from "react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useNavigate, useParams } from "react-router-dom";
-import { like } from "utils/api";
+import { delLikeList, like } from "utils/api";
 import { RankPop, BankList, Button } from "components";
 import { useTime } from "hooks";
 import { useRank } from "stores/useRank";
@@ -72,16 +72,53 @@ const BankBox = ({
       });
     },
   });
+  // 삭제
+  const { mutate: unlike } = useMutation({
+    mutationFn: delLikeList,
+    onSuccess: () => {
+      queryClient.invalidateQueries({
+        queryKey: [
+          "bankBest",
+          param.id === "1" ? "DEPOSIT" : "SAVING",
+          bank,
+          param.id === "1" ? 10 : 20,
+        ],
+      });
+    },
+  });
+  const { mutate: unlike2 } = useMutation({
+    mutationFn: delLikeList,
+    onSuccess: () => {
+      queryClient.invalidateQueries({
+        queryKey: [
+          "bankall",
+          param.id === "1" ? "DEPOSIT" : "SAVING",
+          param.id === "1" ? 10 : 20,
+        ],
+      });
+    },
+  });
   const onLove = (
     e: React.MouseEvent<HTMLButtonElement>,
     id1: string,
     financeType: string
   ) => {
     e.stopPropagation();
-    if (tap === 2 && bank?.length as number > 0) {
+    if (tap === 2 && (bank?.length as number) > 0) {
       best({ id: id1, type: financeType });
     }
     mutate({ id: id1, type: financeType });
+  };
+  const onUnLove = (
+    e: React.MouseEvent<HTMLButtonElement>,
+    id1: string,
+    financeType: string
+  ) => {
+    e.stopPropagation();
+    if (tap === 2 && (bank?.length as number) > 0) {
+      unlike({ ids: [id1], finProductType: financeType });
+    }
+    unlike2({ ids: [id1], finProductType: financeType });
   };
   const onLink = useCallback(
     (e: React.MouseEvent<HTMLButtonElement>, ids: string, type: string) => {
@@ -152,29 +189,35 @@ const BankBox = ({
                   />
                 </div>
                 {login?.body.email ? (
-                  <button
-                    type="button"
-                    onClick={(e: React.MouseEvent<HTMLButtonElement>) =>
-                      onLove(
-                        e,
-                        links.financeDetailDto.financeId,
-                        links.finProductType
-                      )
-                    }
-                  >
-                    {links.financeDetailDto.isLiked === true ? (
+                  links.financeDetailDto.isLiked ? (
+                    <button
+                      type="button"
+                      onClick={(e: React.MouseEvent<HTMLButtonElement>) =>
+                        onUnLove(
+                          e,
+                          links.financeDetailDto.financeId,
+                          links.finProductType
+                        )
+                      }
+                    >
                       <IcBigLove />
-                    ) : (
+                    </button>
+                  ) : (
+                    <button
+                      type="button"
+                      onClick={(e: React.MouseEvent<HTMLButtonElement>) =>
+                        onLove(
+                          e,
+                          links.financeDetailDto.financeId,
+                          links.finProductType
+                        )
+                      }
+                    >
                       <IcBigNotLove />
-                    )}
-                  </button>
+                    </button>
+                  )
                 ) : (
-                  <button
-                    type="button"
-                    onClick={(e: React.MouseEvent<HTMLButtonElement>) =>
-                      onLogin(e)
-                    }
-                  >
+                  <button type="button" onClick={onLogin}>
                     {links.financeDetailDto.isLiked ? (
                       <IcBigLove />
                     ) : (

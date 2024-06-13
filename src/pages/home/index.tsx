@@ -57,7 +57,10 @@ const Home = () => {
                 {login.body.name} 께 CHACK 맞는
                 <span>금융상품을 추천받아보세요!</span>
               </p>
-              <button className={styles.loginBtn}>
+              <button
+                className={styles.loginBtn}
+                onClick={() => navigate("/recommend-onboarding/main")}
+              >
                 <p>Chak 추천받기</p>
                 <div>
                   <IcLoginArr />

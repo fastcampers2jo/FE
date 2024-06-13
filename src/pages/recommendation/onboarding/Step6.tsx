@@ -20,7 +20,7 @@ const Step6 = () => {
       setSavingType(name);
     }
   };
-
+  console.log(selectMethod);
   return (
     <section className={styles.section}>
       <article className={styles.statusbar}>
@@ -36,7 +36,7 @@ const Step6 = () => {
       <section className={styles.textBoxWrap}>
         <button
           type="button"
-          className={`onboarding__textbox ${selectMethod === "자유 저축" ? "active" : ""}`}
+          className={`onboarding__textbox ${selectMethod === "자유 저축" ? styles.active : ""}`}
           onClick={() => handleMethodSelect("자유 저축", "F")}
         >
           <div className={styles.text}>💸 자유 저축</div>
@@ -46,7 +46,7 @@ const Step6 = () => {
         </button>
         <button
           type="button"
-          className={`onboarding__textbox ${selectMethod === "정기 저축" ? "active" : ""}`}
+          className={`onboarding__textbox ${selectMethod === "정기 저축" ? styles.active : ""}`}
           onClick={() => handleMethodSelect("정기 저축", "S")}
         >
           <div className={styles.text}>📅 정기 저축</div>

@@ -57,6 +57,21 @@
 }
 
 ///// 라운지 메인 페이지 상단 로고바 /////
+.fab{
+  position: fixed;
+  bottom: 10.3rem;
+  z-index: 9999;
+  width: 100%;
+  max-width: 60rem;
+  margin: 0 auto;
+  left: 0;
+  right: 0;
+  text-align: right;
+  > svg{
+    margin-right: 2.4rem;
+    cursor: pointer;
+  }
+} 
 
 .loungeMain {
   width: auto;

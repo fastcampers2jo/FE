@@ -29,6 +29,7 @@ export { default as IcMypage } from "./mypage.svg?react";
 export { default as IcFit } from "./fit.svg?react";
 export { default as IcHome } from "./home.svg?react";
 export { default as IcCard } from "./card.svg?react";
+export { default as IcCards } from "./cards.svg?react";
 export { default as IcLounge } from "./lounge.svg?react";
 export { default as IcLank } from "./lank.svg?react";
 export { default as IcTaparr } from "./taparr.svg?react";

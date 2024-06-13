@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, redirect } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
-import { BankList, Fab, LogoTop, Navber } from "components";
+import { BankList, Fab, Loding, LogoTop, Navber } from "components";
 import CategoryWhite from "components/category/white";
 import { useRecommend } from "stores/useRecommend";
 import { recommendation } from "utils/api";
@@ -13,7 +13,7 @@ const RecommendationPage = () => {
   const { login } = useAuth();
   const { ageGroup, incomeGroup, savingGoal, savingEnd, savingType } = useRecommend();
   const [able, setAble] = useState(false);
-  const { data } = useQuery({
+  const { data, isLoading } = useQuery({
     queryKey: [
       "recommendation",
       ageGroup,
@@ -23,23 +23,25 @@ const RecommendationPage = () => {
       savingType,
     ],
     queryFn: recommendation,
-    staleTime: 60 * 1000,
-    gcTime: 300 * 1000,
+    staleTime: 120 * 1000,
+    gcTime: 600 * 1000,
     enabled: able,
   });
+
   useEffect(() => {
     if (
-      ageGroup === ""
-      || incomeGroup === ""
-      || savingGoal === 0
-      || savingEnd === 0
-      || savingType === ""
+      ageGroup === "" ||
+      incomeGroup === "" ||
+      savingGoal === 0 ||
+      savingEnd === 0 ||
+      savingType === ""
     ) {
       redirect("/recommend-onboarding/main");
     } else {
       setAble(true);
     }
   }, [ageGroup, incomeGroup, savingGoal, savingEnd, savingType]);
+  if (isLoading) return <Loding />;
   return (
     <section className={styles.section3}>
       <LogoTop />
