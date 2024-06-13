@@ -103,7 +103,7 @@ const NewPost = () => {
     <div className="newpost">
       <form onSubmit={onLoungePost}>
         <section className="post__statusbar">
-          <X className="icon__x statusbar" onClick={() => navigate(-1)} />
+          <X className="icon__x" onClick={() => navigate(-1)} />
           <div className="community__title">글쓰기</div>
           <button type="submit" className={`newpost__upload ${isActive ? "active" : ""}`}>
             등록

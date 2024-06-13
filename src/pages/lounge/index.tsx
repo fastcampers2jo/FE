@@ -1,11 +1,13 @@
 /* eslint-disable no-restricted-globals */
 import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { HotTopic, LogoTop, Navber, PostList } from "components";
+import { HotTopic, LoginPop, LogoTop, Navber, PostList } from "components";
 import { IcBoardArr, IcEdit } from "assets";
 import { lounge, nav } from "mock";
 import "./lounge.scss";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
+import useAuth from "hooks/useAuth";
+import { usePopup } from "stores/usePopup";
 
 const LoungePage = () => {
   const [activeIndex, setActiveIndex] = useState(1);
@@ -23,13 +25,20 @@ const LoungePage = () => {
       navigate("/lounge/1");
     }
   }, [location, navigate, id]);
+  const { loginPopup, openLoginPopup } = usePopup();
+  const { login } = useAuth();
 
+  const onBtn = useCallback(() => {
+    if (!login) return openLoginPopup();
+    navigate("/community/newpost");
+  }, [login, navigate, openLoginPopup]);
   return (
     <div className="loungeMain">
       <LogoTop />
-      <Link to="/community/newpost">
+      {loginPopup && <LoginPop />}
+      <button type="button" onClick={onBtn} className="fab">
         <IcEdit className="loungeMain__icons" />
-      </Link>
+      </button>
       <HotTopic />
       <section className="community__section">
         <Link to="/board/1" className="page__title">

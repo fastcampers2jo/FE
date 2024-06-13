@@ -49,7 +49,10 @@ const Step1 = () => {
           onClick={() => handleCategorySelect("투자상품")}
         >
           <div className={styles.text}>📈 투자상품</div>
-          <div className={`${styles.text} ${styles.small}`}> 상품은...</div>
+          <div className={`${styles.text} ${styles.small}`}>
+            {" "}
+            상품은 주식 &#8729; 채권 &#8729; 파생상품이 있어요
+          </div>
         </button>
       </article>
       <Link

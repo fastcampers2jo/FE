@@ -18,3 +18,4 @@ export { default as SearchTag } from "./searchTag";
 export { default as SearchRecent } from "./searchRecent";
 export { default as BoardBox } from "./boardBox";
 export { default as Loding } from "./loding";
+export { default as LoginPop } from "./loginpop";

@@ -87,11 +87,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/likelist/:id",
-        element: isLoggedIn ? (
-          <LikeListPage />
-        ) : (
-          <Navigate to="/login" replace />
-        ),
+        element: <LikeListPage />,
       },
       {
         path: "/board/:id",
@@ -127,43 +123,35 @@ const router = createBrowserRouter([
       },
       {
         path: "/recommend/:id",
-        element: isLoggedIn ? (
-          <RecommendationPage />
-        ) : (
-          <Navigate to="/login" replace />
-        ),
+        element: <RecommendationPage />,
       },
       {
         path: "/recommend-onboarding/main",
-        element: isLoggedIn ? (
-          <OnboardingMain />
-        ) : (
-          <Navigate to="/login" replace />
-        ),
+        element: <OnboardingMain />,
       },
       {
         path: "/recommend-onboarding/step1",
-        element: isLoggedIn ? <Step1 /> : <Navigate to="/login" replace />,
+        element: <Step1 />,
       },
       {
         path: "/recommend-onboarding/step2",
-        element: isLoggedIn ? <Step2 /> : <Navigate to="/login" replace />,
+        element: <Step2 />,
       },
       {
         path: "/recommend-onboarding/step3",
-        element: isLoggedIn ? <Step3 /> : <Navigate to="/login" replace />,
+        element: <Step3 />,
       },
       {
         path: "/recommend-onboarding/step4",
-        element: isLoggedIn ? <Step4 /> : <Navigate to="/login" replace />,
+        element: <Step4 />,
       },
       {
         path: "/recommend-onboarding/step5",
-        element: isLoggedIn ? <Step5 /> : <Navigate to="/login" replace />,
+        element: <Step5 />,
       },
       {
         path: "/recommend-onboarding/step6",
-        element: isLoggedIn ? <Step6 /> : <Navigate to="/login" replace />,
+        element: <Step6 />,
       },
       {
         path: "/lounge/:id",
